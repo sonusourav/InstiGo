@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="grey">#c1bdbd</color>
+    <color name="textcolor">#666666</color>
+    <color name="hintcolor">#918f8f</color>
 
 
     <!-- Screens background color-->

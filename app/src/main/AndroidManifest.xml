@@ -14,16 +14,21 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        </activity>
+        <activity android:name=".WelcomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        </activity>
+        <activity android:name=".TestActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 </manifest>

@@ -4,7 +4,8 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:orientation="vertical">
+	android:orientation="vertical"
+    >
 
 	<com.flaviofaria.kenburnsview.KenBurnsView
 		android:layout_height="match_parent"
@@ -20,17 +21,17 @@
 		android:id="@+id/fragmentloginView1"/>
 
 	<ImageView
-		app:layout_heightPercent="50%"
+		app:layout_heightPercent="40%"
 		app:layout_widthPercent="50%"
 		android:layout_centerHorizontal="true"
-		android:src="@drawable/paper_plane"
+		android:src="@drawable/logo_instigo"
 		android:id="@+id/fragmentloginLogo"
 		android:alpha="0"/>
 
 	<RelativeLayout
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		app:layout_marginTopPercent="50%"
+		app:layout_marginTopPercent="40%"
 		android:id="@+id/form_login"
 		android:padding="30dp"
 		android:alpha="0">
