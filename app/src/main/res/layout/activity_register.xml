@@ -61,7 +61,7 @@
             android:layout_alignBottom="@id/mainImageView1"
             android:textColor="#FFFFFF"
             android:id="@+id/mainEditText1"
-            android:hint="Email"
+            android:hint="@string/email"
             android:typeface="serif"/>
 
         <View
@@ -95,7 +95,7 @@
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
                 android:id="@+id/mainEditText2"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:typeface="serif"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -123,7 +123,7 @@
         android:layout_width="match_parent"
         android:layout_below="@id/form_login"
         android:id="@+id/button_register"
-        android:text="Register"
+        android:text="@string/register"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="10dp"
@@ -148,7 +148,7 @@
             android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Already have account."
+            android:text="@string/already_have_account"
             android:textColor="#FFFFFF"
             android:typeface="serif"
             android:textStyle="normal"/>
@@ -159,8 +159,9 @@
             android:textColor="@drawable/textview_selector"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_alignParentBottom="true"
-            android:text=" Login here!"
+            android:text="@string/login_here"
             android:textStyle="bold"
+            android:layout_marginStart="5dp"
             android:layout_toRightOf="@id/register_already_have_account"
             android:layout_marginBottom="10dp"
             android:typeface="serif"/>

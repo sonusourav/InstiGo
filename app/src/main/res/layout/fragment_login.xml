@@ -42,7 +42,8 @@
 			android:tint="#ffffff"
 			android:src="@drawable/user_icon"
 			android:id="@+id/mainImageView1"
-			android:layout_marginBottom="30dp"/>
+			android:layout_marginBottom="30dp"
+            android:contentDescription="@string/hello_world" />
 
 		<ImageView
 			android:layout_height="@dimen/login_holder_height"
@@ -66,7 +67,7 @@
 			android:layout_alignBottom="@id/mainImageView1"
 			android:textColor="#FFFFFF"
 			android:id="@+id/mainEditText1"
-			android:hint="Email"
+			android:hint="@string/email"
 			android:typeface="serif"/>
 
 		<View
@@ -89,7 +90,7 @@
 			android:layout_alignBottom="@id/mainImageView2"
 			android:textColor="#FFFFFF"
 			android:id="@+id/mainEditText2"
-			android:hint="Password"
+			android:hint="@string/password"
 			android:typeface="serif"/>
 
 		<View
@@ -117,14 +118,14 @@
 			android:layout_height="wrap_content"
 			android:textColor="#cccccc"
 			android:textAppearance="?android:attr/textAppearanceSmall"
-			android:text="Don't have an account?"
+			android:text="@string/don_t_have_an_account"
 			android:typeface="serif"/>
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="?android:attr/textAppearanceSmall"
-			android:text="Sign up"
+			android:text="@string/sign_up"
 			android:textColor="#FFFFFF"
 			android:textStyle="bold"
 			android:layout_marginLeft="10dp"

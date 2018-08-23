@@ -14,7 +14,6 @@
     <string name="play_again">Play Again</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="remember_me">Remember me</string>
     <string name="login">LOGIN</string>
@@ -25,6 +24,11 @@
     <string name="forgot_password_instruction">We just need your registered email id\n to send you reset instructions.</string>
     <string name="registered_email_id">Registered email id</string>
     <string name="back_to_login_page"><![CDATA[<< Back to Login page]]></string>
+    <string name="reset_password">Reset Password</string>
+    <string name="already_have_account">Already have account?</string>
+    <string name="login_here">  Login here!</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
     <string-array name="examples">
         <item>Hi User</item>
         <item>This is</item>

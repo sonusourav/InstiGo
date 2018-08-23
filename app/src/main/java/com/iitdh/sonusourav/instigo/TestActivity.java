@@ -7,6 +7,6 @@ public class TestActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.activity_forgot_password);
+        setContentView(R.layout.activity_login);
     }
 }
