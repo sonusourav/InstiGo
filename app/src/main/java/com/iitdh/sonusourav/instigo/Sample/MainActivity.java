@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo;
+package com.iitdh.sonusourav.instigo.Sample;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -19,6 +19,10 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.daasuu.ei.*;
+import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.Sample.DashboardFragment;
+import com.iitdh.sonusourav.instigo.Sample.LoginFragment;
+import com.iitdh.sonusourav.instigo.Utils.StatusBarUtil;
 
 
 public class MainActivity extends AppCompatActivity
@@ -31,13 +35,13 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(com.iitdh.sonusourav.instigo.R.layout.main);
 
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		pbar=findViewById(R.id.mainProgressBar1);
-		button_icon=findViewById(R.id.button_icon);
-		button_label=findViewById(R.id.button_label);
-        button_login=findViewById(R.id.button_login);
+		pbar=findViewById(com.iitdh.sonusourav.instigo.R.id.mainProgressBar1);
+		button_icon=findViewById(com.iitdh.sonusourav.instigo.R.id.button_icon);
+		button_label=findViewById(com.iitdh.sonusourav.instigo.R.id.button_label);
+        button_login=findViewById(com.iitdh.sonusourav.instigo.R.id.main_button_login);
 
 		
 		dm=getResources().getDisplayMetrics();
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity
 		
 		frag_login=new LoginFragment();
 		frag_dashboard=new DashboardFragment();
-		getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, frag_login).commit();
+		getSupportFragmentManager().beginTransaction().replace(com.iitdh.sonusourav.instigo.R.id.frag_container, frag_login).commit();
 		final ValueAnimator va=new ValueAnimator();
 		va.setDuration(1500);
 		va.setInterpolator(new DecelerateInterpolator());

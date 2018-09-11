@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo;
+package com.iitdh.sonusourav.instigo.Sample;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
+
+import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.Utils.StatusBarUtil;
 
 import java.util.Calendar;
 import java.util.Date;

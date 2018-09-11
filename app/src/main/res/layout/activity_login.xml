@@ -39,6 +39,7 @@
                 android:id="@+id/login_logo"
                 android:alpha="1"
                 android:paddingTop="20dp"
+                android:visibility="invisible"
                 android:contentDescription="@string/hello_world"
                 />
         </android.support.constraint.ConstraintLayout>
@@ -64,13 +65,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:hint="@string/email"
-                    android:inputType="textPersonName"
+                    android:inputType="textEmailAddress"
                     android:paddingEnd="10dp"
                     android:paddingStart="45dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
                     android:textStyle="normal"
                     android:typeface="sans" />
 
@@ -113,7 +113,6 @@
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/white"
                         android:textStyle="normal"
                         android:typeface="sans" />
 
@@ -223,10 +222,13 @@
                     android:id="@+id/forgot_pass"
                     android:layout_centerHorizontal="true"
                     android:gravity="center_horizontal"
-                    android:textColor="#cccccc"
+                    android:textColor="@drawable/color_login_tv"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/forgot_password"
-                    android:typeface="serif"/>
+                    android:typeface="serif"
+                    android:textSize="15sp"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
             </RelativeLayout>
 
@@ -257,14 +259,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/login_tv2"
+                    android:id="@+id/login_tv3"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="10dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/sign_up"
-                    android:textColor="@drawable/textview_selector"
+                    android:textColor="@drawable/color_login_tv"
                     android:textStyle="bold"
-                    android:typeface="serif"/>
+                    android:typeface="serif"
+                    android:clickable="true"
+                    android:focusable="true" />
 
             </RelativeLayout>
 

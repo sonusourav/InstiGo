@@ -24,10 +24,11 @@
         android:layout_height="200dp"
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/paper_plane"
         android:id="@+id/register_logo"
-        android:alpha="1"/>
+        android:alpha="1"
+        android:contentDescription="@string/register" />
 
     <RelativeLayout
         android:layout_height="wrap_content"
@@ -41,9 +42,10 @@
             android:layout_height="@dimen/login_holder_height"
             android:layout_width="@dimen/login_holder_height"
             android:tint="#ffffff"
-            android:src="@drawable/user_icon"
-            android:id="@+id/mainImageView1"
-            android:layout_marginBottom="30dp"/>
+            android:src="@drawable/icon_email"
+            android:id="@+id/registerImageView1"
+            android:layout_marginBottom="30dp"
+            android:contentDescription="@string/register" />
 
 
 
@@ -52,22 +54,56 @@
             android:layout_width="match_parent"
             android:ems="10"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/mainImageView1"
+            android:layout_toRightOf="@id/registerImageView1"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@null"
             android:textSize="20sp"
-            android:layout_alignTop="@id/mainImageView1"
-            android:layout_alignBottom="@id/mainImageView1"
+            android:layout_alignTop="@id/registerImageView1"
+            android:layout_alignBottom="@id/registerImageView1"
             android:textColor="#FFFFFF"
-            android:id="@+id/mainEditText1"
+            android:id="@+id/register_email"
             android:hint="@string/email"
             android:typeface="serif"/>
 
         <View
             android:layout_height="1dp"
             android:layout_width="match_parent"
-            android:layout_below="@id/mainEditText1"
+            android:layout_below="@id/register_email"
+            android:background="#FFFFFF"
+            android:layout_marginTop="@dimen/login_horizontalline_spacing"/>
+
+        <ImageView
+            android:layout_height="@dimen/login_holder_height"
+            android:layout_width="@dimen/login_holder_height"
+            android:tint="#ffffff"
+            android:src="@drawable/user_icon"
+            android:id="@+id/registerImageView2"
+            android:layout_marginBottom="30dp"
+            android:layout_below="@id/registerImageView1"
+            />
+
+        <EditText
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:ems="10"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/registerImageView2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@null"
+            android:textSize="20sp"
+            android:layout_alignTop="@id/registerImageView2"
+            android:layout_alignBottom="@id/mainImageView2"
+            android:textColor="#FFFFFF"
+            android:id="@+id/register_username"
+            android:hint="@string/username"
+            android:typeface="serif"/>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:layout_below="@id/register_username"
             android:background="#FFFFFF"
             android:layout_marginTop="@dimen/login_horizontalline_spacing"/>
 
@@ -75,11 +111,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/text_input_password_toggle"
-            android:layout_toRightOf="@id/mainImageView2"
+            android:layout_toRightOf="@id/registerImageView2"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_alignTop="@id/mainImageView2"
-            android:layout_alignBottom="@id/mainImageView2"
+            android:layout_alignTop="@id/registerImageView3"
+            android:layout_alignBottom="@id/registerImageView3"
             app:hintEnabled="false"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/white"
@@ -94,7 +130,7 @@
                 android:background="@null"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
-                android:id="@+id/mainEditText2"
+                android:id="@+id/register_pass"
                 android:hint="@string/password"
                 android:typeface="serif"/>
 
@@ -103,11 +139,11 @@
         <ImageView
             android:layout_height="@dimen/login_holder_height"
             android:layout_width="@dimen/login_holder_height"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:tint="#ffffff"
             android:src="@drawable/password_icon"
-            android:layout_below="@id/mainImageView1"
-            android:id="@+id/mainImageView2"/>
+            android:layout_below="@id/registerImageView2"
+            android:id="@+id/registerImageView3"/>
 
         <View
             android:layout_height="1dp"
@@ -156,15 +192,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/register_bottom"
-            android:textColor="@drawable/textview_selector"
+            android:textColor="@drawable/color_login_tv"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:elevation="30dp"
             android:layout_alignParentBottom="true"
             android:text="@string/login_here"
             android:textStyle="bold"
             android:layout_marginStart="5dp"
-            android:layout_toRightOf="@id/register_already_have_account"
+            android:layout_toEndOf="@id/register_already_have_account"
             android:layout_marginBottom="10dp"
-            android:typeface="serif"/>
+            android:typeface="serif"
+            android:clickable="true"
+            android:focusable="true" />
+
+
     </RelativeLayout>
 
 

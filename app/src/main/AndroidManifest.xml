@@ -12,17 +12,7 @@
         android:screenOrientation="portrait"
         android:configChanges="keyboardHidden|orientation|screenSize">
         <activity
-            android:name=".SplashActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
-        <activity android:name=".WelcomeActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
-        <activity android:name=".TestActivity"
+            android:name=".Login.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,5 +20,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Login.IntroScreen"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".Sample.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        </activity>
+        <activity android:name=".TestActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        </activity>
+        <activity android:name=".Login.LoginActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" >
+
+        </activity>
+        <activity android:name=".Login.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" >
+
+
+        </activity>
+        <activity android:name=".Login.ForgotPassword"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".Sample.WelcomeActivity" />
+        <activity android:name=".CouncilActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".HomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".Mess.MessActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+           />
     </application>
 </manifest>

@@ -1,10 +1,9 @@
-package com.iitdh.sonusourav.instigo;
+package com.iitdh.sonusourav.instigo.Login;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
@@ -20,7 +19,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class WelcomeActivity extends AppCompatActivity {
+import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
+
+public class IntroScreen extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -48,7 +50,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
 
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_welcome2);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
@@ -120,7 +122,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        startActivity(new Intent(IntroScreen.this, LoginActivity.class));
         finish();
     }
 
@@ -169,6 +171,7 @@ public class WelcomeActivity extends AppCompatActivity {
         MyViewPagerAdapter() {
         }
 
+        @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);

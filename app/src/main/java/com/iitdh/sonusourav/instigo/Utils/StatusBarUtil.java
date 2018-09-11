@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo;
+package com.iitdh.sonusourav.instigo.Utils;
 
 import android.app.Activity;
 import android.content.Context;

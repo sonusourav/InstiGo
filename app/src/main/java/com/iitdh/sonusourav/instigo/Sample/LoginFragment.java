@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo;
+package com.iitdh.sonusourav.instigo.Sample;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator;
+import com.iitdh.sonusourav.instigo.R;
 
 public class LoginFragment extends Fragment
 {
