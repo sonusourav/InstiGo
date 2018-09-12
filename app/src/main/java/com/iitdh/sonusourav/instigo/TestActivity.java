@@ -33,53 +33,13 @@ import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 
 import java.util.Objects;
 
-public class TestActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class TestActivity extends AppCompatActivity{
 
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
-
-
-
-        CommonFunctions.setUser(this);
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar_main);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
+        setContentView(R.layout.cell_title_layout);
 
     }
 
-    private static long back_pressed;
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            if (back_pressed + 2000 > System.currentTimeMillis()){
-                moveTaskToBack(true);
-            }
-            else{
-                Toast.makeText(getBaseContext(), "Press twice to exit", Toast.LENGTH_SHORT).show();
-                back_pressed = System.currentTimeMillis();
-            }
-        }
-    }
 
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return CommonFunctions.navigationItemSelect(item, this);
-    }
 }

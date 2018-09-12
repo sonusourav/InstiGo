@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:background="@color/white">
+
+    <!-- content header line -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/menu_title_color"
+        android:paddingBottom="7dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="7dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/content_mess_part"
+            android:gravity="start"
+            android:text="@string/mess_title"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/content_mess_time"
+            android:layout_alignParentEnd="true"
+            android:text="Time"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="normal" />
+
+
+    </RelativeLayout>
+
+    <!-- content header image -->
+
+
+        <ImageView
+            android:id="@+id/head_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mess_content_background"
+            />
+
+
+
+
+    <!-- content body layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:id="@+id/cell_content_layout3">
+
+    <TextView
+        android:id="@+id/content_items"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:text="  ITEMS "
+        android:gravity="center"
+        android:textStyle="normal"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/cell_divider"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/divider_color"
+        android:layout_below="@id/content_items">
+    </View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cell_divider"
+        android:layout_above="@id/cell_layout3"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:singleLine="false"
+        android:elevation="20dp"
+        android:minLines="3"
+        android:maxLines="6"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/item_name"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:textColor="@color/grey"
+        />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/cell_divider2"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/divider_color"
+        >
+    </View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/content_ratings"
+            android:layout_gravity="center"
+            android:numStars="5"
+            style="@style/Base.Widget.AppCompat.RatingBar"
+            android:clickable="true"
+            android:stepSize="0.5"
+            android:theme="@style/RatingBar"
+            android:scaleY="0.6"
+            android:scaleX="0.6"
+            android:rating="0"
+            android:focusable="true" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="Submit"
+            android:id="@+id/submit_btn"
+            android:background="@drawable/button_login"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:layout_marginBottom="10dp"
+           />
+    </LinearLayout>
+
+</LinearLayout>

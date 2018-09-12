@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Sample.WelcomeActivity;
 import com.iitdh.sonusourav.instigo.TestActivity;
@@ -79,7 +80,7 @@ public class SplashActivity extends AppCompatActivity {
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        final Intent mainIntent = new Intent(SplashActivity.this, TestActivity.class);
+                                        final Intent mainIntent = new Intent(SplashActivity.this, HomeActivity.class);
                                         SplashActivity.this.startActivity(mainIntent);
                                         SplashActivity.this.finish();
                                     }

@@ -99,6 +99,12 @@
     <string name="custom_position_example">Custom Position Example</string>
     <string name="fade_views_example">Fade Views Example</string>
     <string name="orientation_example">Orientation Example</string>
+    <string name="mess_title">Mess Part</string>
+    <string name="Breakfast">B\nR\nE\nA\nK\nF\nA\nS\nT</string>
+    <string name="Lunch">L\nU\nN\nC\nH</string>
+    <string name="Snacks">S\nN\nA\nC\nK\nS</string>
+    <string name="Dinner">D\nI\nN\nN\nE\nR</string>
+    <string name="item_name">Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji</string>
 
 
 </resources>

@@ -17,8 +17,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.Login.LoginActivity;
+import com.iitdh.sonusourav.instigo.Mess.MainActivity;
 import com.iitdh.sonusourav.instigo.Mess.MessActivity;
 import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.TestActivity;
 
 
 public class CommonFunctions {
@@ -36,6 +38,18 @@ public class CommonFunctions {
             case R.id.nav_mess: {
                 Toast.makeText(activity.getApplicationContext(), "Welcome to mess", Toast.LENGTH_SHORT).show();
                 activity.startActivity(new Intent().setClass(activity, MessActivity.class));
+                break;
+
+            }
+            case R.id.nav_council: {
+                Toast.makeText(activity.getApplicationContext(), "Welcome to Council", Toast.LENGTH_SHORT).show();
+                activity.startActivity(new Intent().setClass(activity, TestActivity.class));
+                break;
+
+            }
+            case R.id.nav_notification: {
+                Toast.makeText(activity.getApplicationContext(), "Welcome to Notification", Toast.LENGTH_SHORT).show();
+                activity.startActivity(new Intent().setClass(activity, MainActivity.class));
                 break;
 
             }

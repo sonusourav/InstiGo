@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:screenOrientation="portrait"
+        android:largeHeap="true"
         android:configChanges="keyboardHidden|orientation|screenSize">
         <activity
             android:name=".Login.SplashActivity"
@@ -51,5 +52,6 @@
         <activity android:name=".Mess.MessActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
            />
+        <activity android:name=".Mess.MainActivity" />
     </application>
 </manifest>

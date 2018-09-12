@@ -31,6 +31,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Sample.WelcomeActivity;
 import com.iitdh.sonusourav.instigo.TestActivity;
@@ -246,7 +247,7 @@ public class LoginActivity extends AppCompatActivity {
             String testEmail=loginPref.getPrefEmail();
             Log.d("LoginEmail",testEmail);
             Toast.makeText(getApplicationContext(),"Signed In successfully",Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(LoginActivity.this,TestActivity.class);
+            Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
             startActivity(intent);
             finish();
 
@@ -306,7 +307,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             assert user != null;
                             Toast.makeText(LoginActivity.this, " Signed In as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, TestActivity.class));
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
 
                         } else {
                             // If sign in fails

@@ -54,6 +54,7 @@ dependencies {
     implementation 'com.nightonke:boommenu:2.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.ramotion.foldingcell:folding-cell:1.2.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

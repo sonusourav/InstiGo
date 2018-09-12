@@ -55,5 +55,11 @@
     <color name="viewBg">#f1f5f8</color>
     <color name="album_title">#4c4c4c</color>
     <color name="color_icon">#2196f3</color>
-
+    <color name="menu_title_color">#594691</color>
+    <color name="contentBadgeTitle">#a9a9a9</color>
+    <color name="titleBadgeTitle">#adafb1</color>
+    <color name="titleBadgeText">#adafb1</color>
+    <color name="mainTextColor">#343d43</color>
+    <color name="golden">#ffa304</color>
+    <color name="cell_title_background">#ecfaf4</color>
 </resources>
