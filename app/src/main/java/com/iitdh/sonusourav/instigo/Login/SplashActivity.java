@@ -84,7 +84,7 @@ public class SplashActivity extends AppCompatActivity {
                                         SplashActivity.this.startActivity(mainIntent);
                                         SplashActivity.this.finish();
                                     }
-                                }, 4800);
+                                }, 1000);
 
 
                             } else {
@@ -98,7 +98,7 @@ public class SplashActivity extends AppCompatActivity {
                                         SplashActivity.this.startActivity(mainIntent);
                                         SplashActivity.this.finish();
                                     }
-                                }, 4800);
+                                }, 1000);
                                 Toast.makeText(SplashActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
                             }
@@ -114,7 +114,7 @@ public class SplashActivity extends AppCompatActivity {
                     SplashActivity.this.startActivity(mainIntent);
                     SplashActivity.this.finish();
                 }
-            }, 4800);
+            }, 1000);
 
             Log.d(TAG, "SharedPreference: isLoggedIn=false");
 

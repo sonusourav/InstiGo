@@ -1,5 +1,6 @@
 package com.iitdh.sonusourav.instigo.Login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,8 +34,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
-import com.iitdh.sonusourav.instigo.Sample.WelcomeActivity;
-import com.iitdh.sonusourav.instigo.TestActivity;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
 
 import java.util.regex.Matcher;
@@ -63,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     private String signInEmail;
     private String signInPass;
     private String errorCode;
+    private ProgressDialog mProgressDialog;
 
     private long back_pressed;
 
@@ -304,13 +304,14 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = loginAuth.getCurrentUser();
-
+                            hideProgressDialog();
                             assert user != null;
                             Toast.makeText(LoginActivity.this, " Signed In as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
 
                         } else {
                             // If sign in fails
+                            hideProgressDialog();
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -327,11 +328,27 @@ public class LoginActivity extends AppCompatActivity {
         //getting the google signin intent
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
 
+        showProgressDialog();
         //starting the activity for result
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    public void showProgressDialog() {
 
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
+            mProgressDialog.setMessage("Loading ....");
+            mProgressDialog.setIndeterminate(true);
+        }
+
+        mProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
 
 
 }
