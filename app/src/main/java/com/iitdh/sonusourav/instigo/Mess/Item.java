@@ -6,9 +6,7 @@ import android.widget.RatingBar;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- * Simple POJO model for example
- */
+
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class Item {
 
@@ -16,17 +14,28 @@ public class Item {
     private String messTime;
     private String messItems;
     private String messRatings;
+    private int day;
+
     private View.OnClickListener submitBtnClickListener;
     private RatingBar.OnRatingBarChangeListener ratingBarChangeListener;
 
     public Item() {
     }
 
-    public Item(String messPart, String messTime, String messItems, String messRatings) {
+    public Item(int day,String messPart, String messTime, String messItems, String messRatings) {
+        this.day=day;
         this.messPart = messPart;
         this.messTime = messTime;
         this.messItems = messItems;
         this.messRatings = messRatings;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
     }
 
     public String getMessPart() {
@@ -92,6 +101,7 @@ public class Item {
         if (messItems != null ? !messItems.equals(item.messItems) : item.messItems != null)
             return false;
 
+
         return messRatings != null ? messRatings.equals(item.messRatings) : item.messRatings == null;
 
     }
@@ -116,41 +126,41 @@ public class Item {
         ArrayList<Item> fridayMenu = new ArrayList<>();
         ArrayList<Item> saturdayMenu = new ArrayList<>();
 
-        sundayMenu.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "1Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        sundayMenu.add(new Item("L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        sundayMenu.add(new Item("S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        sundayMenu.add(new Item("D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
+        sundayMenu.add(new Item(0,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "1Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        sundayMenu.add(new Item(0,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        sundayMenu.add(new Item(0,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        sundayMenu.add(new Item(0,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        mondayMenu.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "2Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        mondayMenu.add(new Item("L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        mondayMenu.add(new Item("S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        mondayMenu.add(new Item("D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
+        mondayMenu.add(new Item(1,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "2Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        mondayMenu.add(new Item(1,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        mondayMenu.add(new Item(1,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        mondayMenu.add(new Item(1,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        tuesdayMenu.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "3Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        tuesdayMenu.add(new Item("L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        tuesdayMenu.add(new Item("S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        tuesdayMenu.add(new Item("D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
+        tuesdayMenu.add(new Item(2,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "3Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        tuesdayMenu.add(new Item(2,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        tuesdayMenu.add(new Item(2,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        tuesdayMenu.add(new Item(2,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
 
-        wednesdayMenu.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "4Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        wednesdayMenu.add(new Item("L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        wednesdayMenu.add(new Item("S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        wednesdayMenu.add(new Item("D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
+        wednesdayMenu.add(new Item(3,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "4Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        wednesdayMenu.add(new Item(3,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        wednesdayMenu.add(new Item(3,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        wednesdayMenu.add(new Item(3,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        thursdayMenu.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "5Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        thursdayMenu.add(new Item("L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        thursdayMenu.add(new Item("S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        thursdayMenu.add(new Item("D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
+        thursdayMenu.add(new Item(4,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "5Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        thursdayMenu.add(new Item(4,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        thursdayMenu.add(new Item(4,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        thursdayMenu.add(new Item(4,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        fridayMenu.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "6Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        fridayMenu.add(new Item("L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        fridayMenu.add(new Item("S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        fridayMenu.add(new Item("D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
+        fridayMenu.add(new Item(5,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "6Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        fridayMenu.add(new Item(5,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        fridayMenu.add(new Item(5,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        fridayMenu.add(new Item(5,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        saturdayMenu.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "7Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        saturdayMenu.add(new Item("L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        saturdayMenu.add(new Item("S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
-        saturdayMenu.add(new Item("D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", "3.5"));
+        saturdayMenu.add(new Item(6,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "7Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        saturdayMenu.add(new Item(6,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        saturdayMenu.add(new Item(6,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        saturdayMenu.add(new Item(6,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
         switch (index) {
             case 0:
@@ -194,41 +204,41 @@ public class Item {
         ArrayList<Item>friday = new ArrayList<>();
         ArrayList<Item>saturday = new ArrayList<>();
 
-        sunday.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT","7:30 - 9:30 am",""+ "1Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        sunday.add(new Item("L\nU\nN\nC\nH\n","12:00 - 2:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji",null));
-        sunday.add(new Item("S\nN\nA\nC\nK\nS","4:45 - 6:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        sunday.add(new Item("D\nI\nN\nN\nE\nR","7:30 - 9:45 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
+        sunday.add(new Item(0,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "1Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        sunday.add(new Item(0,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        sunday.add(new Item(0,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        sunday.add(new Item(0,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        monday.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT","7:30 - 9:30 am",""+ "2Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        monday.add(new Item("L\nU\nN\nC\nH\n","12:00 - 2:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji",null));
-        monday.add(new Item("S\nN\nA\nC\nK\nS","4:45 - 6:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        monday.add(new Item("D\nI\nN\nN\nE\nR","7:30 - 9:45 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
+        monday.add(new Item(1,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "2Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        monday.add(new Item(1,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        monday.add(new Item(1,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        monday.add(new Item(1,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        tuesday.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT","7:30 - 9:30 am",""+ "3Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        tuesday.add(new Item("L\nU\nN\nC\nH\n","12:00 - 2:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji",null));
-        tuesday.add(new Item("S\nN\nA\nC\nK\nS","4:45 - 6:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        tuesday.add(new Item("D\nI\nN\nN\nE\nR","7:30 - 9:45 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
+        tuesday.add(new Item(2,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "3Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        tuesday.add(new Item(2,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        tuesday.add(new Item(2,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        tuesday.add(new Item(2,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
 
-        wednesday.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT","7:30 - 9:30 am",""+ "4Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        wednesday.add(new Item("L\nU\nN\nC\nH\n","12:00 - 2:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji",null));
-        wednesday.add(new Item("S\nN\nA\nC\nK\nS","4:45 - 6:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        wednesday.add(new Item("D\nI\nN\nN\nE\nR","7:30 - 9:45 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
+        wednesday.add(new Item(3,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "4Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        wednesday.add(new Item(3,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        wednesday.add(new Item(3,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        wednesday.add(new Item(3,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        thursday.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT","7:30 - 9:30 am",""+ "5Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        thursday.add(new Item("L\nU\nN\nC\nH\n","12:00 - 2:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji",null));
-        thursday.add(new Item("S\nN\nA\nC\nK\nS","4:45 - 6:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        thursday.add(new Item("D\nI\nN\nN\nE\nR","7:30 - 9:45 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
+        thursday.add(new Item(4,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "5Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        thursday.add(new Item(4,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        thursday.add(new Item(4,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        thursday.add(new Item(4,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        friday.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT","7:30 - 9:30 am",""+ "6Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        friday.add(new Item("L\nU\nN\nC\nH\n","12:00 - 2:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji",null));
-        friday.add(new Item("S\nN\nA\nC\nK\nS","4:45 - 6:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        friday.add(new Item("D\nI\nN\nN\nE\nR","7:30 - 9:45 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
+        friday.add(new Item(5,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "6Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        friday.add(new Item(5,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        friday.add(new Item(5,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        friday.add(new Item(5,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
-        saturday.add(new Item("B\nR\nE\nA\nK\nF\nA\nS\nT","7:30 - 9:30 am",""+ "7Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        saturday.add(new Item("L\nU\nN\nC\nH\n","12:00 - 2:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji",null));
-        saturday.add(new Item("S\nN\nA\nC\nK\nS","4:45 - 6:15 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
-        saturday.add(new Item("D\nI\nN\nN\nE\nR","7:30 - 9:45 pm",""+ "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji","3.5"));
+        saturday.add(new Item(6,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "7Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        saturday.add(new Item(6,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        saturday.add(new Item(6,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        saturday.add(new Item(6,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_WEEK);

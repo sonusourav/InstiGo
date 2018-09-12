@@ -129,7 +129,7 @@
             android:numStars="5"
             style="@style/Base.Widget.AppCompat.RatingBar"
             android:clickable="true"
-            android:stepSize="0.5"
+            android:stepSize="1"
             android:theme="@style/RatingBar"
             android:scaleY="0.6"
             android:scaleX="0.6"

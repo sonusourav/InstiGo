@@ -76,12 +76,14 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         viewHolder.part.setText(item.getMessPart());
         viewHolder.time.setText(item.getMessTime());
         viewHolder.items.setText(item.getMessItems());
-        if(item.getMessRatings()!=null){
-            viewHolder.titleRatingBar.setRating((Float.parseFloat(item.getMessRatings())));
-        }else {
+        if (item.getMessRatings() == null || Float.parseFloat(item.getMessRatings())==0) {
             viewHolder.textRatings.setVisibility(View.VISIBLE);
             viewHolder.titleRatingBar.setVisibility(View.GONE);
-            viewHolder.textRatings.setText("No textRatings");
+            viewHolder.textRatings.setText("Ratings Unavailable");
+        } else {
+            viewHolder.textRatings.setVisibility(View.GONE);
+            viewHolder.titleRatingBar.setVisibility(View.VISIBLE);
+            viewHolder.titleRatingBar.setRating((Float.parseFloat(item.getMessRatings())));
         }
         viewHolder.contentPart.setText(contentMessPart);
         viewHolder.contentTime.setText(item.getMessTime());
