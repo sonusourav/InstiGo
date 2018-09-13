@@ -183,7 +183,9 @@ public class FeedbackFragment extends Fragment {
 
 
                         FeedbackUserClass newFeedback=new FeedbackUserClass(username,image,title,day,about,date,rating,desc);
-                        messFeedbackRef.child(testEmail).setValue(newFeedback);
+                        String userReference= messFeedbackRef.push().getKey();
+                        assert userReference != null;
+                        messFeedbackRef.child(userReference).setValue(newFeedback);
                         dialog.dismiss();
 
 
