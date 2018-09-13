@@ -133,6 +133,22 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         unfoldedIndexes.remove(position);
     }
 
+
+    public void removeAll(){
+       if(unfoldedIndexes.contains(0)){
+           registerFold(0);
+       }
+        if(unfoldedIndexes.contains(1)){
+            registerFold(1);
+
+        } if(unfoldedIndexes.contains(2)){
+            registerFold(2);
+
+        } if(unfoldedIndexes.contains(3)){
+            registerFold(3);
+        }
+    }
+
     private void registerUnfold(int position) {
         unfoldedIndexes.add(position);
     }

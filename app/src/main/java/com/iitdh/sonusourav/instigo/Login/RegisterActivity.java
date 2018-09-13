@@ -1,5 +1,6 @@
 package com.iitdh.sonusourav.instigo.Login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -34,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText registerPass;
     private Button registerButton;
     private TextView loginHere;
+    private ProgressDialog registerProgressDialog;
 
     private String signUpEmail;
     private String signUpUsername;
@@ -74,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
 
+                showProgressDialog();
                 registerAuth.createUserWithEmailAndPassword(signUpEmail, signUpPass).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
 
                     @Override
@@ -86,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         if (!task.isSuccessful()) {
 
+                            hideProgressDialog();
                             registerButton.setFocusable(true);
                             registerButton.setClickable(true);
                             loginHere.setFocusable(true);
@@ -237,12 +241,14 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
+                        hideProgressDialog();
                         Toast.makeText(RegisterActivity.this, "Successfully Registered, Verification mail sent!", Toast.LENGTH_SHORT).show();
                         sendUserData();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                     }else {
+                        hideProgressDialog();
                         Toast.makeText(RegisterActivity.this, "Verification mail failed to sent.\nCheck your network connection and try again!", Toast.LENGTH_SHORT).show();
                     }
 
@@ -263,6 +269,23 @@ public class RegisterActivity extends AppCompatActivity {
         myRef.setValue(userProfile);
         Toast.makeText(getApplicationContext(),"sending userdata",Toast.LENGTH_SHORT).show();
 
+    }
+
+    public void showProgressDialog() {
+
+        if (registerProgressDialog == null) {
+            registerProgressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
+            registerProgressDialog.setMessage("Creating Account ....");
+            registerProgressDialog.setIndeterminate(true);
+        }
+
+        registerProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (registerProgressDialog != null && registerProgressDialog.isShowing()) {
+            registerProgressDialog.dismiss();
+        }
     }
 
 }

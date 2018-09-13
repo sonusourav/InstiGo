@@ -79,7 +79,7 @@
            android:gravity="center"
            android:singleLine="false"
            android:minLines="3"
-           android:maxLines="6"
+           android:maxLines="7"
            android:textSize="15sp"
            android:textColor="@color/black"
 

@@ -98,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+
                 signInEmail = loginEmail.getText().toString().trim();
                 signInPass = loginPass.getText().toString().trim();
 
@@ -116,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                showProgressDialog();
 
                 (loginAuth.signInWithEmailAndPassword(signInEmail, signInPass))
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -134,7 +136,9 @@ public class LoginActivity extends AppCompatActivity {
                             public void onFailure(@NonNull Exception e) {
 
                                 Log.d("error",e.getLocalizedMessage());
-                               Toast.makeText(getApplicationContext(),e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+                                hideProgressDialog();
+
+                                Toast.makeText(getApplicationContext(),e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
                             }
 
 
@@ -246,12 +250,14 @@ public class LoginActivity extends AppCompatActivity {
             }
             String testEmail=loginPref.getPrefEmail();
             Log.d("LoginEmail",testEmail);
+            hideProgressDialog();
             Toast.makeText(getApplicationContext(),"Signed In successfully",Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
             startActivity(intent);
             finish();
 
         }else {
+            hideProgressDialog();
             Toast.makeText(this, "Email verification is pending", Toast.LENGTH_SHORT).show();
             loginAuth.signOut();
         }
@@ -337,7 +343,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
-            mProgressDialog.setMessage("Loading ....");
+            mProgressDialog.setMessage("Logging In ....");
             mProgressDialog.setIndeterminate(true);
         }
 

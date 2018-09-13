@@ -126,14 +126,14 @@ public class Item {
         ArrayList<Item> fridayMenu = new ArrayList<>();
         ArrayList<Item> saturdayMenu = new ArrayList<>();
 
-        sundayMenu.add(new Item(0,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "1Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        sundayMenu.add(new Item(0,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        sundayMenu.add(new Item(0,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        sundayMenu.add(new Item(0,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        sundayMenu.add(new Item(0,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + " Puri, Aalo Chana Gravy ,\n Bhaji, Coconut Chutney, \n Moong Sprouts, Omelette, \n Seasonal Fruit, Paneer Bhurji,\n Cornflakes, BBJ,\n Pickle/Ketchup, Tea,\n Coffee, Milk,\n Bournvita/Horlicks/Boost ", null));
+        sundayMenu.add(new Item(0,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Steamed Rice, Curd Rice,\n Dal Kolhapuri, Plain Roti, \n Butter Roti, Rajma, \n Mix Veg, Curd, Tang ,\nGreen Chillies(Fried and Raw), \nLemon Slices, Salad, \n Pickel, Raita, Papad\n,Rasam/Sambhar.", null));
+        sundayMenu.add(new Item(0,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Veg Cutlet, Ice Tea, BBJ,\n One Drink (MilkShake)\n/Fruit per day, Tea,\n Coffee, Ketchup", null));
+        sundayMenu.add(new Item(0,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Steamed Rice, Veg Pulao,\n Plain Roti, Butter Roti,\n Dal Fry, Carrot Beans Dry,\n Shahi Paneer, Rasgulla\n Green Chillies(Fried and Raw), Lemon Slices,\n Salad, Pickel,\n Raita, Papad", null));
 
-        mondayMenu.add(new Item(1,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "2Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        mondayMenu.add(new Item(1,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
-        mondayMenu.add(new Item(1,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
+        mondayMenu.add(new Item(1,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "idli,\n" + "Medu Vada,\n" + "Coconut Chutney,\n" + "Sambhar,\n" + "Moong Sprouts,\n" + "Boiled egg,\n" + "Banana,\n" + "Paneer Bhurji", null));
+        mondayMenu.add(new Item(1,"L\nU\nN\nC\nH\n", "12:00 - 2:15 pm", "" + "Steamed Rice,\n" + "Lemon Rice,\n" + "Tur Dal,\n" + "Plain roti, Butter Roti,\n" + "Mutter Paneer,\n" + "Aalo Cabbage,\n" + "Curd,\n" + "Lemonade", null));
+        mondayMenu.add(new Item(1,"S\nN\nA\nC\nK\nS", "4:45 - 6:15 pm", "" + "One Seasonal Drink(MilkShake)/Fruit per day, BBJ, Tea, Coffee, Ketchup", null));
         mondayMenu.add(new Item(1,"D\nI\nN\nN\nE\nR", "7:30 - 9:45 pm", "" + "Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));
 
         tuesdayMenu.add(new Item(2,"B\nR\nE\nA\nK\nF\nA\nS\nT", "7:30 - 9:30 am", "" + "3Idli , Medu Vada ,\nCoconut Chutney , Sambhar ,\n Moong Sprouts , Boiled egg ,\nBanana ,Paneer Bhurji", null));

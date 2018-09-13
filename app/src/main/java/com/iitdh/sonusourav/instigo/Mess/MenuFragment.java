@@ -428,6 +428,8 @@ public class MenuFragment extends Fragment {
                 @Override
                 public void onClicked(int index, BoomButton boomButton) {
 
+                    adapter.removeAll();
+
 
                     Toast.makeText(getActivity(), "Menu : Day " + index, Toast.LENGTH_SHORT).show();
 
@@ -557,6 +559,7 @@ public class MenuFragment extends Fragment {
                                 ratingBar= view.findViewById(R.id.content_ratings);
                                 ratings =ratingBar.getRating();
                                 Log.d("Ratings"," "+ ratings);
+
 
                             }
                         });

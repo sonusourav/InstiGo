@@ -142,7 +142,6 @@
                />
 
             <Button
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_height="50dp"
                 android:layout_width="match_parent"
                 android:id="@+id/button_login"
@@ -153,7 +152,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_login"
                 android:textColor="#FFFFFF"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="?android:attr/selectableItemBackground"/>
 
 
 
