@@ -76,15 +76,15 @@ public class MenuFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-          view = inflater.inflate(R.layout.fragment_menu, null);
+        view = inflater.inflate(R.layout.fragment_menu, null);
         theListView = view.findViewById(R.id.mainListView);
 
-         menuAuth = FirebaseAuth.getInstance();
-         menuInstance = FirebaseDatabase.getInstance();
-         menuRootRef = menuInstance.getReference("Mess");
-         menuRef=menuRootRef.child("Menu").getRef();
-         ratingRef=menuRef.child("Ratings").getRef();
-         dayRef=ratingRef.child("Day").getRef();
+        menuAuth = FirebaseAuth.getInstance();
+        menuInstance = FirebaseDatabase.getInstance();
+        menuRootRef = menuInstance.getReference("Mess");
+        menuRef=menuRootRef.child("Menu").getRef();
+        ratingRef=menuRef.child("Ratings").getRef();
+        dayRef=ratingRef.child("Day").getRef();
 
 
 
@@ -234,20 +234,20 @@ public class MenuFragment extends Fragment {
                         case 6:dayRef=ratingRef.child("Saturday").getRef();
                             break;
 
-                }
+                    }
 
-                dayRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    dayRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        String BreakfastRatings ;
-                        String LunchRatings ;
-                        String SnacksRatings ;
-                        String DinnerRatings;
-                        String BreakfastRaters ;
-                        String LunchRaters;
-                        String SnacksRaters;
-                        String DinnerRaters;
+                            String BreakfastRatings ;
+                            String LunchRatings ;
+                            String SnacksRatings ;
+                            String DinnerRatings;
+                            String BreakfastRaters ;
+                            String LunchRaters;
+                            String SnacksRaters;
+                            String DinnerRaters;
 
                             Log.d("Datasnapshot ratings", "Reached");
 
@@ -256,108 +256,108 @@ public class MenuFragment extends Fragment {
                             }else
                                 BreakfastRatings="0";
 
-                        if(dataSnapshot.child("LunchRatings").exists()){
-                            LunchRatings = (dataSnapshot.child("LunchRatings").getValue()).toString();
-                        }else
-                            LunchRatings="0";
+                            if(dataSnapshot.child("LunchRatings").exists()){
+                                LunchRatings = (dataSnapshot.child("LunchRatings").getValue()).toString();
+                            }else
+                                LunchRatings="0";
 
-                        if(dataSnapshot.child("SnacksRatings").exists()){
-                            SnacksRatings = (dataSnapshot.child("SnacksRatings").getValue()).toString();
-                        }else
-                            SnacksRatings="0";
+                            if(dataSnapshot.child("SnacksRatings").exists()){
+                                SnacksRatings = (dataSnapshot.child("SnacksRatings").getValue()).toString();
+                            }else
+                                SnacksRatings="0";
 
-                        if(dataSnapshot.child("DinnerRatings").exists()){
-                            DinnerRatings = (dataSnapshot.child("DinnerRatings").getValue()).toString();
-                        }else
-                            DinnerRatings="0";
+                            if(dataSnapshot.child("DinnerRatings").exists()){
+                                DinnerRatings = (dataSnapshot.child("DinnerRatings").getValue()).toString();
+                            }else
+                                DinnerRatings="0";
 
-                        if(dataSnapshot.child("BreakfastRaters").exists()){
-                            BreakfastRaters = (dataSnapshot.child("BreakfastRaters").getValue()).toString();
-                        }else
-                            BreakfastRaters="0";
+                            if(dataSnapshot.child("BreakfastRaters").exists()){
+                                BreakfastRaters = (dataSnapshot.child("BreakfastRaters").getValue()).toString();
+                            }else
+                                BreakfastRaters="0";
 
-                        if(dataSnapshot.child("LunchRaters").exists()){
-                            LunchRaters = (dataSnapshot.child("LunchRaters").getValue()).toString();
-                        }else
-                            LunchRaters="0";
+                            if(dataSnapshot.child("LunchRaters").exists()){
+                                LunchRaters = (dataSnapshot.child("LunchRaters").getValue()).toString();
+                            }else
+                                LunchRaters="0";
 
-                        if(dataSnapshot.child("SnacksRaters").exists()){
-                            SnacksRaters = (dataSnapshot.child("SnacksRaters").getValue()).toString();
-                        }else
-                            SnacksRaters="0";
+                            if(dataSnapshot.child("SnacksRaters").exists()){
+                                SnacksRaters = (dataSnapshot.child("SnacksRaters").getValue()).toString();
+                            }else
+                                SnacksRaters="0";
 
-                        if(dataSnapshot.child("DinnerRaters").exists()){
-                            DinnerRaters = (dataSnapshot.child("DinnerRaters").getValue()).toString();
-                        }else
-                            DinnerRaters="0";
+                            if(dataSnapshot.child("DinnerRaters").exists()){
+                                DinnerRaters = (dataSnapshot.child("DinnerRaters").getValue()).toString();
+                            }else
+                                DinnerRaters="0";
 
 
-                        Float newRaters;
-                        Float product;
-                        Float newRatings;
-                        int newrater;
-                           switch (finalI){
-                               case 0:
-                                   Log.d("update ratings", "Reached");
+                            Float newRaters;
+                            Float product;
+                            Float newRatings;
+                            int newrater;
+                            switch (finalI){
+                                case 0:
+                                    Log.d("update ratings", "Reached");
 
-                                   newRaters = Float.parseFloat(BreakfastRaters)+1;
+                                    newRaters = Float.parseFloat(BreakfastRaters)+1;
                                     product=Float.parseFloat(BreakfastRaters)*Float.parseFloat(BreakfastRatings);
                                     newRatings = (product+ratings)/newRaters;
-                                   newrater=Math.round(newRaters);
-                                   dayRef.child("BreakfastRaters").setValue(Integer.toString(newrater));
-                                   dayRef.child("BreakfastRatings").setValue(Float.toString(newRatings));
-                                   items.get(finalI).setMessRatings(Float.toString(newRatings));
-                                   adapter.registerToggle(finalI);
-                                   break;
-                               case 1:
-                                   Log.d("update ratings", "Reached");
+                                    newrater=Math.round(newRaters);
+                                    dayRef.child("BreakfastRaters").setValue(Integer.toString(newrater));
+                                    dayRef.child("BreakfastRatings").setValue(Float.toString(newRatings));
+                                    items.get(finalI).setMessRatings(Float.toString(newRatings));
+                                    adapter.registerToggle(finalI);
+                                    break;
+                                case 1:
+                                    Log.d("update ratings", "Reached");
 
-                                   newRaters = Float.parseFloat(LunchRaters)+1;
+                                    newRaters = Float.parseFloat(LunchRaters)+1;
                                     product=Float.parseFloat(LunchRaters)*Float.parseFloat(LunchRatings);
                                     newRatings = (product+ratings)/newRaters;
-                                   newrater=Math.round(newRaters);
-                                   dayRef.child("LunchRaters").setValue(Integer.toString(newrater));
-                                   dayRef.child("LunchRatings").setValue(Float.toString(newRatings));
-                                   items.get(finalI).setMessRatings(Float.toString(newRatings));
-                                   adapter.registerToggle(finalI);
-                                   break;
-                               case 2:
-                                   Log.d("update ratings", "Reached");
+                                    newrater=Math.round(newRaters);
+                                    dayRef.child("LunchRaters").setValue(Integer.toString(newrater));
+                                    dayRef.child("LunchRatings").setValue(Float.toString(newRatings));
+                                    items.get(finalI).setMessRatings(Float.toString(newRatings));
+                                    adapter.registerToggle(finalI);
+                                    break;
+                                case 2:
+                                    Log.d("update ratings", "Reached");
 
-                                   newRaters = Float.parseFloat(SnacksRaters)+1;
+                                    newRaters = Float.parseFloat(SnacksRaters)+1;
                                     product=Float.parseFloat(SnacksRaters)*Float.parseFloat(SnacksRatings);
                                     newRatings = (product+ratings)/newRaters;
                                     newrater=Math.round(newRaters);
-                                   dayRef.child("SnacksRaters").setValue(Integer.toString(newrater));
-                                   dayRef.child("SnacksRatings").setValue(Float.toString(newRatings));
-                                   items.get(finalI).setMessRatings(Float.toString(newRatings));
-                                   adapter.registerToggle(finalI);
-                                   break;
-                               case 3:
-                                   Log.d("update ratings", "Reached");
+                                    dayRef.child("SnacksRaters").setValue(Integer.toString(newrater));
+                                    dayRef.child("SnacksRatings").setValue(Float.toString(newRatings));
+                                    items.get(finalI).setMessRatings(Float.toString(newRatings));
+                                    adapter.registerToggle(finalI);
+                                    break;
+                                case 3:
+                                    Log.d("update ratings", "Reached");
 
-                                   newRaters = Float.parseFloat(DinnerRaters)+1;
+                                    newRaters = Float.parseFloat(DinnerRaters)+1;
                                     product=Float.parseFloat(DinnerRaters)*Float.parseFloat(DinnerRatings);
                                     newRatings = (product+ratings)/newRaters;
                                     newrater=Math.round(newRaters);
-                                   dayRef.child("DinnerRaters").setValue(Integer.toString(newrater));
-                                   dayRef.child("DinnerRatings").setValue(Float.toString(newRatings));
-                                   items.get(finalI).setMessRatings(Float.toString(newRatings));
-                                   adapter.registerToggle(finalI);
-                                   break;
+                                    dayRef.child("DinnerRaters").setValue(Integer.toString(newrater));
+                                    dayRef.child("DinnerRatings").setValue(Float.toString(newRatings));
+                                    items.get(finalI).setMessRatings(Float.toString(newRatings));
+                                    adapter.registerToggle(finalI);
+                                    break;
 
-                           }
+                            }
                             Toast.makeText(getActivity(), "Your feedback has been recorded", Toast.LENGTH_SHORT).show();
 
 
-                    }
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(getActivity(), "Failed to record your feedback.\n Please try again.", Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Toast.makeText(getActivity(), "Failed to record your feedback.\n Please try again.", Toast.LENGTH_SHORT).show();
 
-                    }
-                });
+                        }
+                    });
 
 
                 }
@@ -373,7 +373,7 @@ public class MenuFragment extends Fragment {
                 public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
 
                     ratingBar= view.findViewById(R.id.content_ratings);
-                     ratings =ratingBar.getRating();
+                    ratings =ratingBar.getRating();
                     Log.d("Ratings"," "+ ratings);
 
                 }
@@ -434,116 +434,116 @@ public class MenuFragment extends Fragment {
                     Toast.makeText(getActivity(), "Menu : Day " + index, Toast.LENGTH_SHORT).show();
 
                     items.clear();
-                   if(items.addAll(Item.makeMenu(index)))
-                       adapter.notifyDataSetChanged();
+                    if(items.addAll(Item.makeMenu(index)))
+                        adapter.notifyDataSetChanged();
 
                     switch (index){
-                           case 0:dayRef=ratingRef.child("Sunday").getRef();
-                           break;
-                           case 1:dayRef=ratingRef.child("Monday").getRef();
-                               break;
-                           case 2:dayRef=ratingRef.child("Tuesday").getRef();
-                               break;
-                           case 3:dayRef=ratingRef.child("Wednesday").getRef();
-                               break;
-                           case 4:dayRef=ratingRef.child("Thursday").getRef();
-                               break;
-                           case 5:dayRef=ratingRef.child("Friday").getRef();
-                               break;
-                           case 6:dayRef=ratingRef.child("Saturday").getRef();
-                               break;
-                               default:dayRef=ratingRef.child("Sunday").getRef();
+                        case 0:dayRef=ratingRef.child("Sunday").getRef();
+                            break;
+                        case 1:dayRef=ratingRef.child("Monday").getRef();
+                            break;
+                        case 2:dayRef=ratingRef.child("Tuesday").getRef();
+                            break;
+                        case 3:dayRef=ratingRef.child("Wednesday").getRef();
+                            break;
+                        case 4:dayRef=ratingRef.child("Thursday").getRef();
+                            break;
+                        case 5:dayRef=ratingRef.child("Friday").getRef();
+                            break;
+                        case 6:dayRef=ratingRef.child("Saturday").getRef();
+                            break;
+                        default:dayRef=ratingRef.child("Sunday").getRef();
 
-                       }
-                       dayRef.addValueEventListener(new ValueEventListener() {
-                           @Override
-                           public void onDataChange( DataSnapshot dataSnapshot) {
-
-
-
-                               String BreakfastRatings ;
-                               String LunchRatings ;
-                               String SnacksRatings ;
-                               String DinnerRatings;
-
-
-                               Log.d("Datasnapshot ratings", "Reached");
-
-                               if(dataSnapshot.child("BreakfastRatings").exists()){
-                                   BreakfastRatings = (dataSnapshot.child("BreakfastRatings").getValue()).toString();
-                               }else
-                                   BreakfastRatings="0";
-
-                               if(dataSnapshot.child("LunchRatings").exists()){
-                                   LunchRatings = (dataSnapshot.child("LunchRatings").getValue()).toString();
-                               }else
-                                   LunchRatings="0";
-
-                               if(dataSnapshot.child("SnacksRatings").exists()){
-                                   SnacksRatings = (dataSnapshot.child("SnacksRatings").getValue()).toString();
-                               }else
-                                   SnacksRatings="0";
-
-                               if(dataSnapshot.child("DinnerRatings").exists()){
-                                   DinnerRatings = (dataSnapshot.child("DinnerRatings").getValue()).toString();
-                               }else
-                                   DinnerRatings="0";
+                    }
+                    dayRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange( DataSnapshot dataSnapshot) {
 
 
 
-
-                               for (int i=0;i<4;i++){
-                                       Item item =items.get(i);
-
-                                       switch (i) {
-                                           case 0:
-                                           {
-                                               Log.d("Sunday Breakfast Rating",BreakfastRatings);
-                                               item.setMessRatings(BreakfastRatings);
-                                               adapter.notifyDataSetChanged();
-                                               Log.d("Sunday Breakfast Rating",item.getMessRatings());
+                            String BreakfastRatings ;
+                            String LunchRatings ;
+                            String SnacksRatings ;
+                            String DinnerRatings;
 
 
-                                               break;
-                                           }
-                                           case 1:
-                                           {
-                                               Log.d("Sunday Lunch Rating",LunchRatings);
-                                               item.setMessRatings(LunchRatings);
-                                               adapter.notifyDataSetChanged();
+                            Log.d("Datasnapshot ratings", "Reached");
 
-                                               break;
-                                           }  case 2:
-                                           {
-                                               Log.d("Sunday Snacks Rating",SnacksRatings);
-                                               item.setMessRatings(SnacksRatings);
-                                               adapter.notifyDataSetChanged();
+                            if(dataSnapshot.child("BreakfastRatings").exists()){
+                                BreakfastRatings = (dataSnapshot.child("BreakfastRatings").getValue()).toString();
+                            }else
+                                BreakfastRatings="0";
 
-                                               break;
-                                           }  case 3:
-                                           {
-                                               Log.d("Sunday Dinner Rating",DinnerRatings);
-                                               item.setMessRatings(DinnerRatings);
-                                               adapter.notifyDataSetChanged();
+                            if(dataSnapshot.child("LunchRatings").exists()){
+                                LunchRatings = (dataSnapshot.child("LunchRatings").getValue()).toString();
+                            }else
+                                LunchRatings="0";
 
-                                               break;
-                                           }
+                            if(dataSnapshot.child("SnacksRatings").exists()){
+                                SnacksRatings = (dataSnapshot.child("SnacksRatings").getValue()).toString();
+                            }else
+                                SnacksRatings="0";
 
-                                           default:break;
-                                       }
-                                   }
+                            if(dataSnapshot.child("DinnerRatings").exists()){
+                                DinnerRatings = (dataSnapshot.child("DinnerRatings").getValue()).toString();
+                            }else
+                                DinnerRatings="0";
 
 
 
 
-                           }
+                            for (int i=0;i<4;i++){
+                                Item item =items.get(i);
 
-                           @Override
-                           public void onCancelled(@NonNull DatabaseError databaseError) {
+                                switch (i) {
+                                    case 0:
+                                    {
+                                        Log.d("Sunday Breakfast Rating",BreakfastRatings);
+                                        item.setMessRatings(BreakfastRatings);
+                                        adapter.notifyDataSetChanged();
+                                        Log.d("Sunday Breakfast Rating",item.getMessRatings());
 
-                               Toast.makeText(getActivity(),"Ratings fetching failed",Toast.LENGTH_SHORT).show();
-                           }
-                       });
+
+                                        break;
+                                    }
+                                    case 1:
+                                    {
+                                        Log.d("Sunday Lunch Rating",LunchRatings);
+                                        item.setMessRatings(LunchRatings);
+                                        adapter.notifyDataSetChanged();
+
+                                        break;
+                                    }  case 2:
+                                    {
+                                        Log.d("Sunday Snacks Rating",SnacksRatings);
+                                        item.setMessRatings(SnacksRatings);
+                                        adapter.notifyDataSetChanged();
+
+                                        break;
+                                    }  case 3:
+                                    {
+                                        Log.d("Sunday Dinner Rating",DinnerRatings);
+                                        item.setMessRatings(DinnerRatings);
+                                        adapter.notifyDataSetChanged();
+
+                                        break;
+                                    }
+
+                                    default:break;
+                                }
+                            }
+
+
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            Toast.makeText(getActivity(),"Ratings fetching failed",Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     adapter.notifyDataSetChanged();
 
 

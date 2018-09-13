@@ -1,15 +1,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+   <ListView
+       android:id="@+id/mess_feedback_listview"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginBottom="10dp"
+       android:clipChildren="false"
+       android:clipToPadding="false"
+       android:divider="@android:color/transparent"
+       android:dividerHeight="3dp"
+       android:paddingBottom="10dp"
+       android:paddingLeft="10dp"
+       android:paddingRight="10dp"
+       android:paddingTop="10dp"
+       android:scrollbars="none"
+       >
+
+   </ListView>
+
+    <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Feedback"
-        android:layout_centerInParent="true"
-        android:textSize="30sp" />
+        android:id="@+id/mess_feedback_fab"
+        android:src="@drawable/icon_fab"
+        android:scaleType="fitXY"
+        style="@style/Widget.Design.FloatingActionButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="15dp"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/feedback_progress_bar"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+
+        />
 
 </RelativeLayout>

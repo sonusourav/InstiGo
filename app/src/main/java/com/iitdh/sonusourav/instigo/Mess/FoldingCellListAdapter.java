@@ -31,13 +31,14 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
 
     @NonNull
     @Override
-    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, final View convertView, @NonNull ViewGroup parent) {
         // get item for selected view
         Item item = getItem(position);
         // if cell is exists - reuse it, if not - create the new one from resource
         FoldingCell cell = (FoldingCell) convertView;
         ViewHolder viewHolder;
         if (cell == null) {
+
 
             viewHolder = new ViewHolder();
             LayoutInflater vi = LayoutInflater.from(getContext());
@@ -105,17 +106,19 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         }
 
 
-         cell.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 ((FoldingCell) view).toggle(false);
-                 // register in adapter that state for selected cell is toggled
-                 Log.d("Position ",Integer.toString(position));
-                 registerToggle(position);
-             }
+        cell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((FoldingCell) view).toggle(false);
+                // register in adapter that state for selected cell is toggled
+                Log.d("Position ",Integer.toString(position));
+                registerToggle(position);
+            }
 
 
         });
+
+
 
 
         return cell;
@@ -135,9 +138,9 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
 
 
     public void removeAll(){
-       if(unfoldedIndexes.contains(0)){
-           registerFold(0);
-       }
+        if(unfoldedIndexes.contains(0)){
+            registerFold(0);
+        }
         if(unfoldedIndexes.contains(1)){
             registerFold(1);
 

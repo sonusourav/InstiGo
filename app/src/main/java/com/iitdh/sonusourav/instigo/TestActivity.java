@@ -37,7 +37,7 @@ public class TestActivity extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cell_title_layout);
+        setContentView(R.layout.activity_mess_feedback);
 
     }
 

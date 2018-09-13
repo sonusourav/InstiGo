@@ -9,6 +9,7 @@
         <item name="actionBarTheme">@color/colorAccent</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:actionBarTabTextStyle">@color/white</item>
+
     </style>
 
 
@@ -69,4 +70,28 @@
         <item name="android:background">@color/white</item>
         <item name="android:textSize">20sp</item>
     </style>
+
+
+    <style name="AppBaseTheme" parent="android:Theme.Light" />
+
+    <style name="SpinnerTextTheme" parent="AppBaseTheme">
+        <item name="android:spinnerDropDownItemStyle">@style/mySpinnerDropDownItemStyle</item>
+
+    </style>
+
+
+    <style name="TextAppearance.AppCompat.Widget.TextView.SpinnerItem." parent="AppBaseTheme">
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="mySpinnerDropDownItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:titleTextAppearance">@color/black</item>
+    </style>
+
 </resources>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cell_title_background">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:id="@+id/add_feedback_title"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="Feedback"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/add_feedback_title"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_feedback_rl1"
+            android:layout_below="@id/add_feedback_title"
+            android:layout_marginTop="5dp">
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/add_feedback_spinner1"
+                android:popupBackground="@color/grey"
+                android:background="@color/grey"
+                style="@style/SpinnerTextTheme"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:scrollbars="vertical"
+                android:gravity="start"
+                android:entries="@array/feedbackAbout"
+                android:layout_marginEnd="10dp"
+                >
+            </Spinner>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                style="@style/SpinnerTextTheme"
+                android:id="@+id/add_feedback_spinner2"
+                android:layout_marginEnd="10dp"
+                android:background="@color/grey"
+                android:popupBackground="@color/grey"
+                android:layout_alignParentEnd="true"
+                android:scrollbars="vertical"
+                android:gravity="end"
+                android:entries="@array/dayOfWeek">
+
+            </Spinner>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:id="@+id/add_feedback_ratings"
+                android:layout_below="@id/add_feedback_spinner2"
+               android:layout_centerHorizontal="true"
+                android:numStars="5"
+                android:layout_marginBottom="5dp"
+                style="@style/Base.Widget.AppCompat.RatingBar"
+                android:clickable="true"
+                android:stepSize="1"
+                android:theme="@style/RatingBar"
+                android:scaleY="0.6"
+                android:scaleX="0.6"
+                android:rating="0"
+                android:focusable="true" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/feedback_title"
+            android:layout_below="@id/add_feedback_rl1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="17sp"
+            android:scrollbars="vertical"
+            android:textColor="@color/grey"
+            android:hint="Feedback Title"
+            android:textColorHint="@color/grey"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:inputType="textEmailSubject" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Description"
+            android:textColorHint="@color/grey"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:id="@+id/add_feedback_desc"
+            android:layout_below="@id/feedback_title"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:textSize="17sp"
+            android:maxLines="10"
+            android:minLines="1"
+            android:scrollbars="vertical"
+            android:textColor="@color/grey"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:inputType="textMultiLine"/>
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="Submit"
+            android:layout_marginTop="5dp"
+            android:id="@+id/add_feedback_submit"
+            android:background="@drawable/button_login"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/add_feedback_desc"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:layout_marginBottom="20dp"
+            />
+    </RelativeLayout>
+</LinearLayout>

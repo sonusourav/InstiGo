@@ -28,6 +28,7 @@ public class CommonFunctions {
     public static boolean navigationItemSelect(MenuItem item, final Activity activity) {
         int id = item.getItemId();
 
+
         switch (id) {
 
             case R.id.nav_home: {
@@ -42,6 +43,7 @@ public class CommonFunctions {
 
             }
             case R.id.nav_council: {
+
                 Toast.makeText(activity.getApplicationContext(), "Welcome to Council", Toast.LENGTH_SHORT).show();
                 activity.startActivity(new Intent().setClass(activity, TestActivity.class));
                 break;
