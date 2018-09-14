@@ -62,4 +62,5 @@
     <color name="mainTextColor">#343d43</color>
     <color name="golden">#ffa304</color>
     <color name="cell_title_background">#ecfaf4</color>
+    <color name="purple">#aa77cf</color>
 </resources>

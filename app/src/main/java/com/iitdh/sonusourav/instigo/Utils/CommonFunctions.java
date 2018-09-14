@@ -59,6 +59,9 @@ public class CommonFunctions {
                 PreferenceManager preferenceManager=new PreferenceManager(activity.getApplicationContext());
                 preferenceManager.setIsLoggedIn(false);
                 preferenceManager.setLoginCredentials("email","password");
+                FirebaseAuth loginAuth=FirebaseAuth.getInstance();
+                loginAuth.signOut();
+
                 Toast.makeText(activity.getApplicationContext(), "User successfully logged out.", Toast.LENGTH_SHORT).show();
                 activity.startActivity(new Intent().setClass(activity, LoginActivity.class));
                 break;

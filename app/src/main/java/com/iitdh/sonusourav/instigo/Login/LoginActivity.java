@@ -40,7 +40,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth loginAuth;
+    public FirebaseAuth loginAuth;
     private Button loginButton;
     private EditText loginEmail;
     private EditText loginPass;
@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private String signInEmail;
     private String signInPass;
-    private String errorCode;
     private ProgressDialog mProgressDialog;
 
     private long back_pressed;
@@ -195,11 +194,11 @@ public class LoginActivity extends AppCompatActivity {
         //if the user is already signed in
         //we will close this activity
         //and take the user to profile activity
-        /*if (loginAuth.getCurrentUser() != null) {
+        if (loginAuth.getCurrentUser() != null) {
             Toast.makeText(getApplicationContext(),"Signed In as " + loginAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_SHORT).show();
             finish();
-            startActivity(new Intent(this, TestActivity.class));
-        }*/
+            startActivity(new Intent(this, HomeActivity.class));
+        }
     }
 
     @Override

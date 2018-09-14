@@ -21,13 +21,13 @@
             />
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/grey"
-            android:layout_marginTop="3dp"
-            android:layout_below="@id/add_feedback_title"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp" />
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/add_feedback_title"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,10 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:id="@+id/add_feedback_spinner1"
-                android:popupBackground="@color/grey"
-                android:background="@color/grey"
-                style="@style/SpinnerTextTheme"
                 android:layout_marginStart="10dp"
+                android:popupBackground="@color/grey"
+                android:backgroundTint="@color/grey"
                 android:layout_marginTop="10dp"
                 android:scrollbars="vertical"
                 android:gravity="start"
@@ -54,11 +53,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
-                style="@style/SpinnerTextTheme"
                 android:id="@+id/add_feedback_spinner2"
                 android:layout_marginEnd="10dp"
-                android:background="@color/grey"
                 android:popupBackground="@color/grey"
+                android:backgroundTint="@color/grey"
                 android:layout_alignParentEnd="true"
                 android:scrollbars="vertical"
                 android:gravity="end"
@@ -74,7 +72,6 @@
                android:layout_centerHorizontal="true"
                 android:numStars="5"
                 android:layout_marginBottom="5dp"
-                style="@style/Base.Widget.AppCompat.RatingBar"
                 android:clickable="true"
                 android:stepSize="1"
                 android:theme="@style/RatingBar"
@@ -100,6 +97,7 @@
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:inputType="textEmailSubject" />
+
 
         <EditText
             android:layout_width="match_parent"
