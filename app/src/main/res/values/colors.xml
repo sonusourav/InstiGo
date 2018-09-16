@@ -63,4 +63,6 @@
     <color name="golden">#ffa304</color>
     <color name="cell_title_background">#ecfaf4</color>
     <color name="purple">#aa77cf</color>
+    <color name="orange_card">#f4dfb5</color>
+    <color name="light_black">#5e5c5c</color>
 </resources>

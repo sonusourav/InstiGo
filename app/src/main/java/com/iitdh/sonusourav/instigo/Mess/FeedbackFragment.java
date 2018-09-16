@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -147,6 +148,17 @@ public class FeedbackFragment extends Fragment {
                 final EditText descEditText=dialog.findViewById(R.id.add_feedback_desc);
                 Button submit=dialog.findViewById(R.id.add_feedback_submit);
 
+                ArrayAdapter<String> aboutAdapter = new ArrayAdapter<String>(
+                        getContext(), R.layout.spinner_item, getResources().getStringArray(R.array.feedbackAbout)
+                );
+                aboutAdapter.setDropDownViewResource(R.layout.spinner_drop_down_item);
+                aboutSpinner.setAdapter(aboutAdapter);
+
+                ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
+                        getContext(), R.layout.spinner_item, getResources().getStringArray(R.array.dayOfWeek)
+                );
+                dayAdapter.setDropDownViewResource(R.layout.spinner_drop_down_item);
+                daySpinner.setAdapter(dayAdapter);
 
 
                 submit.setOnClickListener(new View.OnClickListener() {

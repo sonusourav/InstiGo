@@ -49,6 +49,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
             viewHolder.part = cell.findViewById(R.id.mess_part);
             viewHolder.time = cell.findViewById(R.id.title_day_label);
             viewHolder.items = cell.findViewById(R.id.mess_items);
+            viewHolder.contentItems=cell.findViewById(R.id.content_items_names);
             viewHolder.textRatings = cell.findViewById(R.id.textView_ratings);
             viewHolder.contentPart=cell.findViewById(R.id.content_mess_part);
             viewHolder.contentTime=cell.findViewById(R.id.content_mess_time);
@@ -77,6 +78,8 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         viewHolder.part.setText(item.getMessPart());
         viewHolder.time.setText(item.getMessTime());
         viewHolder.items.setText(item.getMessItems());
+        viewHolder.contentItems.setText(item.getMessItems());
+
         if (item.getMessRatings() == null || Float.parseFloat(item.getMessRatings())==0) {
             viewHolder.textRatings.setVisibility(View.VISIBLE);
             viewHolder.titleRatingBar.setVisibility(View.GONE);
@@ -180,6 +183,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         TextView items;
         TextView textRatings;
         RatingBar titleRatingBar;
+        TextView contentItems;
         RatingBar contentRatingBar;
         TextView contentPart;
         TextView contentTime;

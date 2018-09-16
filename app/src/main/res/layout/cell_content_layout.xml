@@ -88,6 +88,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/content_items_names"
         android:layout_below="@id/cell_divider"
         android:layout_above="@id/cell_layout3"
         android:paddingTop="5dp"
@@ -96,14 +97,14 @@
         android:paddingEnd="5dp"
         android:singleLine="false"
         android:elevation="20dp"
-        android:minLines="3"
+        android:minLines="5"
         android:maxLines="6"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:text="@string/item_name"
         android:gravity="center"
         android:textSize="17sp"
-        android:textColor="@color/grey"
+        android:textColor="@color/light_black"
         />
     </RelativeLayout>
     <View

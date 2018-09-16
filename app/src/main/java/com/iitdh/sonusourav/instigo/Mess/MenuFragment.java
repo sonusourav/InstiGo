@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -65,6 +66,7 @@ public class MenuFragment extends Fragment {
     private DatabaseReference menuRef;
     private DatabaseReference ratingRef;
     private DatabaseReference dayRef;
+    private TextView contentMenu;
 
 
     @Override
@@ -102,6 +104,7 @@ public class MenuFragment extends Fragment {
         switch (day) {
             case Calendar.SUNDAY:
                 dayRef=ratingRef.child("Sunday").getRef();
+
                 break;
 
             case Calendar.MONDAY:

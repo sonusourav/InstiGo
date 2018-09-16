@@ -114,7 +114,7 @@ public class SplashActivity extends AppCompatActivity {
                     SplashActivity.this.startActivity(mainIntent);
                     SplashActivity.this.finish();
                 }
-            }, 4800);
+            }, 4500);
 
             Log.d(TAG, "SharedPreference: isLoggedIn=false");
 

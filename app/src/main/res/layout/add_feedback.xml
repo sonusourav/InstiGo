@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cell_title_background">
+        android:background="@color/divider_color">
 
         <TextView
             android:layout_width="match_parent"
@@ -38,14 +38,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:id="@+id/add_feedback_spinner1"
+                android:backgroundTint="@color/light_black"
                 android:layout_marginStart="10dp"
-                android:popupBackground="@color/grey"
-                android:backgroundTint="@color/grey"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
                 android:layout_marginTop="10dp"
                 android:scrollbars="vertical"
                 android:gravity="start"
                 android:entries="@array/feedbackAbout"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="20dp"
+
                 >
             </Spinner>
 
@@ -54,9 +56,11 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/add_feedback_spinner2"
+                android:backgroundTint="@color/light_black"
                 android:layout_marginEnd="10dp"
-                android:popupBackground="@color/grey"
-                android:backgroundTint="@color/grey"
+                android:layout_marginStart="20dp"
+                android:paddingStart="25dp"
+                android:paddingEnd="5dp"
                 android:layout_alignParentEnd="true"
                 android:scrollbars="vertical"
                 android:gravity="end"
@@ -91,7 +95,7 @@
             android:layout_marginEnd="10dp"
             android:textSize="17sp"
             android:scrollbars="vertical"
-            android:textColor="@color/grey"
+            android:textColor="@color/light_black"
             android:hint="Feedback Title"
             android:textColorHint="@color/grey"
             android:gravity="center"
@@ -114,7 +118,7 @@
             android:maxLines="10"
             android:minLines="1"
             android:scrollbars="vertical"
-            android:textColor="@color/grey"
+            android:textColor="@color/light_black"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:inputType="textMultiLine"/>
