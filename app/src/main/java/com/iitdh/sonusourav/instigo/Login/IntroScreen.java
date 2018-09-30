@@ -50,7 +50,7 @@ public class IntroScreen extends AppCompatActivity {
 
 
 
-        setContentView(R.layout.activity_welcome2);
+        setContentView(R.layout.activity_introscreen);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);

@@ -47,7 +47,7 @@ public class MessFeedbackAdapter extends BaseAdapter {
 
 
         if (view == null) {
-            view = LayoutInflater.from(mcontext).inflate(R.layout.activity_mess_feedback, viewGroup, false);
+            view = LayoutInflater.from(mcontext).inflate(R.layout.item_mess_feedback, viewGroup, false);
         }
 
         FeedbackUserClass m = FeedbackList.get(i);

@@ -94,7 +94,7 @@
             android:background="@null"
             android:textSize="20sp"
             android:layout_alignTop="@id/registerImageView2"
-            android:layout_alignBottom="@id/mainImageView2"
+            android:layout_alignBottom="@id/registerImageView2"
             android:textColor="#FFFFFF"
             android:id="@+id/register_username"
             android:hint="@string/username"

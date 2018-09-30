@@ -30,9 +30,9 @@ public class MessActivity extends AppCompatActivity
 
     //Fragments
 
-    FeedbackFragment feedbackFragment;
-    MenuFragment menuFragment;
-    OrderFragment orderFragment;
+    FragmentFeedback fragmentFeedback;
+    FragmentMenu fragmentMenu;
+    FragmentOrder fragmentOrder;
 
 
     @Override
@@ -58,12 +58,12 @@ public class MessActivity extends AppCompatActivity
         toggle.syncState();
 
         //Initializing viewPager
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.mess_viewpager);
         viewPager.setOffscreenPageLimit(3);
         setupViewPager(viewPager);
 
         //Initializing the tablayout
-        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+        tabLayout = (TabLayout) findViewById(R.id.mess_tablayout);
         tabLayout.setupWithViewPager(viewPager);
 
 
@@ -112,12 +112,12 @@ public class MessActivity extends AppCompatActivity
     private void setupViewPager(ViewPager viewPager)
     {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        menuFragment =new MenuFragment();
-        feedbackFragment =new FeedbackFragment();
-        orderFragment =new OrderFragment();
-        adapter.addFragment(menuFragment,"MENU");
-        adapter.addFragment(feedbackFragment,"FEEDBACK");
-        adapter.addFragment(orderFragment,"ORDER");
+        fragmentMenu =new FragmentMenu();
+        fragmentFeedback =new FragmentFeedback();
+        fragmentOrder =new FragmentOrder();
+        adapter.addFragment(fragmentMenu,"MENU");
+        adapter.addFragment(fragmentFeedback,"FEEDBACK");
+        adapter.addFragment(fragmentOrder,"ORDER");
         viewPager.setAdapter(adapter);
     }
 

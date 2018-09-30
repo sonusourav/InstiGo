@@ -1,8 +1,6 @@
 package com.iitdh.sonusourav.instigo.Login;
 
-import android.app.LauncherActivity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -20,11 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
-import com.iitdh.sonusourav.instigo.Sample.WelcomeActivity;
-import com.iitdh.sonusourav.instigo.TestActivity;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
 
-import java.util.Objects;
 
 public class SplashActivity extends AppCompatActivity {
 

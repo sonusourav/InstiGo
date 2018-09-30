@@ -37,9 +37,9 @@ import java.util.Locale;
 import java.util.Objects;
 
 
-public class FeedbackFragment extends Fragment {
+public class FragmentFeedback extends Fragment {
 
-    public FeedbackFragment() {
+    public FragmentFeedback() {
 
     }
     ArrayList<FeedbackUserClass> feedbackList;
@@ -61,7 +61,7 @@ public class FeedbackFragment extends Fragment {
     private String desc;
 
 
-    private String TAG=FeedbackFragment.class.getSimpleName();
+    private String TAG=FragmentFeedback.class.getSimpleName();
 
     static String encodeUserEmail(String userEmail) {
         return userEmail.replace(".", ",");

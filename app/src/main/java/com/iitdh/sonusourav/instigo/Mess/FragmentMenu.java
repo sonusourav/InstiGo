@@ -44,10 +44,10 @@ import java.util.Objects;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MenuFragment extends Fragment {
+public class FragmentMenu extends Fragment {
 
 
-    public MenuFragment() {
+    public FragmentMenu() {
         // Required empty public constructor
     }
     private BoomMenuButton bmb;

@@ -14,10 +14,10 @@ import com.iitdh.sonusourav.instigo.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OrderFragment extends Fragment {
+public class FragmentOrder extends Fragment {
 
 
-    public OrderFragment() {
+    public FragmentOrder() {
         // Required empty public constructor
     }
 
