@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
@@ -25,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private ImageView splash;
     private PreferenceManager splashPrefManager;
-    public static String TAG= "LoginActivity";
+    public static String TAG= SplashActivity.class.getSimpleName();
 
 
     @Override
@@ -110,6 +111,11 @@ public class SplashActivity extends AppCompatActivity {
                     SplashActivity.this.finish();
                 }
             }, 4500);
+
+            FirebaseUser user=firebaseAuth.getCurrentUser();
+            if(user!=null){
+                Log.d("User is not null","true");
+            }
 
             Log.d(TAG, "SharedPreference: isLoggedIn=false");
 

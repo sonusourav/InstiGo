@@ -50,6 +50,8 @@
     <color name="default_login">#5eeacc</color>
     <color name="pressed_login">#028026</color>
     <color name="green">#5cae80</color>
+    <color name="title_green">#23864e</color>
+
 
     <color name="text_blue">#93d6ce</color>
     <color name="viewBg">#f1f5f8</color>
@@ -65,4 +67,6 @@
     <color name="purple">#aa77cf</color>
     <color name="orange_card">#f4dfb5</color>
     <color name="light_black">#5e5c5c</color>
+    <color name="detail_color">#0995d1</color>
+    <color name="red">#ec2e2e</color>
 </resources>

@@ -10,6 +10,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,10 +45,10 @@ public class IntroScreen extends AppCompatActivity {
         // Checking for first time launch - before calling setContentView()
         prefManager = new PreferenceManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
+            Log.d("IsFirstTimeLaunch","False");
             launchHomeScreen();
             finish();
         }
-
 
 
         setContentView(R.layout.activity_introscreen);
@@ -91,6 +92,7 @@ public class IntroScreen extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
+                    Log.d("Home Screen Launched","reached");
                     launchHomeScreen();
                 }
             }

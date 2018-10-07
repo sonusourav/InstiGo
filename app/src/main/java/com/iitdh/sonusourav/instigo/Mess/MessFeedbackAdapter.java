@@ -21,7 +21,7 @@ public class MessFeedbackAdapter extends BaseAdapter {
     private Context mcontext;
     private ArrayList<FeedbackUserClass> FeedbackList;
 
-    public MessFeedbackAdapter(Context context, ArrayList<FeedbackUserClass> arrayList) {
+    MessFeedbackAdapter(Context context, ArrayList<FeedbackUserClass> arrayList) {
         this.mcontext = context;
         this.FeedbackList = arrayList;
     }

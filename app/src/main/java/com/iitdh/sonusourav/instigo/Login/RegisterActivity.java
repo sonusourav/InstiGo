@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
 
 import java.util.Objects;
@@ -184,6 +185,14 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
 
+        String[] split = signUpEmail.split("@");
+        String domain = split[1]; //This Will Give You The Domain After '@'
+        if(!domain.equalsIgnoreCase("iitdh.ac.in"))
+        {
+
+            Toast.makeText(RegisterActivity.this, "Register only with IITDh account", Toast.LENGTH_SHORT).show();
+            return false;
+        }
             return true;
 
     }

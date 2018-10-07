@@ -113,6 +113,30 @@
         <item>Dinner</item>
     </string-array>
 
+    <string-array name="Hostel">
+        <item>Freshers Hostel</item>
+        <item>Hostel 1</item>
+        <item>Hostel 2</item>
+        <item>Hostel 3</item>
+        <item>Hostel 4</item>
+        <item>Hostel 5</item>
+        <item>Hostel 6</item>
+        <item>Hostel 7</item>
+        <item>Hostel 8</item>
+        <item>Hostel 9</item>
+        <item>Hostel 10</item>
+
+    </string-array>
+
+    <string-array name="Complaint_type">
+        <item>Electrician</item>
+        <item>Plumber</item>
+        <item>Carpenter</item>
+        <item>House-Keeping</item>
+        <item>Others</item>
+
+    </string-array>
+
     <string-array name="dayOfWeek">
         <item>Sunday</item>
         <item>Monday</item>

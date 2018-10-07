@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:elevation="30dp"
+    android:paddingBottom="10dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/status_complain_type"
+        android:hint="Type"
+        android:textColor="@color/light_black"
+        android:textColorHint="@color/light_black"
+        android:textSize="15sp"
+        android:layout_gravity="start"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+
+    />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/status_complain_date"
+        android:hint="Date"
+        android:textColor="@color/light_black"
+        android:textColorHint="@color/light_black"
+        android:textSize="15sp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+    />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/status_complain_title"
+        android:hint="Complain Title"
+        android:textColor="@color/black"
+        android:textColorHint="@color/light_black"
+        android:maxLines="3"
+        android:textSize="17sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/status_complain_type"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/status_complain_title"
+        android:layout_marginTop="5dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_complain_details"
+            android:hint="Details"
+            android:text="Details"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/detail_color"
+            android:textColorHint="@color/detail_color"
+            android:textSize="17sp"
+            android:layout_gravity="bottom"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:background="@color/detail_color"
+            android:layout_marginTop="20dp"
+            android:layout_alignStart="@id/status_complain_details"
+            android:layout_alignEnd="@id/status_complain_details"
+            android:layout_alignTop="@id/status_complain_details"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_complain"
+            android:hint="Status"
+            android:text="Status"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="15sp"
+            android:layout_alignTop="@id/status_complain_details"
+            android:gravity="center"
+            android:layout_marginStart="20dp"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

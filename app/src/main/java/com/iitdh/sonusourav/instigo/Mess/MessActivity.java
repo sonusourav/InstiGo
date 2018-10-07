@@ -62,7 +62,7 @@ public class MessActivity extends AppCompatActivity
         viewPager.setOffscreenPageLimit(3);
         setupViewPager(viewPager);
 
-        //Initializing the tablayout
+        //Initializing the tabLayout
         tabLayout = (TabLayout) findViewById(R.id.mess_tablayout);
         tabLayout.setupWithViewPager(viewPager);
 

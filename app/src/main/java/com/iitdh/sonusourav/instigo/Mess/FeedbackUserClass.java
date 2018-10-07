@@ -1,6 +1,5 @@
 package com.iitdh.sonusourav.instigo.Mess;
 
-import android.net.Uri;
 
 public class FeedbackUserClass {
     private String feedbackUsername;
@@ -12,7 +11,8 @@ public class FeedbackUserClass {
     private String feedbackRatings;
     private String feedbackDesc;
 
-    public FeedbackUserClass(String feedbackUsername, String feedbackUri,String feedbackTitle,String feedbackDay,String feedbackPart,String feedbackDate,String feedbackRatings,String feedbackDesc) {
+    FeedbackUserClass(String feedbackUsername, String feedbackUri, String feedbackTitle, String feedbackDay,
+                      String feedbackPart, String feedbackDate, String feedbackRatings, String feedbackDesc) {
         this.feedbackUsername = feedbackUsername;
         this.feedbackUri = feedbackUri;
         this.feedbackTitle = feedbackTitle;

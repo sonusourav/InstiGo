@@ -14,8 +14,8 @@ public class PreferenceManager {
 
     // Shared preferences file name
     private static final String PREF_NAME = "iitdh";
-    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
-    private static final String IS_LOGGED_IN = "IsLoggedIn";
+    private static final String IS_FIRST_TIME_LAUNCH = "true";
+    private static final String IS_LOGGED_IN = "false";
     private static final String PREF_EMAIL = "email";
     private static final String PREF_PASSWORD = "password";
 

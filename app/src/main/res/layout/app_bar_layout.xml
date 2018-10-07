@@ -32,6 +32,10 @@
         android:visibility="gone"/>
 
     <include
+        android:id="@+id/include_maintenance"
+        layout="@layout/activity_maintenance"
+        android:visibility="gone"/>
+    <include
         android:id="@+id/include_tabbed_content"
         layout="@layout/activity_mess"
         android:visibility="gone"/>

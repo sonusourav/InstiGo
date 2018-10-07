@@ -63,9 +63,6 @@ public class FragmentFeedback extends Fragment {
 
     private String TAG=FragmentFeedback.class.getSimpleName();
 
-    static String encodeUserEmail(String userEmail) {
-        return userEmail.replace(".", ",");
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,7 +91,6 @@ public class FragmentFeedback extends Fragment {
         final FirebaseUser user = ecAuth.getCurrentUser();
 
         assert user != null;
-        final String testEmail = encodeUserEmail(Objects.requireNonNull(user.getEmail()));
 
 
 

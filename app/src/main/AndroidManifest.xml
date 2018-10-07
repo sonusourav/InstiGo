@@ -17,7 +17,6 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -39,14 +38,43 @@
 
         </activity>
         <activity android:name=".Login.ForgotPassword"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar.TitleBar"
+            />
+
         <activity android:name=".CouncilActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar.TitleBar"
+            />
+
         <activity android:name=".HomeActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar.TitleBar"
+            />
+
         <activity android:name=".Mess.MessActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:theme="@style/AppTheme.NoActionBar.TitleBar"
            />
-        <activity android:name="com.iitdh.sonusourav.Maintenance.MaintenanceActivity" />
+        <activity android:name=".Maintenance.MaintenanceActivity"
+            android:theme="@style/AppTheme.NoActionBar.TitleBar"
+            />
+
+
+        <activity android:name=".Maintenance.ComplainRegister"
+            >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Maintenance.MaintenanceActivity" />
+        </activity>
+
+        <activity android:name=".Maintenance.ComplainStatus"
+        >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Maintenance.MaintenanceActivity" />
+        </activity>
+        <activity android:name=".Maintenance.StatusDetails"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Maintenance.MaintenanceActivity" />
+        </activity>
     </application>
 </manifest>

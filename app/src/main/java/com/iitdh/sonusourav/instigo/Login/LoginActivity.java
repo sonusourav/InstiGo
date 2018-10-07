@@ -1,7 +1,10 @@
 package com.iitdh.sonusourav.instigo.Login;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -18,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -53,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     private PreferenceManager loginPref;
 
     //Tag for the logs optional
-    private static final String TAG = "InstiGo";
+    private static final String TAG = LoginActivity.class.getSimpleName();
 
     //creating a GoogleSignInClient object
     GoogleSignInClient mGoogleSignInClient;
@@ -125,7 +129,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                 if (task.isSuccessful()) {
 
-
                                     checkEmailVerification();
 
                                 }
@@ -194,10 +197,12 @@ public class LoginActivity extends AppCompatActivity {
         //if the user is already signed in
         //we will close this activity
         //and take the user to profile activity
+
         if (loginAuth.getCurrentUser() != null) {
+            Log.d("Current User","active");
             Toast.makeText(getApplicationContext(),"Signed In as " + loginAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_SHORT).show();
-            finish();
             startActivity(new Intent(this, HomeActivity.class));
+            finish();
         }
     }
 
@@ -296,6 +301,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+
+
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         //getting the auth credential
@@ -311,8 +318,36 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = loginAuth.getCurrentUser();
                             hideProgressDialog();
                             assert user != null;
-                            Toast.makeText(LoginActivity.this, " Signed In as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            String email = user.getEmail();
+                            assert email != null;
+                            String[] split = email.split("@");
+                            String domain = split[1]; //This Will Give You The Domain After '@'
+                            if(domain.equalsIgnoreCase("iitdh.ac.in"))
+                            {
+
+                                Toast.makeText(LoginActivity.this, " Signed In as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            }else{
+                                loginEmail.setText("");
+                                loginPass.setText("");
+                                Toast.makeText(LoginActivity.this, " Login using IITDh account", Toast.LENGTH_SHORT).show();
+                                mGoogleSignInClient.signOut();
+                                user.delete()
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(LoginActivity.this, "try Register with IITDh account", Toast.LENGTH_SHORT).show();
+
+                                                    Log.d(TAG, "User account deleted.");
+                                                }else {
+                                                    Log.d(TAG,"Unable to delete new user.");
+                                                }
+                                            }
+                                        });
+                                loginAuth.signOut();
+
+                            }
 
                         } else {
                             // If sign in fails
@@ -330,7 +365,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //this method is called on click
     private void signIn() {
-        //getting the google signin intent
+        //getting the google signIn intent
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
 
         showProgressDialog();
@@ -355,5 +390,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    private boolean isNetworkAvailable()
+    {
+        ConnectivityManager manager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=manager.getActiveNetworkInfo();
+        return networkInfo!=null&& networkInfo.isConnected();
+    }
 
 }

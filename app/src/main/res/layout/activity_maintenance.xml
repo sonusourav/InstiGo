@@ -1,32 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="#011722"
+   >
     <RelativeLayout
+        android:id="@+id/layout_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="230dp"
+        >
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/maintenance_tab_layout"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/green"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorAccent"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/nav_icon_color" />
+            android:layout_height="match_parent">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/maintenance_viewpager"
+            <com.iitdh.sonusourav.instigo.Maintenance.slider.SliderView
+                android:id="@+id/sliderView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </FrameLayout>
+
+        <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/maintenance_tab_layout"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:background="@drawable/bg_indicator"/>
+
+        <LinearLayout
+            android:id="@+id/pagesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"/>
 
     </RelativeLayout>
 
 
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/maintenance_register"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/register_maintenance"
+        android:scaleType="fitXY"
+        android:layout_below="@id/layout_top"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/maintenance_status"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/status_maintenance"
+        android:scaleType="fitXY"
+        android:layout_below="@id/maintenance_register"/>
+
+</RelativeLayout>

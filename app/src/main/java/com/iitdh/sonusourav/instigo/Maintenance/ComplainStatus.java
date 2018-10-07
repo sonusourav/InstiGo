@@ -1,0 +1,175 @@
+package com.iitdh.sonusourav.instigo.Maintenance;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewParent;
+import android.view.Window;
+import android.widget.ListView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.iitdh.sonusourav.instigo.Login.LoginActivity;
+import com.iitdh.sonusourav.instigo.R;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
+
+public class ComplainStatus extends AppCompatActivity {
+
+    private static final String TAG =ComplainStatus.class.getSimpleName() ;
+    private ArrayList<ComplainItemClass> complainStatusList;
+    private MaintenanceAdapter statusAdapter;
+    private FirebaseDatabase statusInstance;
+    private DatabaseReference statusRootRef;
+    private DatabaseReference statusRef;
+    private FirebaseAuth statusAuth;
+    private FirebaseUser statusUser;
+
+
+    private ListView listView;
+    private ActionBar statusActionBar;
+    private ProgressDialog statusProgressDialog;
+
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_status);
+
+        listView = findViewById(R.id.status_listview);
+        complainStatusList = new ArrayList<>();
+
+        showProgressDialog();
+
+        FirebaseAuth statusAuth = FirebaseAuth.getInstance();
+        statusInstance = FirebaseDatabase.getInstance();
+        statusRootRef = statusInstance.getReference("Maintenance");
+        statusRef=statusRootRef.child("Complaints").getRef();
+        statusUser=statusAuth.getCurrentUser();
+
+
+        if(statusUser==null){
+            startActivity(new Intent(ComplainStatus.this, LoginActivity.class));
+            finish();
+        }
+
+
+        statusAdapter = new MaintenanceAdapter(this, complainStatusList);
+        listView.setAdapter(statusAdapter);
+
+
+        statusRef.limitToLast(10).orderByChild("complainTime").addValueEventListener(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                if(dataSnapshot.exists()){
+                    complainStatusList.clear();
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Log.d(TAG, "onDataChange: reached");
+                        ComplainItemClass complain = snapshot.getValue(ComplainItemClass.class);
+
+                        if(complain!=null){
+
+                            if(Objects.requireNonNull(statusUser.getEmail()).equalsIgnoreCase("170020021@iitdh.ac.in")){
+                                complainStatusList.add(complain);
+
+                            }else{
+                                if(!complain.isComplainIsPrivate()){
+                                    complainStatusList.add((complain));
+                                }
+                            }
+
+                        }
+
+
+                    }
+                    Collections.reverse(complainStatusList);
+                    statusAdapter.notifyDataSetChanged();
+                }
+                hideProgressDialog();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                Log.e(TAG, "Failed to read value.", databaseError.toException());
+                hideProgressDialog();
+            }
+        });
+
+
+    }
+
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        statusActionBar = getSupportActionBar();
+        assert statusActionBar != null;
+        statusActionBar.setHomeButtonEnabled(true);
+        statusActionBar.setDisplayHomeAsUpEnabled(true);
+        statusActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
+        statusActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return true;
+
+    }
+
+    public void showProgressDialog() {
+
+        if (statusProgressDialog == null) {
+            statusProgressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
+            statusProgressDialog.setMessage("Fetching complaints....");
+            statusProgressDialog.setIndeterminate(true);
+        }
+
+        statusProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (statusProgressDialog != null && statusProgressDialog.isShowing()) {
+            statusProgressDialog.dismiss();
+        }
+    }
+
+}

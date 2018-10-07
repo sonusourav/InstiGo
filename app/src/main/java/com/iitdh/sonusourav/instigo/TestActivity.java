@@ -7,7 +7,7 @@ public class TestActivity extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item_mess_feedback);
+        setContentView(R.layout.activity_welcome);
 
     }
 
