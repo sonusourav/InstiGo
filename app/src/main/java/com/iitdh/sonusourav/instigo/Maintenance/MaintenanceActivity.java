@@ -132,7 +132,7 @@ public class MaintenanceActivity extends AppCompatActivity
         //set style of indicators
         ultraViewPager.getIndicator()
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
-                .setFocusColor(Color.BLUE)
+                .setFocusColor(Color.GREEN)
                 .setNormalColor((ContextCompat.getColor(this, R.color.black)))
                 .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
         //set the alignment
