@@ -11,12 +11,26 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mess_day_button"
+        android:text="day_name"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:textColor="@color/light_black"
+        android:textSize="17sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="#3ea1cc"/>
 
     <ListView
         android:id="@+id/mainListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bmb"
+        android:layout_below="@id/mess_day_button"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
@@ -36,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         app:bmb_buttonEnum="textInsideCircle"
         app:bmb_piecePlaceEnum="piecePlace_dot_7_1"
         app:bmb_buttonPlaceEnum="buttonPlace_sc_7_3"/>

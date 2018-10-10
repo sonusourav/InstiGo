@@ -10,18 +10,18 @@
     <RelativeLayout
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="250dp"
         >
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.iitdh.sonusourav.instigo.Maintenance.slider.SliderView
-                android:id="@+id/sliderView"
+            <com.tmall.ultraviewpager.UltraViewPager
+                android:id="@+id/ultra_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                />
+                android:background="@color/white" />
 
         </FrameLayout>
 
@@ -57,10 +57,10 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:id="@+id/maintenance_status"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/status_maintenance"
         android:scaleType="fitXY"
         android:layout_below="@id/maintenance_register"/>

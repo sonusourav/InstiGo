@@ -146,5 +146,6 @@
         <item>Friday</item>
         <item>Saturday</item>
     </string-array>
+    <item name="item_id" type="id" />
 
 </resources>

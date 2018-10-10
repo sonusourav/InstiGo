@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.iitdh.sonusourav.instigo">
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo_instigo"
@@ -75,6 +77,54 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Maintenance.MaintenanceActivity" />
+        </activity>
+        <activity android:name=".Council.CouncilActivity" />
+
+        <activity android:name=".Council.CouncilWarden"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CouncilActivity" />
+        </activity>
+        <activity android:name=".Council.CouncilGenSecy" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CouncilActivity" />
+        </activity>
+        <activity android:name=".Council.CouncilSportsSecy">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CouncilActivity" />
+        </activity>
+        <activity android:name=".Council.CouncilCulturalSecy" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CouncilActivity" />
+        </activity>
+        <activity android:name=".Council.CouncilFHostelSecy" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CouncilActivity" />
+        </activity>
+        <activity android:name=".Council.CouncilFHosMainSecy" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CouncilActivity" />
+        </activity>
+        <activity android:name=".Council.CouncilFMessSecy" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CouncilActivity" />
+        </activity>
+        <activity android:name=".Council.CouncilEmergency">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CouncilActivity" />
+        </activity>
+        <activity android:name=".Council.CouncilFSportsSecy">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CouncilActivity" />
         </activity>
     </application>
 </manifest>

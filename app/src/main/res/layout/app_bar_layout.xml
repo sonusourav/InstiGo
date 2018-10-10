@@ -30,6 +30,10 @@
         android:id="@+id/include_main_content"
         layout="@layout/content_main"
         android:visibility="gone"/>
+    <include
+        android:id="@+id/include_council"
+        layout="@layout/activity_council"
+        android:visibility="gone"/>
 
     <include
         android:id="@+id/include_maintenance"

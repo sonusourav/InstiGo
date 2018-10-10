@@ -58,6 +58,7 @@ public class FragmentMenu extends Fragment {
     private ArrayList<Item> items;
     private float ratings;
     private  View view;
+    private Button dayButton;
 
     private FirebaseAuth menuAuth;
     private FirebaseDatabase menuInstance;
@@ -80,6 +81,7 @@ public class FragmentMenu extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_menu, null);
         theListView = view.findViewById(R.id.mainListView);
+        dayButton=view.findViewById(R.id.mess_day_button);
 
         menuAuth = FirebaseAuth.getInstance();
         menuInstance = FirebaseDatabase.getInstance();
@@ -104,33 +106,39 @@ public class FragmentMenu extends Fragment {
         switch (day) {
             case Calendar.SUNDAY:
                 dayRef=ratingRef.child("Sunday").getRef();
-
+                dayButton.setText("Sunday");
                 break;
 
             case Calendar.MONDAY:
                 dayRef=ratingRef.child("Monday").getRef();
+                dayButton.setText("Monday");
                 break;
 
             case Calendar.TUESDAY:
                 dayRef=ratingRef.child("Tuesday").getRef();
+                dayButton.setText("Tuesday");
                 break;
 
             case Calendar.WEDNESDAY:
                 dayRef=ratingRef.child("Wednesday").getRef();
+                dayButton.setText("Wednesday");
                 break;
 
             case Calendar.THURSDAY:
                 dayRef=ratingRef.child("Thursday").getRef();
+                dayButton.setText("Thursday");
                 break;
 
 
             case Calendar.FRIDAY:
                 dayRef=ratingRef.child("Friday").getRef();
+                dayButton.setText("Friday");
                 break;
 
 
             case Calendar.SATURDAY: {
                 dayRef=ratingRef.child("Saturday").getRef();
+                dayButton.setText("Saturday");
                 break;
 
             }
@@ -442,18 +450,25 @@ public class FragmentMenu extends Fragment {
 
                     switch (index){
                         case 0:dayRef=ratingRef.child("Sunday").getRef();
+                            dayButton.setText("Sunday");
                             break;
                         case 1:dayRef=ratingRef.child("Monday").getRef();
+                            dayButton.setText("Monday");
                             break;
                         case 2:dayRef=ratingRef.child("Tuesday").getRef();
+                            dayButton.setText("Tuesday");
                             break;
                         case 3:dayRef=ratingRef.child("Wednesday").getRef();
+                            dayButton.setText("Wednesday");
                             break;
                         case 4:dayRef=ratingRef.child("Thursday").getRef();
+                            dayButton.setText("Thursday");
                             break;
                         case 5:dayRef=ratingRef.child("Friday").getRef();
+                            dayButton.setText("Friday");
                             break;
                         case 6:dayRef=ratingRef.child("Saturday").getRef();
+                            dayButton.setText("Saturday");
                             break;
                         default:dayRef=ratingRef.child("Sunday").getRef();
 

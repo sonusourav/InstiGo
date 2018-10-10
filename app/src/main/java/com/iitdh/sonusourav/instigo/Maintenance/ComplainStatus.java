@@ -29,6 +29,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.iitdh.sonusourav.instigo.Login.LoginActivity;
 import com.iitdh.sonusourav.instigo.R;
+import com.yalantis.taurus.PullToRefreshView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +45,8 @@ public class ComplainStatus extends AppCompatActivity {
     private DatabaseReference statusRef;
     private FirebaseAuth statusAuth;
     private FirebaseUser statusUser;
-
+    public static final int REFRESH_DELAY = 4000;
+    private PullToRefreshView mPullToRefreshView;
 
     private ListView listView;
     private ActionBar statusActionBar;
@@ -112,6 +114,8 @@ public class ComplainStatus extends AppCompatActivity {
                     statusAdapter.notifyDataSetChanged();
                 }
                 hideProgressDialog();
+                mPullToRefreshView.setVisibility(View.VISIBLE);
+
             }
 
             @Override
@@ -119,6 +123,20 @@ public class ComplainStatus extends AppCompatActivity {
 
                 Log.e(TAG, "Failed to read value.", databaseError.toException());
                 hideProgressDialog();
+            }
+        });
+
+
+        mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPullToRefreshView.setRefreshing(false);
+                    }
+                }, REFRESH_DELAY);
             }
         });
 

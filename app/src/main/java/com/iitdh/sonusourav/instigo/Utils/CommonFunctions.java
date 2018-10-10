@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.iitdh.sonusourav.instigo.Council.CouncilActivity;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.Login.LoginActivity;
 import com.iitdh.sonusourav.instigo.Maintenance.MaintenanceActivity;
@@ -42,7 +43,7 @@ public class CommonFunctions {
             }
             case R.id.nav_council: {
 
-                activity.startActivity(new Intent().setClass(activity, TestActivity.class));
+                activity.startActivity(new Intent().setClass(activity, com.iitdh.sonusourav.instigo.CouncilActivity.class));
                 break;
 
             }
