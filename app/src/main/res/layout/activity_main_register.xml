@@ -2,13 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:cardCornerRadius="6dp"
@@ -132,7 +131,7 @@
                     android:layout_gravity="center"
                     android:id="@+id/add_complaint_hostel"
                     android:entries="@array/Hostel"
-                    android:layout_margin="15dp"
+                    android:layout_margin="13dp"
                     android:layout_below="@id/til3"
                     >
 
@@ -155,7 +154,7 @@
                     android:layout_gravity="center"
                     android:entries="@array/Complaint_type"
                     android:id="@+id/add_complaint_type"
-                    android:layout_margin="15dp"
+                    android:layout_margin="13dp"
                     android:layout_below="@id/add_complaint_hostel"
                    >
 
@@ -174,7 +173,7 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:textColorHint="#c5c5c5"
                     android:minHeight="35dp"
                     android:id="@+id/til4"
@@ -182,7 +181,6 @@
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
                     android:layout_marginTop="10dp"
-                    android:layout_above="@id/complain_is_private"
                     >
 
                     <EditText
@@ -208,26 +206,25 @@
                     android:text="Make it private"
                     android:textColor="@color/light_black"
                     android:layout_marginStart="20dp"
-                    android:layout_marginBottom="80dp"
-                    android:layout_above="@id/complain_submit"
-                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/til4"
                     />
-
-
 
 
                 <Button
                     android:id="@+id/complain_submit"
                     android:layout_width="150dp"
-                    android:layout_height="50dp"
+                    android:layout_height="45dp"
                     android:background="@drawable/bt_shape"
                     android:stateListAnimator="@drawable/state_list_animator_z"
                     android:text="Submit"
                     android:gravity="center"
                     android:layout_centerHorizontal="true"
                     android:textColor="@color/light_black"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="15dp">
+                    android:layout_below="@id/complain_is_private"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                   >
 
                 </Button>
 

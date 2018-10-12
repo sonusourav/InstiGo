@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:screenOrientation="portrait"
-        android:largeHeap="false"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
         android:configChanges="keyboardHidden|orientation|screenSize">
         <activity
             android:name=".Login.SplashActivity"
@@ -126,5 +127,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CouncilActivity" />
         </activity>
+        <activity android:name=".UpdatePassword"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 </manifest>

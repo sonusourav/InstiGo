@@ -17,7 +17,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
             android:background="@color/green"
             app:layout_scrollFlags="scroll|enterAlways"
             theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -42,6 +42,10 @@
     <include
         android:id="@+id/include_tabbed_content"
         layout="@layout/activity_mess"
+        android:visibility="gone"/>
+    <include
+        android:id="@+id/include_update_pass"
+        layout="@layout/update_password"
         android:visibility="gone"/>
 
 </LinearLayout>

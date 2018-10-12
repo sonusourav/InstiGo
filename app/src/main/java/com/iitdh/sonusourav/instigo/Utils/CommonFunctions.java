@@ -22,6 +22,7 @@ import com.iitdh.sonusourav.instigo.Maintenance.MaintenanceActivity;
 import com.iitdh.sonusourav.instigo.Mess.MessActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.TestActivity;
+import com.iitdh.sonusourav.instigo.UpdatePassword;
 
 
 public class CommonFunctions {
@@ -55,6 +56,11 @@ public class CommonFunctions {
             }
             case R.id.nav_complaint: {
                 activity.startActivity(new Intent().setClass(activity, MaintenanceActivity.class));
+                break;
+
+            }
+            case R.id.nav_pass: {
+                activity.startActivity(new Intent().setClass(activity, UpdatePassword.class));
                 break;
 
             }

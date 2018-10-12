@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:id="@+id/maintenance_register"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/register_maintenance"

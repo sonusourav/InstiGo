@@ -39,8 +39,6 @@ import java.util.Objects;
 public class MaintenanceActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private SliderPagerAdapter mAdapter;
-    private SliderIndicator mIndicator;
 
     private LinearLayout mLinearLayout;
     private int color;

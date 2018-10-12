@@ -200,6 +200,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if (loginAuth.getCurrentUser() != null) {
             Log.d("Current User","active");
+            Toast.makeText(getApplicationContext(),"Error here" ,Toast.LENGTH_SHORT).show();
+
             Toast.makeText(getApplicationContext(),"Signed In as " + loginAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, HomeActivity.class));
             finish();
