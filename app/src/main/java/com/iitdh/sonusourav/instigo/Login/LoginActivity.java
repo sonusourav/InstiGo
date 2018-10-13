@@ -381,6 +381,7 @@ public class LoginActivity extends AppCompatActivity {
             mProgressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
             mProgressDialog.setMessage("Logging In ....");
             mProgressDialog.setIndeterminate(true);
+            mProgressDialog.setCanceledOnTouchOutside(false);
         }
 
         mProgressDialog.show();
@@ -392,11 +393,5 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isNetworkAvailable()
-    {
-        ConnectivityManager manager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo=manager.getActiveNetworkInfo();
-        return networkInfo!=null&& networkInfo.isConnected();
-    }
 
 }
