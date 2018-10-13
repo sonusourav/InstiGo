@@ -179,6 +179,7 @@ public class ComplainStatus extends AppCompatActivity {
             statusProgressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
             statusProgressDialog.setMessage("Fetching complaints....");
             statusProgressDialog.setIndeterminate(true);
+            statusProgressDialog.setCanceledOnTouchOutside(false);
         }
 
         statusProgressDialog.show();

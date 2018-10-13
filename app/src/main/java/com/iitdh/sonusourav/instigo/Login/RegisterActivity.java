@@ -286,6 +286,7 @@ public class RegisterActivity extends AppCompatActivity {
             registerProgressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
             registerProgressDialog.setMessage("Creating Account ....");
             registerProgressDialog.setIndeterminate(true);
+            registerProgressDialog.setCanceledOnTouchOutside(false);
         }
 
         registerProgressDialog.show();
