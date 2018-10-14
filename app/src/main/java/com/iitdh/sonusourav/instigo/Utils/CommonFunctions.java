@@ -99,7 +99,8 @@ public class CommonFunctions {
             usernameTextView.setText(firebaseUser.getDisplayName());
             Glide.with(activity.getApplicationContext())
                     .load(firebaseUser.getPhotoUrl())
-                    .into(userImage);
+                    .into(userImage).onLoadStarted(activity.getDrawable(R.drawable.icon_nav_user));
+
 
         }
     }

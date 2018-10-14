@@ -36,6 +36,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
@@ -45,6 +47,9 @@ import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
     public FirebaseAuth loginAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference rootRef;
+    private DatabaseReference userRef;
     private Button loginButton;
     private EditText loginEmail;
     private EditText loginPass;
@@ -200,10 +205,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if (loginAuth.getCurrentUser() != null) {
             Log.d("Current User","active");
-            Toast.makeText(getApplicationContext(),"Error here" ,Toast.LENGTH_SHORT).show();
-
-            Toast.makeText(getApplicationContext(),"Signed In as " + loginAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, HomeActivity.class));
+            Toast.makeText(getApplicationContext(),"Signed In as " + loginAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_SHORT).show();
             finish();
         }
     }
@@ -227,6 +230,8 @@ public class LoginActivity extends AppCompatActivity {
         loginPass.setText("");
         rememberMe.setChecked(false);
         loginAuth = FirebaseAuth.getInstance();
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        rootRef=firebaseDatabase.getReference();
 
     }
 
@@ -256,10 +261,10 @@ public class LoginActivity extends AppCompatActivity {
             }
             String testEmail=loginPref.getPrefEmail();
             Log.d("LoginEmail",testEmail);
-            hideProgressDialog();
             Toast.makeText(getApplicationContext(),"Signed In successfully",Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
             startActivity(intent);
+            hideProgressDialog();
             finish();
 
         }else {
@@ -317,8 +322,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = loginAuth.getCurrentUser();
-                            hideProgressDialog();
+                            final FirebaseUser user = loginAuth.getCurrentUser();
                             assert user != null;
                             String email = user.getEmail();
                             assert email != null;
@@ -327,9 +331,35 @@ public class LoginActivity extends AppCompatActivity {
                             if(domain.equalsIgnoreCase("iitdh.ac.in"))
                             {
 
-                                Toast.makeText(LoginActivity.this, " Signed In as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                if(loginPref.isFirstGoogleLogin()){
+
+                                    loginPref.setIsFirstGoogleLogin(false);
+                                    userRef = rootRef.getRef().child("Users").child(encodeUserEmail(user.getEmail())).getRef();
+                                    userRef.setValue(new UserClass(user.getEmail())).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(LoginActivity.this, " Login failed .\n Try again.", Toast.LENGTH_SHORT).show();
+                                            loginPref.setIsFirstGoogleLogin(false);
+                                        }
+                                    }).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            loginPref.setIsFirstGoogleLogin(false);
+                                            Toast.makeText(LoginActivity.this, " Signed In as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                        }
+                                    });
+                                    hideProgressDialog();
+
+
+                                }else {
+                                    Toast.makeText(LoginActivity.this, " Signed In as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                    hideProgressDialog();
+
+                                }
                             }else{
+                                hideProgressDialog();
                                 loginEmail.setText("");
                                 loginPass.setText("");
                                 Toast.makeText(LoginActivity.this, " Login using IITDh account", Toast.LENGTH_SHORT).show();
@@ -392,6 +422,8 @@ public class LoginActivity extends AppCompatActivity {
             mProgressDialog.dismiss();
         }
     }
-
+    static String encodeUserEmail(String userEmail) {
+        return userEmail.replace(".", ",");
+    }
 
 }

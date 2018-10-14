@@ -17,11 +17,11 @@
     <!-- Screens background color-->
     <color name="bg_slider_screen1">#f4b241</color>
     <color name="bg_slider_screen2">#16bc7d</color>
-    <color name="bg_slider_screen3">#203d8c</color>
+    <color name="bg_slider_screen3">#0b93bc</color>
     <!-- dots inactive colors -->
     <color name="dot_inactive_screen1">#ffa000</color>
     <color name="dot_inactive_screen2">#008c57</color>
-    <color name="dot_inactive_screen3">#0e1e49</color>
+    <color name="dot_inactive_screen3">#4963ab</color>
     <!-- dots active colors -->
     <color name="dot_active_screen1">#f9c772</color>
     <color name="dot_active_screen2">#74f7c5</color>

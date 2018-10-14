@@ -15,7 +15,9 @@ public class PreferenceManager {
     // Shared preferences file name
     private static final String PREF_NAME = "iitdh";
     private static final String IS_FIRST_TIME_LAUNCH = "true";
-    private static final String IS_LOGGED_IN = "false";
+    private static final String IS_LOGGED_IN = "idLoggedIn";
+    private static final String IS_FIRST_GOOGLE_LOGIN = "isFirstGoogleLogin";
+    private static final String IS_PASSWORD_UPDATED = "isPasswordUpdated";
     private static final String PREF_EMAIL = "email";
     private static final String PREF_PASSWORD = "password";
 
@@ -23,6 +25,8 @@ public class PreferenceManager {
         this.context = context;
         pref = this.context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
+        editor.apply();
+
     }
 
     public void setLoginCredentials(String email,String password){
@@ -33,6 +37,16 @@ public class PreferenceManager {
 
     public void setIsLoggedIn(boolean isLoggedIn) {
         editor.putBoolean(IS_LOGGED_IN, isLoggedIn);
+        editor.commit();
+    }
+
+    public void setIsFirstGoogleLogin(boolean googleLogin) {
+        editor.putBoolean(IS_FIRST_GOOGLE_LOGIN, googleLogin);
+        editor.commit();
+    }
+
+    public void setIsEmailUpdated(boolean emailUpdated) {
+        editor.putBoolean(IS_PASSWORD_UPDATED, emailUpdated);
         editor.commit();
     }
 
@@ -48,6 +62,13 @@ public class PreferenceManager {
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGGED_IN, false);
     }
+
+    public boolean isFirstGoogleLogin() {
+        return pref.getBoolean(IS_FIRST_GOOGLE_LOGIN, true);
+    }
+
+    public boolean isEmailUpdated() { return pref.getBoolean(IS_PASSWORD_UPDATED, false); }
+
 
     public void setFirstTimeLaunch(boolean isFirstTime) {
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);

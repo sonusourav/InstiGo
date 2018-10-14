@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -37,12 +39,13 @@ public class RegisterActivity extends AppCompatActivity {
     private Button registerButton;
     private TextView loginHere;
     private ProgressDialog registerProgressDialog;
-
+    private PreferenceManager regisPref;
     private String signUpEmail;
     private String signUpUsername;
     private String signUpPass;
     private String errorCode;
 
+    private FirebaseUser firebaseUser;
     private FirebaseAuth registerAuth;
     private FirebaseDatabase registerFirebaseInstance;
     private DatabaseReference registerRootReference;
@@ -85,6 +88,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
 
+                            regisPref.setIsEmailUpdated(true);
+                            regisPref.setIsFirstGoogleLogin(false);
                             sendEmailVerification();
 
                         }
@@ -234,6 +239,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerFirebaseInstance = FirebaseDatabase.getInstance();
         registerRootReference = registerFirebaseInstance.getReference("UserId");
         registerUserRef = registerFirebaseInstance.getReference("Users");
+        regisPref=new PreferenceManager(this);
 
 
             }
@@ -244,18 +250,15 @@ public class RegisterActivity extends AppCompatActivity {
 
     //send email Verification
     private  void  sendEmailVerification(){
-        FirebaseUser firebaseUser = registerAuth.getCurrentUser();
+        firebaseUser = registerAuth.getCurrentUser();
         if (firebaseUser!=null){
             firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
-                        hideProgressDialog();
                         Toast.makeText(RegisterActivity.this, "Successfully Registered, Verification mail sent!", Toast.LENGTH_SHORT).show();
                         sendUserData();
-                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
+
                     }else {
                         hideProgressDialog();
                         Toast.makeText(RegisterActivity.this, "Verification mail failed to sent.\nCheck your network connection and try again!", Toast.LENGTH_SHORT).show();
@@ -275,8 +278,25 @@ public class RegisterActivity extends AppCompatActivity {
         DatabaseReference myRef = rootReference.child("Users").child(encodeUserEmail(signUpEmail));
 
         UserClass userProfile =new UserClass(signUpEmail,signUpUsername,signUpPass);
-        myRef.setValue(userProfile);
-        Toast.makeText(getApplicationContext(),"sending userdata",Toast.LENGTH_SHORT).show();
+        myRef.setValue(userProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                hideProgressDialog();
+                registerAuth.signOut();
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                firebaseUser.delete();
+                registerAuth.signOut();
+                Toast.makeText(RegisterActivity.this, "Failed to update data", Toast.LENGTH_SHORT).show();
+                hideProgressDialog();
+
+            }
+        });
 
     }
 

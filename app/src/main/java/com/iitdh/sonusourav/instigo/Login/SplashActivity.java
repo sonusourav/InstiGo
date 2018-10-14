@@ -33,6 +33,9 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_splash);
         splashPrefManager = new PreferenceManager(this);
@@ -42,8 +45,6 @@ public class SplashActivity extends AppCompatActivity {
             onRestoreInstanceState(savedInstanceState);
         }
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
         splash = findViewById(R.id.splash_iv);
@@ -53,6 +54,7 @@ public class SplashActivity extends AppCompatActivity {
                     .asGif()
                     .load(R.drawable.gif_splash)
                     .into(splash)
+
             ;
         }
 

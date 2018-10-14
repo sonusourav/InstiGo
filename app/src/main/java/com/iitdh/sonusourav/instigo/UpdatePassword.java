@@ -16,10 +16,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -40,13 +42,13 @@ public class UpdatePassword extends AppCompatActivity
 
     private EditText newPassword;
     private FirebaseUser firebaseUser;
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference rootRef;
     private EditText oldPassword;
     private PreferenceManager updatePref;
 
     private ProgressBar updateProgressBar;
     private Button updateButton;
+    private FrameLayout updateFrameLayout;
     DatabaseReference userRef;
     private String email;
 
@@ -77,6 +79,10 @@ public class UpdatePassword extends AppCompatActivity
         toggle.syncState();
 
         updatePassInit();
+        if(!updatePref.isEmailUpdated()){
+            updateFrameLayout.setVisibility(View.GONE);
+
+        }
 
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,28 +90,68 @@ public class UpdatePassword extends AppCompatActivity
 
                 updateProgressBar.setVisibility(View.VISIBLE);
                 updateButton.setEnabled(false);
-                String oldPass =oldPassword.getText().toString().trim();
                 final String newPass =newPassword.getText().toString().trim();
 
-                assert email != null;
-                AuthCredential credential = EmailAuthProvider.getCredential(email,oldPass);
+                if(!updatePref.isEmailUpdated()){
 
+                    if(newPass.isEmpty() ){
 
-                firebaseUser.reauthenticate(credential)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        updateProgressBar.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(),"New Password is Empty .",Toast.LENGTH_SHORT).show();
+                        updateButton.setEnabled(true);
+                    }
+                    else if(newPass.length()<7){
+                        updateProgressBar.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(),"Password should not contain less than 6 characters .",Toast.LENGTH_SHORT).show();
+                        updateButton.setEnabled(true);
+
+                    }else
+                        {
+                            userRef=rootRef.child(encodeUserEmail(Objects.requireNonNull(firebaseUser.getEmail()))).child("pass");
+                            userRef.setValue(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    firebaseUser.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(),"Password successfully updated.",Toast.LENGTH_SHORT).show();
+                                updatePref.setIsEmailUpdated(true);
+                                updateProgressBar.setVisibility(View.GONE);
+                                Log.d("Update Password", "First Time Password updated");
+                                startActivity(new Intent(UpdatePassword.this,HomeActivity.class));
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getApplicationContext(),"Failed to update password.\nPlease try again.",Toast.LENGTH_SHORT).show();
+                                updateProgressBar.setVisibility(View.GONE);
+                                updateButton.setEnabled(true);
 
-                                                updatePref.setLoginCredentials(firebaseUser.getEmail(),newPass);
+                            }
+                        });
+                    }
+                }else {
 
 
-                                                userRef=rootRef.child(encodeUserEmail(email)).getRef();
-                                                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    String oldPass =oldPassword.getText().toString().trim();
+
+                    assert email != null;
+                    AuthCredential credential = EmailAuthProvider.getCredential(email,oldPass);
+
+
+                    firebaseUser.reauthenticate(credential)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        firebaseUser.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+
+                                                    updatePref.setLoginCredentials(firebaseUser.getEmail(),newPass);
+
+
+                                                    userRef=rootRef.child(encodeUserEmail(email)).getRef();
+                                                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                                         @Override
                                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                             if(dataSnapshot.exists()){
@@ -123,26 +169,28 @@ public class UpdatePassword extends AppCompatActivity
                                                     });
 
 
-                                                Toast.makeText(getApplicationContext(),"Password successfully updated",Toast.LENGTH_SHORT).show();
-                                                Log.d("Update Password", "Password updated");
-                                                startActivity(new Intent(UpdatePassword.this,HomeActivity.class));
-                                            } else {
-                                                Toast.makeText(getApplicationContext(),"Password update failed. Try Again!",Toast.LENGTH_SHORT).show();
-                                                updateButton.setEnabled(true);
-                                                Log.d("Update Password", "Error password not updated");
+                                                    Toast.makeText(getApplicationContext(),"Password successfully updated",Toast.LENGTH_SHORT).show();
+                                                    Log.d("Update Password", "Password updated");
+                                                    startActivity(new Intent(UpdatePassword.this,HomeActivity.class));
+                                                } else {
+                                                    Toast.makeText(getApplicationContext(),"Password update failed. Try Again!",Toast.LENGTH_SHORT).show();
+                                                    updateButton.setEnabled(true);
+                                                    Log.d("Update Password", "Error password not updated");
+                                                }
                                             }
-                                        }
-                                    });
-                                } else {
-                                    Toast.makeText(getApplicationContext(),"Error : Wrong old password.",Toast.LENGTH_SHORT).show();
-                                    updateButton.setEnabled(true);
-                                    Log.d("Update Password", "Error auth failed");
-                                }
+                                        });
+                                    } else {
+                                        Toast.makeText(getApplicationContext(),"Error : Wrong old password.",Toast.LENGTH_SHORT).show();
+                                        updateButton.setEnabled(true);
+                                        Log.d("Update Password", "Error auth failed");
+                                    }
 
-                            updateProgressBar.setVisibility(View.GONE);}
+                                    updateProgressBar.setVisibility(View.GONE);}
 
-                        });
+                            });
 
+
+                }
 
 
             }
@@ -156,22 +204,8 @@ public class UpdatePassword extends AppCompatActivity
         return userEmail.replace(".", ",");
     }
 
-    public void showProgressDialog() {
 
-        if (updatePassProgressDialog == null) {
-            updatePassProgressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
-            updatePassProgressDialog.setMessage(" Connecting to server ....");
-            updatePassProgressDialog.setIndeterminate(true);
-        }
 
-        updatePassProgressDialog.show();
-    }
-
-    public void hideProgressDialog() {
-        if (updatePassProgressDialog != null && updatePassProgressDialog.isShowing()) {
-            updatePassProgressDialog.dismiss();
-        }
-    }
     @Override
     protected void onResume(){
         super.onResume();
@@ -183,12 +217,13 @@ public class UpdatePassword extends AppCompatActivity
         newPassword = findViewById(R.id.etNewPassword);
         oldPassword = findViewById(R.id.etOldPassword);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        rootRef =firebaseDatabase.getReference().child("Users");
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        rootRef = firebaseDatabase.getReference().child("Users");
         assert firebaseUser != null;
         email = firebaseUser.getEmail();
         updatePref = new PreferenceManager(this);
         updateProgressBar=findViewById(R.id.update_progress_bar);
+        updateFrameLayout=findViewById(R.id.update_frame1);
     }
 
     @Override

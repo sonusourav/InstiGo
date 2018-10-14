@@ -6,7 +6,6 @@ public class UserClass {
     public String name;
     public String userName;
     public String email;
-
     public String gender;
     public String phone;
     public String pass;
@@ -21,9 +20,19 @@ public class UserClass {
         gender = "";
 
     }
+    public UserClass(String userEmail) {
+
+        email = userEmail;
+        userName="";
+        pass = "fa31b7bcb9e0d9ad4ab7e94e0230f2af7";
+        name = "";
+        phone = "";
+        gender = "";
+
+    }
 
 
-    public UserClass( String userEmail,String username,String userPassword, String uname, String userGender, String userPhone,String userDob) {
+    public UserClass( String userEmail,String username,String userPassword, String uname, String userGender, String userPhone) {
         email = userEmail;
         userName=username;
         pass = userPassword;
