@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:id="@+id/add_complaint_hostel"
-                    android:entries="@array/Hostel"
+                    android:entries="@array/hostel"
                     android:layout_margin="13dp"
                     android:layout_below="@id/til3"
                     >

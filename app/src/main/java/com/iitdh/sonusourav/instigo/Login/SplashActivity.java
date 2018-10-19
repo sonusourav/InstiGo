@@ -112,7 +112,7 @@ public class SplashActivity extends AppCompatActivity {
                     SplashActivity.this.startActivity(mainIntent);
                     SplashActivity.this.finish();
                 }
-            }, 4500);
+            }, 4600);
 
             FirebaseUser user=firebaseAuth.getCurrentUser();
             if(user!=null){

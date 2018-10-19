@@ -1,10 +1,7 @@
 package com.iitdh.sonusourav.instigo.Login;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -21,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -40,6 +36,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.User.UserClass;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
 
 import java.util.regex.Matcher;
@@ -340,6 +337,8 @@ public class LoginActivity extends AppCompatActivity {
                                         public void onFailure(@NonNull Exception e) {
                                             Toast.makeText(LoginActivity.this, " Login failed .\n Try again.", Toast.LENGTH_SHORT).show();
                                             loginPref.setIsFirstGoogleLogin(false);
+                                            hideProgressDialog();
+
                                         }
                                     }).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -347,9 +346,11 @@ public class LoginActivity extends AppCompatActivity {
                                             loginPref.setIsFirstGoogleLogin(false);
                                             Toast.makeText(LoginActivity.this, " Signed In as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                            hideProgressDialog();
+                                            finish();
+
                                         }
                                     });
-                                    hideProgressDialog();
 
 
                                 }else {
@@ -359,7 +360,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                 }
                             }else{
-                                hideProgressDialog();
                                 loginEmail.setText("");
                                 loginPass.setText("");
                                 Toast.makeText(LoginActivity.this, " Login using IITDh account", Toast.LENGTH_SHORT).show();
@@ -378,6 +378,7 @@ public class LoginActivity extends AppCompatActivity {
                                             }
                                         });
                                 loginAuth.signOut();
+                                hideProgressDialog();
 
                             }
 

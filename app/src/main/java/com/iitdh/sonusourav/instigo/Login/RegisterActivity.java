@@ -22,8 +22,8 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.User.UserClass;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
 
 import java.util.Objects;

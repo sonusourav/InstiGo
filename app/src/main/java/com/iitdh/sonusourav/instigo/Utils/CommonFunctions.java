@@ -22,7 +22,8 @@ import com.iitdh.sonusourav.instigo.Maintenance.MaintenanceActivity;
 import com.iitdh.sonusourav.instigo.Mess.MessActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.TestActivity;
-import com.iitdh.sonusourav.instigo.UpdatePassword;
+import com.iitdh.sonusourav.instigo.User.ProfileActivity;
+import com.iitdh.sonusourav.instigo.User.UpdatePassword;
 
 
 public class CommonFunctions {
@@ -44,7 +45,7 @@ public class CommonFunctions {
             }
             case R.id.nav_council: {
 
-                activity.startActivity(new Intent().setClass(activity, com.iitdh.sonusourav.instigo.CouncilActivity.class));
+                activity.startActivity(new Intent().setClass(activity, CouncilActivity.class));
                 break;
 
             }
@@ -56,6 +57,11 @@ public class CommonFunctions {
             }
             case R.id.nav_complaint: {
                 activity.startActivity(new Intent().setClass(activity, MaintenanceActivity.class));
+                break;
+
+            }
+            case R.id.nav_profile: {
+                activity.startActivity(new Intent().setClass(activity, ProfileActivity.class));
                 break;
 
             }
@@ -78,7 +84,7 @@ public class CommonFunctions {
             }
         }
 
-            DrawerLayout drawer = (DrawerLayout) activity.findViewById(R.id.drawer_layout);
+            DrawerLayout drawer = activity.findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
             return false;
         }
@@ -88,11 +94,11 @@ public class CommonFunctions {
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
 
         if (firebaseUser!=null){
-            NavigationView navigationView = (NavigationView) activity.findViewById(R.id.nav_view);
+            NavigationView navigationView = activity.findViewById(R.id.nav_view);
             Menu nav_Menu = navigationView.getMenu();
             LinearLayout drawerHeader = (LinearLayout) navigationView.getHeaderView(0);
-            TextView emailTextView = (TextView) drawerHeader.findViewById(R.id.nav_header_email);
-            TextView usernameTextView = (TextView) drawerHeader.findViewById(R.id.nav_header_username);
+            TextView emailTextView = drawerHeader.findViewById(R.id.nav_header_email);
+            TextView usernameTextView = drawerHeader.findViewById(R.id.nav_header_username);
             ImageView userImage=drawerHeader.findViewById(R.id.nav_header_imageView);
 
             emailTextView.setText(firebaseUser.getEmail());

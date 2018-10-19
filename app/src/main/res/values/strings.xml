@@ -113,7 +113,7 @@
         <item>Dinner</item>
     </string-array>
 
-    <string-array name="Hostel">
+    <string-array name="hostel">
         <item>Freshers Hostel</item>
         <item>Hostel 1</item>
         <item>Hostel 2</item>
@@ -147,5 +147,12 @@
         <item>Saturday</item>
     </string-array>
     <item name="item_id" type="id" />
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+
+    </string-array>
 
 </resources>

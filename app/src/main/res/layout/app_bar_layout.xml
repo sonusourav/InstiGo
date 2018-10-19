@@ -48,4 +48,9 @@
         layout="@layout/update_password"
         android:visibility="gone"/>
 
+    <include
+        android:id="@+id/include_profile"
+        layout="@layout/activity_profile"
+        android:visibility="gone"/>
+
 </LinearLayout>
