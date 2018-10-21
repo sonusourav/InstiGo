@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo.Maintenance.slider;
+package com.iitdh.sonusourav.instigo.Complaints.slider;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

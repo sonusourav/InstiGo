@@ -1,6 +1,5 @@
-package com.iitdh.sonusourav.instigo.Maintenance;
+package com.iitdh.sonusourav.instigo.Complaints;
 
-import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,7 +10,6 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,25 +18,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
-import com.google.firebase.database.ValueEventListener;
 import com.iitdh.sonusourav.instigo.R;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class ComplainRegister  extends AppCompatActivity
 {
@@ -111,13 +102,13 @@ public class ComplainRegister  extends AppCompatActivity
                             complainRef.child("complainTime").setValue(ServerValue.TIMESTAMP);
                             hideProgressDialog();
                             Toast.makeText(getApplicationContext(),"Complaint added.",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(ComplainRegister.this,MaintenanceActivity.class));
+                            startActivity(new Intent(ComplainRegister.this,ComplaintsActivity.class));
 
                         }else
                         {
                             hideProgressDialog();
                             Toast.makeText(getApplicationContext(),"Failed to add Complaint.",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(ComplainRegister.this,MaintenanceActivity.class));
+                            startActivity(new Intent(ComplainRegister.this,ComplaintsActivity.class));
 
 
                         }

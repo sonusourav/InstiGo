@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.iitdh.sonusourav.instigo">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -58,29 +59,29 @@
         <activity android:name=".Mess.MessActivity"
             android:theme="@style/AppTheme.NoActionBar.TitleBar"
            />
-        <activity android:name=".Maintenance.MaintenanceActivity"
+        <activity android:name=".Complaints.ComplaintsActivity"
             android:theme="@style/AppTheme.NoActionBar.TitleBar"
             />
 
 
-        <activity android:name=".Maintenance.ComplainRegister"
+        <activity android:name=".Complaints.ComplainRegister"
             >
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Maintenance.MaintenanceActivity" />
+            android:value=".Complaints.ComplaintsActivity" />
         </activity>
 
-        <activity android:name=".Maintenance.ComplainStatus"
+        <activity android:name=".Complaints.ComplainStatus"
         >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Maintenance.MaintenanceActivity" />
+                android:value=".Complaints.ComplaintsActivity" />
         </activity>
-        <activity android:name=".Maintenance.StatusDetails"
+        <activity android:name=".Complaints.StatusDetails"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Maintenance.MaintenanceActivity" />
+                android:value=".Complaints.ComplaintsActivity" />
         </activity>
 
         <activity android:name=".Council.CouncilWarden"
@@ -141,6 +142,57 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".User.ProfileActivity" />
         </activity>
+        <activity android:name=".Resources.ResourceActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
+        <activity android:name=".Resources.CS.CSResourceDocs"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Resources.CS.CSBranch" />
+        </activity>
+        <activity android:name=".Resources.CS.CSBranch"
+           >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Resources.ResourceActivity" />
+        </activity>
+        <activity android:name=".Resources.EE.EEBranch"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Resources.ResourceActivity" />
+        </activity>
+        <activity android:name=".Resources.EE.EEResourceDocs"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Resources.EE.EEBranch" />
+        </activity>
+        <activity android:name=".Resources.ME.MEBranch">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Resources.ResourceActivity" />
+        </activity>
+        <activity
+            android:name=".Resources.ME.MEResourceDocs"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Resources.ME.MEBranch" />
+        </activity>
+        <activity
+            android:name=".Resources.Common.CommonBranch">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Resources.ResourceActivity" />
+        </activity>
+        <activity
+            android:name=".Resources.Common.CommonResourceDocs"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Resources.Common.CommonBranch" />
+        </activity>
     </application>
 </manifest>

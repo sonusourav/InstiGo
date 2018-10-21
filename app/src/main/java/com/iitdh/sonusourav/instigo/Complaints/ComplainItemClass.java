@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo.Maintenance;
+package com.iitdh.sonusourav.instigo.Complaints;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -54,7 +54,7 @@ public class ComplainItemClass implements Parcelable{
     }
 
 
-    protected ComplainItemClass(Parcel in) {
+    private ComplainItemClass(Parcel in) {
         complainEmail = in.readString();
         complainUsername = in.readString();
         complainHouseNo = in.readString();

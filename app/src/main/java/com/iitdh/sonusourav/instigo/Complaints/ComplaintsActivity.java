@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo.Maintenance;
+package com.iitdh.sonusourav.instigo.Complaints;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -6,7 +6,6 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
@@ -22,21 +21,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.iitdh.sonusourav.instigo.Maintenance.slider.FragmentSlider;
-import com.iitdh.sonusourav.instigo.Maintenance.slider.SliderIndicator;
-import com.iitdh.sonusourav.instigo.Maintenance.slider.SliderPagerAdapter;
-import com.iitdh.sonusourav.instigo.Maintenance.slider.SliderView;
 import com.iitdh.sonusourav.instigo.R;
-import com.iitdh.sonusourav.instigo.TestActivity;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 import com.tmall.ultraviewpager.UltraViewPager;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 
-public class MaintenanceActivity extends AppCompatActivity
+public class ComplaintsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
@@ -67,20 +59,20 @@ public class MaintenanceActivity extends AppCompatActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        mLinearLayout = (LinearLayout) findViewById(R.id.pagesContainer);
+        mLinearLayout = findViewById(R.id.pagesContainer);
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MaintenanceActivity.this, ComplainRegister.class));
+                startActivity(new Intent(ComplaintsActivity.this, ComplainRegister.class));
             }
         });
 
         statusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MaintenanceActivity.this, ComplainStatus.class));
+                startActivity(new Intent(ComplaintsActivity.this, ComplainStatus.class));
             }
         });
 
@@ -119,7 +111,7 @@ public class MaintenanceActivity extends AppCompatActivity
     }
 
     public void setUpImageSlider(){
-        UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.ultra_viewpager);
+        UltraViewPager ultraViewPager = findViewById(R.id.ultra_viewpager);
         ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
         //initialize UltraPagerAdapter，and add child view to UltraViewPager
         PagerAdapter adapter = new SliderAdapter(false,this);

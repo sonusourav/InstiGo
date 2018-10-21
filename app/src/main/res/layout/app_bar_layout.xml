@@ -53,4 +53,9 @@
         layout="@layout/activity_profile"
         android:visibility="gone"/>
 
+    <include
+        android:id="@+id/include_res"
+        layout="@layout/activity_resources"
+        android:visibility="gone"/>
+
 </LinearLayout>

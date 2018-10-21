@@ -22,9 +22,6 @@ import java.util.Objects;
 public class MessActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //This is our tablayout
-    private TabLayout tabLayout;
-
     //This is our viewPager
     private ViewPager viewPager;
 
@@ -40,7 +37,6 @@ public class MessActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        CommonFunctions.setUser(this);
 
         findViewById(R.id.include_tabbed_content).setVisibility(View.VISIBLE);
 
@@ -57,13 +53,17 @@ public class MessActivity extends AppCompatActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        CommonFunctions.setUser(this);
+
+
         //Initializing viewPager
-        viewPager = (ViewPager) findViewById(R.id.mess_viewpager);
+        viewPager = findViewById(R.id.mess_viewpager);
         viewPager.setOffscreenPageLimit(3);
         setupViewPager(viewPager);
 
         //Initializing the tabLayout
-        tabLayout = (TabLayout) findViewById(R.id.mess_tablayout);
+        //This is our tablayout
+        TabLayout tabLayout =  findViewById(R.id.mess_tablayout);
         tabLayout.setupWithViewPager(viewPager);
 
 
@@ -94,7 +94,7 @@ public class MessActivity extends AppCompatActivity
     private static long back_pressed;
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {

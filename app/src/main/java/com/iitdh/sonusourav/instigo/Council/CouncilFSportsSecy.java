@@ -17,10 +17,8 @@ import com.tmall.ultraviewpager.transformer.UltraDepthScaleTransformer;
 import java.util.ArrayList;
 
 
-public class CouncilFSportsSecy extends AppCompatActivity
-        {
+public class CouncilFSportsSecy extends AppCompatActivity {
 
-    private android.support.v7.app.ActionBar FSportsActionBar;
     private PagerAdapter adapter;
     private UltraViewPager.Orientation gravity_indicator;
     private ArrayList<CouncilUserClass> FSportsList;
@@ -30,7 +28,7 @@ public class CouncilFSportsSecy extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.council_warden);
 
-        UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.council_view_pager);
+        UltraViewPager ultraViewPager = findViewById(R.id.council_view_pager);
         FSportsList =new ArrayList<>();
         CouncilUserClass jrSportSecy=new CouncilUserClass("Rishit Saiya","Jr.Sports Secretary","999999999","180010027@iitdh.ac.in",R.drawable.ritik);
         FSportsList.add(jrSportSecy);
@@ -60,7 +58,7 @@ public class CouncilFSportsSecy extends AppCompatActivity
 
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        FSportsActionBar = getSupportActionBar();
+        android.support.v7.app.ActionBar FSportsActionBar = getSupportActionBar();
         assert FSportsActionBar != null;
         FSportsActionBar.setHomeButtonEnabled(true);
         FSportsActionBar.setDisplayHomeAsUpEnabled(true);

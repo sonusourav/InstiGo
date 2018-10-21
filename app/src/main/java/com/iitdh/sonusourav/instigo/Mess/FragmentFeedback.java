@@ -177,7 +177,6 @@ public class FragmentFeedback extends Fragment {
                         Calendar calendar=Calendar.getInstance();
                         String date = new SimpleDateFormat("dd MMM yy h:mm a", Locale.US).format(calendar.getTime());
                         String username = user.getDisplayName();
-                        String imageUri ;
                         Uri photoUri=user.getPhotoUrl();
 
                         String image;

@@ -63,10 +63,11 @@
     <color name="titleBadgeText">#adafb1</color>
     <color name="mainTextColor">#343d43</color>
     <color name="golden">#ffa304</color>
-    <color name="cell_title_background">#ecfaf4</color>
+    <color name="cell_title_background">#f3fcf8</color>
     <color name="purple">#aa77cf</color>
     <color name="orange_card">#f4dfb5</color>
     <color name="light_black">#5e5c5c</color>
     <color name="detail_color">#0995d1</color>
     <color name="red">#ec2e2e</color>
+    <color name="blue">#35d9f2</color>
 </resources>

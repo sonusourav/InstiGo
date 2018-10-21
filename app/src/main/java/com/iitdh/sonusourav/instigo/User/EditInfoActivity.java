@@ -38,6 +38,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -82,6 +83,7 @@ public class EditInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_info);
 
         editInfoInit();
+        CommonFunctions.setUser(this);
 
         showProgressDialog();
         fetchUserData();
@@ -311,7 +313,7 @@ public class EditInfoActivity extends AppCompatActivity {
         }
 
         if(proBranch.isEmpty() ){
-            infoBranch.setError("Branch is empty");
+            infoBranch.setError("ResourceActivity is empty");
             infoBranch.requestFocus();
             return false;
         }

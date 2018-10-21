@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo.Maintenance;
+package com.iitdh.sonusourav.instigo.Complaints;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,8 +15,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewParent;
-import android.view.Window;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +23,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.iitdh.sonusourav.instigo.Login.LoginActivity;
 import com.iitdh.sonusourav.instigo.R;
@@ -39,7 +36,7 @@ public class ComplainStatus extends AppCompatActivity {
 
     private static final String TAG =ComplainStatus.class.getSimpleName() ;
     private ArrayList<ComplainItemClass> complainStatusList;
-    private MaintenanceAdapter statusAdapter;
+    private ComplaintsAdapter statusAdapter;
     private FirebaseDatabase statusInstance;
     private DatabaseReference statusRootRef;
     private DatabaseReference statusRef;
@@ -77,7 +74,7 @@ public class ComplainStatus extends AppCompatActivity {
         }
 
 
-        statusAdapter = new MaintenanceAdapter(this, complainStatusList);
+        statusAdapter = new ComplaintsAdapter(this, complainStatusList);
         listView.setAdapter(statusAdapter);
 
 
@@ -127,7 +124,7 @@ public class ComplainStatus extends AppCompatActivity {
         });
 
 
-        mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
+        mPullToRefreshView = findViewById(R.id.pull_to_refresh);
         mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
             @Override
             public void onRefresh() {

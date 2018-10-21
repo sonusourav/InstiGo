@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo.Maintenance;
+package com.iitdh.sonusourav.instigo.Complaints;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,23 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.iitdh.sonusourav.instigo.Mess.FeedbackUserClass;
 import com.iitdh.sonusourav.instigo.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
-
-public class MaintenanceAdapter extends BaseAdapter {
+public class ComplaintsAdapter extends BaseAdapter {
 
 
     private Context mcontext;
@@ -32,7 +26,7 @@ public class MaintenanceAdapter extends BaseAdapter {
     String time;
     String date;
 
-     MaintenanceAdapter(Context context, ArrayList<ComplainItemClass> arrayList) {
+     ComplaintsAdapter(Context context, ArrayList<ComplainItemClass> arrayList) {
         this.mcontext = context;
         this.ComplainList = arrayList;
     }
@@ -90,7 +84,7 @@ public class MaintenanceAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(mcontext,StatusDetails.class);
-                intent.putExtra("complain", (Parcelable) complainList);
+                intent.putExtra("complain", complainList);
                 mcontext.startActivity(intent);
             }
         });

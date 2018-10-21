@@ -58,6 +58,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.ramotion.foldingcell:folding-cell:1.2.2'
     implementation 'com.github.yalantis:taurus:1.0.2'
+    implementation 'pub.devrel:easypermissions:0.2.0'
     implementation ('com.alibaba.android:ultraviewpager:1.0.7.7@aar') {
         transitive = true
     }

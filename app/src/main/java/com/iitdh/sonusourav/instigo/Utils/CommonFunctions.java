@@ -18,10 +18,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.iitdh.sonusourav.instigo.Council.CouncilActivity;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.Login.LoginActivity;
-import com.iitdh.sonusourav.instigo.Maintenance.MaintenanceActivity;
+import com.iitdh.sonusourav.instigo.Complaints.ComplaintsActivity;
 import com.iitdh.sonusourav.instigo.Mess.MessActivity;
 import com.iitdh.sonusourav.instigo.R;
-import com.iitdh.sonusourav.instigo.TestActivity;
+import com.iitdh.sonusourav.instigo.Resources.ResourceActivity;
+import com.iitdh.sonusourav.instigo.Resources.CS.CSResourceDocs;
 import com.iitdh.sonusourav.instigo.User.ProfileActivity;
 import com.iitdh.sonusourav.instigo.User.UpdatePassword;
 
@@ -43,23 +44,34 @@ public class CommonFunctions {
                 break;
 
             }
+
+            case R.id.nav_complaint: {
+                activity.startActivity(new Intent().setClass(activity, ComplaintsActivity.class));
+                break;
+
+            }
+
             case R.id.nav_council: {
 
                 activity.startActivity(new Intent().setClass(activity, CouncilActivity.class));
                 break;
 
             }
+
+            case R.id.nav_resource: {
+
+                activity.startActivity(new Intent().setClass(activity, ResourceActivity.class));
+                break;
+
+            }
+
             case R.id.nav_notification: {
                 Toast.makeText(activity.getApplicationContext(), "Welcome to Notification", Toast.LENGTH_SHORT).show();
-                activity.startActivity(new Intent().setClass(activity, TestActivity.class));
+                activity.startActivity(new Intent().setClass(activity, CSResourceDocs.class));
                 break;
 
             }
-            case R.id.nav_complaint: {
-                activity.startActivity(new Intent().setClass(activity, MaintenanceActivity.class));
-                break;
 
-            }
             case R.id.nav_profile: {
                 activity.startActivity(new Intent().setClass(activity, ProfileActivity.class));
                 break;
@@ -105,7 +117,7 @@ public class CommonFunctions {
             usernameTextView.setText(firebaseUser.getDisplayName());
             Glide.with(activity.getApplicationContext())
                     .load(firebaseUser.getPhotoUrl())
-                    .into(userImage).onLoadStarted(activity.getDrawable(R.drawable.icon_nav_user));
+                    .into(userImage).onLoadStarted(activity.getDrawable(R.drawable.image_profile_pic));
 
 
         }

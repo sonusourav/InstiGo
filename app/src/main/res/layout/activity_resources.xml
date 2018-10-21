@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/res_ch_branch"
+        android:text="Choose Branch"
+        android:textSize="25sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/green"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_cs"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/nav_item_focussed"
+        android:paddingTop="10dp"
+
+       >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/branch_cs_img"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/icon_cs"
+            android:fadingEdge="horizontal"
+            android:requiresFadingEdge="horizontal"
+            android:layout_gravity="center_vertical|start"
+            />
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/branch_cse"
+            android:layout_toEndOf="@id/branch_cs_img"
+            android:text="CSE"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+
+            />
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/branch_cs"
+            android:layout_toEndOf="@id/branch_cs_img"
+            android:layout_below="@id/branch_cse"
+            android:text="Computer Science"
+            android:textColor="@color/light_black"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+
+            />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon_next"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/grey"
+            android:layout_below="@id/branch_cs"
+            android:layout_marginTop="10dp"
+         />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_ee"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:background="@color/nav_item_focussed"
+        android:paddingTop="10dp"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/branch_ee_img"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/icon_ee"
+            android:fadingEdge="horizontal"
+            android:requiresFadingEdge="horizontal"
+            android:layout_gravity="center_vertical|start"
+            />
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/branch_ee"
+            android:layout_toEndOf="@id/branch_ee_img"
+            android:text="EE"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+
+            />
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/branch_eeng"
+            android:layout_toEndOf="@id/branch_ee_img"
+            android:layout_below="@id/branch_ee"
+            android:text="Electrical"
+            android:textColor="@color/light_black"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+
+            />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon_next"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/grey"
+            android:layout_below="@id/branch_eeng"
+            android:layout_marginTop="10dp"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_me"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:background="@color/nav_item_focussed"
+        android:paddingTop="10dp"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/branch_me_img"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/icon_mech"
+            android:fadingEdge="horizontal"
+            android:requiresFadingEdge="horizontal"
+            android:layout_gravity="center_vertical|start"
+            />
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/branch_me"
+            android:layout_toEndOf="@id/branch_me_img"
+            android:text="ME"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+
+            />
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/branch_mech"
+            android:layout_toEndOf="@id/branch_me_img"
+            android:layout_below="@id/branch_me"
+            android:text="Mechanical"
+            android:textColor="@color/light_black"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+
+            />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon_next"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/grey"
+            android:layout_below="@id/branch_mech"
+            android:layout_marginTop="10dp"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_others"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:background="@color/nav_item_focussed"
+        android:paddingTop="10dp"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/branch_othes_img"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/icon_other_course"
+            android:fadingEdge="horizontal"
+            android:requiresFadingEdge="horizontal"
+            android:layout_gravity="center_vertical|start"
+            />
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/branch_other"
+            android:layout_toEndOf="@id/branch_othes_img"
+            android:text="Common"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+
+            />
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/branch_others"
+            android:layout_toEndOf="@id/branch_othes_img"
+            android:layout_below="@id/branch_other"
+            android:text="Common"
+            android:textColor="@color/light_black"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+
+            />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon_next"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/grey"
+            android:layout_below="@id/branch_others"
+            android:layout_marginTop="10dp"
+            />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

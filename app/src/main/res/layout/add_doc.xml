@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/doc_dialog_head"
+        android:text=" Document info "
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginStart="20dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/doc_add_tv1"
+        android:layout_below="@id/doc_dialog_head"
+        android:text="Topic             :"
+        android:textColor="@color/light_black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_marginStart="5dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/doc_topic"
+        android:minWidth="200dp"
+        android:layout_toEndOf="@id/doc_add_tv2"
+        android:layout_below="@id/doc_dialog_head"
+        android:inputType="text"
+        android:textColorHint="@color/light_black"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="normal"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/doc_add_tv2"
+        android:layout_below="@id/doc_add_tv1"
+        android:text="Sub -topic    :"
+        android:textColor="@color/light_black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_marginStart="5dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/doc_sub_topic"
+        android:minWidth="200dp"
+        android:layout_toEndOf="@id/doc_add_tv2"
+        android:layout_below="@id/doc_add_tv1"
+        android:inputType="text"
+        android:textColorHint="@color/light_black"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="normal"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/doc_add_tv3"
+        android:layout_below="@id/doc_add_tv2"
+        android:text="Doc Type      :"
+        android:textColor="@color/light_black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_marginStart="5dp"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/doc_type"
+        android:minWidth="200dp"
+        android:entries="@array/doc_type"
+        android:layout_toEndOf="@id/doc_add_tv3"
+        android:layout_below="@id/doc_add_tv2"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginStart="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/doc_upload"
+        android:layout_below="@id/doc_type"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/green"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text=" Upload "
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/doc_add_btn"
+        android:layout_below="@id/doc_upload"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_login"
+        android:text=" Add "
+        android:enabled="false"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+</RelativeLayout>

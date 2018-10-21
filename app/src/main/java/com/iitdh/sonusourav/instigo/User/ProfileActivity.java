@@ -25,13 +25,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -47,12 +44,11 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.iitdh.sonusourav.instigo.R;
-import com.iitdh.sonusourav.instigo.TestActivity;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 
 import java.io.IOException;
 import java.util.Objects;
-import java.util.UUID;
+
 
 
 public class ProfileActivity extends AppCompatActivity
@@ -86,9 +82,9 @@ public class ProfileActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        CommonFunctions.setUser(this);
 
         findViewById(R.id.include_profile).setVisibility(View.VISIBLE);
+        CommonFunctions.setUser(this);
 
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -103,6 +99,7 @@ public class ProfileActivity extends AppCompatActivity
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
 
         profileInit();
 
@@ -178,6 +175,7 @@ public class ProfileActivity extends AppCompatActivity
         FirebaseUser profileUser = profileAuth.getCurrentUser();
         FirebaseDatabase profileInstance = FirebaseDatabase.getInstance();
         DatabaseReference profileRootRef = profileInstance.getReference().child("Users");
+        assert profileUser != null;
         profileUserRef= profileRootRef.child(encodeUserEmail(Objects.requireNonNull(profileUser.getEmail()))).getRef();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference().child(encodeUserEmail(profileUser.getEmail()));
@@ -458,6 +456,12 @@ public class ProfileActivity extends AppCompatActivity
         if (profileDialog != null && profileDialog.isShowing()) {
             profileDialog.dismiss();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     static String encodeUserEmail(String userEmail) {

@@ -1,4 +1,4 @@
-package com.iitdh.sonusourav.instigo.Maintenance;
+package com.iitdh.sonusourav.instigo.Complaints;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -46,7 +46,7 @@ public class StatusDetails extends AppCompatActivity {
         detailsInit();
 
         Intent mIntent = getIntent();
-        ComplainItemClass complainDetails = (ComplainItemClass) mIntent.getParcelableExtra("complain");
+        ComplainItemClass complainDetails = mIntent.getParcelableExtra("complain");
 
         String date=detailsDateFormat.format(complainDetails.getComplainTime());
         String time=detailsTimeFormat.format(complainDetails.getComplainTime());

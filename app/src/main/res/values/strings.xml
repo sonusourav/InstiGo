@@ -155,4 +155,19 @@
 
     </string-array>
 
+    <string-array name="doc_type">
+        <item>Pdf</item>
+        <item>Image</item>
+        <item>PPT</item>
+        <item>Excel</item>
+        <item>Zip</item>
+        <item>Other</item>
+    </string-array>
+
+
+
+    <string name="backdrop_title">IIT Dh OPAC</string>
+    <string name="backdrop_subtitle">More to come....</string>
+    <string name="write_file">This app needs access to your file storage so that it can write files.</string>
+    <string name="url_path">https://drive.google.com/open?id=0BzHSfMqO1EIMRnRYNllndWlfUW9TMTNDTGpmQUpRMEI3Y1Rz</string>
 </resources>
