@@ -58,4 +58,9 @@
         layout="@layout/activity_resources"
         android:visibility="gone"/>
 
+    <include
+        android:id="@+id/include_feedback"
+        layout="@layout/activity_feedback"
+        android:visibility="gone"/>
+
 </LinearLayout>

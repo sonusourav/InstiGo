@@ -194,5 +194,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Resources.Common.CommonBranch" />
         </activity>
+        <activity android:name=".Feedback"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 </manifest>

@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.iitdh.sonusourav.instigo.Council.CouncilActivity;
+import com.iitdh.sonusourav.instigo.Feedback;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.Login.LoginActivity;
 import com.iitdh.sonusourav.instigo.Complaints.ComplaintsActivity;
@@ -91,6 +92,12 @@ public class CommonFunctions {
 
                 Toast.makeText(activity.getApplicationContext(), "User successfully logged out.", Toast.LENGTH_SHORT).show();
                 activity.startActivity(new Intent().setClass(activity, LoginActivity.class));
+                break;
+
+            }
+
+            case R.id.nav_feedback: {
+                activity.startActivity(new Intent().setClass(activity, Feedback.class));
                 break;
 
             }

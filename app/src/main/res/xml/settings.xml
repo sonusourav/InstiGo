@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Notifications">
+
+        <SwitchPreference
+            android:key="mess"
+            android:title="Mess Menu"
+            android:summary="Receive notification about what's cooked in the mess before every meal"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="news"
+            android:title="News"
+            android:summary="Stay updated about upcoming events in hostel"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Feedback">
+
+        <Preference
+            android:title="Feedback"
+            android:summary="Fill out the form to report a bug or give some feedback">
+            <intent android:action="android.intent.action.VIEW"
+                android:data="https://goo.gl/forms/uSKNT1Bf9Ucq3Fgh2" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="About">
+
+        <Preference
+            android:title="Hostel 2 App"
+            android:summary="For The Wild Ones\n\nDesigned and Developed by:\nBhavesh Dhingra">
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
