@@ -1,7 +1,9 @@
 package com.iitdh.sonusourav.instigo.Login;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -18,14 +20,19 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.iitdh.sonusourav.instigo.HomeActivity;
+import com.iitdh.sonusourav.instigo.Mess.messnotification.AlarmBootReceiver;
+import com.iitdh.sonusourav.instigo.Mess.messnotification.BreakfastAlarmMaker;
+import com.iitdh.sonusourav.instigo.Mess.messnotification.DinnerAlarmMaker;
+import com.iitdh.sonusourav.instigo.Mess.messnotification.LunchAlarmMaker;
+import com.iitdh.sonusourav.instigo.Mess.messnotification.TiffinAlarmMaker;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
+
+import java.util.Objects;
 
 
 public class SplashActivity extends AppCompatActivity {
 
-    private ImageView splash;
-    private PreferenceManager splashPrefManager;
     public static String TAG= SplashActivity.class.getSimpleName();
 
 
@@ -38,16 +45,25 @@ public class SplashActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_splash);
-        splashPrefManager = new PreferenceManager(this);
+        PreferenceManager splashPrefManager = new PreferenceManager(this);
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         if (savedInstanceState != null) {
             onRestoreInstanceState(savedInstanceState);
         }
 
+        android.preference.PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+        BreakfastAlarmMaker.makeAlarm(getApplicationContext());
+        LunchAlarmMaker.makeAlarm(getApplicationContext());
+        TiffinAlarmMaker.makeAlarm(getApplicationContext());
+        DinnerAlarmMaker.makeAlarm(getApplicationContext());
+        ComponentName receiver = new ComponentName(getApplicationContext(), AlarmBootReceiver.class);
+        PackageManager pm = getApplicationContext().getPackageManager();
+        pm.setComponentEnabledSetting(receiver,
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP);
 
-
-        splash = findViewById(R.id.splash_iv);
+        ImageView splash = findViewById(R.id.splash_iv);
 
         if (splash != null) {
             Glide.with(this)
@@ -86,7 +102,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
                             } else {
-                                Log.e("SharedPreference Error", task.getException().toString());
+                                Log.e("SharedPreference Error", Objects.requireNonNull(task.getException()).toString());
                                 Log.d(TAG, "SharedPreference: isLoggedIn=false");
 
                                 new Handler().postDelayed(new Runnable() {
