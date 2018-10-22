@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
@@ -316,8 +317,9 @@ public class ProfileActivity extends AppCompatActivity
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), imageReq);
     }
 
-    private void uploadImage(final int pos) {
+    private void uploadImage( int pos) {
 
+        final int code=pos;
         if(filePath != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -346,7 +348,7 @@ public class ProfileActivity extends AppCompatActivity
                                 public void onSuccess(Uri uri) {
                                     Log.d("Pic Url Fetching","success");
 
-                                    if(pos==70){
+                                    if(code==70){
                                         profileUserRef.child("profilePic").setValue(uri.toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
@@ -420,6 +422,7 @@ public class ProfileActivity extends AppCompatActivity
                     Glide.with(this)
                             .load(bitmap)
                             .into(profilePic);
+
 
                     uploadImage(PICK_IMAGE_REQUEST1);
 

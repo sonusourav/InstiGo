@@ -83,7 +83,6 @@ public class EditInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_info);
 
         editInfoInit();
-        CommonFunctions.setUser(this);
 
         showProgressDialog();
         fetchUserData();
