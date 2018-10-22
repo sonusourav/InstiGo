@@ -2,6 +2,7 @@ package com.iitdh.sonusourav.instigo.Mess;
 
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -46,8 +47,8 @@ public class FragmentFeedback extends Fragment {
     MessFeedbackAdapter messFeedbackAdapter;
     private FirebaseDatabase feedbackInstance;
     private DatabaseReference feedbackRootRef;
-    private DatabaseReference messRef;
     private DatabaseReference messFeedbackRef;
+    private ProgressDialog csDocProgressDialog;
 
     private View view;
     private ListView listView;
@@ -77,6 +78,8 @@ public class FragmentFeedback extends Fragment {
 
 
         view=inflater.inflate(R.layout.fragment_feedback,null);
+
+        showProgressDialog();
 
         listView = view.findViewById(R.id.mess_feedback_listview);
         feedbackList = new ArrayList<>();
@@ -118,6 +121,7 @@ public class FragmentFeedback extends Fragment {
                          }
                     }
                     messFeedbackAdapter.notifyDataSetChanged();
+                    hideProgressDialog();
                 }
             }
 
@@ -125,6 +129,7 @@ public class FragmentFeedback extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 Log.e(TAG, "Failed to read value.", databaseError.toException());
+                hideProgressDialog();
             }
         });
 
@@ -212,6 +217,24 @@ public class FragmentFeedback extends Fragment {
 
 
         return view;
+    }
+
+    public void showProgressDialog() {
+
+        if (csDocProgressDialog == null) {
+            csDocProgressDialog = new ProgressDialog(getActivity(),R.style.MyAlertDialogStyle);
+            csDocProgressDialog.setMessage("Fetching feedbacks....");
+            csDocProgressDialog.setIndeterminate(true);
+            csDocProgressDialog.setCanceledOnTouchOutside(false);
+        }
+
+        csDocProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (csDocProgressDialog != null && csDocProgressDialog.isShowing()) {
+            csDocProgressDialog.dismiss();
+        }
     }
 
 

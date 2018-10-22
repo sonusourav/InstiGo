@@ -28,9 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.iitdh.sonusourav.instigo.R;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class ComplainRegister  extends AppCompatActivity
 {
 
@@ -43,25 +40,14 @@ public class ComplainRegister  extends AppCompatActivity
     private CheckBox isPrivate;
     private Button submitButton;
     private ProgressDialog complainProgressDialog;
-    private android.support.v7.app.ActionBar actionBar;
 
     private FirebaseUser user;
-    private FirebaseAuth complainAuth;
-    private FirebaseDatabase complainInstance;
     private DatabaseReference complainRootRef;
     private DatabaseReference complainRef;
 
-    private int UpdatedComplainNo;
-    private String ComplainDate;
-    private long ComplainTime;
-    int complainNo;
-    long millisecond;
-    Date mobileDate;
-    String date;
-    String time;
+
     private ComplainItemClass newComplain;
 
-    Calendar calendar;
     String requesterName;
     String title;
     String house;
@@ -132,7 +118,7 @@ public class ComplainRegister  extends AppCompatActivity
 
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        actionBar = getSupportActionBar();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -168,9 +154,9 @@ public class ComplainRegister  extends AppCompatActivity
         isPrivate=findViewById(R.id.complain_is_private);
         submitButton=findViewById(R.id.complain_submit);
 
-        complainAuth=FirebaseAuth.getInstance();
+        FirebaseAuth complainAuth = FirebaseAuth.getInstance();
         user = complainAuth.getCurrentUser();
-        complainInstance = FirebaseDatabase.getInstance();
+        FirebaseDatabase complainInstance = FirebaseDatabase.getInstance();
         complainRootRef= complainInstance.getReference("Maintenance");
         complainRef=complainRootRef.child("Complaints").getRef();
 

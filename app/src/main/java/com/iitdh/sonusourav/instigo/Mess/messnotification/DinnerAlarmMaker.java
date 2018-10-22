@@ -14,7 +14,7 @@ public class DinnerAlarmMaker {
     public static void makeAlarm(Context context) {
 
         Calendar dinnerTime = Calendar.getInstance();
-        dinnerTime.set(Calendar.HOUR_OF_DAY,7);
+        dinnerTime.set(Calendar.HOUR_OF_DAY,19);
         dinnerTime.set(Calendar.MINUTE,30);
         dinnerTime.set(Calendar.SECOND,0);
         if (Calendar.getInstance().after(dinnerTime))

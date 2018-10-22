@@ -7,7 +7,7 @@ public class TestActivity extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.doc_main);
+        setContentView(R.layout.test);
 
     }
 

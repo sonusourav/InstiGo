@@ -16,14 +16,15 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.iitdh.sonusourav.instigo.Council.CouncilActivity;
-import com.iitdh.sonusourav.instigo.Feedback;
+import com.iitdh.sonusourav.instigo.Feedback.Feedback;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.Login.LoginActivity;
 import com.iitdh.sonusourav.instigo.Complaints.ComplaintsActivity;
 import com.iitdh.sonusourav.instigo.Mess.MessActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Resources.ResourceActivity;
-import com.iitdh.sonusourav.instigo.Resources.CS.CSResourceDocs;
+import com.iitdh.sonusourav.instigo.Settings.SettingsActivity;
+import com.iitdh.sonusourav.instigo.TestActivity;
 import com.iitdh.sonusourav.instigo.User.ProfileActivity;
 import com.iitdh.sonusourav.instigo.User.UpdatePassword;
 
@@ -68,7 +69,7 @@ public class CommonFunctions {
 
             case R.id.nav_notification: {
                 Toast.makeText(activity.getApplicationContext(), "Welcome to Notification", Toast.LENGTH_SHORT).show();
-                activity.startActivity(new Intent().setClass(activity, CSResourceDocs.class));
+                activity.startActivity(new Intent().setClass(activity, TestActivity.class));
                 break;
 
             }
@@ -98,6 +99,12 @@ public class CommonFunctions {
 
             case R.id.nav_feedback: {
                 activity.startActivity(new Intent().setClass(activity, Feedback.class));
+                break;
+
+            }
+
+            case R.id.nav_settings: {
+                activity.startActivity(new Intent().setClass(activity, SettingsActivity.class));
                 break;
 
             }

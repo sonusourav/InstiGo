@@ -1,39 +1,36 @@
-package com.iitdh.sonusourav.instigo;
+package com.iitdh.sonusourav.instigo.Settings;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.preference.PreferenceFragment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.Toast;
+
+import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
-import com.iitdh.sonusourav.instigo.Utils.WebViewClientImpl;
 
 import java.util.Objects;
 
 
-public class Feedback extends AppCompatActivity
+public class SettingsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private WebView webView = null;
-
-
-    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        findViewById(R.id.include_feedback).setVisibility(View.VISIBLE);
 
-        CommonFunctions.setUser(this);
+        findViewById(R.id.include_settings).setVisibility(View.VISIBLE);
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.settings_framelayout, new SettingsFragment())
+                .commit();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -48,17 +45,8 @@ public class Feedback extends AppCompatActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        CommonFunctions.setUser(this);
 
-
-        this.webView = findViewById(R.id.webview);
-
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        WebViewClientImpl webViewClient = new WebViewClientImpl(this);
-        webView.setWebViewClient(webViewClient);
-
-        webView.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSf4J6r0GwHk1-3nmLUz8DAZiMiSolJWlNmOL6EK2ds3K9oVOA/viewform?usp=sf_link");
 
     }
 
@@ -70,7 +58,8 @@ public class Feedback extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             if (back_pressed + 2000 > System.currentTimeMillis()){
-                moveTaskToBack(true);            }
+                super.onBackPressed();
+            }
             else{
                 Toast.makeText(getBaseContext(), "Press twice to exit", Toast.LENGTH_SHORT).show();
                 back_pressed = System.currentTimeMillis();
@@ -78,23 +67,21 @@ public class Feedback extends AppCompatActivity
         }
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+    public boolean onNavigationItemSelected(MenuItem item) {
         return CommonFunctions.navigationItemSelect(item, this);
-
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && this.webView.canGoBack()) {
-            this.webView.goBack();
-            return true;
+
+    public static class SettingsFragment extends PreferenceFragment {
+
+        public SettingsFragment() {}
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.settings);
         }
-
-        return super.onKeyDown(keyCode, event);
     }
-
 }
