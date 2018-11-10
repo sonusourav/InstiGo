@@ -37,7 +37,7 @@
 
     <include
         android:id="@+id/include_maintenance"
-        layout="@layout/activity_maintenance"
+        layout="@layout/activity_complaint"
         android:visibility="gone"/>
     <include
         android:id="@+id/include_tabbed_content"
