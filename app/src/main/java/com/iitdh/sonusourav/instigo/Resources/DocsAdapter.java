@@ -151,8 +151,11 @@ public class DocsAdapter extends RecyclerView.Adapter<DocsAdapter.MyViewHolder> 
                 new DownloadFile(mContext).execute(path,courseName,topicName,sub_topicName,type);
 
             } else {
+                Log.d("PermissionNotPresent","Reaching");
+
+
                 //If permission is not present request for the same.
-                EasyPermissions.requestPermissions(mContext, mContext.getString(R.string.write_file), WRITE_REQUEST_CODE, Manifest.permission.READ_EXTERNAL_STORAGE);
+                EasyPermissions.requestPermissions(mContext, mContext.getString(R.string.write_file), WRITE_REQUEST_CODE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
                 tName=courseName;
                 cName=courseName;
                 sName=sub_topicName;
@@ -171,6 +174,7 @@ public class DocsAdapter extends RecyclerView.Adapter<DocsAdapter.MyViewHolder> 
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.d("PermissionRequest","Reaching");
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, mContext);
     }
 

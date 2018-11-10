@@ -7,6 +7,7 @@
     android:id="@+id/ultra_viewpager_rl"
     android:background="@drawable/council_background"
     android:backgroundTint="@color/golden"
+    android:layout_gravity="center_vertical"
     android:paddingBottom="10dp">
 
     <TextView

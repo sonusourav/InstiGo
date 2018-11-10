@@ -10,6 +10,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,6 +63,7 @@ public class ComplainRegister  extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_register);
 
+        Log.d("ComplainRegister","Reaching");
 
         if(savedInstanceState!=null){
             onRestoreInstanceState(savedInstanceState);
