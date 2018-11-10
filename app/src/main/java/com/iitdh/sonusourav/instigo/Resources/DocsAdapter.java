@@ -41,7 +41,7 @@ public class DocsAdapter extends RecyclerView.Adapter<DocsAdapter.MyViewHolder> 
     private String url;
     private static final int WRITE_REQUEST_CODE = 300;
     private static final String TAG = CSResourceDocs.class.getSimpleName();
-    String tName,cName,sName,docType;
+    private String tName,cName,sName,docType;
 
 
 

@@ -129,7 +129,7 @@ public class ProfileActivity extends AppCompatActivity
         // add the buttons
         builder
                 .setMessage("What do you want to update?")
-                .setCancelable(true)
+                .setCancelable(false)
                 .setPositiveButton("Profile pic", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
