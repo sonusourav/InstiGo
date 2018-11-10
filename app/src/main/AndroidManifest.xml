@@ -11,9 +11,9 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
-        android:icon="@mipmap/logo_instigo"
+        android:icon="@mipmap/icon_instigo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/logo_instigo"
+        android:roundIcon="@mipmap/icon_instigo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:screenOrientation="portrait"

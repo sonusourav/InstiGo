@@ -73,6 +73,9 @@ public class RegisterActivity extends AppCompatActivity {
                 signUpUsername = registerUsername.getText().toString().trim();
 
                 if(!validateUserInput(signUpEmail, signUpUsername, signUpPass)){
+
+                    registerButton.setFocusable(true);
+                    registerButton.setClickable(true);
                     return;
                 }
 
@@ -160,8 +163,6 @@ public class RegisterActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(signUpEmail) || signUpEmail.equals("") || signUpEmail.length() == 0) {
             Toast.makeText(getApplicationContext(), "Enter your  email address!", Toast.LENGTH_SHORT).show();
             registerEmail.requestFocus();
-            loginHere.setFocusable(true);
-            loginHere.setClickable(true);
 
             return false;
         }
@@ -169,24 +170,21 @@ public class RegisterActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(signUpUsername) || signUpUsername.equals("") || signUpUsername.length() == 0) {
             Toast.makeText(getApplicationContext(), "Enter your Username!", Toast.LENGTH_SHORT).show();
             registerUsername.requestFocus();
-            loginHere.setFocusable(true);
-            loginHere.setClickable(true);
+
             return false;
         }
 
         if (signUpPass.equals("") || TextUtils.isEmpty(signUpPass) || signUpPass.length() == 0) {
             Toast.makeText(getApplicationContext(), "Enter your password", Toast.LENGTH_SHORT).show();
             registerPass.requestFocus();
-            loginHere.setFocusable(true);
-            loginHere.setClickable(true);
+
             return false;
         }
 
         if (!validateEmail(signUpEmail)) {
             Toast.makeText(getApplicationContext(), "Invalid Email address", Toast.LENGTH_SHORT).show();
             registerEmail.requestFocus();
-            loginHere.setFocusable(true);
-            loginHere.setClickable(true);
+
             return false;
         }
 
@@ -210,7 +208,8 @@ public class RegisterActivity extends AppCompatActivity {
             loginHere.setClickable(true);
             return false;
         }
-            return true;
+
+        return true;
 
     }
 
