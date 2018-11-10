@@ -44,7 +44,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.iitdh.sonusourav.instigo.Login.LoginActivity;
+import com.iitdh.sonusourav.instigo.Account.LoginActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Resources.DocsAdapter;
 import com.iitdh.sonusourav.instigo.Resources.DocsClass;

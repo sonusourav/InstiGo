@@ -17,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -45,15 +44,8 @@ public class FragmentFeedback extends Fragment {
     }
     ArrayList<FeedbackUserClass> feedbackList;
     MessFeedbackAdapter messFeedbackAdapter;
-    private FirebaseDatabase feedbackInstance;
-    private DatabaseReference feedbackRootRef;
     private DatabaseReference messFeedbackRef;
-    private ProgressDialog csDocProgressDialog;
-
-    private View view;
-    private ListView listView;
-    private FloatingActionButton fabButton;
-    private ProgressBar feedbackProgressbar;
+    private ProgressDialog feedbackProgressDialog;
 
     private String about ;
     private String day;
@@ -77,19 +69,18 @@ public class FragmentFeedback extends Fragment {
         // Inflate the layout for this fragment
 
 
-        view=inflater.inflate(R.layout.fragment_feedback,null);
+        View view = inflater.inflate(R.layout.fragment_feedback, null);
 
         showProgressDialog();
 
-        listView = view.findViewById(R.id.mess_feedback_listview);
+        ListView listView = view.findViewById(R.id.mess_feedback_listview);
         feedbackList = new ArrayList<>();
-        fabButton = view.findViewById(R.id.mess_feedback_fab);
-        feedbackProgressbar=view.findViewById(R.id.feedback_progress_bar);
+        FloatingActionButton fabButton = view.findViewById(R.id.mess_feedback_fab);
 
 
         FirebaseAuth ecAuth = FirebaseAuth.getInstance();
-        feedbackInstance = FirebaseDatabase.getInstance();
-        feedbackRootRef = feedbackInstance.getReference("Mess");
+        FirebaseDatabase feedbackInstance = FirebaseDatabase.getInstance();
+        DatabaseReference feedbackRootRef = feedbackInstance.getReference("Mess");
         messFeedbackRef = feedbackRootRef.child("Feedback").getRef();
         final FirebaseUser user = ecAuth.getCurrentUser();
 
@@ -221,19 +212,19 @@ public class FragmentFeedback extends Fragment {
 
     public void showProgressDialog() {
 
-        if (csDocProgressDialog == null) {
-            csDocProgressDialog = new ProgressDialog(getActivity(),R.style.MyAlertDialogStyle);
-            csDocProgressDialog.setMessage("Fetching feedbacks....");
-            csDocProgressDialog.setIndeterminate(true);
-            csDocProgressDialog.setCanceledOnTouchOutside(false);
+        if (feedbackProgressDialog == null) {
+            feedbackProgressDialog = new ProgressDialog(getActivity(),R.style.MyAlertDialogStyle);
+            feedbackProgressDialog.setMessage("Fetching feedbacks....");
+            feedbackProgressDialog.setIndeterminate(true);
+            feedbackProgressDialog.setCanceledOnTouchOutside(true);
         }
 
-        csDocProgressDialog.show();
+        feedbackProgressDialog.show();
     }
 
     public void hideProgressDialog() {
-        if (csDocProgressDialog != null && csDocProgressDialog.isShowing()) {
-            csDocProgressDialog.dismiss();
+        if (feedbackProgressDialog != null && feedbackProgressDialog.isShowing()) {
+            feedbackProgressDialog.dismiss();
         }
     }
 

@@ -50,24 +50,17 @@ public class FragmentMenu extends Fragment {
     public FragmentMenu() {
         // Required empty public constructor
     }
-    private BoomMenuButton bmb;
+
     private String weekdays[]={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
 
-    private ListView theListView;
     private  FoldingCellListAdapter adapter;
     private ArrayList<Item> items;
     private float ratings;
     private  View view;
     private Button dayButton;
 
-    private FirebaseAuth menuAuth;
-    private FirebaseDatabase menuInstance;
-    private DatabaseReference menuRootRef;
-
-    private DatabaseReference menuRef;
     private DatabaseReference ratingRef;
     private DatabaseReference dayRef;
-    private TextView contentMenu;
 
 
     @Override
@@ -80,19 +73,17 @@ public class FragmentMenu extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_menu, null);
-        theListView = view.findViewById(R.id.mainListView);
+        ListView theListView = view.findViewById(R.id.mainListView);
         dayButton=view.findViewById(R.id.mess_day_button);
 
-        menuAuth = FirebaseAuth.getInstance();
-        menuInstance = FirebaseDatabase.getInstance();
-        menuRootRef = menuInstance.getReference("Mess");
-        menuRef=menuRootRef.child("Menu").getRef();
-        ratingRef=menuRef.child("Ratings").getRef();
+        FirebaseDatabase menuInstance = FirebaseDatabase.getInstance();
+        DatabaseReference menuRootRef = menuInstance.getReference("Mess");
+        DatabaseReference menuRef = menuRootRef.child("Menu").getRef();
+        ratingRef= menuRef.child("Ratings").getRef();
         dayRef=ratingRef.child("Day").getRef();
 
 
-
-        bmb = (BoomMenuButton) view.findViewById(R.id.bmb);
+        BoomMenuButton bmb =  view.findViewById(R.id.bmb);
         assert bmb != null;
 
         // prepare elements to display
@@ -795,8 +786,7 @@ public class FragmentMenu extends Fragment {
 
     }
 
-    static String encodeUserEmail(String userEmail) {
-        return userEmail.replace(".", ","); }
+
 
 }
 

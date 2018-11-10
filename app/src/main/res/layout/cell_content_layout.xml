@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:visibility="gone"
+    android:minHeight="250dp"
     android:background="@color/white">
 
     <!-- content header line -->
@@ -23,7 +24,7 @@
             android:gravity="start"
             android:text="@string/mess_title"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,7 +34,7 @@
             android:text="Time"
             android:gravity="center_vertical"
             android:textColor="@android:color/white"
-            android:textSize="17sp"
+            android:textSize="18sp"
             android:textStyle="normal" />
 
 
@@ -46,6 +47,7 @@
             android:id="@+id/head_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="60dp"
             android:scaleType="centerCrop"
             android:src="@drawable/mess_content_background"
             />
@@ -59,8 +61,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:minHeight="160dp"
         android:id="@+id/cell_content_layout3">
 
     <TextView
@@ -99,6 +102,7 @@
         android:elevation="20dp"
         android:minLines="5"
         android:maxLines="6"
+        android:minHeight="120dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:text="@string/item_name"
@@ -146,7 +150,7 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textSize="17dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
            />
     </LinearLayout>
 

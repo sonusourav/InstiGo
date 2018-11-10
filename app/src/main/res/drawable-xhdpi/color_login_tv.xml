@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:color="@color/focusable_login"/>
+    <item android:state_pressed="true" android:state_enabled="true" android:color="@color/pressed_login" />
+    <item android:state_enabled="false" android:color="@color/disabled_login" />
+    <item android:color="@color/default_login"/>
+</selector>

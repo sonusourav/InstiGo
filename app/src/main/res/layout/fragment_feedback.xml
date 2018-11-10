@@ -28,23 +28,12 @@
         android:id="@+id/mess_feedback_fab"
         app:rippleColor="@color/purple"
         android:src="@drawable/icon_fab"
-        android:backgroundTint="@color/colorAccent"
-        android:tint="@color/white"
+        app:backgroundTint="@color/colorAccent"
+        app:tint="@color/white"
         app:fabSize="normal"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="15dp"
         android:layout_marginEnd="15dp"/>
-
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/feedback_progress_bar"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:visibility="gone"
-
-        />
 
 </RelativeLayout>

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,13 +18,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.iitdh.sonusourav.instigo.Council.CouncilActivity;
 import com.iitdh.sonusourav.instigo.Feedback.Feedback;
 import com.iitdh.sonusourav.instigo.HomeActivity;
-import com.iitdh.sonusourav.instigo.Login.LoginActivity;
+import com.iitdh.sonusourav.instigo.Account.LoginActivity;
 import com.iitdh.sonusourav.instigo.Complaints.ComplaintsActivity;
 import com.iitdh.sonusourav.instigo.Mess.MessActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Resources.ResourceActivity;
 import com.iitdh.sonusourav.instigo.Settings.SettingsActivity;
-import com.iitdh.sonusourav.instigo.TestActivity;
 import com.iitdh.sonusourav.instigo.User.ProfileActivity;
 import com.iitdh.sonusourav.instigo.User.UpdatePassword;
 
@@ -40,7 +39,9 @@ public class CommonFunctions {
             case R.id.nav_home: {
                 activity.startActivity(new Intent().setClass(activity, HomeActivity.class));
                 break;
+
             }
+
             case R.id.nav_mess: {
                 activity.startActivity(new Intent().setClass(activity, MessActivity.class));
                 break;
@@ -67,12 +68,6 @@ public class CommonFunctions {
 
             }
 
-            case R.id.nav_notification: {
-                Toast.makeText(activity.getApplicationContext(), "Welcome to Notification", Toast.LENGTH_SHORT).show();
-                activity.startActivity(new Intent().setClass(activity, TestActivity.class));
-                break;
-
-            }
 
             case R.id.nav_profile: {
                 activity.startActivity(new Intent().setClass(activity, ProfileActivity.class));
@@ -121,8 +116,8 @@ public class CommonFunctions {
 
         if (firebaseUser!=null){
             NavigationView navigationView = activity.findViewById(R.id.nav_view);
-            Menu nav_Menu = navigationView.getMenu();
             LinearLayout drawerHeader = (LinearLayout) navigationView.getHeaderView(0);
+
             TextView emailTextView = drawerHeader.findViewById(R.id.nav_header_email);
             TextView usernameTextView = drawerHeader.findViewById(R.id.nav_header_username);
             ImageView userImage=drawerHeader.findViewById(R.id.nav_header_imageView);
@@ -131,8 +126,8 @@ public class CommonFunctions {
             usernameTextView.setText(firebaseUser.getDisplayName());
             Glide.with(activity.getApplicationContext())
                     .load(firebaseUser.getPhotoUrl())
-                    .into(userImage).onLoadStarted(activity.getDrawable(R.drawable.image_profile_pic));
-
+                    .into(userImage);
+            Log.d("Nav_Image","Reached");
 
         }
     }

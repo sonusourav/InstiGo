@@ -32,8 +32,6 @@ public class ComplaintsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    private LinearLayout mLinearLayout;
-    private int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +57,6 @@ public class ComplaintsActivity extends AppCompatActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        mLinearLayout = findViewById(R.id.pagesContainer);
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -87,28 +84,6 @@ public class ComplaintsActivity extends AppCompatActivity
         return CommonFunctions.navigationItemSelect(item, this);
     }
 
-
-    public void buttonEffect(View button){
-        button.setOnTouchListener(new View.OnTouchListener() {
-
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN: {
-                        color = ResourcesCompat.getColor(getResources(), R.color.cell_title_background, null);
-                        v.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
-                        v.invalidate();
-                        break;
-                    }
-                    case MotionEvent.ACTION_UP: {
-                        v.getBackground().clearColorFilter();
-                        v.invalidate();
-                        break;
-                    }
-                }
-                return false;
-            }
-        });
-    }
 
     public void setUpImageSlider(){
         UltraViewPager ultraViewPager = findViewById(R.id.ultra_viewpager);

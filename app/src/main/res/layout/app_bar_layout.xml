@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login.IntroScreen"
+    tools:context=".Account.IntroScreen"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -27,8 +27,8 @@
 
     </android.support.design.widget.AppBarLayout>
     <include
-        android:id="@+id/include_main_content"
-        layout="@layout/content_main"
+        android:id="@+id/include_home"
+        layout="@layout/home_screen"
         android:visibility="gone"/>
     <include
         android:id="@+id/include_council"

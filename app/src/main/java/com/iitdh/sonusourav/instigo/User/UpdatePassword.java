@@ -1,6 +1,5 @@
 package com.iitdh.sonusourav.instigo.User;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,6 +40,7 @@ public class UpdatePassword extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  {
 
     private EditText newPassword;
+    private FirebaseAuth updatePassAuth;
     private FirebaseUser firebaseUser;
     private DatabaseReference rootRef;
     private EditText oldPassword;
@@ -50,6 +51,7 @@ public class UpdatePassword extends AppCompatActivity
     private FrameLayout updateFrameLayout;
     DatabaseReference userRef;
     private String email;
+    private String TAG=UpdatePassword.class.getSimpleName();
 
 
 
@@ -77,9 +79,9 @@ public class UpdatePassword extends AppCompatActivity
         toggle.syncState();
 
         updatePassInit();
-        if(!updatePref.isEmailUpdated()){
-            updateFrameLayout.setVisibility(View.GONE);
-
+        if(updatePref.isPassUpdated()){
+            updateFrameLayout.setVisibility(View.VISIBLE);
+            Log.d(TAG+"  IsPasswordUpdated","Updated");
         }
 
         updateButton.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +92,6 @@ public class UpdatePassword extends AppCompatActivity
                 updateButton.setEnabled(false);
                 final String newPass =newPassword.getText().toString().trim();
 
-                if(!updatePref.isEmailUpdated()){
 
                     if(newPass.isEmpty() ){
 
@@ -104,36 +105,66 @@ public class UpdatePassword extends AppCompatActivity
                         updateButton.setEnabled(true);
 
                     }else
-                        {
-                            userRef=rootRef.child(encodeUserEmail(Objects.requireNonNull(firebaseUser.getEmail()))).child("pass");
-                            userRef.setValue(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(getApplicationContext(),"Password successfully updated.",Toast.LENGTH_SHORT).show();
-                                updatePref.setIsEmailUpdated(true);
-                                updateProgressBar.setVisibility(View.GONE);
-                                Log.d("Update Password", "First Time Password updated");
-                                startActivity(new Intent(UpdatePassword.this,HomeActivity.class));
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getApplicationContext(),"Failed to update password.\nPlease try again.",Toast.LENGTH_SHORT).show();
-                                updateProgressBar.setVisibility(View.GONE);
-                                updateButton.setEnabled(true);
+                        if(!updatePref.isPassUpdated()){
 
-                            }
-                        });
+                            Log.d(TAG+"  FirstPassChange","Reaching");
+
+                            AuthCredential credential = EmailAuthProvider.getCredential(email, newPass);
+                            assert updatePassAuth.getCurrentUser()!=null;
+                            updatePassAuth.getCurrentUser().linkWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(TAG, "linkWithCredential:success");
+
+                                        userRef=rootRef.child(encodeUserEmail(Objects.requireNonNull(firebaseUser.getEmail()))).child("pass");
+                                        userRef.setValue(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                updatePref.setIsPassUpdated(true);
+                                                updateProgressBar.setVisibility(View.GONE);
+                                                Log.d(TAG + "UpdatePassword", "First Time Password updated");
+                                                startActivity(new Intent(UpdatePassword.this,HomeActivity.class));
+
+
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+
+                                                Log.d(TAG+"OnFailure", e.getLocalizedMessage());
+                                                Toast.makeText(getApplicationContext(),"Failed to update password.\nPlease try again.",Toast.LENGTH_SHORT).show();
+                                                updateProgressBar.setVisibility(View.GONE);
+                                                updateButton.setEnabled(true);
+
+                                            }
+                                        });
+
+                                    } else {
+                                        Log.w(TAG, "linkWithCredential:failure", task.getException());
+
+                                        Toast.makeText(getApplicationContext(),"Failed to update password.\nPlease try again.",Toast.LENGTH_SHORT).show();
+                                        updateProgressBar.setVisibility(View.GONE);
+                                        updateButton.setEnabled(true);
+
+                                    }
+
+                                }
+                            });
+
                     }
-                }else {
-
-
+                else {
 
                     String oldPass =oldPassword.getText().toString().trim();
 
+                    if(oldPass.isEmpty() ){
+
+                        updateProgressBar.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(),"Old Password is Empty .",Toast.LENGTH_SHORT).show();
+                        updateButton.setEnabled(true);
+                    }
                     assert email != null;
                     AuthCredential credential = EmailAuthProvider.getCredential(email,oldPass);
-
 
                     firebaseUser.reauthenticate(credential)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -214,7 +245,8 @@ public class UpdatePassword extends AppCompatActivity
         updateButton = findViewById(R.id.btnUpdatePassword);
         newPassword = findViewById(R.id.etNewPassword);
         oldPassword = findViewById(R.id.etOldPassword);
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        updatePassAuth=FirebaseAuth.getInstance();
+        firebaseUser =updatePassAuth.getCurrentUser();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         rootRef = firebaseDatabase.getReference().child("Users");
         assert firebaseUser != null;

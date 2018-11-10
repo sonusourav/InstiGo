@@ -2,6 +2,7 @@ package com.iitdh.sonusourav.instigo.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class PreferenceManager {
 
@@ -14,7 +15,7 @@ public class PreferenceManager {
 
     // Shared preferences file name
     private static final String PREF_NAME = "iitdh";
-    private static final String IS_FIRST_TIME_LAUNCH = "true";
+    private static final String IS_FIRST_TIME_LAUNCH = "isFirstTimeLaunch";
     private static final String IS_LOGGED_IN = "idLoggedIn";
     private static final String IS_FIRST_GOOGLE_LOGIN = "isFirstGoogleLogin";
     private static final String IS_PASSWORD_UPDATED = "isPasswordUpdated";
@@ -45,37 +46,34 @@ public class PreferenceManager {
         editor.commit();
     }
 
-    public void setIsEmailUpdated(boolean emailUpdated) {
-        editor.putBoolean(IS_PASSWORD_UPDATED, emailUpdated);
+    public void setIsPassUpdated(boolean passUpdated) {
+        Log.d("ClassName1",context.getClass().getSimpleName());
+        editor.putBoolean(IS_PASSWORD_UPDATED, passUpdated);
         editor.commit();
+    }
+
+    public void setFirstTimeLaunch(boolean isFirstTime) {
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
+        editor.apply();
     }
 
     public String getPrefEmail(){
        return pref.getString(PREF_EMAIL,"email");
     }
 
-
     public String getPrefPassword(){
         return pref.getString(PREF_PASSWORD,"password");
     }
 
-    public boolean isLoggedIn() {
-        return pref.getBoolean(IS_LOGGED_IN, false);
-    }
+    public boolean isLoggedIn() { return pref.getBoolean(IS_LOGGED_IN, false); }
 
     public boolean isFirstGoogleLogin() {
         return pref.getBoolean(IS_FIRST_GOOGLE_LOGIN, true);
     }
 
-    public boolean isEmailUpdated() { return pref.getBoolean(IS_PASSWORD_UPDATED, false); }
+    public boolean isPassUpdated() {
+        Log.d("ClassName",context.getClass().getSimpleName());
+        return pref.getBoolean(IS_PASSWORD_UPDATED, false); }
 
-
-    public void setFirstTimeLaunch(boolean isFirstTime) {
-        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor.commit();
-    }
-
-    public boolean isFirstTimeLaunch() {
-        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
-    }
+    public boolean isFirstTimeLaunch() { return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true); }
 }

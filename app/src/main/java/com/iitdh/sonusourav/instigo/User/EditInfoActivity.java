@@ -146,18 +146,53 @@ public class EditInfoActivity extends AppCompatActivity {
 
                 if(dataSnapshot.exists()){
                     UserClass userClass=dataSnapshot.getValue(UserClass.class);
-                    assert  userClass!=null;
-                    infoName.setText(userClass.getName().trim());
-                    infoBranch.setText(userClass.getBranch().trim());
-                    infoYear.setText(userClass.getYear().trim());
-                    infoMobile.setText(userClass.getPhone().trim());
-                    infoDob.setText(userClass.getDob().trim());
+                    if(userClass.getName().trim()!=null){
+                        infoName.setText(userClass.getName().trim());
+                    }else{
+                        infoName.setText("");
 
-                     pos1=spinnerArrayAdapter1.getPosition(userClass.getGender());
-                     pos2=spinnerArrayAdapter2.getPosition(userClass.getHostel());
+                    }
+                    if(userClass.getBranch().trim()!=null){
+                        infoBranch.setText(userClass.getBranch().trim());
+                    }else{
+                        infoBranch.setText("");
 
-                    infoGender.setSelection(pos1);
-                    infoHostel.setSelection(pos2);
+                    }
+                    if(userClass.getYear().trim()!=null){
+                        infoYear.setText(userClass.getYear().trim());
+                    }else{
+                        infoYear.setText("");
+
+                    }
+                    if(userClass.getPhone().trim()!=null){
+                        infoMobile.setText(userClass.getPhone().trim());
+                    }else{
+                        infoMobile.setText("");
+
+                    }
+                    if(userClass.getDob().trim()!=null){
+                        infoDob.setText(userClass.getDob().trim());
+                    }else{
+                        infoDob.setText("");
+
+                    }
+
+                    if(userClass.getGender().trim()!=null){
+                        pos1=spinnerArrayAdapter1.getPosition(userClass.getGender());
+                        infoGender.setSelection(pos1);
+
+                    }else{
+                        infoGender.setSelection(1);
+
+                    }
+
+                    if(userClass.getHostel().trim()!=null){
+                        pos2=spinnerArrayAdapter2.getPosition(userClass.getHostel());
+                        infoHostel.setSelection(pos2);
+                    }else{
+                        infoGender.setSelection(1);
+
+                    }
 
                     hideProgressDialog();
 

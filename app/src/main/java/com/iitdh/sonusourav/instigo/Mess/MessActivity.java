@@ -1,5 +1,6 @@
 package com.iitdh.sonusourav.instigo.Mess;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 
@@ -37,6 +39,7 @@ public class MessActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        CommonFunctions.setUser(this);
 
         findViewById(R.id.include_tabbed_content).setVisibility(View.VISIBLE);
 
@@ -53,7 +56,6 @@ public class MessActivity extends AppCompatActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        CommonFunctions.setUser(this);
 
 
         //Initializing viewPager
@@ -98,13 +100,7 @@ public class MessActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if (back_pressed + 2000 > System.currentTimeMillis()){
-                moveTaskToBack(true);
-            }
-            else{
-                Toast.makeText(getBaseContext(), "Press twice to exit", Toast.LENGTH_SHORT).show();
-                back_pressed = System.currentTimeMillis();
-            }
+           startActivity(new Intent(MessActivity.this,HomeActivity.class));
         }
     }
 

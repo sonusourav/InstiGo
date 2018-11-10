@@ -9,7 +9,7 @@
     folding-cell:backSideColor="@color/divider_color"
     folding-cell:cameraHeight="30">
 
-    <!-- CONTENT (UNFOLDED) LAYOUT (MUST BE AT LEAST 2x times BIGGER than content layout bellow)-->
+    <!-- CONTENT (UNFOLDED) LAYOUT (MUST BE AT LEAST 2x times BIGGER than title layout below)-->
     <include layout="@layout/cell_content_layout" />
 
     <!-- TITLE (FOLDED) LAYOUT (MUST BE AT LEAST 2x times SMALLER than content layout above) -->

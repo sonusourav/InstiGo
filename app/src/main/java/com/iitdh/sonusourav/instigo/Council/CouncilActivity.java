@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.iitdh.sonusourav.instigo.Complaints.ComplainStatus;
+import com.iitdh.sonusourav.instigo.Complaints.ComplaintsActivity;
+import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 
@@ -38,15 +41,7 @@ public class CouncilActivity extends AppCompatActivity
         setContentView(R.layout.activity_welcome);
 
         findViewById(R.id.include_council).setVisibility(View.VISIBLE);
-        wardens=findViewById(R.id.wardens);
-        genSecy=findViewById(R.id.gen_secy);
-        sportsSecy=findViewById(R.id.sports_secy);
-        culSecy=findViewById(R.id.cul_secy);
-        FrHostelSecy=findViewById(R.id.fr_hostel_secy);
-        FrHosMainSecy=findViewById(R.id.fr_hm_secy);
-        FrMessSecy=findViewById(R.id.fr_mess_secy);
-        FrSportsSecy=findViewById(R.id.frs_secy);
-        EmergencyContacts=findViewById(R.id.emergency_cont);
+
 
         CommonFunctions.setUser(this);
 
@@ -64,6 +59,7 @@ public class CouncilActivity extends AppCompatActivity
         toggle.syncState();
 
 
+        councilInit();
 
         wardens.setOnClickListener(this);
         genSecy.setOnClickListener(this);
@@ -78,20 +74,16 @@ public class CouncilActivity extends AppCompatActivity
 
     }
 
-    private static long back_pressed;
+    private static long back_pressed=100;
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            if (back_pressed + 2000 > System.currentTimeMillis()){
-                moveTaskToBack(true);            }
-            else{
-                Toast.makeText(getBaseContext(), "Press twice to exit", Toast.LENGTH_SHORT).show();
-                back_pressed = System.currentTimeMillis();
-            }
         }
+        startActivity(new Intent(CouncilActivity.this, HomeActivity.class));
+
     }
 
 
@@ -139,5 +131,17 @@ public class CouncilActivity extends AppCompatActivity
                startActivity(new Intent(CouncilActivity.this,CouncilWarden.class));
                break;
         }
+    }
+
+    private void councilInit(){
+        wardens=findViewById(R.id.wardens);
+        genSecy=findViewById(R.id.gen_secy);
+        sportsSecy=findViewById(R.id.sports_secy);
+        culSecy=findViewById(R.id.cul_secy);
+        FrHostelSecy=findViewById(R.id.fr_hostel_secy);
+        FrHosMainSecy=findViewById(R.id.fr_hm_secy);
+        FrMessSecy=findViewById(R.id.fr_mess_secy);
+        FrSportsSecy=findViewById(R.id.frs_secy);
+        EmergencyContacts=findViewById(R.id.emergency_cont);
     }
 }
