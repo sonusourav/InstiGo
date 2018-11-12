@@ -31,7 +31,6 @@ public class MessActivity extends AppCompatActivity
 
     FragmentFeedback fragmentFeedback;
     FragmentMenu fragmentMenu;
-    FragmentOrder fragmentOrder;
 
 
     @Override
@@ -110,10 +109,8 @@ public class MessActivity extends AppCompatActivity
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         fragmentMenu =new FragmentMenu();
         fragmentFeedback =new FragmentFeedback();
-        fragmentOrder =new FragmentOrder();
         adapter.addFragment(fragmentMenu,"MENU");
         adapter.addFragment(fragmentFeedback,"FEEDBACK");
-        adapter.addFragment(fragmentOrder,"ORDER");
         viewPager.setAdapter(adapter);
     }
 

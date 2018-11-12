@@ -40,15 +40,15 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
     implementation 'com.android.support:percent:27.1.1'
-    implementation 'com.google.firebase:firebase-core:16.0.4'
-    implementation 'com.google.firebase:firebase-storage:16.0.3'
+    implementation 'com.google.firebase:firebase-core:16.0.5'
+    implementation 'com.google.firebase:firebase-storage:16.0.4'
     implementation 'com.firebase:firebase-client-android:2.5.2'
     implementation 'com.google.firebase:firebase-auth:16.0.5'
-    implementation 'com.firebaseui:firebase-ui-auth:4.0.0'
-    implementation 'com.google.firebase:firebase-storage:16.0.3'
-    implementation 'com.google.firebase:firebase-database:16.0.3'
+    implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
+    implementation 'com.google.firebase:firebase-storage:16.0.4'
+    implementation 'com.google.firebase:firebase-database:16.0.4'
     implementation 'com.firebase:firebase-client-android:2.5.2'
-    implementation 'com.google.firebase:firebase-firestore:17.1.1'
+    implementation 'com.google.firebase:firebase-firestore:17.1.2'
     implementation 'com.google.android.gms:play-services-base:16.0.1'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation 'com.nightonke:boommenu:2.1.1'
@@ -61,8 +61,7 @@ dependencies {
         transitive = true
     }
     implementation 'com.felipecsl.asymmetricgridview:library:2.0.1'
-    
-
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
 }
 
 apply plugin: 'com.google.gms.google-services'
