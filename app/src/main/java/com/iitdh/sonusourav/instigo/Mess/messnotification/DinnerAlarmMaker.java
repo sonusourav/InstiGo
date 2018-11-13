@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import java.util.Calendar;
 
@@ -13,9 +14,11 @@ public class DinnerAlarmMaker {
 
     public static void makeAlarm(Context context) {
 
+        Log.d("DinnerAlarmMaker","Reaching");
+
         Calendar dinnerTime = Calendar.getInstance();
-        dinnerTime.set(Calendar.HOUR_OF_DAY,19);
-        dinnerTime.set(Calendar.MINUTE,30);
+        dinnerTime.set(Calendar.HOUR_OF_DAY,20);
+        dinnerTime.set(Calendar.MINUTE,50);
         dinnerTime.set(Calendar.SECOND,0);
         if (Calendar.getInstance().after(dinnerTime))
             dinnerTime.add(Calendar.DATE, 1);

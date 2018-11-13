@@ -9,6 +9,8 @@ import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
+
 import com.iitdh.sonusourav.instigo.Account.SplashActivity;
 import com.iitdh.sonusourav.instigo.R;
 
@@ -18,6 +20,7 @@ import java.util.Calendar;
 public class DinnerAlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+
 
         Intent repeatingIntent = new Intent(context, SplashActivity.class);
         repeatingIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -62,10 +65,12 @@ public class DinnerAlarmReceiver extends BroadcastReceiver {
         builder.setContentText(menu);
         builder.setAutoCancel(true);
         builder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+        Log.d("DinnerAlarmReceiver","Reaching");
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("mess", true)) {
+            Log.d("MessSharedPref","Reaching");
             assert notificationManager != null;
             notificationManager.notify(101, builder.build());
         }

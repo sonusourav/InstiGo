@@ -35,7 +35,7 @@ public class CouncilSportsSecy extends AppCompatActivity
         CouncilUserClass footballSecy=new CouncilUserClass("Adhokshaja V Madhwaraj","Institute Football Secretary",""," 160010032@iitdh.ac.in",R.drawable.ritik);
         CouncilUserClass cricketSecy=new CouncilUserClass("Abhay Sahu","Institute Cricket Secretary",""," 160030020@iitdh.ac.in",R.drawable.ritik);
         CouncilUserClass volleyballSecy=new CouncilUserClass("Ashrith Kumar Peddy","Institute Volleyball Secretary",""," 170010036@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass hockeySecy=new CouncilUserClass("Basavaraj H Dindur","Institute Hockey Secretary",""," 170030034@iitdh.ac.in",R.drawable.ritik);
+        CouncilUserClass hockeySecy=new CouncilUserClass("Basavaraj H Dindur","Institute Hockey Secretary",""," 170030034@iitdh.ac.in",R.drawable.basavaraj);
         CouncilUserClass badmintonSecy=new CouncilUserClass("Rohan Shrothrium","Institute Badminton Secretary","","170020031@iitdh.ac.in",R.drawable.ritik);
         CouncilUserClass athleticsSecy=new CouncilUserClass("Avneet Sehgal","Institute Athletics Secretary",""," 170010029@iitdh.ac.in",R.drawable.ritik);
         CouncilUserClass basketballSecy=new CouncilUserClass("Anudeep Tubati ","Institute Basketball Secretary","","170010039@iitdh.ac.in",R.drawable.ritik);

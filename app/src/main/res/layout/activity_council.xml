@@ -2,52 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="5"
+    android:weightSum="6"
     android:orientation="vertical">
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:layout_weight="2"
-       android:weightSum="3"
-       android:orientation="horizontal"
-       android:background="@color/cell_title_background">
-       <LinearLayout
-           android:layout_width="0dp"
-           android:layout_height="match_parent"
-           android:id="@+id/wardens"
-           android:orientation="vertical"
-           android:layout_weight="2"
-           android:background="@drawable/icon_warden">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:weightSum="3"
+        android:orientation="horizontal"
+        android:background="@color/cell_title_background">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/wardens"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@drawable/icon_warden">
 
-       </LinearLayout>
-       <LinearLayout
-           android:layout_width="0dp"
-           android:layout_height="match_parent"
-           android:layout_weight="1"
-           android:weightSum="2"
-           android:background="@color/colorAccent"
-           android:orientation="vertical">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/gen_secy"
+            android:background="@drawable/image_gen_secy"
+            android:orientation="horizontal">
 
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="0dp"
-               android:layout_weight="1"
-               android:id="@+id/gen_secy"
-               android:background="@drawable/image_gen_secy"
-               android:orientation="horizontal">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/sports_secy"
+            android:background="@drawable/image_sports"
+            android:orientation="horizontal">
 
-           </LinearLayout>
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="0dp"
-               android:layout_weight="1"
-               android:id="@+id/sports_secy"
-               android:background="@drawable/image_sports"
-               android:orientation="horizontal">
-
-           </LinearLayout>
-       </LinearLayout>
-   </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 
 
@@ -55,7 +46,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:weightSum="3"
         android:orientation="horizontal"
         android:background="@color/red">
@@ -103,40 +94,32 @@
         android:layout_weight="2"
         android:weightSum="3"
         android:background="@color/colorPrimary">
+
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:weightSum="2"
-            android:background="@color/colorAccent"
-            android:orientation="vertical">
+            android:id="@+id/frs_secy"
+            android:orientation="horizontal"
+            android:background="@drawable/image_football"
+            >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:id="@+id/frs_secy"
-                android:orientation="horizontal"
-                android:background="@drawable/image_football"
-                >
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/icon_culture"
+            android:id="@+id/cul_secy"
+            android:orientation="horizontal"
+            >
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/icon_culture"
-                android:id="@+id/cul_secy"
-                android:orientation="horizontal"
-                >
-
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:background="@drawable/image_emergency"
             android:id="@+id/emergency_cont"
             android:orientation="horizontal">
