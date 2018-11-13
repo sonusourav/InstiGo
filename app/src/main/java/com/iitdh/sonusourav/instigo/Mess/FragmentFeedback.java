@@ -113,6 +113,8 @@ public class FragmentFeedback extends Fragment {
                     }
                     messFeedbackAdapter.notifyDataSetChanged();
                     hideProgressDialog();
+                }else{
+                    hideProgressDialog();
                 }
             }
 

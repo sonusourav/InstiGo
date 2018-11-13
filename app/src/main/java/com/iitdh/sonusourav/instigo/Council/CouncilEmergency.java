@@ -20,18 +20,13 @@ import java.util.ArrayList;
 public class CouncilEmergency extends AppCompatActivity
         {
 
-    private android.support.v7.app.ActionBar EmergencyActionBar;
-    private PagerAdapter adapter;
-    private UltraViewPager.Orientation gravity_indicator;
-    private ArrayList<CouncilUserClass> EmergencyList;
-
             @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.council_warden);
 
         UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.council_view_pager);
-        EmergencyList =new ArrayList<>();
+                ArrayList<CouncilUserClass> emergencyList = new ArrayList<>();
         CouncilUserClass plumber=new CouncilUserClass("Shivaji","Plumbing Maintenance","9620480607","",R.drawable.ritik);
         CouncilUserClass electrician=new CouncilUserClass("Shrishail","Electrical Maintenance","9591200610","",R.drawable.ritik);
         CouncilUserClass housekeeping1=new CouncilUserClass("Ravi","HouseKeeping","9483925586","",R.drawable.ritik);
@@ -48,33 +43,33 @@ public class CouncilEmergency extends AppCompatActivity
         CouncilUserClass backGate=new CouncilUserClass("IITDh Back Gate","Security ","7349798063","",R.drawable.ritik);
         CouncilUserClass sportsInst1=new CouncilUserClass("Ravi Ghalimath","Sports Instructor","9482373555","",R.drawable.ritik);
         CouncilUserClass sportsInst2=new CouncilUserClass("Dyamappa Ganachari","Sports Instructor","9663335199","",R.drawable.ritik);
-        EmergencyList.add(plumber);
-        EmergencyList.add(electrician);
-        EmergencyList.add(housekeeping1);
-        EmergencyList.add(housekeeping2);
-        EmergencyList.add(securitySupervisor1);
-        EmergencyList.add(securitySupervisor2);
-        EmergencyList.add(securitySupervisor3);
-        EmergencyList.add(securitySup);
-        EmergencyList.add(medicalEmergency);
-        EmergencyList.add(lib);
-        EmergencyList.add(consDept1);
-        EmergencyList.add(consDept2);
-        EmergencyList.add(mainGate);
-        EmergencyList.add(backGate);
-        EmergencyList.add(sportsInst1);
-        EmergencyList.add(sportsInst2);
+        emergencyList.add(plumber);
+        emergencyList.add(electrician);
+        emergencyList.add(housekeeping1);
+        emergencyList.add(housekeeping2);
+        emergencyList.add(securitySupervisor1);
+        emergencyList.add(securitySupervisor2);
+        emergencyList.add(securitySupervisor3);
+        emergencyList.add(securitySup);
+        emergencyList.add(medicalEmergency);
+        emergencyList.add(lib);
+        emergencyList.add(consDept1);
+        emergencyList.add(consDept2);
+        emergencyList.add(mainGate);
+        emergencyList.add(backGate);
+        emergencyList.add(sportsInst1);
+        emergencyList.add(sportsInst2);
 
         //main code starts here
         ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
-        adapter = new UltraPagerAdapter(true,this, EmergencyList);
+                PagerAdapter adapter = new UltraPagerAdapter(true, this, emergencyList);
         ultraViewPager.setAdapter(adapter);
 
         ultraViewPager.setMultiScreen(0.8f);
         ultraViewPager.setItemRatio(1f);
         ultraViewPager.setRatio(0.75f);
         ultraViewPager.setAutoMeasureHeight(true);
-        gravity_indicator = UltraViewPager.Orientation.HORIZONTAL;
+                UltraViewPager.Orientation gravity_indicator = UltraViewPager.Orientation.HORIZONTAL;
         ultraViewPager.setPageTransformer(false, new UltraDepthScaleTransformer());
 
 
@@ -90,12 +85,12 @@ public class CouncilEmergency extends AppCompatActivity
 
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        EmergencyActionBar = getSupportActionBar();
-        assert EmergencyActionBar != null;
-        EmergencyActionBar.setHomeButtonEnabled(true);
-        EmergencyActionBar.setDisplayHomeAsUpEnabled(true);
-        EmergencyActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        EmergencyActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        android.support.v7.app.ActionBar emergencyActionBar = getSupportActionBar();
+        assert emergencyActionBar != null;
+        emergencyActionBar.setHomeButtonEnabled(true);
+        emergencyActionBar.setDisplayHomeAsUpEnabled(true);
+        emergencyActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
+        emergencyActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

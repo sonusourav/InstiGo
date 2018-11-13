@@ -32,10 +32,10 @@ public class CouncilFMessSecy extends AppCompatActivity
 
         UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.council_view_pager);
         FMessList =new ArrayList<>();
-        CouncilUserClass messMem1=new CouncilUserClass("Karan Yogesh Anvekar","Mess Committee","9769719309","180020015@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass messMem2=new CouncilUserClass("Shreyas Mahesh Sathe","Mess Committee","167229258"," 180010033@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass messMem3=new CouncilUserClass("Vaishnavi Sameer Patil","Mess Committee","7038411894","180020039@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass messMem4=new CouncilUserClass("Rushikesh Dixit","Mess Committee","9109534276","180030037@iitdh.ac.in",R.drawable.ritik);
+        CouncilUserClass messMem1=new CouncilUserClass("Karan Yogesh Anvekar","Mess Committee","9769719309","180020015@iitdh.ac.in",R.drawable.karan);
+        CouncilUserClass messMem2=new CouncilUserClass("Shreyas Mahesh Sathe","Mess Committee","167229258"," 180010033@iitdh.ac.in",R.drawable.shreyas);
+        CouncilUserClass messMem3=new CouncilUserClass("Vaishnavi Sameer Patil","Mess Committee","7038411894","180020039@iitdh.ac.in",R.drawable.vishanavi);
+        CouncilUserClass messMem4=new CouncilUserClass("Rushikesh Dixit","Mess Committee","9109534276","180030037@iitdh.ac.in",R.drawable.rishikesh);
         FMessList.add(messMem1);
         FMessList.add(messMem2);
         FMessList.add(messMem3);

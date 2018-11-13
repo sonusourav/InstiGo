@@ -32,7 +32,7 @@ public class CouncilFHostelSecy extends AppCompatActivity
 
         UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.council_view_pager);
         FHostelList =new ArrayList<>();
-        CouncilUserClass jrHostelSecy=new CouncilUserClass("S U Swakath","Jr Hostel Secretary","9629469172"," 180020036@iitdh.ac.in",R.drawable.ritik);
+        CouncilUserClass jrHostelSecy=new CouncilUserClass("S U Swakath","Jr Hostel Secretary","9629469172"," 180020036@iitdh.ac.in",R.drawable.swakath);
 
         FHostelList.add(jrHostelSecy);
 

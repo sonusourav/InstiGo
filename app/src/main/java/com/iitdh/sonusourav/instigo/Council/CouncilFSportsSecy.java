@@ -30,7 +30,7 @@ public class CouncilFSportsSecy extends AppCompatActivity {
 
         UltraViewPager ultraViewPager = findViewById(R.id.council_view_pager);
         FSportsList =new ArrayList<>();
-        CouncilUserClass jrSportSecy=new CouncilUserClass("Rishit Saiya","Jr.Sports Secretary","999999999","180010027@iitdh.ac.in",R.drawable.ritik);
+        CouncilUserClass jrSportSecy=new CouncilUserClass("Rishit Saiya","Jr.Sports Secretary","999999999","180010027@iitdh.ac.in",R.drawable.rishit_saiya);
         FSportsList.add(jrSportSecy);
 
         //main code starts here

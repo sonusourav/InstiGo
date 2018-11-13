@@ -32,10 +32,10 @@ public class CouncilCulturalSecy extends AppCompatActivity
 
         UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.council_view_pager);
         culturalList =new ArrayList<>();
-        CouncilUserClass danceSecy=new CouncilUserClass("Yash Doshi","Institute Dance Secretary",""," 160020001@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass filmSecy=new CouncilUserClass("Gautam Jagdhish","Institute Film and Media Secretary",""," 170010031@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass musicSecy=new CouncilUserClass("Saurav Nitin Dosi","Institute Music Secretary","","170030006@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass artSecy=new CouncilUserClass("Deeksha N","Institute Fine Arts Secretary","","160010033@iitdh.ac.in",R.drawable.ritik);
+        CouncilUserClass danceSecy=new CouncilUserClass("Yash Doshi","Institute Dance Secretary",""," 160020001@iitdh.ac.in",R.drawable.yash_doshi);
+        CouncilUserClass filmSecy=new CouncilUserClass("Gautam Jagdhish","Institute Film and Media Secretary",""," 170010031@iitdh.ac.in",R.drawable.gautam_jagdish);
+        CouncilUserClass musicSecy=new CouncilUserClass("Saurav Nitin Dosi","Institute Music Secretary","","170030006@iitdh.ac.in",R.drawable.souravdoshi);
+        CouncilUserClass artSecy=new CouncilUserClass("Deeksha N","Institute Fine Arts Secretary","","160010033@iitdh.ac.in",R.drawable.deeksha);
         culturalList.add(danceSecy);
         culturalList.add(filmSecy);
         culturalList.add(musicSecy);

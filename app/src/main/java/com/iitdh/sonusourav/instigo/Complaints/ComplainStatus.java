@@ -37,16 +37,10 @@ public class ComplainStatus extends AppCompatActivity {
     private static final String TAG =ComplainStatus.class.getSimpleName() ;
     private ArrayList<ComplainItemClass> complainStatusList;
     private ComplaintsAdapter statusAdapter;
-    private FirebaseDatabase statusInstance;
-    private DatabaseReference statusRootRef;
-    private DatabaseReference statusRef;
     private FirebaseAuth statusAuth;
     private FirebaseUser statusUser;
     public static final int REFRESH_DELAY = 4000;
     private PullToRefreshView mPullToRefreshView;
-
-    private ListView listView;
-    private ActionBar statusActionBar;
     private ProgressDialog statusProgressDialog;
 
 
@@ -56,15 +50,15 @@ public class ComplainStatus extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_status);
 
-        listView = findViewById(R.id.status_listview);
+        ListView listView = findViewById(R.id.status_listview);
         complainStatusList = new ArrayList<>();
 
         showProgressDialog();
 
         FirebaseAuth statusAuth = FirebaseAuth.getInstance();
-        statusInstance = FirebaseDatabase.getInstance();
-        statusRootRef = statusInstance.getReference("Maintenance");
-        statusRef=statusRootRef.child("Complaints").getRef();
+        FirebaseDatabase statusInstance = FirebaseDatabase.getInstance();
+        DatabaseReference statusRootRef = statusInstance.getReference("Maintenance");
+        DatabaseReference statusRef = statusRootRef.child("Complaints").getRef();
         statusUser=statusAuth.getCurrentUser();
 
 
@@ -78,7 +72,7 @@ public class ComplainStatus extends AppCompatActivity {
         listView.setAdapter(statusAdapter);
 
 
-        statusRef.limitToLast(10).orderByChild("complainTime").addValueEventListener(new ValueEventListener() {
+        statusRef.orderByChild("complainTime").addValueEventListener(new ValueEventListener() {
 
 
             @Override
@@ -109,9 +103,13 @@ public class ComplainStatus extends AppCompatActivity {
                     }
                     Collections.reverse(complainStatusList);
                     statusAdapter.notifyDataSetChanged();
+                    hideProgressDialog();
+                    mPullToRefreshView.setVisibility(View.VISIBLE);
+
+                }else{
+                    hideProgressDialog();
+
                 }
-                hideProgressDialog();
-                mPullToRefreshView.setVisibility(View.VISIBLE);
 
             }
 
@@ -147,7 +145,7 @@ public class ComplainStatus extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        statusActionBar = getSupportActionBar();
+        ActionBar statusActionBar = getSupportActionBar();
         assert statusActionBar != null;
         statusActionBar.setHomeButtonEnabled(true);
         statusActionBar.setDisplayHomeAsUpEnabled(true);

@@ -50,7 +50,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
         app:bmb_buttonEnum="textInsideCircle"
         app:bmb_piecePlaceEnum="piecePlace_dot_7_1"
         app:bmb_buttonPlaceEnum="buttonPlace_sc_7_3"/>

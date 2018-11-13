@@ -20,27 +20,23 @@ import java.util.ArrayList;
 public class CouncilSportsSecy extends AppCompatActivity
         {
 
-    private android.support.v7.app.ActionBar SportsActionBar;
-    private PagerAdapter adapter;
-    private UltraViewPager.Orientation gravity_indicator;
-    private ArrayList<CouncilUserClass> sportsList;
-
             @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.council_warden);
+
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.council_warden);
 
         UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.council_view_pager);
-        sportsList =new ArrayList<>();
-        CouncilUserClass footballSecy=new CouncilUserClass("Adhokshaja V Madhwaraj","Institute Football Secretary",""," 160010032@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass cricketSecy=new CouncilUserClass("Abhay Sahu","Institute Cricket Secretary",""," 160030020@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass volleyballSecy=new CouncilUserClass("Ashrith Kumar Peddy","Institute Volleyball Secretary",""," 170010036@iitdh.ac.in",R.drawable.ritik);
+                ArrayList<CouncilUserClass> sportsList = new ArrayList<>();
+        CouncilUserClass footballSecy=new CouncilUserClass("Adhokshaja V Madhwaraj","Institute Football Secretary",""," 160010032@iitdh.ac.in",R.drawable.adhok);
+        CouncilUserClass cricketSecy=new CouncilUserClass("Abhay Sahu","Institute Cricket Secretary",""," 160030020@iitdh.ac.in",R.drawable.abhay);
+        CouncilUserClass volleyballSecy=new CouncilUserClass("Ashrith Kumar Peddy","Institute Volleyball Secretary",""," 170010036@iitdh.ac.in",R.drawable.ashrith);
         CouncilUserClass hockeySecy=new CouncilUserClass("Basavaraj H Dindur","Institute Hockey Secretary",""," 170030034@iitdh.ac.in",R.drawable.basavaraj);
-        CouncilUserClass badmintonSecy=new CouncilUserClass("Rohan Shrothrium","Institute Badminton Secretary","","170020031@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass athleticsSecy=new CouncilUserClass("Avneet Sehgal","Institute Athletics Secretary",""," 170010029@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass basketballSecy=new CouncilUserClass("Anudeep Tubati ","Institute Basketball Secretary","","170010039@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass ttSecy=new CouncilUserClass("Deepak H R","Institute Table Tennis Secretary","","170010026@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass boardGamesSecy=new CouncilUserClass("Shubham Suresh Deshpande","Institute Board Games Secretary",""," 160030005@iitdh.ac.in ",R.drawable.ritik);
+        CouncilUserClass badmintonSecy=new CouncilUserClass("Rohan Shrothrium","Institute Badminton Secretary","","170020031@iitdh.ac.in",R.drawable.rohan_shrotium);
+        CouncilUserClass athleticsSecy=new CouncilUserClass("Avneet Sehgal","Institute Athletics Secretary",""," 170010029@iitdh.ac.in",R.drawable.avneet);
+        CouncilUserClass basketballSecy=new CouncilUserClass("Anudeep Tubati ","Institute Basketball Secretary","","170010039@iitdh.ac.in",R.drawable.anudeep);
+        CouncilUserClass ttSecy=new CouncilUserClass("Deepak H R","Institute Table Tennis Secretary","","170010026@iitdh.ac.in",R.drawable.deepak);
+        CouncilUserClass boardGamesSecy=new CouncilUserClass("Shubham Suresh Deshpande","Institute Board Games Secretary",""," 160030005@iitdh.ac.in ",R.drawable.shubham);
 
         sportsList.add(footballSecy);
         sportsList.add(cricketSecy);
@@ -54,14 +50,14 @@ public class CouncilSportsSecy extends AppCompatActivity
 
         //main code starts here
         ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
-        adapter = new UltraPagerAdapter(true,this, sportsList);
+                PagerAdapter adapter = new UltraPagerAdapter(true, this, sportsList);
         ultraViewPager.setAdapter(adapter);
 
         ultraViewPager.setMultiScreen(0.8f);
         ultraViewPager.setItemRatio(1f);
         ultraViewPager.setRatio(0.75f);
         ultraViewPager.setAutoMeasureHeight(true);
-        gravity_indicator = UltraViewPager.Orientation.HORIZONTAL;
+                UltraViewPager.Orientation gravity_indicator = UltraViewPager.Orientation.HORIZONTAL;
         ultraViewPager.setPageTransformer(false, new UltraDepthScaleTransformer());
 
 
@@ -77,12 +73,12 @@ public class CouncilSportsSecy extends AppCompatActivity
 
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        SportsActionBar = getSupportActionBar();
-        assert SportsActionBar != null;
-        SportsActionBar.setHomeButtonEnabled(true);
-        SportsActionBar.setDisplayHomeAsUpEnabled(true);
-        SportsActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        SportsActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        android.support.v7.app.ActionBar sportsActionBar = getSupportActionBar();
+        assert sportsActionBar != null;
+        sportsActionBar.setHomeButtonEnabled(true);
+        sportsActionBar.setDisplayHomeAsUpEnabled(true);
+        sportsActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
+        sportsActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

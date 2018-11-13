@@ -32,10 +32,10 @@ public class CouncilGenSecy extends AppCompatActivity
 
         UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.council_view_pager);
         genSecyList =new ArrayList<>();
-        CouncilUserClass genAcSecy=new CouncilUserClass("Shruti Patel","Academic General Secretary",""," 160010002@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass genCulSecy=new CouncilUserClass("Mehul Bose","Cultural General Secretary",""," 170030010@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass genTechSecy=new CouncilUserClass("Samveed Desai","Technical General Secretary",""," 160020003@iitdh.ac.in",R.drawable.ritik);
-        CouncilUserClass genSportSecy=new CouncilUserClass("Nikhilesh Kumar Thakur","Sports General Secretary",""," 160030024@iitdh.ac.in",R.drawable.ritik);
+        CouncilUserClass genAcSecy=new CouncilUserClass("Shruti Patel","Academic General Secretary",""," 160010002@iitdh.ac.in",R.drawable.shruti_patel);
+        CouncilUserClass genCulSecy=new CouncilUserClass("Mehul Bose","Cultural General Secretary",""," 170030010@iitdh.ac.in",R.drawable.mehul_bose);
+        CouncilUserClass genTechSecy=new CouncilUserClass("Samveed Desai","Technical General Secretary",""," 160020003@iitdh.ac.in",R.drawable.samveed_desai);
+        CouncilUserClass genSportSecy=new CouncilUserClass("Nikhilesh Kumar Thakur","Sports General Secretary",""," 160030024@iitdh.ac.in",R.drawable.nikhilesh);
         genSecyList.add(genAcSecy);
         genSecyList.add(genCulSecy);
         genSecyList.add(genSportSecy);
