@@ -92,7 +92,7 @@ public class ComplainStatus extends AppCompatActivity {
                                 complainStatusList.add(complain);
 
                             }else{
-                                if(!complain.isComplainIsPrivate()){
+                                if(!complain.isComplainIsPrivate()|| complain.getComplainEmail().equalsIgnoreCase(statusUser.getEmail())){
                                     complainStatusList.add((complain));
                                 }
                             }

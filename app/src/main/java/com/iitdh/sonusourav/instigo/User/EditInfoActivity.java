@@ -131,7 +131,7 @@ public class EditInfoActivity extends AppCompatActivity {
 
 
     private void updateLabel() {
-        String myFormat = "dd/MM/yy"; //In which you need put here
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         infoDob.setText(sdf.format(myCalendar.getTime()));
@@ -472,22 +472,17 @@ public class EditInfoActivity extends AppCompatActivity {
 
         // add the buttons
         builder
-                .setMessage("You have unsaved changes. What do you want?")
+                .setMessage("You have unsaved changes. Do you want to discard?")
                 .setCancelable(true)
-                .setPositiveButton("Save changes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        showProgressDialog();
                         dialog.cancel();
-                        if(validateInput()){
-                            updateUserData();
-                        }
+                        NavUtils.navigateUpFromSameTask(EditInfoActivity.this);
 
                     }
                 })
-                .setNegativeButton("Discard", new DialogInterface.OnClickListener() {
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
-                        NavUtils.navigateUpFromSameTask(EditInfoActivity.this);
                         dialog.cancel();
                     }
                 });

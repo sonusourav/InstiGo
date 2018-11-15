@@ -17,8 +17,8 @@ public class DinnerAlarmMaker {
         Log.d("DinnerAlarmMaker","Reaching");
 
         Calendar dinnerTime = Calendar.getInstance();
-        dinnerTime.set(Calendar.HOUR_OF_DAY,20);
-        dinnerTime.set(Calendar.MINUTE,50);
+        dinnerTime.set(Calendar.HOUR_OF_DAY,19);
+        dinnerTime.set(Calendar.MINUTE,20);
         dinnerTime.set(Calendar.SECOND,0);
         if (Calendar.getInstance().after(dinnerTime))
             dinnerTime.add(Calendar.DATE, 1);

@@ -2,6 +2,7 @@ package com.iitdh.sonusourav.instigo.Complaints;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,7 +76,8 @@ public class ComplaintsAdapter extends BaseAdapter {
         complainTitle.setText(complainList.getComplainTitle());
 
         if(complainList.getStatus()==1){
-            complainStatus.setText("Done");
+            complainStatus.setText("Resolved");
+            complainStatus.setBackgroundColor(mcontext.getResources().getColor(R.color.green));
 
         }else
             complainStatus.setText("Pending");

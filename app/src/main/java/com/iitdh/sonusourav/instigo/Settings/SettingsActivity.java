@@ -3,6 +3,7 @@ package com.iitdh.sonusourav.instigo.Settings;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -57,13 +58,8 @@ public class SettingsActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if (back_pressed + 2000 > System.currentTimeMillis()){
-                super.onBackPressed();
-            }
-            else{
-                Toast.makeText(getBaseContext(), "Press twice to exit", Toast.LENGTH_SHORT).show();
-                back_pressed = System.currentTimeMillis();
-            }
+            NavUtils.navigateUpFromSameTask(this);
+
         }
     }
 
