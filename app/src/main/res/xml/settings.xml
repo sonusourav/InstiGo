@@ -38,7 +38,7 @@
 
         <Preference
             android:title="InstiGo"
-            android:summary="\nDesigned and Developed by:\nSonu Sourav">
+            android:summary="\nDesigned and Developed by:\nSonu Sourav\nVivek Mishra\nSamyak Rawlekar\nAkhilesh Kesari">
         </Preference>
 
     </PreferenceCategory>

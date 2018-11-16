@@ -71,7 +71,7 @@ public class CouncilCulturalSecy extends AppCompatActivity
         culturalActionBar.setHomeButtonEnabled(true);
         culturalActionBar.setDisplayHomeAsUpEnabled(true);
         culturalActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        culturalActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        culturalActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Council</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

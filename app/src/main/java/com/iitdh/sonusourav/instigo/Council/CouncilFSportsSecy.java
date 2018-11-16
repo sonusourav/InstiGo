@@ -63,7 +63,7 @@ public class CouncilFSportsSecy extends AppCompatActivity {
         FSportsActionBar.setHomeButtonEnabled(true);
         FSportsActionBar.setDisplayHomeAsUpEnabled(true);
         FSportsActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        FSportsActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        FSportsActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Council</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

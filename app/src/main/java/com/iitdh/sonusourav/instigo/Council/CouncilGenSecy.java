@@ -71,7 +71,7 @@ public class CouncilGenSecy extends AppCompatActivity
         genSecyActionBar.setHomeButtonEnabled(true);
         genSecyActionBar.setDisplayHomeAsUpEnabled(true);
         genSecyActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        genSecyActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        genSecyActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Council</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

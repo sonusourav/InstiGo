@@ -71,7 +71,7 @@ public class CouncilFMessSecy extends AppCompatActivity
         FMessActionBar.setHomeButtonEnabled(true);
         FMessActionBar.setDisplayHomeAsUpEnabled(true);
         FMessActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        FMessActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        FMessActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Council</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

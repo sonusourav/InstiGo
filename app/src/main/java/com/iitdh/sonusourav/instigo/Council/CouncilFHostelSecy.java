@@ -66,7 +66,7 @@ public class CouncilFHostelSecy extends AppCompatActivity
         FHostelActionBar.setHomeButtonEnabled(true);
         FHostelActionBar.setDisplayHomeAsUpEnabled(true);
         FHostelActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        FHostelActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        FHostelActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Council</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

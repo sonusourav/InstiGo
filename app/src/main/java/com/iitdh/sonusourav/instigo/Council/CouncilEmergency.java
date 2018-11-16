@@ -90,7 +90,7 @@ public class CouncilEmergency extends AppCompatActivity
         emergencyActionBar.setHomeButtonEnabled(true);
         emergencyActionBar.setDisplayHomeAsUpEnabled(true);
         emergencyActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        emergencyActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        emergencyActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Council</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

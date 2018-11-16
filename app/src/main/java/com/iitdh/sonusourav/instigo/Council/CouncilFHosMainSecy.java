@@ -64,7 +64,7 @@ public class CouncilFHosMainSecy extends AppCompatActivity
         FHosMainActionBar.setHomeButtonEnabled(true);
         FHosMainActionBar.setDisplayHomeAsUpEnabled(true);
         FHosMainActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        FHosMainActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        FHosMainActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Council</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

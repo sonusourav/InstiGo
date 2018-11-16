@@ -90,7 +90,7 @@ public class CouncilWarden extends AppCompatActivity
         wardenActionBar.setHomeButtonEnabled(true);
         wardenActionBar.setDisplayHomeAsUpEnabled(true);
         wardenActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5cae80")));
-        wardenActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Complaint</font>"));
+        wardenActionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Council</font>"));
         return super.onCreateOptionsMenu(menu);
 
     }

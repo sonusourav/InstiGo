@@ -70,6 +70,7 @@
         <activity android:name=".Council.CouncilActivity"
             android:theme="@style/AppTheme.NoActionBar.TitleBar"
             android:screenOrientation="portrait"
+            android:label="Council"
             >
         </activity>
 
@@ -125,6 +126,7 @@
         <activity
             android:name=".Council.CouncilWarden"
             android:screenOrientation="portrait"
+            android:label="Council"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -133,18 +135,23 @@
         <activity
             android:name=".Council.CouncilGenSecy"
             android:screenOrientation="portrait"
+            android:label="Council"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Council.CouncilActivity" />
         </activity>
 
-        <activity android:name=".Council.CouncilSportsSecy">
+        <activity android:name=".Council.CouncilSportsSecy"
+            android:label="Council"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Council.CouncilActivity" />
         </activity>
-        <activity android:name=".Council.CouncilCulturalSecy" >
+        <activity android:name=".Council.CouncilCulturalSecy"
+            android:label="Council"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Council.CouncilActivity" />
@@ -152,6 +159,7 @@
         <activity
             android:name=".Council.CouncilFHostelSecy"
             android:screenOrientation="portrait"
+            android:label="Council"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -168,6 +176,7 @@
         <activity
             android:name=".Council.CouncilFMessSecy"
             android:screenOrientation="portrait"
+            android:label="Council"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -176,6 +185,7 @@
         <activity
             android:name=".Council.CouncilEmergency"
             android:screenOrientation="portrait"
+            android:label="Council"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -184,6 +194,7 @@
         <activity
             android:name=".Council.CouncilFSportsSecy"
             android:screenOrientation="portrait"
+            android:label="Council"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
