@@ -345,8 +345,6 @@ public class LoginActivity extends AppCompatActivity {
                             assert email != null;
                             String[] split = email.split("@");
                             String domain = split[1]; //This Will Give You The Domain After '@'
-                            if(domain.equalsIgnoreCase("iitdh.ac.in"))
-                            {
 
                                 if(loginPref.isFirstGoogleLogin()){
 
@@ -381,28 +379,6 @@ public class LoginActivity extends AppCompatActivity {
                                     finish();
 
                                 }
-                            }else{
-                                loginEmail.setText("");
-                                loginPass.setText("");
-                                Toast.makeText(LoginActivity.this, " Account using IITDh account", Toast.LENGTH_SHORT).show();
-                                mGoogleSignInClient.signOut();
-                                user.delete()
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(LoginActivity.this, "try Register with IITDh account", Toast.LENGTH_SHORT).show();
-
-                                                    Log.d(TAG, "User account deleted.");
-                                                }else {
-                                                    Log.d(TAG,"Unable to delete new user.");
-                                                }
-                                            }
-                                        });
-                                loginAuth.signOut();
-                                hideProgressDialog();
-
-                            }
 
                         } else {
                             // If sign in fails
