@@ -1,14 +1,9 @@
 package com.iitdh.sonusourav.instigo.Mess;
 
-
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,22 +15,30 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.iitdh.sonusourav.instigo.R;
-
-import java.text.SimpleDateFormat;
+import com.iitdh.sonusourav.instigo.Utils.AppSingleton;
+import com.iitdh.sonusourav.instigo.Utils.Constants;
+import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
+import com.iitdh.sonusourav.instigo.Utils.VolleyErrorInstances;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
-
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class FragmentFeedback extends Fragment {
 
@@ -44,87 +47,44 @@ public class FragmentFeedback extends Fragment {
     }
     ArrayList<FeedbackUserClass> feedbackList;
     MessFeedbackAdapter messFeedbackAdapter;
-    private DatabaseReference messFeedbackRef;
     private ProgressDialog feedbackProgressDialog;
 
-    private String about ;
-    private String day;
-    private String title;
-    private String rating;
-    private String desc;
-
-
-    private String TAG=FragmentFeedback.class.getSimpleName();
+  private String about, day, title, desc, fetchFeedbackUrl, part, postFeedbackUrl;
+  private float rating;
+  private static String TAG;
+  private PreferenceManager feedbackPref;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+      super.onCreate(savedInstanceState);
+      feedbackInit();
     }
+
+  private void feedbackInit() {
+    fetchFeedbackUrl = Constants.baseUrl + "mess/getfeedbacks";
+    TAG = "Feedback";
+    feedbackList = new ArrayList<>();
+    messFeedbackAdapter = new MessFeedbackAdapter(getActivity(), feedbackList);
+    feedbackPref = new PreferenceManager(Objects.requireNonNull(getActivity()));
+    postFeedbackUrl = Constants.baseUrl + "mess/feedback";
+    Log.d(TAG, postFeedbackUrl);
+  }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
-
+      @SuppressLint("InflateParams")
         View view = inflater.inflate(R.layout.fragment_feedback, null);
 
-        showProgressDialog();
-
         ListView listView = view.findViewById(R.id.mess_feedback_listview);
-        feedbackList = new ArrayList<>();
         FloatingActionButton fabButton = view.findViewById(R.id.mess_feedback_fab);
-
-
-        FirebaseAuth ecAuth = FirebaseAuth.getInstance();
-        FirebaseDatabase feedbackInstance = FirebaseDatabase.getInstance();
-        DatabaseReference feedbackRootRef = feedbackInstance.getReference("Mess");
-        messFeedbackRef = feedbackRootRef.child("Feedback").getRef();
-        final FirebaseUser user = ecAuth.getCurrentUser();
-
-        assert user != null;
-
-
-
-        messFeedbackAdapter = new MessFeedbackAdapter(getActivity(), feedbackList);
         listView.setAdapter(messFeedbackAdapter);
 
+      showProgressDialog();
+      fetchFeedbacks();
 
-
-        messFeedbackRef.addValueEventListener(new ValueEventListener() {
-
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-
-                if(dataSnapshot.exists()){
-                    feedbackList.clear();
-
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        Log.d(TAG, "onDataChange: reached");
-                         FeedbackUserClass feedback = snapshot.getValue(FeedbackUserClass.class);
-
-                         if(feedback!=null){
-                             feedbackList.add((feedback));
-                         }
-                    }
-                    messFeedbackAdapter.notifyDataSetChanged();
-                    hideProgressDialog();
-                }else{
-                    hideProgressDialog();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e(TAG, "Failed to read value.", databaseError.toException());
-                hideProgressDialog();
-            }
-        });
 
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,21 +95,24 @@ public class FragmentFeedback extends Fragment {
                 dialog.setContentView(R.layout.add_feedback);
                 dialog.setTitle(" Feedback ");
 
-                final Spinner aboutSpinner =dialog.findViewById(R.id.add_feedback_spinner1);
+              final Spinner partSpinner = dialog.findViewById(R.id.add_feedback_spinner1);
                 final Spinner daySpinner =dialog.findViewById(R.id.add_feedback_spinner2);
                 final EditText titleEditText =dialog.findViewById(R.id.feedback_title);
                 final RatingBar ratingBar=dialog.findViewById(R.id.add_feedback_ratings);
                 final EditText descEditText=dialog.findViewById(R.id.add_feedback_desc);
+
                 Button submit=dialog.findViewById(R.id.add_feedback_submit);
 
                 ArrayAdapter<String> aboutAdapter = new ArrayAdapter<String>(
-                        getContext(), R.layout.spinner_item, getResources().getStringArray(R.array.feedbackAbout)
+                    getActivity().getApplicationContext(), R.layout.spinner_item,
+                    getResources().getStringArray(R.array.feedbackAbout)
                 );
                 aboutAdapter.setDropDownViewResource(R.layout.spinner_drop_down_item);
-                aboutSpinner.setAdapter(aboutAdapter);
+              partSpinner.setAdapter(aboutAdapter);
 
                 ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-                        getContext(), R.layout.spinner_item, getResources().getStringArray(R.array.dayOfWeek)
+                    getActivity().getApplicationContext(), R.layout.spinner_item,
+                    getResources().getStringArray(R.array.dayOfWeek)
                 );
                 dayAdapter.setDropDownViewResource(R.layout.spinner_drop_down_item);
                 daySpinner.setAdapter(dayAdapter);
@@ -159,38 +122,35 @@ public class FragmentFeedback extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-                        about = aboutSpinner.getSelectedItem().toString();
+                      part = partSpinner.getSelectedItem().toString();
                         day=daySpinner.getSelectedItem().toString();
                         title=titleEditText.getText().toString();
                         Log.d("Title",title);
-                        rating= Float.toString(ratingBar.getRating());
+                      rating = ratingBar.getRating();
                         desc=descEditText.getText().toString();
                         Log.d("Desc",desc);
+
 
                         if(title.isEmpty()){
                             Toast.makeText(getActivity(),"Please fill Feedback title ", Toast.LENGTH_SHORT).show();
                             titleEditText.requestFocus();
                             return;
                         }
-                        Calendar calendar=Calendar.getInstance();
-                        String date = new SimpleDateFormat("dd MMM yy h:mm a", Locale.US).format(calendar.getTime());
-                        String username = user.getDisplayName();
-                        Uri photoUri=user.getPhotoUrl();
 
-                        String image;
-                        if(photoUri==null){
-                            image = "https://drive.google.com/open?id=0BzHSfMqO1EIMdFZSMThJeEF3WUdxT05KTWo2bDFVZkxUbmk4";
+                      FeedbackUserClass newFeedback =
+                          new FeedbackUserClass(rating, title, part, desc, day);
 
-                        }else{
-                            image=photoUri.toString();
+                      JSONObject jsonFeedback = null;
+                      try {
+                        jsonFeedback = new JSONObject(new Gson().toJson(newFeedback));
+                      } catch (JSONException e) {
+                        e.printStackTrace();
                         }
+                      if (jsonFeedback != null) {
+                        showProgressDialog();
+                        postFeedback(postFeedbackUrl, jsonFeedback);
+                      }
 
-
-
-                        FeedbackUserClass newFeedback=new FeedbackUserClass(username,image,title,day,about,date,rating,desc);
-                        String userReference= messFeedbackRef.push().getKey();
-                        assert userReference != null;
-                        messFeedbackRef.child(userReference).setValue(newFeedback);
                         dialog.dismiss();
 
 
@@ -203,14 +163,99 @@ public class FragmentFeedback extends Fragment {
 
         });
 
-        Log.d(TAG, "onCreate: reached");
-
-
-
-
-
         return view;
     }
+
+  private void postFeedback(String feedbackUrl, JSONObject feedback) {
+
+    JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, feedbackUrl, feedback,
+        new Response.Listener<JSONObject>() {
+          @Override
+          public void onResponse(JSONObject response) {
+            try {
+              if (response.getString("message").equals("success")) {
+                Log.d(TAG, "feedback posted");
+                JsonParser parser = new JsonParser();
+                JsonElement mJson = parser.parse(response.getString("feedback"));
+                Gson gson = new Gson();
+                FeedbackUserClass feedback = gson.fromJson(mJson, FeedbackUserClass.class);
+                feedbackList.add(feedback);
+                messFeedbackAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity(), "Feedback posted successfully",
+                    Toast.LENGTH_SHORT).show();
+              } else if (response.getString("message").equals("success")) {
+                Log.d(TAG, "feedback posting failed");
+                Toast.makeText(getActivity(), "Failed to post",
+                    Toast.LENGTH_SHORT).show();
+              } else {
+                Log.d(TAG, "else");
+              }
+              hideProgressDialog();
+            } catch (JSONException e) {
+              e.printStackTrace();
+              hideProgressDialog();
+              Log.d(TAG, "catchError: " + e.getMessage());
+            }
+          }
+        },
+        new Response.ErrorListener() {
+
+          @Override
+          public void onErrorResponse(VolleyError volleyError) {
+            new VolleyErrorInstances().getErrorType(getActivity(), volleyError);
+            Log.d(TAG, "VolleyError: " + volleyError.toString());
+          }
+        }) {
+      @Override
+      public Map<String, String> getHeaders() {
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/json");
+        headers.put("Authorization", "Bearer " + feedbackPref.getUserId());
+        return headers;
+      }
+    };
+
+    AppSingleton.getInstance().addToRequestQueue(jsonObjReq);
+  }
+
+  private void fetchFeedbacks() {
+
+    JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, fetchFeedbackUrl, null,
+        new Response.Listener<JSONObject>() {
+          @Override
+          public void onResponse(JSONObject response) {
+
+            Log.d(TAG, response.toString());
+            try {
+              JSONArray mFeedbacks = response.getJSONArray("feedbacks");
+              Gson gson = new Gson();
+              for (int i = 0; i < mFeedbacks.length(); i++) {
+
+                FeedbackUserClass feedbacks =
+                    gson.fromJson(mFeedbacks.getString(i), FeedbackUserClass.class);
+                feedbackList.add(feedbacks);
+                Log.d(TAG, feedbackList.get(0).getDate());
+              }
+              messFeedbackAdapter.notifyDataSetChanged();
+              hideProgressDialog();
+            } catch (JSONException e) {
+              e.printStackTrace();
+              hideProgressDialog();
+              Log.d(TAG, e.getMessage());
+            }
+          }
+        }, new Response.ErrorListener() {
+      @Override
+      public void onErrorResponse(VolleyError error) {
+        VolleyLog.d(TAG, "Error: " + error.getMessage());
+        hideProgressDialog();
+        Toast.makeText(getActivity(),
+            error.getMessage(), Toast.LENGTH_LONG).show();
+      }
+    });
+
+    AppSingleton.getInstance().addToRequestQueue(req);
+  }
 
     public void showProgressDialog() {
 
@@ -230,10 +275,10 @@ public class FragmentFeedback extends Fragment {
         }
     }
 
+  public void onResume() {
+    super.onResume();
+  }
 
-    public void onResume() {
-        super.onResume();
 
-    }
 
 }

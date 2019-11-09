@@ -2,20 +2,16 @@ package com.iitdh.sonusourav.instigo.Settings;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.NavUtils;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
-
 import java.util.Objects;
 
 
@@ -36,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar_main);
+      androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);

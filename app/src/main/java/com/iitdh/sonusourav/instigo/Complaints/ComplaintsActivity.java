@@ -2,29 +2,22 @@ package com.iitdh.sonusourav.instigo.Complaints;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.PagerAdapter;
+import com.google.android.material.navigation.NavigationView;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 import com.tmall.ultraviewpager.UltraViewPager;
-
 import java.util.Objects;
 
 
@@ -47,7 +40,7 @@ public class ComplaintsActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar_main);
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -62,14 +55,14 @@ public class ComplaintsActivity extends AppCompatActivity
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ComplaintsActivity.this, ComplainRegister.class));
+                startActivity(new Intent(ComplaintsActivity.this, ComplaintRegister.class));
             }
         });
 
         statusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ComplaintsActivity.this, ComplainStatus.class));
+                startActivity(new Intent(ComplaintsActivity.this, ComplaintStatusActivity.class));
             }
         });
 

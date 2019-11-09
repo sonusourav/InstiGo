@@ -1,6 +1,7 @@
 package com.iitdh.sonusourav.instigo.User;
 
 import com.iitdh.sonusourav.instigo.Council.CouncilTeam;
+import com.iitdh.sonusourav.instigo.Utils.ResponseClass;
 import java.util.ArrayList;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
@@ -26,4 +27,12 @@ public interface RetrofitInterface {
   @FormUrlEncoded
   @POST("updatepassword")
   Call<ResponseBody> updatepassword(@Header("Authorization") String auth,@Field("password") String newPass);
+
+  @FormUrlEncoded
+  @POST("/users/fcmtoken")
+  Call<ResponseClass> sendFCMToken(@Header("Authorization") String auth,
+      @Field("fcmToken") String fcmToken);
+
+  @GET("users/picnameemail")
+  Call<UserClass> getPicNameEmail(@Header("Authorization") String header);
 }

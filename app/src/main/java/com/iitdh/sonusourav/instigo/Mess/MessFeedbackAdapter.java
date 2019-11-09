@@ -7,13 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.iitdh.sonusourav.instigo.R;
-
-import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
+import java.util.ArrayList;
 
 
 public class MessFeedbackAdapter extends BaseAdapter {
@@ -60,19 +57,25 @@ public class MessFeedbackAdapter extends BaseAdapter {
         RatingBar ratingBar=view.findViewById(R.id.mess_feedback_rating);
         TextView desc=view.findViewById(R.id.mess_feedback_desc);
 
-        String food=(m.getFeedbackDay() + "  "+ m.getFeedbackPart());
-        username.setText(m.getFeedbackUsername());
-        title.setText(m.getFeedbackTitle());
+      String food = (m.getDay() + "  " + m.getPart());
+      username.setText(m.getUsername());
+      title.setText(m.getTitle());
         day.setText(food);
-        date.setText(m.getFeedbackDate());
-        desc.setText(m.getFeedbackDesc());
-        ratingBar.setRating(Float.parseFloat(m.getFeedbackRatings()));
+      date.setText(m.getDate());
+      desc.setText(m.getDesc());
+      ratingBar.setRating(m.getRatings());
 
+      if (m.getUrl() != null) {
         Glide.with(mcontext)
-                .load("" +m.getFeedbackUri())
-                .into(circleImageView);
+            .load("" + m.getUrl())
+            .into(circleImageView);
+      } else {
+        Glide.with(mcontext)
+            .load(R.drawable.image_profile_pic)
+            .into(circleImageView);
+      }
 
-        ratingBar.setRating(Float.parseFloat(m.getFeedbackRatings()));
+      ratingBar.setRating(m.getRatings());
         return view;
     }
 }

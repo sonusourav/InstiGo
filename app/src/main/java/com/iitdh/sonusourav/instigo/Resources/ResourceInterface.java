@@ -26,12 +26,12 @@ public interface ResourceInterface {
   Call<ResponseBody> downloadFile(@Url String fileUrl);
 
   @POST("courses/postcourses")
-  Call<ResponseBody> postCourse(@Body CourseClass courseClass);
+  Call<CourseClass> postCourse(@Body CourseClass courseClass);
 
 
   @Multipart
   @POST("documents/{courseCode}")
-  Call<ResponseBody> postDocuments(@Path("courseCode") String courseCode,
+  Call<DocsClass> postDocuments(@Path("courseCode") String courseCode,
       @Part("docTitle") RequestBody docTitle,
       @Part("desc") RequestBody desc,
       @Part("prof") RequestBody prof,

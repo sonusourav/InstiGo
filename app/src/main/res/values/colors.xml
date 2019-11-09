@@ -38,7 +38,7 @@
     </array>
 
     <color name="color_login_button">#FF3366</color>
-    <color name="color_login_buttonpress">#EE3162</color>
+  <color name="color_login_buttonpress">#9C2F4C</color>
     <color name="color_signup_button">#F2F2F2</color>
     <color name="color_signup_buttonpress">#EBEBEB</color>
     <color name="color_primary_men">#00ACC1</color>
@@ -54,6 +54,7 @@
 
     <color name="home_back">#e7eef5</color>
     <color name="text_blue">#93d6ce</color>
+  <color name="dark_blue">#2D2D47</color>
     <color name="viewBg">#f1f5f8</color>
     <color name="album_title">#4c4c4c</color>
     <color name="color_icon">#2196f3</color>
@@ -70,4 +71,6 @@
     <color name="detail_color">#0995d1</color>
     <color name="red">#ec2e2e</color>
     <color name="blue">#35d9f2</color>
+  <color name="council_back">#9299C9</color>
+
 </resources>

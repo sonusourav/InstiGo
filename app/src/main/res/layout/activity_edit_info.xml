@@ -5,7 +5,7 @@
     android:background="@color/divider_color"
     android:orientation="vertical">
 
-    <android.support.design.widget.TextInputLayout
+  <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="#c5c5c5"
@@ -29,9 +29,9 @@
             android:textCursorDrawable="@drawable/bg_input_cursor"
             android:textSize="18sp"
              />
-    </android.support.design.widget.TextInputLayout>
+  </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+  <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="#c5c5c5"
@@ -55,10 +55,10 @@
             android:textCursorDrawable="@drawable/bg_input_cursor"
             android:textSize="18sp"
             />
-    </android.support.design.widget.TextInputLayout>
+  </com.google.android.material.textfield.TextInputLayout>
 
 
-    <android.support.design.widget.TextInputLayout
+  <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="#c5c5c5"
@@ -76,15 +76,15 @@
             android:background="@drawable/selector_bg_edit"
             android:hint="Current year"
             android:gravity="start|center_vertical"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:padding="5dp"
             android:textColor="@color/black"
             android:textCursorDrawable="@drawable/bg_input_cursor"
             android:textSize="18sp"
             />
-    </android.support.design.widget.TextInputLayout>
+  </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+  <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="#c5c5c5"
@@ -109,9 +109,9 @@
             android:textCursorDrawable="@drawable/bg_input_cursor"
             android:textSize="18sp"
             />
-    </android.support.design.widget.TextInputLayout>
+  </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+  <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="#c5c5c5"
@@ -136,7 +136,7 @@
             android:textCursorDrawable="@drawable/bg_input_cursor"
             android:textSize="18sp"
             />
-    </android.support.design.widget.TextInputLayout>
+  </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:layout_width="match_parent"

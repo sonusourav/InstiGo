@@ -19,7 +19,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,15 +42,11 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import org.w3c.dom.Document;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.Multipart;
 
 public class DocumentsActivity extends AppCompatActivity {
 
@@ -65,6 +60,7 @@ public class DocumentsActivity extends AppCompatActivity {
     private ResourceInterface resourceInterface;
     private  Uri selectedImage;
     private PreferenceManager docPref;
+  private Button uploadButton;
 
 
     @Override
@@ -78,7 +74,6 @@ public class DocumentsActivity extends AppCompatActivity {
         csInit();
         if (courseCode != null) {
             Log.d(TAG,courseCode);
-            emptyCourses.setVisibility(View.GONE);
             getDocuments(courseCode);
 
         }
@@ -116,10 +111,10 @@ public class DocumentsActivity extends AppCompatActivity {
         final EditText docTitle =dialog.findViewById(R.id.doc_title);
         final EditText docDesc=dialog.findViewById(R.id.doc_desc);
         final EditText docProf=dialog.findViewById(R.id.doc_prof);
-        final Button upload=dialog.findViewById(R.id.doc_upload);
+      uploadButton = dialog.findViewById(R.id.doc_upload);
         Button addButton=dialog.findViewById(R.id.doc_add_btn);
 
-        upload.setOnClickListener(new View.OnClickListener() {
+      uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
 
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -136,11 +131,10 @@ public class DocumentsActivity extends AppCompatActivity {
                 dialog.setCancelable(false);
 
                 final String title=docTitle.getText().toString().trim();
-                final String desc=docDesc.getText().toString().trim();;
-                String prof=docProf.getText().toString().trim();;
+              final String desc = docDesc.getText().toString().trim();
+              String prof = docProf.getText().toString().trim();
 
-
-                if(title.isEmpty()){
+              if (title.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Please fill Title ", Toast.LENGTH_SHORT).show();
                     docTitle.requestFocus();
                     dialog.setCancelable(true);
@@ -162,10 +156,8 @@ public class DocumentsActivity extends AppCompatActivity {
 
 
                 if(selectedImage!=null){
-                    showProgressDialog();
-
+                  showProgressDialog2();
                     dialog.dismiss();
-
                     DocsClass newDoc=new DocsClass(title,desc,prof);
                     uploadFile(selectedImage,newDoc);
                 }
@@ -185,6 +177,7 @@ public class DocumentsActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
             selectedImage = data.getData();
+          uploadButton.setBackgroundColor(getResources().getColor(R.color.green));
         }
     }
 
@@ -212,18 +205,23 @@ public class DocumentsActivity extends AppCompatActivity {
 
         MultipartBody.Part docFile= MultipartBody.Part.createFormData("resource", file.getName(), requestFile);
         //creating a call and calling the upload image method
-        Call<ResponseBody> call = resourceInterface.postDocuments(courseCode, title,desc,prof,docFile, "Bearer "+docPref.getUserId());
+      Call<DocsClass> call = resourceInterface.postDocuments(courseCode, title, desc, prof, docFile,
+          "Bearer " + docPref.getUserId());
 
         //finally performing the call
-        call.enqueue(new Callback<ResponseBody>() {
+      call.enqueue(new Callback<DocsClass>() {
             @Override
-            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<DocsClass> call,
+                @NonNull Response<DocsClass> response) {
 
-                if(response.code()==200){
+              if (response.isSuccessful()) {
                     Toast.makeText(DocumentsActivity.this, "Document successfully uploaded",
                         Toast.LENGTH_SHORT).show();
                     Log.d(TAG,"docUploaded");
+                docList.add(response.body());
+                docsAdapter.notifyDataSetChanged();
                     hideProgressDialog();
+                emptyCourses.setVisibility(View.GONE);
                 }else{
                     Log.d(TAG,"failed to upload");
                     hideProgressDialog();
@@ -232,7 +230,7 @@ public class DocumentsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<DocsClass> call, @NonNull Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.d(TAG,t.toString());
                 hideProgressDialog();
@@ -258,6 +256,7 @@ public class DocumentsActivity extends AppCompatActivity {
                         docsAdapter.notifyDataSetChanged();
 
                     }
+                  emptyCourses.setVisibility(View.GONE);
                     Log.d(TAG,response.toString());
                 }
             }
@@ -338,7 +337,31 @@ public class DocumentsActivity extends AppCompatActivity {
 
         if (docsProgDialog == null) {
             docsProgDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
-            docsProgDialog.setMessage("Updating courses....");
+          docsProgDialog.setMessage("Getting documents....");
+          docsProgDialog.setIndeterminate(true);
+          docsProgDialog.setCanceledOnTouchOutside(false);
+        }
+
+      docsProgDialog.show();
+    }
+
+  public void showProgressDialog2() {
+
+    if (docsProgDialog == null) {
+      docsProgDialog = new ProgressDialog(this, R.style.MyAlertDialogStyle);
+      docsProgDialog.setMessage("Uploading documents....");
+      docsProgDialog.setIndeterminate(true);
+      docsProgDialog.setCanceledOnTouchOutside(false);
+    }
+
+    docsProgDialog.show();
+  }
+
+  public void showProgressDialog1() {
+
+    if (docsProgDialog == null) {
+      docsProgDialog = new ProgressDialog(this, R.style.MyAlertDialogStyle);
+      docsProgDialog.setMessage("Downloading documents....");
             docsProgDialog.setIndeterminate(true);
             docsProgDialog.setCanceledOnTouchOutside(false);
         }
@@ -349,6 +372,7 @@ public class DocumentsActivity extends AppCompatActivity {
     public void hideProgressDialog() {
         if (docsProgDialog != null && docsProgDialog.isShowing()) {
             docsProgDialog.dismiss();
+          docsProgDialog = null;
         }
     }
 

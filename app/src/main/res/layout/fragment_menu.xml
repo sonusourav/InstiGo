@@ -29,7 +29,6 @@
         android:id="@+id/mainListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bmb"
         android:layout_below="@id/mess_day_button"
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -41,8 +40,6 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:scrollbars="none"
         />
-
-
 
     <com.nightonke.boommenu.BoomMenuButton
         android:id="@+id/bmb"

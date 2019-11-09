@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/course_dialog_head"
-        android:text=" Course info "
+        android:text=" Add Course "
         android:textColor="@color/blue"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -16,7 +16,6 @@
         android:layout_centerHorizontal="true"
         android:padding="10dp"
         />
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,7 +51,7 @@
         android:layout_height="40dp"
         android:id="@+id/course_add_tv2"
         android:layout_below="@id/course_add_tv1"
-        android:text="Course no        :"
+        android:text="Course Code   :"
         android:textColor="@color/light_black"
         android:textSize="17sp"
         android:textStyle="bold"
@@ -76,11 +75,40 @@
         android:padding="10dp"
         android:layout_marginStart="10dp"/>
 
+  <CheckBox
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/add_check_cs"
+      android:text="CS"
+      android:textSize="15sp"
+      android:layout_below="@id/course_add_tv2"
+      android:layout_alignStart="@id/course_add_btn"
+      />
+
+  <CheckBox
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/add_check_ee"
+      android:text="EE"
+      android:textSize="15sp"
+      android:layout_below="@id/course_add_tv2"
+      android:layout_toEndOf="@id/add_check_cs"
+      />
+  <CheckBox
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/add_check_me"
+      android:text="ME"
+      android:textSize="15sp"
+      android:layout_below="@id/course_add_tv2"
+      android:layout_toEndOf="@id/add_check_ee"
+
+      />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/course_add_btn"
-        android:layout_below="@id/course_add_no"
+        android:layout_below="@id/add_check_me"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="50dp"
         android:layout_marginBottom="10dp"

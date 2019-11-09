@@ -7,55 +7,39 @@
     android:background="@color/white"
     >
 
-    <TextView
+  <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/course_head"
-        android:text="Courses"
-        android:textSize="25sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:textColor="@color/green"
+      android:layout_height="match_parent"
+      android:id="@+id/branch_list_view"
+      android:clipToPadding="false"
+      android:scrollbars="vertical"
+      android:layout_marginEnd="15dp"
+      android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:padding="5dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        />
+      >
 
-    <TextView
+  </androidx.recyclerview.widget.RecyclerView>
+
+
+  <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/branch_course_empty"
         android:layout_centerInParent="true"
-        android:text="Course list is empty"
-        android:textColor="@color/grey"
+      android:text="No document is present"
+      android:textColor="@color/light_black"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:padding="5dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
+      android:visibility="visible"
         />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/branch_list_view"
-        android:clipToPadding="false"
-        android:scrollbars="vertical"
-        android:layout_below="@id/course_head"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="70dp"
-        >
-
-    </ListView>
-
-    <android.support.design.widget.FloatingActionButton
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/course_add_fab"
+      android:id="@+id/docs_add_fab"
         app:rippleColor="@color/purple"
         android:src="@drawable/icon_fab"
         app:backgroundTint="@color/colorAccent"

@@ -1,7 +1,5 @@
 package com.iitdh.sonusourav.instigo.Mess;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,40 +8,48 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.Utils.AppSingleton;
+import com.iitdh.sonusourav.instigo.Utils.Constants;
+import com.iitdh.sonusourav.instigo.Utils.VolleyErrorInstances;
 import com.ramotion.foldingcell.FoldingCell;
-
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Objects;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-
-public class FoldingCellListAdapter extends ArrayAdapter<Item> {
+public class FoldingCellListAdapter extends ArrayAdapter<MealClass> {
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
-    private View.OnClickListener defaultSubmitBtnClickListener;
-    private RatingBar.OnRatingBarChangeListener defaultRatingBarListener;
+  private FragmentMenu fragmentMenu;
 
-
-    public FoldingCellListAdapter(Context context, List<Item> objects) {
-        super(context, 0, objects);
+  FoldingCellListAdapter(FragmentMenu fragmentMenu, ArrayList<MealClass> objects) {
+    super(Objects.requireNonNull(fragmentMenu.getActivity()), 0, objects);
+    this.fragmentMenu = fragmentMenu;
     }
+
 
     @NonNull
     @Override
     public View getView(final int position, final View convertView, @NonNull ViewGroup parent) {
-        // get item for selected view
-        Item item = getItem(position);
-        // if cell is exists - reuse it, if not - create the new one from resource
+
+      final MealClass item = getItem(position);
         FoldingCell cell = (FoldingCell) convertView;
-        ViewHolder viewHolder;
+      final ViewHolder viewHolder;
         if (cell == null) {
 
 
             viewHolder = new ViewHolder();
             LayoutInflater vi = LayoutInflater.from(getContext());
             cell = (FoldingCell) vi.inflate(R.layout.cell, parent, false);
-
 
             // binding view parts to view holder
             viewHolder.part = cell.findViewById(R.id.mess_part);
@@ -59,7 +65,6 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
             cell.setTag(viewHolder);
 
         } else {
-            // for existing cell set valid valid state(without animation)
             if (unfoldedIndexes.contains(position)) {
                 cell.unfold(true);
             } else {
@@ -71,64 +76,125 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         if (null == item)
             return cell;
 
-        // bind data from selected element to view through view holder
+      viewHolder.part.setText(getMealType(position, 0));
+      viewHolder.time.setText(item.getTime());
+      viewHolder.items.setText(item.getItem());
+      viewHolder.contentItems.setText(item.getItem());
 
-        String contentMessPart=item.getMessPart();
-        contentMessPart = contentMessPart.replaceAll("\n","");
-        viewHolder.part.setText(item.getMessPart());
-        viewHolder.time.setText(item.getMessTime());
-        viewHolder.items.setText(item.getMessItems());
-        viewHolder.contentItems.setText(item.getMessItems());
-
-        if (item.getMessRatings() == null || Float.parseFloat(item.getMessRatings())==0) {
+       /* if (item.getRatings() == 0 ) {
             viewHolder.textRatings.setVisibility(View.VISIBLE);
             viewHolder.titleRatingBar.setVisibility(View.GONE);
-            viewHolder.textRatings.setText("Ratings Unavailable");
+            viewHolder.textRatings.setText(
+                Objects.requireNonNull(fragmentMenu.getActivity()).getResources().getString(R.string.rating_unavailable));
         } else {
             viewHolder.textRatings.setVisibility(View.GONE);
             viewHolder.titleRatingBar.setVisibility(View.VISIBLE);
-            viewHolder.titleRatingBar.setRating((Float.parseFloat(item.getMessRatings())));
-        }
-        viewHolder.contentPart.setText(contentMessPart);
-        viewHolder.contentTime.setText(item.getMessTime());
+            viewHolder.titleRatingBar.setRating(item.getRatings());
+        }*/
 
-        if(item.getRatingBarClickListener() !=null){
-            viewHolder.contentRatingBar.setOnRatingBarChangeListener(item.getRatingBarClickListener());
+      viewHolder.textRatings.setVisibility(View.GONE);
+      viewHolder.titleRatingBar.setVisibility(View.VISIBLE);
+      viewHolder.titleRatingBar.setRating(item.getRatings());
+      viewHolder.contentPart.setText(getMealType(position, 1));
+      viewHolder.contentTime.setText(item.getTime());
 
-        }else {
-            // (optionally) add "default" handler if no handler found in item
-            viewHolder.contentRatingBar.setOnRatingBarChangeListener(defaultRatingBarListener);
-        }
+      viewHolder.contentRatingBar.setOnRatingBarChangeListener(
+          new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+              rating = viewHolder.contentRatingBar.getRating();
+              Log.d("MessActivity", rating + "");
+            }
+          });
 
-        // set custom btn handler for list item from that item
-        if (item.getSubmitBtnClickListener() != null) {
-            viewHolder.submitButton.setOnClickListener(item.getSubmitBtnClickListener());
-        } else {
-            // (optionally) add "default" handler if no handler found in item
-            viewHolder.submitButton.setOnClickListener(defaultSubmitBtnClickListener);
+      final FoldingCell finalCell = cell;
+      viewHolder.submitButton.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+          finalCell.callOnClick();
+          postRatings(getRatingUrl(fragmentMenu.dayNo, position),
+              viewHolder.contentRatingBar.getRating(), viewHolder.titleRatingBar);
         }
+      });
 
 
         cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((FoldingCell) view).toggle(false);
-                // register in adapter that state for selected cell is toggled
-                Log.d("Position ",Integer.toString(position));
                 registerToggle(position);
             }
-
-
         });
-
-
-
-
         return cell;
     }
 
+  private String getRatingUrl(int day, int position) {
+    String ratingUrl;
+    switch (position) {
+      case 0:
+        ratingUrl = Constants.baseUrl + "mess/ratings/" + day + "/breakfast";
+        break;
+      case 1:
+        ratingUrl = Constants.baseUrl + "mess/ratings/" + day + "/lunch";
+        break;
+      case 2:
+        ratingUrl = Constants.baseUrl + "mess/ratings/" + day + "/snacks";
+        break;
+      case 3:
+        ratingUrl = Constants.baseUrl + "mess/ratings/" + day + "/dinner";
+        break;
+      default:
+        ratingUrl = Constants.baseUrl + "mess/ratings/" + day + "/dinner";
+        break;
+    }
+    return ratingUrl;
+  }
+
+  private String getMealType(int pos, int type) {
+    String mealType;
+
+    if (type == 0) {
+      switch (pos) {
+        case 0:
+          mealType = "B\nR\nE\nA\nK\nF\nA\nS\nT";
+          break;
+        case 1:
+          mealType = "L\nU\nN\nC\nH";
+          break;
+        case 2:
+          mealType = "S\nN\nA\nC\nK\nS";
+          break;
+        case 3:
+          mealType = "D\nI\nN\nN\nE\nR";
+          break;
+        default:
+          mealType = "M\nE\nS\nS";
+          break;
+      }
+    } else {
+      switch (pos) {
+        case 0:
+          mealType = "BREAKFAST";
+          break;
+        case 1:
+          mealType = "LUNCH";
+          break;
+        case 2:
+          mealType = "SNACKS";
+          break;
+        case 3:
+          mealType = "DINNER";
+          break;
+        default:
+          mealType = "MESS";
+          break;
+      }
+    }
+    return mealType;
+  }
+
     // simple methods for register cell state changes
-    public void registerToggle(int position) {
+    void registerToggle(int position) {
+
         if (unfoldedIndexes.contains(position))
             registerFold(position);
         else
@@ -139,8 +205,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         unfoldedIndexes.remove(position);
     }
 
-
-    public void removeAll(){
+  void removeAll() {
         if(unfoldedIndexes.contains(0)){
             registerFold(0);
         }
@@ -159,22 +224,6 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         unfoldedIndexes.add(position);
     }
 
-    public View.OnClickListener getDefaultSubmitBtnClickListener() {
-        return defaultSubmitBtnClickListener;
-    }
-
-    public void setDefaultSubmitBtnClickListener(View.OnClickListener defaultSubmitBtnClickListener) {
-        this.defaultSubmitBtnClickListener = defaultSubmitBtnClickListener;
-    }
-
-    public RatingBar.OnRatingBarChangeListener getDefaultRatingBarListener() {
-        return defaultRatingBarListener;
-    }
-
-    public void setDefaultRatingBarListener(RatingBar.OnRatingBarChangeListener defaultRatingBarListener) {
-        this.defaultRatingBarListener = defaultRatingBarListener;
-    }
-
     // View lookup cache
     private static class ViewHolder {
 
@@ -189,4 +238,47 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         TextView contentTime;
         Button submitButton;
     }
+
+  private void postRatings(String ratingUrl, float ratings, final RatingBar ratingBar) {
+
+    Log.d("MessActivity", ratingUrl);
+    JSONObject jsonObject = new JSONObject();
+    try {
+      jsonObject.put("ratings", ratings);
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+    JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, ratingUrl, jsonObject,
+        new Response.Listener<JSONObject>() {
+          @Override
+          public void onResponse(JSONObject response) {
+
+            try {
+              if (response.getString("message").equals("success")) {
+                Log.d("MessActivity", "postRatings");
+                float newRating = (float) response.getDouble("ratings");
+                Log.d("ratings", newRating + "");
+                ratingBar.setRating(newRating);
+                Toast.makeText(fragmentMenu.getActivity(), "Your feedback has been recorded",
+                    Toast.LENGTH_SHORT).show();
+              } else if (response.getString("message").equals("failure")) {
+                Log.d("MessActivity", "failedPostRatings");
+              } else {
+                Log.d("MessActivity", "else");
+              }
+            } catch (JSONException e) {
+              e.printStackTrace();
+            }
+          }
+        }, new Response.ErrorListener() {
+      @Override
+      public void onErrorResponse(VolleyError error) {
+        VolleyLog.d("MessActivity", "Error: " + error.getMessage());
+        new VolleyErrorInstances().getErrorType(fragmentMenu.getActivity(), error);
+      }
+    });
+
+    AppSingleton.getInstance().addToRequestQueue(req);
+  }
+
 }

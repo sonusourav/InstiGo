@@ -10,8 +10,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.iitdh.sonusourav.instigo.Complaints.TrackOrderAdapter.TrackingItems
 import com.iitdh.sonusourav.instigo.R
-import com.transferwise.sequencelayout.SequenceLayout
-import kotlinx.android.synthetic.main.activity_track_order.*
+import kotlinx.android.synthetic.main.activity_track_order.sequence_layout
 
 class TrackOrderActivity : AppCompatActivity() {
 
@@ -19,35 +18,22 @@ class TrackOrderActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_track_order)
 
-    val status:Int = intent.getIntExtra("status",0)
     val statusDate:ArrayList<String> = intent.getStringArrayListExtra("statusDate")
+    val trackStatus: ArrayList<String> = intent.getStringArrayListExtra("trackStatus")
 
-    Log.d("TrackOrderActivity",statusDate.toString());
-    Log.d("TrackOrderActivity",status.toString());
-
-    for (i in status until  7){
-      statusDate.add(i,"0");
-    }
-    Log.d("Track",statusDate.toString());
+    Log.d("TrackOrderActivity", statusDate.toString())
+    Log.d("TrackOrderActivity", trackStatus.toString())
 
     val statusList:ArrayList<TrackingItems> = ArrayList()
-    statusList.add(TrackingItems(false,statusDate[0],"Opened by user",""))
-    statusList.add(TrackingItems(false,statusDate[1],"Validated by Secy",""))
-    statusList.add(TrackingItems(false,statusDate[2],"Forwarded by warden",""))
-    statusList.add(TrackingItems(false,statusDate[3],"Approved by IPS office",""))
-    statusList.add(TrackingItems(false,statusDate[4],"Work ongoing",""))
-    statusList.add(TrackingItems(false,statusDate[5],"Worked resolved",""))
-    statusList.add(TrackingItems(false,statusDate[6],"Complaint closed",""))
-
-    val tempStatusList:ArrayList<TrackingItems> = ArrayList()
-
-    for (i in 0 until (status-1)) {
-     tempStatusList.add(statusList[i])
-      Log.d("Track",statusList[i].anchor);
+    for (i in 0 until (trackStatus.size - 1)) {
+      statusList.add(TrackingItems(false, statusDate[i], trackStatus[i], ""))
     }
-    tempStatusList.add(TrackingItems(true,statusList[status].anchor,statusList[status].title,statusList[status].subtitle))
+    statusList.add(
+        TrackingItems(true, statusDate[trackStatus.size - 1], trackStatus[trackStatus.size - 1], "")
+    )
+    Log.d("Track", statusList.toString())
 
-    sequence_layout.setAdapter(TrackOrderAdapter(tempStatusList))
+    sequence_layout.setAdapter(TrackOrderAdapter(statusList))
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -56,7 +42,7 @@ class TrackOrderActivity : AppCompatActivity() {
     actionBar.setHomeButtonEnabled(true)
     actionBar.setDisplayHomeAsUpEnabled(true)
     actionBar.setBackgroundDrawable(ColorDrawable(Color.parseColor("#5cae80")))
-    actionBar.title = Html.fromHtml("<font color='#ffffff'>Complaint</font>") as CharSequence?
+    actionBar.title = Html.fromHtml("<font color='#ffffff'>Complaint</font>")
     return super.onCreateOptionsMenu(menu)
 
   }

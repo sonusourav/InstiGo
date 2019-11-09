@@ -60,7 +60,7 @@
                 android:layout_height="match_parent">
 
         <ImageButton
-            android:id="@+id/imagebt_hr"
+            android:id="@+id/mess"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
         <ImageButton
-            android:id="@+id/imagebt_bp"
+            android:id="@+id/complaints"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
@@ -143,7 +143,7 @@
                 android:layout_height="match_parent">
 
                 <ImageButton
-                    android:id="@+id/imagebt_his"
+                    android:id="@+id/resources"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
@@ -180,7 +180,7 @@
                 android:layout_height="match_parent">
 
                 <ImageButton
-                    android:id="@+id/image_ec"
+                    android:id="@+id/council"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"

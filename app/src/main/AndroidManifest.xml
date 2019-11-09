@@ -1,346 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.iitdh.sonusourav.instigo"
     xmlns:tools="http://schemas.android.com/tools"
+    package="com.iitdh.sonusourav.instigo">
 
-    >
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="replace"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission
+      android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+      tools:node="replace" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.READ_CONTACTS" />
+  <uses-permission android:name="android.permission.CALL_PHONE" />
+  <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <application
-        android:allowBackup="false"
-        android:fullBackupContent="false"
-        android:icon="@mipmap/icon_instigo"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/icon_instigo"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+  <application
+      android:name=".Utils.AppSingleton"
+      android:allowBackup="false"
+      android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+      android:configChanges="keyboardHidden|screenSize"
+      android:fullBackupContent="false"
+      android:hardwareAccelerated="false"
+      android:icon="@mipmap/icon_instigo"
+      android:label="@string/app_name"
+      android:largeHeap="true"
+      android:roundIcon="@mipmap/icon_instigo"
+      android:screenOrientation="portrait"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme"
+      tools:replace="allowBackup,android:appComponentFactory"
+      android:usesCleartextTraffic="true">
+    <service
+        android:name=".Complaints.InstigoFirebaseMessagingService"
+        android:exported="false">
+      <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+      </intent-filter>
+    </service>
+
+    <activity
+        android:name=".Account.SplashActivity"
         android:screenOrientation="portrait"
-        android:largeHeap="true"
-        android:hardwareAccelerated="false"
-        android:configChanges="keyboardHidden|screenSize"
-        tools:replace="allowBackup">
-        <activity
-            android:name=".Account.SplashActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:screenOrientation="portrait"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
 
-        <activity
-            android:name=".Account.IntroScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:screenOrientation="portrait"
-            />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+        android:name=".Account.IntroScreen"
+        android:screenOrientation="portrait"
+        android:theme="@style/Theme.AppCompat.NoActionBar" />
+    <activity
+        android:name=".TestActivity"
+        android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+    <activity
+        android:name=".Account.LoginActivity"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:windowSoftInputMode="adjustPan"></activity>
+    <activity
+        android:name=".Account.RegisterActivity"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:windowSoftInputMode="adjustPan"></activity>
+    <activity
+        android:name=".Account.ForgotPassword"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar.TitleBar" />
+    <activity
+        android:name=".Council.CouncilActivity"
+        android:label="Council"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar.TitleBar"></activity>
+    <activity
+        android:name=".HomeActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar.TitleBar" />
+    <activity
+        android:name=".Mess.MessActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar.TitleBar"></activity>
+    <activity
+        android:name=".Complaints.ComplaintsActivity"
+        android:theme="@style/AppTheme.NoActionBar.TitleBar">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".HomeActivity" />
+    </activity>
+    <activity
+        android:name=".Complaints.ComplaintRegister"
+        android:screenOrientation="portrait">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".Complaints.ComplaintsActivity" />
+    </activity>
+    <activity
+        android:name=".Complaints.ComplaintStatusActivity"
+        android:screenOrientation="portrait">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".Complaints.ComplaintsActivity" />
+    </activity>
+    <activity
+        android:name=".Complaints.StatusDetails"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".Complaints.ComplaintStatusActivity" />
+    </activity>
+    <activity
+        android:name=".Council.CouncilTeamDetails"
+        android:label="Council"
+        android:screenOrientation="portrait">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".Council.CouncilActivity" />
+    </activity>
+    <activity
+        android:name=".User.UpdatePassword"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+        android:name=".User.ProfileActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".HomeActivity" />
+    </activity>
+    <activity
+        android:name=".User.EditInfoActivity"
+        android:screenOrientation="portrait">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".User.ProfileActivity" />
+    </activity>
+    <activity
+        android:name=".Resources.CourseActivity"
+        android:label="Choose Courses"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".HomeActivity" />
+    </activity>
+    <activity
+        android:name=".Feedback.Feedback"
+        android:screenOrientation="portrait"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".HomeActivity" />
+    </activity>
+    <activity
+        android:name=".Settings.SettingsActivity"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".HomeActivity" />
+    </activity>
+    <activity android:name=".Resources.DocumentsActivity">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".Resources.CourseActivity" />
+    </activity>
+    <activity android:name=".Complaints.TrackOrderActivity">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".Complaints.StatusDetails" />
+    </activity>
 
-        <activity android:name=".TestActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+    <receiver
+        android:name=".Mess.messnotification.AlarmBootReceiver"
+        android:enabled="true">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+      </intent-filter>
+    </receiver>
+    <receiver
+        android:name=".Mess.messnotification.BreakfastAlarmReceiver"
+        android:enabled="true"
+        android:process=":remote" />
+    <receiver
+        android:name=".Mess.messnotification.LunchAlarmReceiver"
+        android:enabled="true"
+        android:process=":remote" />
+    <receiver
+        android:name=".Mess.messnotification.TiffinAlarmReceiver"
+        android:enabled="true"
+        android:process=":remote" />
+    <receiver
+        android:name=".Mess.messnotification.DinnerAlarmReceiver"
+        android:enabled="true"
+        android:exported="true"
+        android:process=":remote" />
+  </application>
 
-        </activity>
-        <activity
-            android:name=".Account.LoginActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" >
-
-        </activity>
-        <activity
-            android:name=".Account.RegisterActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" >
-
-
-        </activity>
-        <activity
-            android:name=".Account.ForgotPassword"
-            android:theme="@style/AppTheme.NoActionBar.TitleBar"
-            android:screenOrientation="portrait"
-
-            />
-
-        <activity android:name=".Council.CouncilActivity"
-            android:theme="@style/AppTheme.NoActionBar.TitleBar"
-            android:screenOrientation="portrait"
-            android:label="Council"
-            >
-        </activity>
-
-        <activity android:name=".HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar.TitleBar"
-            android:screenOrientation="portrait"
-
-            />
-
-        <activity android:name=".Mess.MessActivity"
-            android:theme="@style/AppTheme.NoActionBar.TitleBar"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-
-        <activity android:name=".Complaints.ComplaintsActivity"
-            android:theme="@style/AppTheme.NoActionBar.TitleBar"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-        </activity>
-
-
-        <activity
-            android:name=".Complaints.ComplainRegister"
-            android:screenOrientation="portrait"
-            >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Complaints.ComplaintsActivity" />
-        </activity>
-
-        <activity
-            android:name=".Complaints.ComplainStatus"
-            android:screenOrientation="portrait"
-
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Complaints.ComplaintsActivity" />
-        </activity>
-        <activity
-            android:name=".Complaints.StatusDetails"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Complaints.ComplaintsActivity" />
-        </activity>
-
-        <activity
-            android:name=".Council.CouncilWarden"
-            android:screenOrientation="portrait"
-            android:label="Council"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Council.CouncilActivity" />
-        </activity>
-        <activity
-            android:name=".Council.CouncilGenSecy"
-            android:screenOrientation="portrait"
-            android:label="Council"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Council.CouncilActivity" />
-        </activity>
-
-        <activity android:name=".Council.CouncilSportsSecy"
-            android:label="Council"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Council.CouncilActivity" />
-        </activity>
-        <activity android:name=".Council.CouncilCulturalSecy"
-            android:label="Council"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Council.CouncilActivity" />
-        </activity>
-        <activity
-            android:name=".Council.CouncilFHostelSecy"
-            android:screenOrientation="portrait"
-            android:label="Council"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Council.CouncilActivity" />
-        </activity>
-        <activity
-            android:name=".Council.CouncilFHosMainSecy"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Council.CouncilActivity" />
-        </activity>
-        <activity
-            android:name=".Council.CouncilFMessSecy"
-            android:screenOrientation="portrait"
-            android:label="Council"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Council.CouncilActivity" />
-        </activity>
-        <activity
-            android:name=".Council.CouncilEmergency"
-            android:screenOrientation="portrait"
-            android:label="Council"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Council.CouncilActivity" />
-        </activity>
-        <activity
-            android:name=".Council.CouncilFSportsSecy"
-            android:screenOrientation="portrait"
-            android:label="Council"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Council.CouncilActivity" />
-        </activity>
-        <activity
-            android:name=".User.UpdatePassword"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            />
-
-        <activity
-            android:name=".User.ProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".HomeActivity" />
-
-        </activity>
-
-        <activity
-            android:name=".User.EditInfoActivity"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".User.ProfileActivity" />
-        </activity>
-        <activity
-            android:name=".Resources.ResourceActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-        </activity>
-
-        <activity
-            android:name=".Resources.CS.CSResourceDocs"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Resources.CS.CSBranch" />
-        </activity>
-        <activity
-            android:name=".Resources.CS.CSBranch"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Resources.ResourceActivity" />
-        </activity>
-        <activity android:name=".Resources.EE.EEBranch"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Resources.ResourceActivity" />
-        </activity>
-        <activity
-            android:name=".Resources.EE.EEResourceDocs"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Resources.EE.EEBranch" />
-        </activity>
-        <activity
-            android:name=".Resources.ME.MEBranch"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Resources.ResourceActivity" />
-        </activity>
-        <activity
-            android:name=".Resources.ME.MEResourceDocs"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Resources.ME.MEBranch" />
-        </activity>
-        <activity
-            android:name=".Resources.Common.CommonBranch"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Resources.ResourceActivity" />
-        </activity>
-        <activity
-            android:name=".Resources.Common.CommonResourceDocs"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Resources.Common.CommonBranch" />
-        </activity>
-        <activity
-            android:name=".Feedback.Feedback"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:screenOrientation="portrait">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".HomeActivity" />
-
-        </activity>
-
-        <activity
-            android:name=".Settings.SettingsActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-        </activity>
-
-        <receiver
-            android:name=".Mess.messnotification.AlarmBootReceiver"
-            android:enabled="true">
-            <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
-        </intent-filter>
-        </receiver>
-        <receiver
-            android:name=".Mess.messnotification.BreakfastAlarmReceiver"
-            android:enabled="true"
-            android:process=":remote" />
-        <receiver
-            android:name=".Mess.messnotification.LunchAlarmReceiver"
-            android:enabled="true"
-            android:process=":remote" />
-        <receiver
-            android:name=".Mess.messnotification.TiffinAlarmReceiver"
-            android:enabled="true"
-            android:process=":remote" />
-        <receiver
-            android:name=".Mess.messnotification.DinnerAlarmReceiver"
-            android:enabled="true"
-            android:process=":remote"
-            android:exported="true" />
-    </application>
 </manifest>

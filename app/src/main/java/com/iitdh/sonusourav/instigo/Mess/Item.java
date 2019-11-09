@@ -2,7 +2,6 @@ package com.iitdh.sonusourav.instigo.Mess;
 
 import android.view.View;
 import android.widget.RatingBar;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -101,19 +100,7 @@ public class Item {
         if (messItems != null ? !messItems.equals(item.messItems) : item.messItems != null)
             return false;
 
-
         return messRatings != null ? messRatings.equals(item.messRatings) : item.messRatings == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = messPart != null ? messPart.hashCode() : 0;
-        result = 31 * result + (messTime != null ? messTime.hashCode() : 0);
-        result = 31 * result + (messItems != null ? messItems.hashCode() : 0);
-        result = 31 * result + (messRatings != null ? messRatings.hashCode() : 0);
-
-        return result;
     }
 
     public static ArrayList<Item> makeMenu(int index) {

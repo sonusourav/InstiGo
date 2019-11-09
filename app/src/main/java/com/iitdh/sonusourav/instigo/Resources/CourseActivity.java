@@ -23,14 +23,10 @@ import com.google.android.material.navigation.NavigationView;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 import com.iitdh.sonusourav.instigo.Utils.Constants;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -158,17 +154,19 @@ public class CourseActivity extends AppCompatActivity implements
 
         dialog.dismiss();
 
-        CourseClass newCourse=new CourseClass(no,name,branch);
+        final CourseClass newCourse = new CourseClass(no, name, branch);
 
-        Call<ResponseBody> addCourseCall = retrofitInterface.postCourse(newCourse);
-        addCourseCall.enqueue(new Callback<ResponseBody>() {
+        Call<CourseClass> addCourseCall = retrofitInterface.postCourse(newCourse);
+        addCourseCall.enqueue(new Callback<CourseClass>() {
           @Override
-          public void onResponse(@NonNull Call<ResponseBody> call, @NonNull
-              Response<ResponseBody> response) {
+          public void onResponse(@NonNull Call<CourseClass> call, @NonNull
+              Response<CourseClass> response) {
 
             hideProgressDialog();
             if(response.code()==200){
               Toast.makeText(getApplicationContext(),"Course successfully added",Toast.LENGTH_SHORT).show();
+              courseList.add(newCourse);
+              adapter.notifyDataSetChanged();
             }else {
               Toast.makeText(getApplicationContext(),"Failed to add course",Toast.LENGTH_SHORT).show();
               Log.d(TAG,response.toString());
@@ -176,7 +174,7 @@ public class CourseActivity extends AppCompatActivity implements
           }
 
           @Override
-          public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+          public void onFailure(@NonNull Call<CourseClass> call, @NonNull Throwable t) {
             hideProgressDialog();
             Toast.makeText(CourseActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
             Log.d(TAG,t.toString());

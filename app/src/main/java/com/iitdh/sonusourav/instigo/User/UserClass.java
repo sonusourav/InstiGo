@@ -1,8 +1,9 @@
 package com.iitdh.sonusourav.instigo.User;
 
+import java.io.Serializable;
 
-
-public class UserClass {
+@SuppressWarnings("serial")
+public class UserClass implements Serializable {
     private String name;
     private String email;
     private String pass;
@@ -11,25 +12,27 @@ public class UserClass {
     private String branch;
     private String year;
     private String dob;
+  private String fcmToken;
     private String hostel;
     private String profilePic;
     private String coverPic;
+  private int level;
 
     public UserClass(){}
 
-    public UserClass(String userEmail,String uname, String userPass) {
+  public UserClass(String userEmail, String uname, String userPic) {
 
-        email = userEmail;
-        pass = userPass;
-        name = uname;
-        phone = "";
-        gender = "";
-        branch="";
-        year="";
-        dob="";
-        hostel="";
-        profilePic="";
-        coverPic="";
+    this.email = userEmail;
+    this.name = uname;
+    this.profilePic = userPic;
+  }
+
+  public UserClass(String userEmail, String uname, String userPic, int level) {
+
+    this.email = userEmail;
+    this.name = uname;
+    this.profilePic = userPic;
+    this.level = level;
 
     }
     public UserClass(String userEmail) {
@@ -45,10 +48,11 @@ public class UserClass {
         hostel="";
         profilePic="";
         coverPic="";
-
+      level = 0;
     }
 
-    public UserClass( String uname,String userBranch,String userYear, String userPhone,String userDob,String userGender,String userHostel) {
+  public UserClass(String uname, String userBranch, String userYear, String userPhone,
+      String userDob, String fcmToken, String userGender, String userHostel, int level) {
         name = uname;
         phone = userPhone;
         gender = userGender;
@@ -56,10 +60,13 @@ public class UserClass {
         year=userYear;
         dob=userDob;
         hostel=userHostel;
-
+    this.level = level;
+    this.fcmToken = fcmToken;
     }
 
-    public UserClass( String userEmail,String uname,String userBranch,String userYear, String userPhone,String userDob,  String userGender,String userHostel,String userPic,String userCoverPic) {
+  public UserClass(String userEmail, String uname, String userBranch, String userYear,
+      String userPhone, String userDob, String fcmToken, String userGender, String userHostel,
+      String userPic, String userCoverPic, int level) {
         email = userEmail;
         name = uname;
         phone = userPhone;
@@ -70,7 +77,8 @@ public class UserClass {
         hostel=userHostel;
         profilePic=userPic;
         coverPic=userCoverPic;
-
+    this.level = level;
+    this.fcmToken = fcmToken;
     }
 
     public String getEmail() {
@@ -160,4 +168,20 @@ public class UserClass {
     public void setCoverPic(String coverPic) {
         this.coverPic = coverPic;
     }
+
+  public int getLevel() {
+    return level;
+  }
+
+  public void setLevel(int level) {
+    this.level = level;
+  }
+
+  public String getFcmToken() {
+    return fcmToken;
+  }
+
+  public void setFcmToken(String fcmToken) {
+    this.fcmToken = fcmToken;
+  }
 }

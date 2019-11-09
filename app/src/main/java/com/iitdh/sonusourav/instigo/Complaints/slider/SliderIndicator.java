@@ -3,12 +3,12 @@ package com.iitdh.sonusourav.instigo.Complaints.slider;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
-import android.support.annotation.DimenRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.LinearLayout;
+import androidx.annotation.DimenRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 
 
 public class SliderIndicator implements ViewPager.OnPageChangeListener {

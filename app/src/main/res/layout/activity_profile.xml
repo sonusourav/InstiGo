@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:id="@+id/profile_cover_pic"
-            android:src="@drawable/image_profile"
+            android:src="@drawable/image_cover_pic"
             android:scaleType="fitXY"
            />
         <de.hdodenhof.circleimageview.CircleImageView

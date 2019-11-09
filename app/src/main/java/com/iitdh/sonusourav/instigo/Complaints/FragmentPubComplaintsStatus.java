@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.Constants;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
-import com.yalantis.taurus.PullToRefreshView;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +30,6 @@ public class FragmentPubComplaintsStatus extends Fragment {
     private static final String TAG = FragmentPubComplaintsStatus.class.getSimpleName() ;
     private ArrayList<ComplainItemClass> complainStatusList;
     private static final int REFRESH_DELAY = 4000;
-    private PullToRefreshView mPullToRefreshView;
     private ProgressDialog statusProgressDialog;
     private ComplaintsInterface complaintsInterface;
     private ComplaintsAdapter statusAdapter;
@@ -50,22 +48,9 @@ public class FragmentPubComplaintsStatus extends Fragment {
         @SuppressLint("InflateParams")
         View view = inflater.inflate(R.layout.complaint_pub_status, null);
         ListView listView = view.findViewById(R.id.status_listview);
-        mPullToRefreshView=view.findViewById(R.id.pull_to_refresh);
         complainStatusList = new ArrayList<>();
 
         showProgressDialog();
-
-        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mPullToRefreshView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPullToRefreshView.setRefreshing(false);
-                    }
-                }, REFRESH_DELAY);
-            }
-        });
 
         statusAdapter = new ComplaintsAdapter(getActivity(), complainStatusList);
         listView.setAdapter(statusAdapter);

@@ -1,15 +1,14 @@
 package com.iitdh.sonusourav.instigo.Complaints.slider;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.iitdh.sonusourav.instigo.R;
+import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
+import com.iitdh.sonusourav.instigo.R;
 
 
 public class FragmentSlider extends Fragment {

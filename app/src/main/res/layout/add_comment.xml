@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    >
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/course_dialog_head"
+      android:text=" Add Comment "
+      android:textColor="@color/black"
+      android:textSize="20sp"
+      android:gravity="center_vertical"
+      android:layout_centerHorizontal="true"
+      android:padding="10dp"
+      />
+
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:id="@+id/comment_desc"
+      android:layout_below="@id/course_dialog_head"
+      android:inputType="text"
+      android:maxLines="20"
+      android:background="@drawable/comment_rectangle"
+      android:textColorHint="@color/light_black"
+      android:textColor="@color/black"
+      android:textSize="17sp"
+      android:textStyle="normal"
+      android:gravity="center_vertical"
+      android:padding="5dp"
+      android:layout_margin="10dp"
+      />
+
+
+  <Button
+      android:layout_width="150dp"
+      android:layout_height="50dp"
+      android:id="@+id/course_add_btn"
+      android:layout_below="@id/comment_desc"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="10dp"
+      android:background="@drawable/button_login"
+      android:text=" Add "
+      android:textColor="@color/white"
+      android:textStyle="bold"
+      android:textSize="20sp"
+      />
+</RelativeLayout>

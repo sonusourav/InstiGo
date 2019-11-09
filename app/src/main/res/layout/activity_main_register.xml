@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg">
-    <android.support.v7.widget.CardView
+  <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -47,40 +47,12 @@
             </RelativeLayout>
 
 
-                <android.support.design.widget.TextInputLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="#c5c5c5"
-                    android:layout_below="@id/rlview1"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/til1"
-                    >
-
-                    <EditText
-                        android:id="@+id/complain_username"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/selector_bg_edit"
-                        android:hint="Name"
-                        android:gravity="start|center_vertical"
-                        android:inputType="textPersonName"
-                        android:padding="5dp"
-                        android:textColor="@color/black"
-                        android:textCursorDrawable="@drawable/bg_input_cursor"
-                        android:textSize="18sp" />
-                </android.support.design.widget.TextInputLayout>
-
-
-
-                <android.support.design.widget.TextInputLayout
+          <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="#c5c5c5"
                     android:id="@+id/til2"
-                    android:layout_below="@id/til1"
+              android:layout_below="@id/rlview1"
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
                     android:layout_marginTop="10dp">
@@ -96,47 +68,19 @@
                         android:textColor="@color/black"
                         android:textCursorDrawable="@drawable/bg_input_cursor"
                         android:textSize="18sp" />
-                </android.support.design.widget.TextInputLayout>
+          </com.google.android.material.textfield.TextInputLayout>
 
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="#c5c5c5"
-                    android:id="@+id/til3"
-                    android:layout_below="@id/til2"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
-                    android:layout_marginTop="10dp">
-
-                    <EditText
-                        android:id="@+id/complain_house_no"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/selector_bg_edit"
-                        android:hint="House no."
-                        android:inputType="textPostalAddress"
-                        android:padding="5dp"
-                        android:textColor="@color/black"
-                        android:textCursorDrawable="@drawable/bg_input_cursor"
-                        android:textSize="18sp" />
-                </android.support.design.widget.TextInputLayout>
-
-
-
-                <Spinner
+          <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:id="@+id/add_complaint_hostel"
                     android:entries="@array/hostel"
                     android:layout_margin="13dp"
-                    android:layout_below="@id/til3"
+              android:layout_below="@id/til2"
                     >
 
                 </Spinner>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -144,18 +88,40 @@
                 android:layout_marginTop="2dp"
                 android:layout_alignStart="@id/add_complaint_hostel"
                 android:layout_alignEnd="@id/add_complaint_hostel"
-                android:layout_below="@id/add_complaint_hostel"/>
+                android:layout_below="@id/add_complaint_hostel"
+                />
+
+          <Spinner
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:id="@+id/add_complaint_house"
+              android:entries="@array/house"
+              android:layout_margin="13dp"
+              android:layout_below="@id/add_complaint_hostel"
+              >
+
+          </Spinner>
+
+          <View
+              android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:background="#c5c5c5"
+              android:layout_marginTop="2dp"
+              android:layout_alignStart="@id/add_complaint_house"
+              android:layout_alignEnd="@id/add_complaint_house"
+              android:layout_below="@id/add_complaint_house"
+              />
 
 
-
-                <Spinner
+          <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:entries="@array/Complaint_type"
                     android:id="@+id/add_complaint_type"
                     android:layout_margin="13dp"
-                    android:layout_below="@id/add_complaint_hostel"
+              android:layout_below="@id/add_complaint_house"
                    >
 
                 </Spinner>
@@ -170,8 +136,7 @@
                 android:layout_below="@id/add_complaint_type" />
 
 
-
-                <android.support.design.widget.TextInputLayout
+          <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="#c5c5c5"
@@ -194,16 +159,17 @@
                         android:padding="5dp"
                         android:textColor="@color/black"
                         android:textCursorDrawable="@drawable/bg_input_cursor"
+                        android:gravity="center_vertical"
                         android:textSize="18sp" />
-                </android.support.design.widget.TextInputLayout>
+          </com.google.android.material.textfield.TextInputLayout>
 
 
 
                 <CheckBox
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/complain_is_private"
-                    android:text="Make it private"
+                    android:text="Private"
                     android:textColor="@color/light_black"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
@@ -211,7 +177,21 @@
                     />
 
 
-                <Button
+          <CheckBox
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/complain_is_priority"
+              android:text="Priority"
+              android:textColor="@color/light_black"
+              android:layout_marginStart="20dp"
+              android:layout_marginTop="5dp"
+              android:layout_below="@id/til4"
+              android:layout_alignEnd="@id/til4"
+              android:layout_marginEnd="20dp"
+              />
+
+
+          <Button
                     android:id="@+id/complain_submit"
                     android:layout_width="150dp"
                     android:layout_height="45dp"
@@ -229,7 +209,7 @@
                 </Button>
 
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
+  </androidx.cardview.widget.CardView>
 
 
 

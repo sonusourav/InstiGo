@@ -1,12 +1,10 @@
 package com.iitdh.sonusourav.instigo.Complaints;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.core.app.NavUtils;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,7 +16,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.Constants;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
@@ -84,10 +84,13 @@ public class ComplaintRegister extends AppCompatActivity
                             Response<ResponseBody> response) {
 
                             hideProgressDialog();
-                            if(response.code()==200){
+                            if (response.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(),"Complaint successfully added",Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(ComplaintRegister.this,
+                                    ComplaintStatusActivity.class));
                             }else {
-                                Toast.makeText(getApplicationContext(),"Failed to add course",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Failed to add complaints",
+                                    Toast.LENGTH_SHORT).show();
                                 Log.d(TAG,response.toString());
                             }
                         }

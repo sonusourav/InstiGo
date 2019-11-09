@@ -1,54 +1,58 @@
 package com.iitdh.sonusourav.instigo.Council;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.iitdh.sonusourav.instigo.Complaints.ComplainStatus;
-import com.iitdh.sonusourav.instigo.Complaints.ComplaintsActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.navigation.NavigationView;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.R;
+import com.iitdh.sonusourav.instigo.User.RetrofitInterface;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
-
+import com.iitdh.sonusourav.instigo.Utils.Constants;
+import java.util.ArrayList;
 import java.util.Objects;
-
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CouncilActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
+    implements NavigationView.OnNavigationItemSelectedListener {
 
-    private LinearLayout wardens;
-    private LinearLayout genSecy;
-    private LinearLayout sportsSecy;
-    private LinearLayout culSecy;
-    private LinearLayout FrHostelSecy;
-    private LinearLayout FrHosMainSecy;
-    private LinearLayout FrMessSecy;
-    private LinearLayout FrSportsSecy;
-    private LinearLayout EmergencyContacts;
+  private ArrayList<CouncilTeam> teamList;
+  private RetrofitInterface retrofitInterface;
+  private CouncilAdapter adapter;
+  private String TAG = CouncilActivity.class.getSimpleName();
+  private ProgressDialog councilProgressDialog;
 
-    @Override
+  @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
         findViewById(R.id.include_council).setVisibility(View.VISIBLE);
 
-
         CommonFunctions.setUser(this);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar_main);
+    androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -58,23 +62,11 @@ public class CouncilActivity extends AppCompatActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-
         councilInit();
-
-        wardens.setOnClickListener(this);
-        genSecy.setOnClickListener(this);
-        sportsSecy.setOnClickListener(this);
-        culSecy.setOnClickListener(this);
-        FrHosMainSecy.setOnClickListener(this);
-        FrHostelSecy.setOnClickListener(this);
-        FrMessSecy.setOnClickListener(this);
-        FrSportsSecy.setOnClickListener(this);
-        EmergencyContacts.setOnClickListener(this);
-
+    showProgressDialog();
+    getCouncilTeam();
 
     }
-
-    private static long back_pressed=100;
 
     @Override
     public void onBackPressed() {
@@ -87,7 +79,6 @@ public class CouncilActivity extends AppCompatActivity
     }
 
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -95,53 +86,76 @@ public class CouncilActivity extends AppCompatActivity
 
     }
 
+  private void getCouncilTeam() {
+    Call<ArrayList<CouncilTeam>> call = retrofitInterface.getTeams();
+    call.enqueue(new Callback<ArrayList<CouncilTeam>>() {
+      @Override
+      public void onResponse(@NonNull Call<ArrayList<CouncilTeam>> call,
+          @NonNull Response<ArrayList<CouncilTeam>> response) {
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
+        hideProgressDialog();
+        if (response.body() != null) {
 
-            case R.id.wardens:
-                startActivity(new Intent(CouncilActivity.this,CouncilWarden.class));
-                break;
-            case R.id.gen_secy:
-                startActivity(new Intent(CouncilActivity.this,CouncilGenSecy.class));
-                break;
-            case R.id.sports_secy:
-                startActivity(new Intent(CouncilActivity.this,CouncilSportsSecy.class));
-                break;
-            case R.id.cul_secy:
-                startActivity(new Intent(CouncilActivity.this,CouncilCulturalSecy.class));
-                break;
-            case R.id.fr_hm_secy:
-                startActivity(new Intent(CouncilActivity.this,CouncilFHosMainSecy.class));
-                break;
-            case R.id.fr_hostel_secy:
-                startActivity(new Intent(CouncilActivity.this,CouncilFHostelSecy.class));
-                break;
-            case R.id.frs_secy:
-                startActivity(new Intent(CouncilActivity.this,CouncilFSportsSecy.class));
-                break;
-            case R.id.fr_mess_secy:
-                startActivity(new Intent(CouncilActivity.this,CouncilFMessSecy.class));
-                break;
-            case R.id.emergency_cont:
-                startActivity(new Intent(CouncilActivity.this,CouncilEmergency.class));
-                break;
-           default:
-               startActivity(new Intent(CouncilActivity.this,CouncilWarden.class));
-               break;
+          ArrayList<CouncilTeam> councilTeams = response.body();
+          for (CouncilTeam councilTeam : councilTeams) {
+            Log.v(TAG, councilTeam.getTeamName());
+            teamList.add(councilTeam);
+            adapter.notifyDataSetChanged();
+          }
+          Log.d(TAG, response.toString());
         }
-    }
+      }
+
+      @Override
+      public void onFailure(@NonNull Call<ArrayList<CouncilTeam>> call, @NonNull Throwable t) {
+        hideProgressDialog();
+        Toast.makeText(CouncilActivity.this, "Something went wrong...Please try later!",
+            Toast.LENGTH_SHORT).show();
+        Log.d(TAG, t.toString());
+        Log.d(TAG, call.toString());
+      }
+    });
+  }
+
 
     private void councilInit(){
-        wardens=findViewById(R.id.wardens);
-        genSecy=findViewById(R.id.gen_secy);
-        sportsSecy=findViewById(R.id.sports_secy);
-        culSecy=findViewById(R.id.cul_secy);
-        FrHostelSecy=findViewById(R.id.fr_hostel_secy);
-        FrHosMainSecy=findViewById(R.id.fr_hm_secy);
-        FrMessSecy=findViewById(R.id.fr_mess_secy);
-        FrSportsSecy=findViewById(R.id.frs_secy);
-        EmergencyContacts=findViewById(R.id.emergency_cont);
+      RecyclerView recyclerView = findViewById(R.id.council_recycler_view);
+      teamList = new ArrayList<>();
+      adapter = new CouncilAdapter(this, teamList);
+
+      RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+      recyclerView.setLayoutManager(mLayoutManager);
+      recyclerView.setItemAnimator(new DefaultItemAnimator());
+      recyclerView.setAdapter(adapter);
+
+      OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+          .connectTimeout(60, TimeUnit.SECONDS)
+          .readTimeout(60, TimeUnit.SECONDS)
+          .writeTimeout(120, TimeUnit.SECONDS)
+          .build();
+      retrofitInterface = new Retrofit.Builder()
+          .baseUrl(Constants.baseUrl)
+          .addConverterFactory(GsonConverterFactory.create())
+          .client(okHttpClient)
+          .build()
+          .create(RetrofitInterface.class);
     }
+
+  public void showProgressDialog() {
+
+    if (councilProgressDialog == null) {
+      councilProgressDialog = new ProgressDialog(this, R.style.MyAlertDialogStyle);
+      councilProgressDialog.setMessage("Fetching details....");
+      councilProgressDialog.setIndeterminate(true);
+      councilProgressDialog.setCanceledOnTouchOutside(false);
+    }
+
+    councilProgressDialog.show();
+  }
+
+  public void hideProgressDialog() {
+    if (councilProgressDialog != null && councilProgressDialog.isShowing()) {
+      councilProgressDialog.dismiss();
+    }
+  }
 }

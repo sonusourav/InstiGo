@@ -114,6 +114,7 @@
     </string-array>
 
     <string-array name="hostel">
+      <item>Hostel</item>
         <item>Freshers Hostel</item>
         <item>Hostel 1</item>
         <item>Hostel 2</item>
@@ -128,7 +129,18 @@
 
     </string-array>
 
-    <string-array name="Complaint_type">
+  <string-array name="house">
+    <item>House</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+  </string-array>
+
+  <string-array name="Complaint_type">
+    <item>Type</item>
         <item>Electrician</item>
         <item>Plumber</item>
         <item>Carpenter</item>
@@ -149,6 +161,7 @@
     <item name="item_id" type="id" />
 
     <string-array name="gender">
+      <item>Gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Others</item>
@@ -170,4 +183,7 @@
     <string name="backdrop_subtitle">More to come....</string>
     <string name="write_file">This app needs access to your file storage so that it can write files.</string>
     <string name="url_path">https://drive.google.com/open?id=0BzHSfMqO1EIMRnRYNllndWlfUW9TMTNDTGpmQUpRMEI3Y1Rz</string>
+  <string name="web_client_id">336939768365-a5sl1einfnapcpkbmnlf9jmi2dnsfb3t.apps.googleusercontent.com</string>
+  <string name="rating_unavailable">Ratings Unavailable</string>
+
 </resources>

@@ -1,125 +1,368 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/divider_color">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+  <ScrollView
+      android:id="@+id/details_scrollview"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_above="@id/rl_btn_group"
+      >
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:layout_margin="5dp">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:id="@+id/details_title"
-        android:text="Complain Title"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:textSize="22sp"
-        android:textColor="@color/black"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:id="@+id/details_date"
-        android:text="Date"
-        android:gravity="center"
-        android:layout_below="@id/details_title"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="15sp"
-        android:textColor="@color/light_black"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:id="@+id/details_time"
-        android:text="Time"
-        android:gravity="center"
-        android:layout_alignBottom="@id/details_date"
-        android:layout_below="@id/details_title"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="15sp"
-        android:textColor="@color/light_black"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:id="@+id/details_username"
-        android:text="Username"
-        android:gravity="start|center_vertical"
-        android:layout_below="@id/details_date"
-        android:layout_marginStart="15dp"
-        android:textSize="15sp"
-        android:textColor="@color/light_black"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:id="@+id/details_email"
-        android:text="Email"
-        android:gravity="start|center_vertical"
-        android:layout_below="@id/details_username"
-        android:layout_marginStart="15dp"
-        android:textSize="15sp"
-        android:textColor="@color/green"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:id="@+id/details_type"
-        android:text="Complain Type"
-        android:gravity="start|center_vertical"
-        android:layout_below="@id/details_email"
-        android:layout_marginStart="15dp"
-        android:textSize="15sp"
-        android:textColor="@color/light_black"
-        />
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/details_scrollview"
-        android:layout_below="@id/details_type"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp">
+        android:layout_margin="5dp"
+        android:id="@+id/details_rl1"
+        >
+
+      <TextView
+          android:id="@+id/details_id"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="15dp"
+          android:layout_marginTop="20dp"
+          android:text="Order Id"
+          android:textSize="12sp"
+
+          />
+
+      <de.hdodenhof.circleimageview.CircleImageView
+          android:id="@+id/details_pic"
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          android:layout_below="@id/details_id"
+          android:layout_marginStart="15dp"
+          android:layout_marginTop="10dp"
+          android:src="@drawable/image_profile_pic"
+          />
+
+      <TextView
+          android:id="@+id/details_username"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentEnd="true"
+          android:layout_alignTop="@id/details_pic"
+          android:layout_marginEnd="10dp"
+          android:layout_marginStart="10dp"
+          android:gravity="end|center_vertical"
+          android:text="Username"
+          android:textColor="@color/light_black"
+          android:textSize="15sp"
+          />
+      <TextView
+          android:id="@+id/details_email"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/details_username"
+          android:layout_marginEnd="10dp"
+          android:layout_marginStart="10dp"
+          android:gravity="end|center_vertical"
+          android:text="Email"
+          android:textColor="@color/green"
+          android:textSize="15sp"
+          />
+
+      <TextView
+          android:id="@+id/details_title"
+          android:layout_width="match_parent"
+          android:layout_height="30dp"
+          android:layout_below="@id/details_pic"
+          android:gravity="center_horizontal"
+          android:text="Complain Title"
+          android:textColor="@color/black"
+          android:textSize="22sp"
+          />
+
+      <TextView
+          android:id="@+id/details_date"
+          android:layout_width="wrap_content"
+          android:layout_height="50dp"
+          android:layout_alignParentEnd="true"
+          android:layout_below="@id/details_title"
+          android:layout_marginEnd="15sp"
+          android:layout_marginStart="10dp"
+          android:gravity="end|center_vertical"
+          android:text="Date"
+          android:textColor="@color/light_black"
+          android:textSize="15sp"
+          />
+
+
+      <TextView
+          android:id="@+id/details_type"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_below="@id/details_title"
+          android:layout_marginStart="15dp"
+          android:gravity="start|center_vertical"
+          android:text="Complain Type"
+          android:textColor="@color/light_black"
+          android:textSize="15sp"
+          />
+
+      <TextView
+          android:id="@+id/details_house"
+          android:layout_width="wrap_content"
+          android:layout_height="30dp"
+          android:layout_alignParentEnd="true"
+          android:layout_below="@id/details_date"
+          android:layout_marginEnd="15dp"
+          android:layout_marginStart="10dp"
+          android:gravity="end|center_vertical"
+          android:text="House No.: "
+          android:textColor="@color/light_black"
+          android:textSize="15sp"
+          />
+
+      <TextView
+          android:id="@+id/details_hostel"
+          android:layout_width="wrap_content"
+          android:layout_height="30dp"
+          android:layout_below="@id/details_type"
+          android:layout_marginStart="15dp"
+          android:gravity="start|center_vertical"
+          android:text="Hostel : "
+          android:textColor="@color/light_black"
+          android:textSize="15sp"
+          />
+
+
+      <TextView
+          android:id="@+id/details_info"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/details_hostel"
+          android:layout_marginStart="5dp"
+          android:gravity="center"
+          android:hint="No Details Available"
+          android:maxLines="10"
+          android:padding="5dp"
+          android:textColor="@color/light_black"
+          android:textColorHint="@color/light_black"
+          android:textSize="17sp"
+          />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_below="@id/details_info"
+          android:layout_marginTop="10dp"
+          android:background="@color/grey"
+          />
+
+      <RelativeLayout
+          android:id="@+id/details_track"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/details_info"
+          android:layout_marginTop="5dp"
+          >
+        <Button
+            android:id="@+id/details_status_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/red"
+            android:padding="5dp"
+            android:text="Pending"
+            android:textColor="@color/white"
+            />
+
         <TextView
+            android:id="@+id/details_track_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/details_info"
-            android:maxLines="10"
-            android:minHeight="50dp"
-            android:hint="No Details Available"
+            android:layout_below="@id/details_status_btn"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="start"
+            android:hint="Forwarded by warden"
+            android:textColor="@color/light_black"
             android:textColorHint="@color/light_black"
-            android:padding="5dp"
-            android:gravity="center"
-            android:layout_marginStart="5dp"
-            android:textSize="17sp"
-            android:textColor="@color/light_black" />
-    </ScrollView>
+            android:textSize="13sp"
+            />
+        <TextView
+            android:id="@+id/details_track_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/details_status_btn"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="start"
+            android:hint="Date"
+            android:textColor="@color/light_black"
+            android:textColorHint="@color/light_black"
+            android:textSize="13sp"
+            />
+      </RelativeLayout>
 
-    <Button
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_below="@id/details_track"
+          android:background="@color/grey"
+          />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/light_black"
+          android:id="@+id/details_comments_head"
+          android:text="Comments"
+          android:visibility="gone"
+          android:gravity="center"
+          android:textSize="18sp"
+          android:layout_marginTop="5dp"
+          android:layout_below="@id/details_track"
+          />
+
+      <ListView
+          android:id="@+id/details_comments"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@id/details_comments_head"
+          android:layout_margin="10dp"
+          ></ListView>
+    </RelativeLayout>
+  </ScrollView>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:orientation="vertical"
+      android:gravity="bottom"
+      android:id="@+id/rl_btn_group"
+      >
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:id="@+id/details_status_btn"
-        android:background="@color/red"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="Pending"
-        android:textColor="@color/white"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_add_comment"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/icon_fab"
+        android:tint="@color/white"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        app:fabSize="mini"
         />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_btn_group3"
+        android:visibility="gone"
+        >
 
 
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/grey"
+          />
+      <Button
+          android:layout_width="120dp"
+          android:layout_height="50dp"
+          android:id="@+id/details_close"
+          android:background="@drawable/button_login"
+          style="?android:attr/buttonBarButtonStyle"
+          android:layout_centerHorizontal="true"
+          android:layout_margin="10dp"
+          android:text="CLOSE "
+          android:textColor="@color/white"
+          android:backgroundTint="@color/menu_title_color"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_btn_group2"
+        android:visibility="gone"
+        >
+
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/grey"
+          />
+      <Button
+          android:layout_width="120dp"
+          android:layout_height="50dp"
+          android:id="@+id/details_ongoing"
+          android:background="@drawable/button_login"
+          style="?android:attr/buttonBarButtonStyle"
+          android:layout_alignParentStart="true"
+          android:layout_margin="10dp"
+          android:text="ONGOING "
+          android:textColor="@color/white"
+          android:backgroundTint="@color/bg_slider_screen1"
+          />
+      <Button
+          android:layout_width="120dp"
+          android:layout_height="50dp"
+          android:id="@+id/details_resolved"
+          android:background="@drawable/button_login"
+          style="?android:attr/buttonBarButtonStyle"
+          android:layout_alignParentEnd="true"
+          android:layout_margin="10dp"
+          android:text=" RESOLVED "
+          android:textColor="@color/white"
+          android:backgroundTint="@color/disabled_login"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_btn_group1"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        >
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/grey"
+          />
+
+      <Button
+          android:layout_width="120dp"
+          android:layout_height="50dp"
+          android:id="@+id/details_approve"
+          android:background="@drawable/button_login"
+          style="?android:attr/buttonBarButtonStyle"
+          android:layout_alignParentStart="true"
+          android:layout_margin="10dp"
+          android:text="Approve"
+          android:textColor="@color/white"
+          android:backgroundTint="@color/green"
+          />
+      <Button
+          android:layout_width="120dp"
+          android:layout_height="50dp"
+          android:id="@+id/details_reject"
+          android:background="@drawable/button_login"
+          style="?android:attr/buttonBarButtonStyle"
+          android:layout_alignParentEnd="true"
+          android:layout_margin="10dp"
+          android:text="Reject"
+          android:textColor="@color/white"
+          android:backgroundTint="@color/red"
+          />
+
+    </RelativeLayout>
+  </LinearLayout>
 </RelativeLayout>
-
-</LinearLayout>

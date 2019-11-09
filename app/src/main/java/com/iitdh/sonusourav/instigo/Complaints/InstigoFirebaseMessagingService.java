@@ -1,6 +1,6 @@
 package com.iitdh.sonusourav.instigo.Complaints;
 
-import android.app.Activity;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -116,6 +116,7 @@ public class InstigoFirebaseMessagingService extends FirebaseMessagingService {
             .setSmallIcon(R.drawable.logo_instigo)
             .setContentTitle(title)
             .setContentText(messageBody)
+            .setDefaults(Notification.DEFAULT_ALL)
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
             .setContentIntent(pendingIntent);

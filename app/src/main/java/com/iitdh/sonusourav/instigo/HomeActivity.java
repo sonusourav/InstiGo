@@ -2,20 +2,20 @@ package com.iitdh.sonusourav.instigo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
 import com.iitdh.sonusourav.instigo.Complaints.ComplaintsActivity;
 import com.iitdh.sonusourav.instigo.Council.CouncilActivity;
 import com.iitdh.sonusourav.instigo.Mess.MessActivity;
-import com.iitdh.sonusourav.instigo.Resources.ResourceActivity;
+import com.iitdh.sonusourav.instigo.Resources.CourseActivity;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 import java.util.Objects;
 
@@ -23,10 +23,7 @@ import java.util.Objects;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnClickListener{
 
-    private ImageButton heartRateImageBt;
-    private ImageButton bloodPressureImageBt;
-    private ImageButton historyImageBt;
-    private ImageButton emergencyConImageBt;
+    private ImageButton mess, complaints, resources, council;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +37,7 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar_main);
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -52,10 +49,10 @@ public class HomeActivity extends AppCompatActivity
 
         homeInit();
 
-        heartRateImageBt.setOnClickListener(this);
-        bloodPressureImageBt.setOnClickListener(this);
-        historyImageBt.setOnClickListener(this);
-        emergencyConImageBt.setOnClickListener(this);
+        mess.setOnClickListener(this);
+        complaints.setOnClickListener(this);
+        resources.setOnClickListener(this);
+        council.setOnClickListener(this);
 
 
     }
@@ -87,34 +84,33 @@ public class HomeActivity extends AppCompatActivity
 
     private void homeInit(){
 
-        heartRateImageBt = findViewById(R.id.imagebt_hr);
-        bloodPressureImageBt = findViewById(R.id.imagebt_bp);
-        historyImageBt = findViewById(R.id.imagebt_his);
-        emergencyConImageBt = findViewById(R.id.image_ec);
+        mess = findViewById(R.id.mess);
+        complaints = findViewById(R.id.complaints);
+        resources = findViewById(R.id.resources);
+        council = findViewById(R.id.council);
     }
-
 
     @Override
     public void onClick(View view) {
 
         switch (view.getId()){
-            case R.id.imagebt_hr:
+            case R.id.mess:
                 startActivity(new Intent(HomeActivity.this,MessActivity.class));
                 break;
-            case R.id.imagebt_bp:
+            case R.id.complaints:
                 startActivity(new Intent(HomeActivity.this,ComplaintsActivity.class));
                 break;
 
-            case R.id.imagebt_his:
-                startActivity(new Intent(HomeActivity.this,ResourceActivity.class));
+            case R.id.resources:
+                startActivity(new Intent(HomeActivity.this, CourseActivity.class));
                 break;
 
-            case R.id.image_ec:
+            case R.id.council:
                 startActivity(new Intent(HomeActivity.this,CouncilActivity.class));
                 break;
 
             default:
-                    startActivity(new Intent(HomeActivity.this,MessActivity.class));
+                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
 
         }
 
