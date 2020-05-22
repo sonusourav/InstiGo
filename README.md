@@ -7,6 +7,8 @@
 # InstiGo-Android
 InstiGo is an android app for the students and faculties of IIT Dharwad that provide a one stop solution for matters related to mess, academia and hostel. 
 
+![InstiGo_cover](https://user-images.githubusercontent.com/34706326/82624729-eab6c100-9c00-11ea-80eb-1ab052f4592c.jpg)
+
 ## InstiGo apk
 [![button](https://user-images.githubusercontent.com/34706326/57187663-142a7f00-6f10-11e9-9d89-144e9f46e8f3.jpg)](https://drive.google.com/open?id=186EfacIxiywjDOTjxS0nG5ktbw2RuX66)
 ## Libraries Used
@@ -81,9 +83,8 @@ For writing commit messages please read the [COMMITSTYLE](https://github.com/oss
 
 Our other sources of communications include
 
-- Email: oss@iitdh.ac.in
-- POC : Sonu Sourav (sonusouravdx001@gmail.com)  
-For more information, please refer to [OSS Website](https://oss2019.github.io/).
+- Email : sonusouravdx001@gmail.com    
+For more information, please refer to [My personal Website](https://sonusourav.github.io/).
 
 
 ## LEGAL & DISCLAIMER
