@@ -5,67 +5,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Account.IntroScreen"
-    android:orientation="vertical">
+    >
 
-    <com.google.android.material.appbar.AppBarLayout
+  <com.google.android.material.appbar.AppBarLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fitsSystemWindows="true"
+      android:theme="@style/AppTheme"
+      >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_main"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/green"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleTextColor="@color/white"/>
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/green"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@color/white"
+        />
 
 
-    </com.google.android.material.appbar.AppBarLayout>
-    <include
-        android:id="@+id/include_home"
-        layout="@layout/home_screen"
-        android:visibility="gone"/>
-    <include
-        android:id="@+id/include_council"
-        layout="@layout/activity_council"
-        android:visibility="gone"/>
+  </com.google.android.material.appbar.AppBarLayout>
+  <include
+      layout="@layout/home_screen"
+      android:id="@+id/include_home"
+      android:visibility="gone"
+      />
+  <include
+      layout="@layout/activity_council"
+      android:id="@+id/include_council"
+      android:visibility="gone"
+      />
 
-    <include
-        android:id="@+id/include_maintenance"
-        layout="@layout/activity_complaint"
-        android:visibility="gone"/>
-    <include
-        android:id="@+id/include_tabbed_content"
-        layout="@layout/activity_mess"
-        android:visibility="gone"/>
-    <include
-        android:id="@+id/include_update_pass"
-        layout="@layout/update_password"
-        android:visibility="gone"/>
+  <include
+      layout="@layout/activity_complaint"
+      android:id="@+id/include_maintenance"
+      android:visibility="gone"
+      />
+  <include
+      layout="@layout/activity_mess"
+      android:id="@+id/include_tabbed_content"
+      android:visibility="gone"
+      />
+  <include
+      layout="@layout/update_password"
+      android:id="@+id/include_update_pass"
+      android:visibility="gone"
+      />
 
-    <include
-        android:id="@+id/include_profile"
-        layout="@layout/activity_profile"
-        android:visibility="gone"/>
+  <include
+      layout="@layout/activity_profile"
+      android:id="@+id/include_profile"
+      android:visibility="gone"
+      />
 
-    <include
-        android:id="@+id/include_res"
-        layout="@layout/activity_resources"
-        android:visibility="gone"/>
+  <include
+      layout="@layout/activity_resources"
+      android:id="@+id/include_res"
+      android:visibility="gone"
+      />
 
-    <include
-        android:id="@+id/include_feedback"
-        layout="@layout/activity_feedback"
-        android:visibility="gone"/>
+  <include
+      layout="@layout/activity_feedback"
+      android:id="@+id/include_feedback"
+      android:visibility="gone"
+      />
 
-    <include
-        android:id="@+id/include_settings"
-        layout="@layout/settings_content"
-        android:visibility="gone"/>
+  <include
+      layout="@layout/settings_content"
+      android:id="@+id/include_settings"
+      android:visibility="gone"
+      />
 
 </LinearLayout>

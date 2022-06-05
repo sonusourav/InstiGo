@@ -2,11 +2,21 @@ package com.iitdh.sonusourav.instigo.User;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.app.NavUtils;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -19,58 +29,72 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.iitdh.sonusourav.instigo.R;
-import com.iitdh.sonusourav.instigo.Utils.AppSingleton;
-import com.iitdh.sonusourav.instigo.Utils.Constants;
-import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
-import com.iitdh.sonusourav.instigo.Utils.VolleyErrorInstances;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class EditInfoActivity extends AppCompatActivity {
 
-    private EditText infoName, infoBranch, infoYear, infoMobile, infoDob;
-    private Spinner infoGender, infoHostel;
+    private EditText infoName;
+    private EditText infoBranch;
+    private EditText infoYear;
+    private EditText infoMobile;
+    private EditText infoDob;
+    private Spinner infoGender;
+    private Spinner infoHostel;
     private Button infoSaveBtn;
     private ProgressDialog infoProgress;
-    private ArrayAdapter<String> spinnerArrayAdapter1, spinnerArrayAdapter2;
+    ArrayAdapter<String> spinnerArrayAdapter1;
+    ArrayAdapter<String> spinnerArrayAdapter2;
     private Calendar myCalendar;
-    private TextWatcher textWatcher;
-    private AdapterView.OnItemSelectedListener spinnerListener;
-    private UserClass userInfo;
-    private String TAG = EditInfoActivity.class.getSimpleName();
-    private PreferenceManager editInfoPref;
-    private String updateProfileUrl;
+    private  TextWatcher textWatcher;
+    private  AdapterView.OnItemSelectedListener spinnerListener;
+    private LinearLayout linearLayout;
 
-    String proName, proBranch, proYear, proMob, proDob, proGender, proHostel;
+    private DatabaseReference infoUserRef;
+    private FirebaseUser firebaseUser;
+
+    String proName;
+    String proBranch;
+    String proYear;
+    String proMob;
+    String proDob;
+    String proGender;
+    String proHostel;
     Boolean textChanged=false;
-    int pos1, pos2;
+    int pos1;
+    int pos2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_info);
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         editInfoInit();
-        Intent profileIntent = getIntent();
-        userInfo = (UserClass) profileIntent.getSerializableExtra("userInfo");
-        updateProfile(userInfo);
+
+        showProgressDialog();
+        fetchUserData();
 
         infoSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,31 +137,107 @@ public class EditInfoActivity extends AppCompatActivity {
 
     }
 
-    private void updateProfile(UserClass userClass) {
-        infoName.setText(userClass.getName());
-        infoBranch.setText(userClass.getBranch());
-        infoYear.setText(userClass.getYear());
-        infoMobile.setText(userClass.getPhone());
-        infoDob.setText(userClass.getDob());
-        if (userClass.getGender().trim().equals("")) {
-            infoGender.setSelection(0);
-        } else {
-            pos1 = spinnerArrayAdapter1.getPosition(userClass.getGender());
-            infoGender.setSelection(pos1);
-        }
-        if (userClass.getHostel().trim().equals("")) {
-            infoHostel.setSelection(0);
-        } else {
-            pos2 = spinnerArrayAdapter2.getPosition(userClass.getHostel());
-            infoHostel.setSelection(pos2);
-        }
-    }
+
 
     private void updateLabel() {
-        String myFormat = "dd/MM/yyyy";
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         infoDob.setText(sdf.format(myCalendar.getTime()));
+    }
+
+
+    private void fetchUserData(){
+
+        infoUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()){
+                    UserClass userClass=dataSnapshot.getValue(UserClass.class);
+                    if(userClass.getName().trim()!=null){
+                        infoName.setText(userClass.getName().trim());
+                    }else{
+                        infoName.setText("");
+
+                    }
+                    if(userClass.getBranch().trim()!=null){
+                        infoBranch.setText(userClass.getBranch().trim());
+                    }else{
+                        infoBranch.setText("");
+
+                    }
+                    if(userClass.getYear().trim()!=null){
+                        infoYear.setText(userClass.getYear().trim());
+                    }else{
+                        infoYear.setText("");
+
+                    }
+                    if(userClass.getPhone().trim()!=null){
+                        infoMobile.setText(userClass.getPhone().trim());
+                    }else{
+                        infoMobile.setText("");
+
+                    }
+                    if(userClass.getDob().trim()!=null){
+                        infoDob.setText(userClass.getDob().trim());
+                    }else{
+                        infoDob.setText("");
+
+                    }
+
+                    if(userClass.getGender().trim()!=null){
+                        pos1=spinnerArrayAdapter1.getPosition(userClass.getGender());
+                        infoGender.setSelection(pos1);
+
+                    }else{
+                        infoGender.setSelection(1);
+
+                    }
+
+                    if(userClass.getHostel().trim()!=null){
+                        pos2=spinnerArrayAdapter2.getPosition(userClass.getHostel());
+                        infoHostel.setSelection(pos2);
+                    }else{
+                        infoGender.setSelection(1);
+
+                    }
+
+                    hideProgressDialog();
+
+
+                    infoDob.addTextChangedListener(textWatcher);
+                    infoName.addTextChangedListener(textWatcher);
+                    infoBranch.addTextChangedListener(textWatcher);
+                    infoDob.addTextChangedListener(textWatcher);
+                    infoMobile.addTextChangedListener(textWatcher);
+
+                    infoGender.setOnItemSelectedListener(spinnerListener);
+                    infoHostel.setOnItemSelectedListener(spinnerListener);
+                }else {
+                    Toast.makeText(getApplicationContext(),"User data does not exist",Toast.LENGTH_SHORT).show();
+                    hideProgressDialog();
+
+                    infoDob.addTextChangedListener(textWatcher);
+                    infoName.addTextChangedListener(textWatcher);
+                    infoBranch.addTextChangedListener(textWatcher);
+                    infoDob.addTextChangedListener(textWatcher);
+                    infoMobile.addTextChangedListener(textWatcher);
+
+                    infoGender.setOnItemSelectedListener(spinnerListener);
+                    infoHostel.setOnItemSelectedListener(spinnerListener);
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                hideProgressDialog();
+                Toast.makeText(getApplicationContext(),"Failed to fetch user data",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -151,13 +251,16 @@ public class EditInfoActivity extends AppCompatActivity {
         infoGender=findViewById(R.id.pro_edit_gender);
         infoHostel=findViewById(R.id.pro_edit_hostel);
         infoSaveBtn=findViewById(R.id.pro_edit_save);
-        editInfoPref = new PreferenceManager(this);
-        updateProfileUrl = Constants.baseUrl + "users/update/profile";
-        Log.d(TAG, editInfoPref.getUserId());
+        linearLayout=findViewById(R.id.activity_edit_info_linear_layout);
 
         myCalendar =Calendar.getInstance();
         infoSaveBtn.setEnabled(false);
-
+        FirebaseAuth infoAuth = FirebaseAuth.getInstance();
+        FirebaseUser infoUser = infoAuth.getCurrentUser();
+        assert infoUser!=null;
+        FirebaseDatabase infoInstance = FirebaseDatabase.getInstance();
+        DatabaseReference infoRootRef = infoInstance.getReference().child("Users");
+        infoUserRef= infoRootRef.child(encodeUserEmail(Objects.requireNonNull(infoUser.getEmail()))).getRef();
 
        spinnerArrayAdapter1 = new ArrayAdapter<>(
                 this, R.layout.spinner_item1, getResources().getStringArray(R.array.gender)
@@ -229,43 +332,85 @@ public class EditInfoActivity extends AppCompatActivity {
 
         };
 
-        infoDob.addTextChangedListener(textWatcher);
-        infoName.addTextChangedListener(textWatcher);
-        infoBranch.addTextChangedListener(textWatcher);
-        infoDob.addTextChangedListener(textWatcher);
-        infoMobile.addTextChangedListener(textWatcher);
 
-        infoGender.setOnItemSelectedListener(spinnerListener);
-        infoHostel.setOnItemSelectedListener(spinnerListener);
+
+
 
     }
 
 
     private boolean validateInput(){
 
-        Log.d(TAG, "validate");
          proName=infoName.getText().toString().trim();
          proBranch=infoBranch.getText().toString().trim();
          proYear=infoYear.getText().toString().trim();
          proMob=infoMobile.getText().toString().trim();
          proDob=infoDob.getText().toString().trim();
-        proGender = infoGender.getSelectedItem().toString();
-        proHostel = infoHostel.getSelectedItemPosition() + "";
+         proGender=infoGender.getSelectedItem().toString().trim();
+         proHostel=infoHostel.getSelectedItem().toString().trim();
 
-        if (proMob.length() > 0 && !(proMob.matches("[0-9]+"))) {
-            Log.d(TAG, "mobile");
+
+        if(proName.isEmpty() ){
+            infoName.setError("Name is empty");
+            infoName.requestFocus();
+            return false;
+        }
+
+        if(proBranch.isEmpty() ){
+            infoBranch.setError("ResourceActivity is empty");
+            infoBranch.requestFocus();
+            return false;
+        }
+
+        if(proYear.isEmpty() ){
+            infoYear.setError("Current year is empty");
+            infoYear.requestFocus();
+            return false;
+        }
+
+        if(proMob.isEmpty() ){
+            infoMobile.setError("Mobile No is empty");
+            infoMobile.requestFocus();
+            return false;
+        }
+
+
+        if(proMob.length()!=10 || !(proMob.matches("[0-9]+")) ){
             infoMobile.setError(" Invalid Mobile no");
             infoMobile.requestFocus();
+            return false;
+        }
+
+        if(proDob.isEmpty() ){
+
+            Toast.makeText(getApplicationContext(),"Please Select your Dob ",Toast.LENGTH_SHORT).show();
+            infoDob.requestFocus();
+            return false;
+        }
+
+        if(proGender.isEmpty() ){
+
+            Toast.makeText(getApplicationContext(),"Please Select your gender ",Toast.LENGTH_SHORT).show();
+            infoGender.requestFocus();
+            return false;
+        }
+
+        if(proHostel.isEmpty() ){
+            Toast.makeText(getApplicationContext(),"Please select your hostel",Toast.LENGTH_SHORT).show();
+            infoGender.requestFocus();
             return false;
         }
 
         return true;
     }
 
+    static String encodeUserEmail(String userEmail) {
+        return userEmail.replace(".", ",");
+    }
+
 
     private void updateUserData(){
 
-        Log.d(TAG, "update");
         Map<String,Object> taskMap = new HashMap<>();
         taskMap.put("name",proName);
         taskMap.put("branch",proBranch);
@@ -274,69 +419,33 @@ public class EditInfoActivity extends AppCompatActivity {
         taskMap.put("dob",proDob);
         taskMap.put("gender",proGender);
         taskMap.put("hostel",proHostel);
+        infoUserRef.updateChildren(taskMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(proName)
+                        .build();
+                firebaseUser.updateProfile(request);
+                hideProgressDialog();
+                Toast.makeText(getApplicationContext(),"Profile successfully updated",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(EditInfoActivity.this,ProfileActivity.class));
 
-        for (String key : taskMap.keySet()) {
-            if (Objects.equals(taskMap.get(key), "")) {
-                taskMap.put(key, null);
             }
-        }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                hideProgressDialog();
+                Toast.makeText(getApplicationContext(),"Profile update failed",Toast.LENGTH_SHORT).show();
 
-        JSONObject updatedProfile = new JSONObject(taskMap);
-        Log.d(TAG, updatedProfile.toString());
-
-        JsonObjectRequest jsonObjReq =
-            new JsonObjectRequest(Request.Method.POST, updateProfileUrl, updatedProfile,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            if (response.getString("message").equals("success")) {
-                                Log.d(TAG, "success");
-                                Toast.makeText(EditInfoActivity.this,
-                                    "Profile successfully updated", Toast.LENGTH_SHORT).show();
-                                hideProgressDialog();
-                                startActivity(
-                                    new Intent(EditInfoActivity.this, ProfileActivity.class));
-                                EditInfoActivity.this.finish();
-                            } else if (response.getString("message")
-                                .substring(0, 7)
-                                .equals("failure")) {
-                                String errorMsg = response.getString("message").substring(8);
-                                Toast.makeText(EditInfoActivity.this, errorMsg, Toast.LENGTH_SHORT)
-                                    .show();
-                                hideProgressDialog();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Log.d(TAG, "catch");
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        new VolleyErrorInstances().getErrorType(getApplicationContext(),
-                            volleyError);
-                        hideProgressDialog();
-                        Log.d(TAG, "VolleyError: " + volleyError.toString());
-                    }
-                }) {
-                @Override
-                public Map<String, String> getHeaders() {
-                    Map<String, String> params = new HashMap<>();
-                    params.put("Authorization", "Bearer " + editInfoPref.getUserId());
-
-                    return params;
-                }
-            };
-
-        AppSingleton.getInstance().addToRequestQueue(jsonObjReq);
+            }
+        });
     }
 
     protected void onResume() {
         super.onResume();
+
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -355,13 +464,14 @@ public class EditInfoActivity extends AppCompatActivity {
 
         super.onOptionsItemSelected(item);
 
-        if (item.getItemId() == android.R.id.home) {
-            if (textChanged) {
-                backDialogBuilder();
-            } else {
-                NavUtils.navigateUpFromSameTask(this);
-            }
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+
+                if(textChanged){
+                    backDialogBuilder();
+                }else
+                    NavUtils.navigateUpFromSameTask(this);
+                return true;
         }
         return true;
 
@@ -371,8 +481,7 @@ public class EditInfoActivity extends AppCompatActivity {
     public void backDialogBuilder() {
 
         // setup the alert builder
-        androidx.appcompat.app.AlertDialog.Builder builder =
-            new androidx.appcompat.app.AlertDialog.Builder(this);
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
 
         // add the buttons
         builder
@@ -397,21 +506,40 @@ public class EditInfoActivity extends AppCompatActivity {
     }
 
     public void showProgressDialog() {
+        if (isNetworkAvailable()){
+            if (infoProgress == null) {
+                infoProgress = new ProgressDialog(this,R.style.MyAlertDialogStyle);
+                infoProgress.setMessage("Updating your profile ....");
+                infoProgress.setIndeterminate(true);
+                infoProgress.setCanceledOnTouchOutside(false);
+            }
 
-        if (infoProgress == null) {
-            infoProgress = new ProgressDialog(this,R.style.MyAlertDialogStyle);
-            infoProgress.setMessage("Updating your profile ....");
-            infoProgress.setIndeterminate(true);
-            infoProgress.setCanceledOnTouchOutside(false);
+            infoProgress.show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!isNetworkAvailable()){
+                        hideProgressDialog();
+                        Snackbar.make(linearLayout,"No Internet Connection",Snackbar.LENGTH_LONG).show();
+                    }
+                }
+            },15000);
+        }else {
+            Snackbar.make(linearLayout,"No Internet Connection",Snackbar.LENGTH_LONG).show();
         }
 
-        infoProgress.show();
+
     }
 
     public void hideProgressDialog() {
         if (infoProgress != null && infoProgress.isShowing()) {
             infoProgress.dismiss();
         }
+    }
+    private boolean isNetworkAvailable(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo !=null && networkInfo.isConnected();
     }
 
 }

@@ -2,45 +2,44 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
-    <PreferenceCategory
-        android:title="Notifications">
+  <PreferenceCategory
+      android:title="Notifications">
 
-        <SwitchPreference
-            android:key="mess"
-            android:title="Mess Menu"
-            android:summary="Receive notification about what's cooked in the mess before every meal"
-            android:defaultValue="true"
-            android:textColor="@color/black"/>
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="mess"
+        android:summary="Receive notification about what's cooked in the mess before every meal"
+        android:textColor="@color/black"
+        android:title="Mess Menu"/>
 
-        <SwitchPreference
-            android:key="news"
-            android:title="News"
-            android:summary="Stay updated about upcoming events in hostel"
-            android:defaultValue="true"
-            android:textColor="@color/black"/>
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="news"
+        android:summary="Stay updated about upcoming events in hostel"
+        android:textColor="@color/black"
+        android:title="News"/>
 
-    </PreferenceCategory>
+  </PreferenceCategory>
 
-    <PreferenceCategory
+  <PreferenceCategory
+      android:title="Feedback">
+
+    <Preference
+        android:key="feedback"
+        android:summary="Fill out the form to report a bug or give some feedback"
         android:title="Feedback">
+    </Preference>
 
-        <Preference
-            android:title="Feedback"
-            android:summary="Fill out the form to report a bug or give some feedback">
-            <intent android:action="android.intent.action.VIEW"
-                android:data="https://goo.gl/forms/2FMpLtR0hskOGj5C2" />
-        </Preference>
+  </PreferenceCategory>
 
-    </PreferenceCategory>
+  <PreferenceCategory
+      android:title="About">
 
-    <PreferenceCategory
-        android:title="About">
+    <Preference
+        android:summary="\nDesigned and Developed by:\nSonu Sourav\nVivek Mishra\nSamyak Rawlekar\nAkhilesh Kesari"
+        android:title="InstiGo">
+    </Preference>
 
-        <Preference
-            android:title="InstiGo"
-            android:summary="\nDesigned and Developed by:\nSonu Sourav">
-        </Preference>
-
-    </PreferenceCategory>
+  </PreferenceCategory>
 
 </PreferenceScreen>

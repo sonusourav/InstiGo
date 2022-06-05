@@ -2,121 +2,99 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:padding="5dp"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/course_dialog_head"
-        android:text=" Add Course "
-        android:textColor="@color/blue"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center_vertical"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/course_add_tv1"
-        android:layout_below="@id/course_dialog_head"
-        android:text="Course name  :"
-        android:textColor="@color/light_black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:layout_marginStart="5dp"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/course_add_name"
-        android:minWidth="250dp"
-        android:layout_toEndOf="@id/course_add_tv1"
-        android:layout_below="@id/course_dialog_head"
-        android:inputType="text"
-        android:textColorHint="@color/light_black"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:layout_marginStart="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/course_add_tv2"
-        android:layout_below="@id/course_add_tv1"
-        android:text="Course Code   :"
-        android:textColor="@color/light_black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:layout_marginStart="5dp"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/course_add_no"
-        android:minWidth="250dp"
-        android:layout_toEndOf="@id/course_add_tv1"
-        android:layout_below="@id/course_add_tv1"
-        android:inputType="text"
-        android:textColorHint="@color/light_black"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        android:gravity="center_vertical"
-        android:padding="10dp"
-        android:layout_marginStart="10dp"/>
-
-  <CheckBox
+  <TextView
+      android:id="@+id/course_dialog_head"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:id="@+id/add_check_cs"
-      android:text="CS"
-      android:textSize="15sp"
-      android:layout_below="@id/course_add_tv2"
-      android:layout_alignStart="@id/course_add_btn"
+      android:layout_centerHorizontal="true"
+      android:gravity="center_vertical"
+      android:padding="10dp"
+      android:text=" Course info "
+      android:textColor="@color/blue"
+      android:textSize="20sp"
+      android:textStyle="bold"
       />
 
-  <CheckBox
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:id="@+id/add_check_ee"
-      android:text="EE"
-      android:textSize="15sp"
-      android:layout_below="@id/course_add_tv2"
-      android:layout_toEndOf="@id/add_check_cs"
-      />
-  <CheckBox
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:id="@+id/add_check_me"
-      android:text="ME"
-      android:textSize="15sp"
-      android:layout_below="@id/course_add_tv2"
-      android:layout_toEndOf="@id/add_check_ee"
 
+  <TextView
+      android:id="@+id/course_add_tv1"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:layout_below="@id/course_dialog_head"
+      android:layout_marginStart="5dp"
+      android:gravity="center_vertical"
+      android:padding="5dp"
+      android:text="Course name  :"
+      android:textColor="@color/light_black"
+      android:textSize="17sp"
+      android:textStyle="bold"
       />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/course_add_btn"
-        android:layout_below="@id/add_check_me"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_login"
-        android:text=" Add "
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+
+  <EditText
+      android:id="@+id/course_add_name"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:layout_below="@id/course_dialog_head"
+      android:layout_marginStart="10dp"
+      android:layout_toEndOf="@id/course_add_tv1"
+      android:gravity="center_vertical"
+      android:inputType="text"
+      android:minWidth="250dp"
+      android:padding="5dp"
+      android:textColor="@color/black"
+      android:textColorHint="@color/light_black"
+      android:textSize="17sp"
+      android:textStyle="normal"
+      />
+
+  <TextView
+      android:id="@+id/course_add_tv2"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:layout_below="@id/course_add_tv1"
+      android:layout_marginStart="5dp"
+      android:gravity="center_vertical"
+      android:padding="5dp"
+      android:text="Course no        :"
+      android:textColor="@color/light_black"
+      android:textSize="17sp"
+      android:textStyle="bold"
+      />
+
+  <EditText
+      android:id="@+id/course_add_no"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:layout_below="@id/course_add_tv1"
+      android:layout_marginStart="10dp"
+      android:layout_toEndOf="@id/course_add_tv1"
+      android:gravity="center_vertical"
+      android:inputType="text"
+      android:minWidth="250dp"
+      android:padding="10dp"
+      android:textColor="@color/black"
+      android:textColorHint="@color/light_black"
+      android:textSize="17sp"
+      android:textStyle="normal"
+      />
+
+  <Button
+      android:id="@+id/course_add_btn"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/course_add_no"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="50dp"
+      android:layout_marginStart="50dp"
+      android:layout_marginTop="20dp"
+      android:background="@drawable/button_login"
+      android:text=" Add "
+      android:textColor="@color/white"
+      android:textSize="20sp"
+      android:textStyle="bold"
+      />
 </RelativeLayout>

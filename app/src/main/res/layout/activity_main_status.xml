@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/divider_color"
+    >
+
+  <FrameLayout
+      android:id="@+id/status_frame"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+
+    <ImageView
+        android:id="@+id/status_iv"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/image_complaint"
+        />
+    <TextView
+        android:id="@+id/status_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="60dp"
+        android:gravity="center_vertical"
+        android:text="STATUS"
+        android:textColor="@color/green"
+        android:textSize="40sp"
+        android:typeface="sans"
+        />
+  </FrameLayout>
+
+  <com.yalantis.taurus.PullToRefreshView
+      android:id="@+id/pull_to_refresh"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/status_frame"
+      android:layout_marginBottom="5dp"
+      android:layout_marginEnd="5dp"
+      android:layout_marginStart="5dp"
+      android:layout_marginTop="5dp"
+      android:visibility="gone"
+      >
+
+    <ListView
+        android:id="@+id/status_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="2dp"
+        android:scrollbars="none"
+        />
+
+  </com.yalantis.taurus.PullToRefreshView>
+
+  <com.facebook.shimmer.ShimmerFrameLayout
+      android:id="@+id/shimmer_view_container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/status_frame"
+      android:layout_gravity="center"
+      android:layout_marginTop="15dp"
+      android:orientation="vertical"
+      >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+    </LinearLayout>
+
+  </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+</RelativeLayout>

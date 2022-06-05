@@ -1,39 +1,71 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/grey">
+    android:background="@color/grey"
+    >
 
-   <ListView
-       android:id="@+id/mess_feedback_listview"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:layout_marginBottom="10dp"
-       android:clipChildren="false"
-       android:clipToPadding="false"
-       android:divider="@android:color/transparent"
-       android:dividerHeight="3dp"
-       android:paddingBottom="5dp"
-       android:paddingLeft="8dp"
-       android:paddingRight="8dp"
-       android:paddingTop="10dp"
-       android:scrollbars="none"
-       >
+  <com.facebook.shimmer.ShimmerFrameLayout
+      android:id="@+id/shimmer_view_container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center"
+      android:layout_marginBottom="10dp"
+      android:orientation="vertical"
+      android:paddingBottom="5dp"
+      android:paddingLeft="8dp"
+      android:paddingRight="8dp"
+      android:paddingTop="10dp"
+      >
 
-   </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+      <include layout="@layout/placeholder_row"/>
+    </LinearLayout>
+
+  </com.facebook.shimmer.ShimmerFrameLayout>
+
+  <ListView
+      android:id="@+id/mess_feedback_listview"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginBottom="10dp"
+      android:clipChildren="false"
+      android:clipToPadding="false"
+      android:divider="@android:color/transparent"
+      android:dividerHeight="3dp"
+      android:paddingBottom="5dp"
+      android:paddingLeft="8dp"
+      android:paddingRight="8dp"
+      android:paddingTop="10dp"
+      android:scrollbars="none"
+      >
+
+  </ListView>
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/mess_feedback_fab"
-        app:rippleColor="@color/purple"
-        android:src="@drawable/icon_fab"
-        app:backgroundTint="@color/colorAccent"
-        app:tint="@color/white"
-        app:fabSize="normal"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="15dp"/>
+      android:id="@+id/mess_feedback_fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentEnd="true"
+      android:layout_marginBottom="15dp"
+      android:layout_marginEnd="15dp"
+      android:src="@drawable/icon_fab"
+      app:backgroundTint="@color/colorAccent"
+      app:fabSize="normal"
+      app:rippleColor="@color/purple"
+      app:tint="@color/white"
+      />
 
 </RelativeLayout>

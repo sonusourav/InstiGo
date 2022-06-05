@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
+    >
+
+  <de.hdodenhof.circleimageview.CircleImageView
+      android:id="@+id/course_other_img"
+      android:layout_width="45dp"
+      android:layout_height="45dp"
+      android:layout_gravity="center_vertical|start"
+      android:layout_margin="10dp"
+      android:fadingEdge="horizontal"
+      android:requiresFadingEdge="horizontal"
+      android:src="@drawable/icon_other_course"
+      />
+  <TextView
+      android:id="@+id/course_other_no"
+      android:layout_width="200dp"
+      android:layout_height="30dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="5dp"
+      android:layout_toEndOf="@id/course_other_img"
+      android:text="Course no"
+      android:textColor="@color/blue"
+      android:textSize="18sp"
+      android:textStyle="bold"
+
+      />
+  <TextView
+      android:id="@+id/course_other_name"
+      android:layout_width="200dp"
+      android:layout_height="30dp"
+      android:layout_below="@id/course_other_no"
+      android:layout_marginStart="10dp"
+      android:layout_toEndOf="@id/course_other_img"
+      android:text="Course name"
+      android:textColor="@color/light_black"
+      android:textSize="20sp"
+      android:textStyle="normal"
+
+      />
+
+  <ImageView
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_alignParentEnd="true"
+      android:layout_centerVertical="true"
+      android:layout_marginEnd="10dp"
+      android:layout_marginStart="10dp"
+      android:src="@drawable/icon_next"
+      />
+
+  <View
+      android:layout_width="wrap_content"
+      android:layout_height="3dp"
+      android:layout_below="@id/course_other_name"
+      android:layout_marginTop="10dp"
+      android:background="@color/grey"
+      />
+</RelativeLayout>

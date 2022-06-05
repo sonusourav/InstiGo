@@ -2,124 +2,129 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:baselineAligned="true"
     android:orientation="horizontal"
-    android:baselineAligned="true">
+    >
 
-    <!-- LEFT TITLE PART -->
-    <RelativeLayout
+  <!-- LEFT TITLE PART -->
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:background="@color/menu_title_color"
+      android:gravity="center_horizontal"
+      android:orientation="vertical"
+      android:paddingBottom="5dp"
+      android:paddingLeft="10dp"
+      android:paddingRight="10dp"
+      android:paddingTop="5dp"
+      >
+
+    <TextView
+        android:id="@+id/mess_part"
+        android:layout_width="wrap_content"
+        android:layout_height="185dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/mess_title"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        />
+
+
+  </RelativeLayout>
+  <!-- RIGHT TITLE PART -->
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:background="@color/cell_title_background"
+      android:paddingBottom="5dp"
+      android:paddingEnd="20dp"
+      android:paddingStart="15dp"
+      android:paddingTop="5dp"
+      >
+
+    <TextView
+        android:id="@+id/title_day_label"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:background="@color/menu_title_color"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp"
+        android:text="Time"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <View
+        android:id="@+id/cell_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/title_day_label"
+        android:layout_marginTop="3dp"
+        android:background="@color/divider_color"
         >
+    </View>
 
-        <TextView
-            android:id="@+id/mess_part"
-            android:layout_width="match_parent"
-            android:layout_height="185dp"
-            android:layout_centerInParent="true"
-            android:layout_alignParentStart="true"
-            android:gravity="center"
-            android:text="@string/mess_title"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            />
-
-
-    </RelativeLayout>
-    <!-- RIGHT TITLE PART -->
-    <RelativeLayout
+    <TextView
+        android:id="@+id/mess_items"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/cell_title_background"
-        android:paddingBottom="5dp"
-        android:paddingEnd="20dp"
-        android:paddingStart="15dp"
-        android:paddingTop="5dp">
+        android:layout_above="@id/cell_layout3"
+        android:layout_below="@id/cell_divider"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:minLines="3"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        android:singleLine="false"
+        android:text="@string/item_name"
+        android:textColor="@color/light_black"
+        android:textSize="17sp"
 
-        <TextView
-            android:id="@+id/title_day_label"
-            android:layout_width="match_parent"
-            android:layout_height="22dp"
-            android:layout_alignParentStart="true"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:text="Time"
-            android:gravity="center_horizontal"/>
+        />
+    <RelativeLayout
+        android:id="@+id/cell_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        >
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:id="@+id/cell_divider"
-            android:layout_marginTop="3dp"
-            android:background="@color/divider_color"
-            android:layout_below="@id/title_day_label">
-        </View>
+      <TextView
+          android:id="@+id/textView_ratings"
+          android:layout_width="match_parent"
+          android:layout_height="20dp"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentStart="true"
+          android:layout_marginEnd="70dp"
+          android:gravity="start|center_vertical"
+          android:minHeight="180dp"
+          android:text="Ratings Unavailable"
+          android:textColor="@color/light_black"
+          android:textSize="15sp"
+          android:visibility="visible"
+          />
 
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:id="@+id/mess_items"
-           android:layout_below="@id/cell_divider"
-           android:layout_above="@id/cell_layout3"
-           android:paddingTop="5dp"
-           android:paddingStart="5dp"
-           android:paddingEnd="5dp"
-           android:minLines="3"
-           android:singleLine="false"
-           android:elevation="20dp"
-           android:text="@string/item_name"
-           android:gravity="center"
-           android:textSize="17sp"
-           android:textColor="@color/light_black"
+      <RatingBar
+          android:id="@+id/title_rating"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentStart="true"
+          android:layout_gravity="center"
+          android:isIndicator="true"
+          android:numStars="5"
+          android:rating="0"
+          android:theme="@style/RatingBar"
+          android:visibility="gone"
+          style="@style/Base.Widget.AppCompat.RatingBar.Small"
+          />
 
-           />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/cell_layout3">
-
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="20dp"
-               android:id="@+id/textView_ratings"
-               android:text="Ratings Unavailable"
-               android:gravity="start|center_vertical"
-               android:layout_alignParentStart="true"
-               android:layout_marginEnd="70dp"
-               android:textColor="@color/light_black"
-               android:minHeight="180dp"
-               android:textSize="15sp"
-               android:layout_alignParentBottom="true"
-               android:visibility="gone"
-               />
-
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/title_rating"
-                android:layout_gravity="center"
-                android:numStars="5"
-                android:isIndicator="true"
-                style="@style/Base.Widget.AppCompat.RatingBar.Small"
-                android:theme="@style/RatingBar"
-                android:layout_alignParentBottom="true"
-                android:rating="0"
-                android:layout_alignParentStart="true"
-                android:visibility="visible"
-                />
-
-        </RelativeLayout>
     </RelativeLayout>
-
+  </RelativeLayout>
 
 
 </LinearLayout>

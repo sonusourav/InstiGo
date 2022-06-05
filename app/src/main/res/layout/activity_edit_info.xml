@@ -1,187 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_edit_info_linear_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/divider_color"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
   <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/til1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:paddingEnd="15dp"
+      android:paddingStart="15dp"
+      android:textColorHint="#c5c5c5"
+
+      >
+
+    <EditText
+        android:id="@+id/pro_edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#c5c5c5"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/til1"
-
-        >
-
-        <EditText
-            android:id="@+id/pro_edit_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_bg_edit"
-            android:hint="Name"
-            android:gravity="start|center_vertical"
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:textCursorDrawable="@drawable/bg_input_cursor"
-            android:textSize="18sp"
-             />
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#c5c5c5"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/til2"
-
-        >
-
-        <EditText
-            android:id="@+id/pro_edit_branch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_bg_edit"
-            android:hint="Branch"
-            android:gravity="start|center_vertical"
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:textCursorDrawable="@drawable/bg_input_cursor"
-            android:textSize="18sp"
-            />
-  </com.google.android.material.textfield.TextInputLayout>
-
-
-  <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#c5c5c5"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/til3"
-
-        >
-
-        <EditText
-            android:id="@+id/pro_edit_year"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_bg_edit"
-            android:hint="Current year"
-            android:gravity="start|center_vertical"
-            android:inputType="numberDecimal"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:textCursorDrawable="@drawable/bg_input_cursor"
-            android:textSize="18sp"
-            />
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#c5c5c5"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/til4"
-
-        >
-
-        <EditText
-            android:id="@+id/pro_edit_mob"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_bg_edit"
-            android:hint="Mobile No."
-            android:gravity="start|center_vertical"
-            android:inputType="phone"
-            android:maxLength="10"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:textCursorDrawable="@drawable/bg_input_cursor"
-            android:textSize="18sp"
-            />
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#c5c5c5"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/til5"
-
-        >
-
-        <EditText
-            android:id="@+id/pro_edit_dob"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_bg_edit"
-            android:hint="Date of birth"
-            android:focusable="false"
-            android:gravity="start|center_vertical"
-            android:inputType="text"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:textCursorDrawable="@drawable/bg_input_cursor"
-            android:textSize="18sp"
-            />
-  </com.google.android.material.textfield.TextInputLayout>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="40dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/pro_edit_gender"
-        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-        android:entries="@array/gender"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        >
-
-    </Spinner>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="40dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/pro_edit_hostel"
-        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-        android:entries="@array/hostel"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-
-        >
-
-    </Spinner>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:id="@+id/pro_edit_save"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:text="Save"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:background="@drawable/selector_bg_edit"
+        android:gravity="start|center_vertical"
+        android:hint="Name"
+        android:inputType="textPersonName"
         android:padding="5dp"
-        android:gravity="center"
-        android:background="@drawable/bg_round_rect"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/bg_input_cursor"
+        android:textSize="18sp"
         />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/til2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:paddingEnd="15dp"
+      android:paddingStart="15dp"
+      android:textColorHint="#c5c5c5"
+
+      >
+
+    <EditText
+        android:id="@+id/pro_edit_branch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_edit"
+        android:gravity="start|center_vertical"
+        android:hint="Branch"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/bg_input_cursor"
+        android:textSize="18sp"
+        />
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/til3"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:paddingEnd="15dp"
+      android:paddingStart="15dp"
+      android:textColorHint="#c5c5c5"
+
+      >
+
+    <EditText
+        android:id="@+id/pro_edit_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_edit"
+        android:gravity="start|center_vertical"
+        android:hint="Current year"
+        android:inputType="text"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/bg_input_cursor"
+        android:textSize="18sp"
+        />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/til4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:paddingEnd="15dp"
+      android:paddingStart="15dp"
+      android:textColorHint="#c5c5c5"
+
+      >
+
+    <EditText
+        android:id="@+id/pro_edit_mob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_edit"
+        android:gravity="start|center_vertical"
+        android:hint="Mobile No."
+        android:inputType="phone"
+        android:maxLength="10"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/bg_input_cursor"
+        android:textSize="18sp"
+        />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/til5"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:paddingEnd="15dp"
+      android:paddingStart="15dp"
+      android:textColorHint="#c5c5c5"
+
+      >
+
+    <EditText
+        android:id="@+id/pro_edit_dob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_edit"
+        android:focusable="false"
+        android:gravity="start|center_vertical"
+        android:hint="Date of birth"
+        android:inputType="text"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/bg_input_cursor"
+        android:textSize="18sp"
+        />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <Spinner
+      android:id="@+id/pro_edit_gender"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="15dp"
+      android:layout_marginStart="15dp"
+      android:layout_marginTop="15dp"
+      android:entries="@array/gender"
+      android:minHeight="40dp"
+      style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+      >
+
+  </Spinner>
+
+  <Spinner
+      android:id="@+id/pro_edit_hostel"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="15dp"
+      android:layout_marginStart="15dp"
+      android:layout_marginTop="15dp"
+      android:entries="@array/hostel"
+      android:minHeight="40dp"
+      style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+
+      >
+
+  </Spinner>
+
+  <Button
+      android:id="@+id/pro_edit_save"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:layout_gravity="bottom|center_horizontal"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="40dp"
+      android:layout_marginStart="40dp"
+      android:layout_marginTop="15dp"
+      android:background="@drawable/bg_round_rect"
+      android:gravity="center"
+      android:padding="5dp"
+      android:text="Save"
+      android:textColor="@color/white"
+      android:textSize="20sp"
+      />
 
 </LinearLayout>

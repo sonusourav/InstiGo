@@ -1,63 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+  <group android:checkableBehavior="single">
 
-        <item android:id="@+id/nav_home"
-            android:icon="@drawable/icon_home"
-            android:title="Home" />
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/icon_home"
+        android:title="Home"/>
 
-        <item android:id="@+id/nav_mess"
-            android:icon="@drawable/icon_mess"
-            android:title="Mess" />
+    <item
+        android:id="@+id/nav_mess"
+        android:icon="@drawable/icon_mess"
+        android:title="Mess"/>
 
-        <item android:id="@+id/nav_complaint"
-            android:icon="@drawable/icon_complaints"
-            android:title="Complaints" />
+    <item
+        android:id="@+id/nav_complaint"
+        android:icon="@drawable/icon_complaints"
+        android:title="Complaints"/>
 
-        <item android:id="@+id/nav_resource"
-            android:icon="@drawable/icon_nav_resource"
-            android:title="Resources" />
+    <item
+        android:id="@+id/nav_resource"
+        android:icon="@drawable/icon_nav_resource"
+        android:title="Resources"/>
 
-        <item android:id="@+id/nav_council"
-            android:icon="@drawable/icon_council"
-            android:title="Student Council" />
+    <item
+        android:id="@+id/nav_council"
+        android:icon="@drawable/icon_council"
+        android:title="Student Council"/>
 
-        <item android:title="User Update"
-            >
-            <menu>
-                <item
-                    android:id="@+id/nav_profile"
-                    android:icon="@drawable/icon_nav_user"
-                    android:title="Profile"/>
+    <item android:title="User Update"
+        >
+      <menu>
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/icon_nav_user"
+            android:title="Profile"/>
 
-                <item
-                    android:id="@+id/nav_pass"
-                    android:title="Update Password"
-                    android:icon="@drawable/icon_pass"
-                    />
-                <item
-                    android:id="@+id/nav_logout"
-                    android:title="Logout"
-                    android:icon="@drawable/icon_logout"
-                    />
-            </menu>
-        </item>
+        <item
+            android:id="@+id/nav_pass"
+            android:icon="@drawable/icon_pass"
+            android:title="Update Password"
+            />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/icon_logout"
+            android:title="Logout"
+            />
+      </menu>
+    </item>
 
-        <item android:title="More" >
-            <menu>
-                <item
-                    android:id="@+id/nav_settings"
-                    android:icon="@drawable/icon_settings"
-                    android:title="Settings"/>
-                <item
-                    android:id="@+id/nav_feedback"
-                    android:title="Feedback"
-                    android:icon="@drawable/icon_feedback"
-                    />
-            </menu>
-        </item>
-    </group>
-
+    <item android:title="More">
+      <menu>
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/icon_settings"
+            android:title="Settings"/>
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/icon_feedback"
+            android:title="Feedback"
+            />
+      </menu>
+    </item>
+  </group>
 
 
 </menu>

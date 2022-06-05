@@ -1,49 +1,45 @@
 package com.iitdh.sonusourav.instigo.Utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import androidx.annotation.NonNull;
+import androidx.browser.customtabs.CustomTabsIntent;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.iitdh.sonusourav.instigo.Account.LoginActivity;
 import com.iitdh.sonusourav.instigo.Complaints.ComplaintsActivity;
 import com.iitdh.sonusourav.instigo.Council.CouncilActivity;
-import com.iitdh.sonusourav.instigo.Feedback.Feedback;
 import com.iitdh.sonusourav.instigo.HomeActivity;
 import com.iitdh.sonusourav.instigo.Mess.MessActivity;
 import com.iitdh.sonusourav.instigo.R;
-import com.iitdh.sonusourav.instigo.Resources.CourseActivity;
+import com.iitdh.sonusourav.instigo.Resources.ResourceActivity;
 import com.iitdh.sonusourav.instigo.Settings.SettingsActivity;
 import com.iitdh.sonusourav.instigo.User.ProfileActivity;
-import com.iitdh.sonusourav.instigo.User.RetrofitInterface;
 import com.iitdh.sonusourav.instigo.User.UpdatePassword;
-import com.iitdh.sonusourav.instigo.User.UserClass;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class CommonFunctions {
 
@@ -80,7 +76,7 @@ public class CommonFunctions {
 
             case R.id.nav_resource: {
 
-              activity.startActivity(new Intent().setClass(activity, CourseActivity.class));
+                activity.startActivity(new Intent().setClass(activity, ResourceActivity.class));
                 break;
 
             }
@@ -97,51 +93,40 @@ public class CommonFunctions {
 
             }
             case R.id.nav_logout: {
-              final PreferenceManager preferenceManager =
-                  new PreferenceManager(activity.getApplicationContext());
+                PreferenceManager preferenceManager=new PreferenceManager(activity.getApplicationContext());
+                preferenceManager.setIsLoggedIn(false);
+                preferenceManager.setLoginCredentials("email","password");
 
-              if (preferenceManager.getAuthType().equals("googleAuth")) {
-                GoogleSignInOptions gso =
-                    new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestIdToken(activity.getResources().getString(R.string.web_client_id))
+                FirebaseAuth loginAuth=FirebaseAuth.getInstance();
+                loginAuth.signOut();
+
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(activity.getResources().getString(R.string.default_web_client_id))
                         .requestEmail()
                         .build();
                 GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(activity, gso);
 
                 googleSignInClient.signOut().addOnSuccessListener(new OnSuccessListener<Void>() {
-                  @Override
-                  public void onSuccess(Void aVoid) {
-                    Toast.makeText(activity.getApplicationContext(),
-                        "User successfully logged out.", Toast.LENGTH_SHORT).show();
-                    preferenceManager.setIsLoggedIn(false, "userId");
-                    preferenceManager.setAuthType("authType");
-                    preferenceManager.setFcmToken(null);
-                    activity.startActivity(new Intent().setClass(activity, LoginActivity.class));
-                    activity.finish();
-                  }
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(activity.getApplicationContext(), "User successfully logged out.", Toast.LENGTH_SHORT).show();
+                        activity.startActivity(new Intent().setClass(activity, LoginActivity.class));
+                    }
                 }).addOnFailureListener(new OnFailureListener() {
-                  @Override
-                  public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(activity.getApplicationContext(),
-                        "Cannot Log Out, Please try again.", Toast.LENGTH_SHORT).show();
-                  }
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity.getApplicationContext(), "Cannot Log Out, Please try again.", Toast.LENGTH_SHORT).show();
+                    }
                 });
-              } else {
-                Toast.makeText(activity.getApplicationContext(), "User successfully logged out.",
-                    Toast.LENGTH_SHORT).show();
-                preferenceManager.setLoginCredentials("email", "password", "authType");
-                preferenceManager.setIsLoggedIn(false, "userId");
-                preferenceManager.setFcmToken(null);
-                activity.startActivity(new Intent().setClass(activity, LoginActivity.class));
-                activity.finish();
-              }
-
                 break;
-
             }
 
             case R.id.nav_feedback: {
-                activity.startActivity(new Intent().setClass(activity, Feedback.class));
+                String url = "https://goo.gl/forms/2FMpLtR0hskOGj5C2";
+
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(activity, Uri.parse(url));
                 break;
 
             }
@@ -158,126 +143,61 @@ public class CommonFunctions {
             return false;
         }
 
-  public static void setUser(final Activity activity) {
+    public static void setUser(Activity activity){
+        FirebaseApp.initializeApp(activity);
+        FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
 
-
+        if (firebaseUser!=null){
             NavigationView navigationView = activity.findViewById(R.id.nav_view);
             LinearLayout drawerHeader = (LinearLayout) navigationView.getHeaderView(0);
 
-    final Context context = activity.getApplicationContext();
+            TextView emailTextView = drawerHeader.findViewById(R.id.nav_header_email);
+            TextView usernameTextView = drawerHeader.findViewById(R.id.nav_header_username);
+            ImageView userImage=drawerHeader.findViewById(R.id.nav_header_imageView);
 
-    final TextView emailTextView = drawerHeader.findViewById(R.id.nav_header_email);
-    final TextView usernameTextView = drawerHeader.findViewById(R.id.nav_header_username);
-    final ImageView userImage = drawerHeader.findViewById(R.id.nav_header_imageView);
+            emailTextView.setText(firebaseUser.getEmail());
+            usernameTextView.setText(firebaseUser.getDisplayName());
 
-    PreferenceManager commonPref = new PreferenceManager(context);
-
-    Log.d("CommonFunctions", commonPref.getUserId());
-
-    OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-        .connectTimeout(120, TimeUnit.SECONDS)
-        .readTimeout(120, TimeUnit.SECONDS)
-        .writeTimeout(120, TimeUnit.SECONDS)
-        .build();
-    RetrofitInterface retrofitInterface = new Retrofit.Builder()
-        .baseUrl(Constants.baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(okHttpClient)
-        .build()
-        .create(RetrofitInterface.class);
-
-    Call<UserClass> call = retrofitInterface.getPicNameEmail("Bearer " + commonPref.getUserId());
-    call.enqueue(new Callback<UserClass>() {
-      @Override
-      public void onResponse(@NonNull Call<UserClass> call, @NonNull
-          Response<UserClass> response) {
-
-        if (response.body() != null) {
-
-          UserClass userData = new UserClass(response.body().getEmail(), response.body().getName(),
-              response.body().getProfilePic());
-          emailTextView.setText(userData.getEmail());
-          usernameTextView.setText(userData.getName());
-          if (userData.getProfilePic() != null) {
-            Glide.with(activity.getApplicationContext())
-                .load(userData.getProfilePic())
-                .into(userImage);
-          } else {
-            userImage.setImageResource(R.drawable.image_profile_pic);
-          }
-        } else {
-          Toast.makeText(context, "Check you internet connection", Toast.LENGTH_SHORT).show();
-        }
-      }
-
-      @Override public void onFailure(Call<UserClass> call, Throwable t) {
-        Log.d("CommonFunction", t.toString());
-      }
-    });
-
-    String fcmToken = getFCMToken(context);
-  }
-
-  private static String getFCMToken(final Context context) {
-
-    final String[] token = new String[1];
-    FirebaseInstanceId.getInstance().getInstanceId()
-        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-          @Override
-          public void onComplete(@NonNull Task<InstanceIdResult> task) {
-            if (!task.isSuccessful()) {
-              Log.w("CommonFunction", "getInstanceId failed", task.getException());
-              return;
-            }
-
-            token[0] = Objects.requireNonNull(task.getResult()).getToken();
-            Log.d("CommonFunction", "value of token " + token[0]);
-            final PreferenceManager commonPref = new PreferenceManager(context);
-
-            commonPref.setFcmToken(token[0]);
-            Log.d("CommonFunction", "value of inside fcm token " + commonPref.getFcmToken());
-            OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-                .connectTimeout(120, TimeUnit.SECONDS)
-                .readTimeout(120, TimeUnit.SECONDS)
-                .writeTimeout(120, TimeUnit.SECONDS)
-                .build();
-            RetrofitInterface retrofitInterface = new Retrofit.Builder()
-                .baseUrl(Constants.baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
-                .build()
-                .create(RetrofitInterface.class);
-            Call<ResponseClass>
-                sendToken =
-                retrofitInterface.sendFCMToken("Bearer " + commonPref.getUserId(), token[0]);
-            sendToken.enqueue(new Callback<ResponseClass>() {
-              @Override
-              public void onResponse(@NonNull Call<ResponseClass> call, @NonNull
-                  retrofit2.Response<ResponseClass> response) {
-
-                if (response.body() != null) {
-                  if (response.body().getMessage().equals("success")) {
-                    Log.d("CommonFunction", "fcm sent");
-                    commonPref.setFcmToken(token[0]);
-                  } else {
-                    Log.d("CommonFunction", "failed to sent fcm");
-                  }
+            Uri photoUri = firebaseUser.getPhotoUrl();
+            if(photoUri == null){
+                String userName = firebaseUser.getDisplayName();
+                char ch;
+                if(userName != null) {
+                    ch = userName.charAt(0);
+                    TextDrawable drawable = TextDrawable.builder()
+                            .buildRound(String.valueOf(ch), Color.BLUE);
+                    Bitmap bitmap = drawableToBitmap(drawable);
+                    Glide.with(activity.getApplicationContext())
+                            .load(bitmap)
+                            .into(userImage);
                 }
-              }
+            }
+            else{
+                Glide.with(activity.getApplicationContext())
+                        .load(photoUri)
+                        .into(userImage);
+            }
+        }
+    }
 
-              @Override public void onFailure(@NonNull Call<ResponseClass> call, @NonNull
-                  Throwable t) {
-                Log.d("CommonFunction", t.toString());
-              }
-            });
-          }
-        });
-    return token[0];
-  }
+    public static Bitmap drawableToBitmap (Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable)drawable).getBitmap();
+        }
+
+        int width = drawable.getIntrinsicWidth();
+        width = width > 0 ? width : 96;
+        int height = drawable.getIntrinsicHeight();
+        height = height > 0 ? height : 96;
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+
+        return bitmap;
+    }
 }
-
-
-
-
 
 

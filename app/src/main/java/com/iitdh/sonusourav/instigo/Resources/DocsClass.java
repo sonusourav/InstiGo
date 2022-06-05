@@ -1,160 +1,128 @@
 package com.iitdh.sonusourav.instigo.Resources;
 
-import com.google.gson.annotations.SerializedName;
-import java.io.Serializable;
+public class DocsClass {
 
-public class DocsClass implements Serializable {
-
-  @SerializedName("date")
-  private String date;
-  @SerializedName("_id")
-  private String _id;
-  @SerializedName("docTitle")
-  private String docTitle;
-  @SerializedName("desc")
-  private String desc;
-  @SerializedName("prof")
-  private String prof;
-  @SerializedName("by")
-  private String by;
-  @SerializedName("url")
-  private String url;
-  @SerializedName("file")
-  private String file;
-  @SerializedName("type")
+    private String courseNo;
+    private String courseName;
+    private String dateCreated;
+    private String userCreated;
+    private String branch;
+    private String topic;
+    private String subTopic;
     private String type;
-  @SerializedName("path")
-  private String path;
-  @SerializedName("__v")
-  private int __v;
+    private String imageUrl;
 
-  public DocsClass(String docTitle, String desc, String prof) {
 
-    this.docTitle = docTitle;
-    this.desc = desc;
-    this.prof = prof;
-  }
 
-  public DocsClass(String date, String _id, String docTitle, String desc, String prof, String by,
-      String url, String file, String type, String path, int __v) {
+    public DocsClass(String topic, String subTopic, String type){
 
-    this.date = date;
-    this._id = _id;
-    this.docTitle = docTitle;
-    this.desc = desc;
-    this.prof = prof;
-    this.by = by;
-    this.url = url;
-    this.file = file;
+        this.topic=topic;
+        this.subTopic=subTopic;
         this.type=type;
-    this.path = path;
-    this.__v = __v;
 
     }
 
-  public DocsClass(String date, String docTitle, String desc, String prof, String by, String url,
-      String file, String type, String path) {
+    public DocsClass(String courseNo, String courseName, String dateCreated, String userCreated, String branch, String topic, String subTopic, String type){
 
-    this.date = date;
-    this.docTitle = docTitle;
-    this.desc = desc;
-    this.prof = prof;
-    this.by = by;
-    this.url = url;
-    this.file = file;
+        this.courseNo=courseNo;
+        this.courseName=courseName;
+        this.dateCreated=dateCreated;
+        this.userCreated=userCreated;
+        this.branch=branch;
+        this.topic=topic;
+        this.subTopic=subTopic;
         this.type=type;
-    this.path = path;
 
     }
 
+    public DocsClass(String courseNo, String courseName, String dateCreated, String userCreated, String branch, String topic, String subTopic, String type,String imageUrl){
+
+        this.courseNo=courseNo;
+        this.courseName=courseName;
+        this.dateCreated=dateCreated;
+        this.userCreated=userCreated;
+        this.branch=branch;
+        this.topic=topic;
+        this.subTopic=subTopic;
+        this.type=type;
+        this.imageUrl=imageUrl;
+
+    }
 
     public DocsClass(){}
 
-  public String getDate() {
-    return date;
+
+
+
+    public String getCourseNo() {
+        return courseNo;
     }
 
-  public String getBy() {
-    return by;
+    public String getCourseName() {
+        return courseName;
     }
 
-  public String getFile() {
-    return file;
+    public String getDateCreated() {
+        return dateCreated;
     }
 
-  public String getDocTitle() {
-    return docTitle;
+    public String getUserCreated() {
+        return userCreated;
     }
 
-  public String getPath() {
-    return path;
+    public String getBranch() {
+        return branch;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public String getSubTopic() {
+        return subTopic;
     }
 
     public String getType() {
         return type;
     }
 
-  public String getUrl() {
-    return url;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-  public void setDate(String date) {
-    this.date = date;
+    public void setCourseNo(String courseNo) {
+        this.courseNo = courseNo;
     }
 
-  public void setBy(String by) {
-    this.by = by;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
-  public void setFile(String file) {
-    this.file = file;
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
-  public void setDocTitle(String docTitle) {
-    this.docTitle = docTitle;
+    public void setUserCreated(String userCreated) {
+        this.userCreated = userCreated;
     }
 
-  public void setPath(String path) {
-    this.path = path;
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public void setSubTopic(String subTopic) {
+        this.subTopic = subTopic;
     }
 
     public void setType(String type) {
         this.type = type;
     }
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  public String get_id() {
-    return _id;
-  }
-
-  public void set_id(String _id) {
-    this._id = _id;
-  }
-
-  public String getDesc() {
-    return desc;
-  }
-
-  public void setDesc(String desc) {
-    this.desc = desc;
-  }
-
-  public String getProf() {
-    return prof;
-  }
-
-  public void setProf(String prof) {
-    this.prof = prof;
-  }
-
-  public int get__v() {
-    return __v;
-  }
-
-  public void set__v(int __v) {
-    this.__v = __v;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

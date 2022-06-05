@@ -8,10 +8,12 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import androidx.core.app.NotificationCompat;
+import android.util.Log;
+
 import com.iitdh.sonusourav.instigo.Account.SplashActivity;
 import com.iitdh.sonusourav.instigo.R;
+
 import java.util.Calendar;
 
 
@@ -22,7 +24,7 @@ public class DinnerAlarmReceiver extends BroadcastReceiver {
 
         Intent repeatingIntent = new Intent(context, SplashActivity.class);
         repeatingIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 101, repeatingIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 101, repeatingIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         String menu = null;
 
@@ -56,13 +58,14 @@ public class DinnerAlarmReceiver extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         builder.setContentIntent(pendingIntent);
-        builder.setSmallIcon(R.mipmap.logo_instigo);
-        builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.logo_instigo));
+        builder.setSmallIcon(R.mipmap.icon_instigo);
+        builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon_instigo));
         builder.setContentTitle("Today's Dinner");
         builder.setStyle(new NotificationCompat.BigTextStyle().bigText(menu));
         builder.setContentText(menu);
         builder.setAutoCancel(true);
         builder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+        builder.setChannelId(context.getString(R.string.alarm_notification_channel_id));
         Log.d("DinnerAlarmReceiver","Reaching");
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

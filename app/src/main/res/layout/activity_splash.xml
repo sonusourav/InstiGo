@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".Account.SplashActivity"
     style="@style/Theme.AppCompat.NoActionBar"
-    android:background="@color/black">
+    >
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/splash_iv"
-        android:contentDescription="@null"
+  <ImageView
+      android:id="@+id/splash_iv"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:contentDescription="@null"
 
-        />
+      />
 </RelativeLayout>

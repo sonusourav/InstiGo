@@ -5,11 +5,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
+import android.os.Build.VERSION_CODES;
+import androidx.annotation.RequiresApi;
 import java.util.Calendar;
 
 
 public class LunchAlarmMaker {
 
+    @RequiresApi(api = VERSION_CODES.M)
     public static void makeAlarm(Context context) {
 
         Calendar lunchTime = Calendar.getInstance();
@@ -20,7 +23,7 @@ public class LunchAlarmMaker {
             lunchTime.add(Calendar.DATE, 1);
 
         Intent alarmIntent = new Intent(context, LunchAlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 102, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 102, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         assert alarmManager != null;

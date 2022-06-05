@@ -3,27 +3,28 @@ package com.iitdh.sonusourav.instigo.Complaints;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.viewpager.widget.PagerAdapter;
-import com.google.android.material.navigation.NavigationView;
+
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
 import com.tmall.ultraviewpager.UltraViewPager;
+
 import java.util.Objects;
 
 
 public class ComplaintsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
 
 
     @Override
@@ -34,8 +35,8 @@ public class ComplaintsActivity extends AppCompatActivity
         CommonFunctions.setUser(this);
 
         findViewById(R.id.include_maintenance).setVisibility(View.VISIBLE);
-        Button registerButton=findViewById(R.id.maintenance_register);
-        Button statusButton=findViewById(R.id.maintenance_status);
+        Button registerButton = findViewById(R.id.maintenance_register);
+        Button statusButton = findViewById(R.id.maintenance_status);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -51,18 +52,17 @@ public class ComplaintsActivity extends AppCompatActivity
         toggle.syncState();
 
 
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ComplaintsActivity.this, ComplaintRegister.class));
+                startActivity(new Intent(ComplaintsActivity.this, ComplainRegister.class));
             }
         });
 
         statusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ComplaintsActivity.this, ComplaintStatusActivity.class));
+                startActivity(new Intent(ComplaintsActivity.this, ComplainStatus.class));
             }
         });
 
@@ -71,18 +71,17 @@ public class ComplaintsActivity extends AppCompatActivity
     }
 
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return CommonFunctions.navigationItemSelect(item, this);
     }
 
 
-    public void setUpImageSlider(){
+    public void setUpImageSlider() {
         UltraViewPager ultraViewPager = findViewById(R.id.ultra_viewpager);
         ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
         //initialize UltraPagerAdapter，and add child view to UltraViewPager
-        PagerAdapter adapter = new SliderAdapter(false,this);
+        PagerAdapter adapter = new SliderAdapter(false, this);
         ultraViewPager.setAdapter(adapter);
 
         //initialize built-in indicator
@@ -94,7 +93,7 @@ public class ComplaintsActivity extends AppCompatActivity
                 .setNormalColor((ContextCompat.getColor(this, R.color.black)))
                 .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
         //set the alignment
-        ultraViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM).setMargin(0,0,0,10);
+        ultraViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM).setMargin(0, 0, 0, 10);
         //construct built-in indicator, and add it to  UltraViewPager
         ultraViewPager.getIndicator().build();
 

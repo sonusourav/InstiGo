@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="4dp"
+    app:elevation="4dp"
+    android:background="@drawable/council_item_border"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/council_picture"
+        android:src="@drawable/sports"
+        android:scaleType="centerCrop"
+        android:contentDescription="Council Item"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <TextView
+        android:id="@+id/council_name"
+        android:paddingTop="10dp"
+        android:textDirection="firstStrong"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:text="Hostel Warden"
+        android:textColor="@android:color/white"
+        android:ellipsize="none"
+        android:textStyle="bold"
+        android:background="#A43F51B5"
+        android:layout_gravity="bottom"
+        android:textSize="12sp"
+        android:maxLines="3"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"/>
+</LinearLayout>

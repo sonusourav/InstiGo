@@ -1,108 +1,117 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/title_green</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="actionBarTheme">@color/colorAccent</item>
-        <item name="android:textColorHint">@color/white</item>
-        <item name="android:actionBarTabTextStyle">@color/white</item>
-    </style>
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/title_green</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="actionBarTheme">@color/colorAccent</item>
+    <item name="android:textColorHint">@color/white</item>
+    <item name="android:actionBarTabTextStyle">@color/white</item>
+  </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-    <style name="AppTheme.NoActionBar.TitleBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/title_green</item>
-    </style>
+  <style name="AppTheme.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+  <style name="AppTheme.NoActionBar.TitleBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="android:windowBackground">@color/title_green</item>
+  </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="MyNavigationTheme" parent="Base.Theme.AppCompat">
-        <item name="android:textSize">14sp</item>
-        <item name="android:verticalSpacing">2dp</item>
-        <item name="android:dividerHeight">1dp</item>
-        <item name="android:listDivider">@color/divider_color</item>
-        <item name="android:textColorSecondary">@color/nav_icon_color</item>
-        <item name="listPreferredItemHeight">0.5dp</item>
-    </style>
+  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-    <style name="tab_item">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
+  <style name="MyNavigationTheme" parent="Base.Theme.AppCompat">
+    <item name="android:textSize">14sp</item>
+    <item name="android:verticalSpacing">2dp</item>
+    <item name="android:dividerHeight">1dp</item>
+    <item name="android:listDivider">@color/divider_color</item>
+    <item name="android:textColorSecondary">@color/nav_icon_color</item>
+    <item name="listPreferredItemHeight">0.5dp</item>
+  </style>
 
-    <style name="ContentImageBadgeTitle" parent="AppTheme">
-        <item name="android:alpha">0.5</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">12dp</item>
-    </style>
+  <style name="tab_item">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
 
-    <style name="ContentImageBadgeText" parent="AppTheme">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">20dp</item>
-        <item name="android:textStyle">bold</item>
+  <style name="ContentImageBadgeTitle" parent="AppTheme">
+    <item name="android:alpha">0.5</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">12dp</item>
+  </style>
 
-    </style>
+  <style name="ContentImageBadgeText" parent="AppTheme">
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">20dp</item>
+    <item name="android:textStyle">bold</item>
 
-    <style name="ContentMainBadgeTitle" parent="AppTheme">
-        <item name="android:textColor">@color/contentBadgeTitle</item>
-        <item name="android:textSize">12dp</item>
-    </style>
+  </style>
 
-    <style name="TitleBadgeText" parent="AppTheme">
-        <item name="android:textColor">@color/titleBadgeText</item>
-        <item name="android:textSize">20dp</item>
-    </style>
+  <style name="ContentMainBadgeTitle" parent="AppTheme">
+    <item name="android:textColor">@color/contentBadgeTitle</item>
+    <item name="android:textSize">12dp</item>
+  </style>
 
-    <style name="TitleBadgeTitle" parent="AppTheme">
-        <item name="android:textColor">@color/titleBadgeTitle</item>
-        <item name="android:textSize">12dp</item>
-    </style>
-    <style name="RatingBar" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/black</item>
-        <item name="colorControlActivated">@color/golden</item>
-    </style>
+  <style name="TitleBadgeText" parent="AppTheme">
+    <item name="android:textColor">@color/titleBadgeText</item>
+    <item name="android:textSize">20dp</item>
+  </style>
 
-    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:textColor">@color/light_black</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:background">@color/white</item>
-        <item name="android:textSize">15sp</item>
-    </style>
+  <style name="TitleBadgeTitle" parent="AppTheme">
+    <item name="android:textColor">@color/titleBadgeTitle</item>
+    <item name="android:textSize">12dp</item>
+  </style>
 
+  <style name="RatingBar" parent="Theme.AppCompat">
+    <item name="colorControlNormal">@color/black</item>
+    <item name="colorControlActivated">@color/golden</item>
+  </style>
 
-    <style name="AppBaseTheme" parent="android:Theme.Light" />
-
-    <style name="SpinnerTextTheme" parent="Base.Widget.AppCompat.Spinner.Underlined">
-
-        <item name="android:popupBackground">@color/grey</item>
-        <item name="background">@color/white</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
+  <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <item name="android:textColor">@color/light_black</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:background">@color/white</item>
+    <item name="android:textSize">15sp</item>
+  </style>
 
 
-    <style name="ItemStyle" parent="Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
-        <item name="android:textColorHint">@color/black</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:backgroundTint">@color/divider_color</item>
-        <item name="android:divider">@color/grey</item>
-    </style>
+  <style name="AppBaseTheme" parent="android:Theme.Light"/>
 
-    <style name="mySpinnerDropDownItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">17sp</item>
-        <item name="android:paddingStart">0dp</item>
-        <item name="android:backgroundTint">@color/divider_color</item>
-        <item name="android:tint">@color/divider_color</item>
-        <item name="android:titleTextAppearance">@color/black</item>
-    </style>
+  <style name="SpinnerTextTheme" parent="Base.Widget.AppCompat.Spinner.Underlined">
+
+    <item name="android:popupBackground">@color/grey</item>
+    <item name="background">@color/white</item>
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+
+  <style name="ItemStyle" parent="Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
+    <item name="android:textColorHint">@color/black</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:backgroundTint">@color/divider_color</item>
+    <item name="android:divider">@color/grey</item>
+  </style>
+
+  <style name="mySpinnerDropDownItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">17sp</item>
+    <item name="android:paddingStart">0dp</item>
+    <item name="android:backgroundTint">@color/divider_color</item>
+    <item name="android:tint">@color/divider_color</item>
+    <item name="android:titleTextAppearance">@color/black</item>
+  </style>
+
+  <style name="SettingsTheme" parent="Theme.AppCompat.NoActionBar">
+    <item name="colorPrimaryDark">@color/title_green</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textColorSecondary">@color/textcolor</item>
+    <item name="android:colorForeground">@color/hintcolor</item>
+  </style>
 
 </resources>

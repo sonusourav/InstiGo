@@ -1,76 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="black">#000</color>
-    <color name="white">#fff</color>
-    <color name="grey">#c1bdbd</color>
-    <color name="textcolor">#666666</color>
-    <color name="hintcolor">#918f8f</color>
-    <color name="nav_icon_color">#7b7a7a</color>
-    <color name="nav_item_pressed">#e9e8e8</color>
-    <color name="nav_item_focussed">#f4f1f1</color>
-    <color name="divider_color">#e6e5e5</color>
+  <color name="colorPrimary">#3F51B5</color>
+  <color name="colorPrimaryDark">#303F9F</color>
+  <color name="colorAccent">#FF4081</color>
+  <color name="black">#000</color>
+  <color name="white">#fff</color>
+  <color name="grey">#c1bdbd</color>
+  <color name="textcolor">#666666</color>
+  <color name="hintcolor">#918f8f</color>
+  <color name="nav_icon_color">#7b7a7a</color>
+  <color name="nav_item_pressed">#e9e8e8</color>
+  <color name="nav_item_focussed">#f4f1f1</color>
+  <color name="divider_color">#e6e5e5</color>
 
 
-    <!-- Screens background color-->
-    <color name="bg_slider_screen1">#f4b241</color>
-    <color name="bg_slider_screen2">#16bc7d</color>
-    <color name="bg_slider_screen3">#0b93bc</color>
-    <!-- dots inactive colors -->
-    <color name="dot_inactive_screen1">#ffa000</color>
-    <color name="dot_inactive_screen2">#008c57</color>
-    <color name="dot_inactive_screen3">#4963ab</color>
-    <!-- dots active colors -->
-    <color name="dot_active_screen1">#f9c772</color>
-    <color name="dot_active_screen2">#74f7c5</color>
-    <color name="dot_active_screen3">#3a67e0</color>
-    <array name="array_dot_active">
-        <item>@color/dot_active_screen1</item>
-        <item>@color/dot_active_screen2</item>
-        <item>@color/dot_active_screen3</item>
-    </array>
-    <array name="array_dot_inactive">
-        <item>@color/dot_inactive_screen1</item>
-        <item>@color/dot_inactive_screen2</item>
-        <item>@color/dot_inactive_screen3</item>
-    </array>
+  <!-- Screens background color-->
+  <color name="bg_slider_screen1">#f4b241</color>
+  <color name="bg_slider_screen2">#16bc7d</color>
+  <color name="bg_slider_screen3">#0b93bc</color>
+  <!-- dots inactive colors -->
+  <color name="dot_inactive_screen1">#ffa000</color>
+  <color name="dot_inactive_screen2">#008c57</color>
+  <color name="dot_inactive_screen3">#4963ab</color>
+  <!-- dots active colors -->
+  <color name="dot_active_screen1">#f9c772</color>
+  <color name="dot_active_screen2">#74f7c5</color>
+  <color name="dot_active_screen3">#3a67e0</color>
+  <array name="array_dot_active">
+    <item>@color/dot_active_screen1</item>
+    <item>@color/dot_active_screen2</item>
+    <item>@color/dot_active_screen3</item>
+  </array>
+  <array name="array_dot_inactive">
+    <item>@color/dot_inactive_screen1</item>
+    <item>@color/dot_inactive_screen2</item>
+    <item>@color/dot_inactive_screen3</item>
+  </array>
 
-    <color name="color_login_button">#FF3366</color>
-  <color name="color_login_buttonpress">#9C2F4C</color>
-    <color name="color_signup_button">#F2F2F2</color>
-    <color name="color_signup_buttonpress">#EBEBEB</color>
-    <color name="color_primary_men">#00ACC1</color>
-    <color name="color_product_bottom">#ffffff</color>
-    <color name="color_edittext_hint">#999</color>
+  <color name="color_login_button">#FF3366</color>
+  <color name="color_login_buttonpress">#EE3162</color>
+  <color name="color_signup_button">#F2F2F2</color>
+  <color name="color_signup_buttonpress">#EBEBEB</color>
+  <color name="color_primary_men">#00ACC1</color>
+  <color name="color_product_bottom">#ffffff</color>
+  <color name="color_edittext_hint">#999</color>
 
-    <color name="disabled_login">#acacac</color>
-    <color name="focusable_login">#7ed28c</color>
-    <color name="default_login">#5eeacc</color>
-    <color name="pressed_login">#028026</color>
-    <color name="green">#5cae80</color>
-    <color name="title_green">#23864e</color>
+  <color name="disabled_login">#acacac</color>
+  <color name="focusable_login">#7ed28c</color>
+  <color name="default_login">#5eeacc</color>
+  <color name="pressed_login">#028026</color>
+  <color name="green">#5cae80</color>
+  <color name="title_green">#23864e</color>
 
-    <color name="home_back">#e7eef5</color>
-    <color name="text_blue">#93d6ce</color>
-  <color name="dark_blue">#2D2D47</color>
-    <color name="viewBg">#f1f5f8</color>
-    <color name="album_title">#4c4c4c</color>
-    <color name="color_icon">#2196f3</color>
-    <color name="menu_title_color">#594691</color>
-    <color name="contentBadgeTitle">#a9a9a9</color>
-    <color name="titleBadgeTitle">#adafb1</color>
-    <color name="titleBadgeText">#adafb1</color>
-    <color name="mainTextColor">#343d43</color>
-    <color name="golden">#ffa304</color>
-    <color name="cell_title_background">#f3fcf8</color>
-    <color name="purple">#aa77cf</color>
-    <color name="orange_card">#f4dfb5</color>
-    <color name="light_black">#5e5c5c</color>
-    <color name="detail_color">#0995d1</color>
-    <color name="red">#ec2e2e</color>
-    <color name="blue">#35d9f2</color>
-  <color name="council_back">#9299C9</color>
-
+  <color name="home_back">#e7eef5</color>
+  <color name="text_blue">#93d6ce</color>
+  <color name="viewBg">#f1f5f8</color>
+  <color name="album_title">#4c4c4c</color>
+  <color name="color_icon">#2196f3</color>
+  <color name="menu_title_color">#594691</color>
+  <color name="contentBadgeTitle">#a9a9a9</color>
+  <color name="titleBadgeTitle">#adafb1</color>
+  <color name="titleBadgeText">#adafb1</color>
+  <color name="mainTextColor">#343d43</color>
+  <color name="golden">#ffa304</color>
+  <color name="cell_title_background">#f3fcf8</color>
+  <color name="purple">#aa77cf</color>
+  <color name="orange_card">#f4dfb5</color>
+  <color name="light_black">#5e5c5c</color>
+  <color name="detail_color">#0995d1</color>
+  <color name="red">#ec2e2e</color>
+  <color name="blue">#35d9f2</color>
+  <color name="placeholder_background">#dddddd</color>
 </resources>

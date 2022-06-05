@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,10 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+
 import com.iitdh.sonusourav.instigo.R;
 import com.iitdh.sonusourav.instigo.Utils.PreferenceManager;
 
@@ -40,6 +41,12 @@ public class IntroScreen extends AppCompatActivity {
 
 
          prefManager = new PreferenceManager(this);
+        if (!prefManager.isFirstTimeLaunch()) {
+            Log.d("IsFirstTimeLaunch","False");
+            launchHomeScreen();
+            finish();
+        }
+
 
         setContentView(R.layout.activity_introscreen);
 
@@ -69,7 +76,7 @@ public class IntroScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 prefManager.setFirstTimeLaunch(false);
-                launchLoginScreen();
+                launchHomeScreen();
             }
         });
 
@@ -85,7 +92,7 @@ public class IntroScreen extends AppCompatActivity {
                 } else {
                     Log.d("HomeScreenLaunched","reached");
                     prefManager.setFirstTimeLaunch(false);
-                    launchLoginScreen();
+                    launchHomeScreen();
 
                 }
             }
@@ -115,7 +122,7 @@ public class IntroScreen extends AppCompatActivity {
         return viewPager.getCurrentItem() + 1;
     }
 
-    private void launchLoginScreen() {
+    private void launchHomeScreen() {
         startActivity(new Intent(IntroScreen.this, LoginActivity.class));
     }
 

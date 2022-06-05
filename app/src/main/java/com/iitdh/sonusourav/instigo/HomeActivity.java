@@ -2,28 +2,33 @@ package com.iitdh.sonusourav.instigo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import com.google.android.material.navigation.NavigationView;
+
 import com.iitdh.sonusourav.instigo.Complaints.ComplaintsActivity;
 import com.iitdh.sonusourav.instigo.Council.CouncilActivity;
 import com.iitdh.sonusourav.instigo.Mess.MessActivity;
-import com.iitdh.sonusourav.instigo.Resources.CourseActivity;
+import com.iitdh.sonusourav.instigo.Resources.ResourceActivity;
 import com.iitdh.sonusourav.instigo.Utils.CommonFunctions;
+
 import java.util.Objects;
 
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnClickListener{
 
-    private ImageButton mess, complaints, resources, council;
+    private ImageButton heartRateImageBt;
+    private ImageButton bloodPressureImageBt;
+    private ImageButton historyImageBt;
+    private ImageButton emergencyConImageBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +54,10 @@ public class HomeActivity extends AppCompatActivity
 
         homeInit();
 
-        mess.setOnClickListener(this);
-        complaints.setOnClickListener(this);
-        resources.setOnClickListener(this);
-        council.setOnClickListener(this);
+        heartRateImageBt.setOnClickListener(this);
+        bloodPressureImageBt.setOnClickListener(this);
+        historyImageBt.setOnClickListener(this);
+        emergencyConImageBt.setOnClickListener(this);
 
 
     }
@@ -84,33 +89,34 @@ public class HomeActivity extends AppCompatActivity
 
     private void homeInit(){
 
-        mess = findViewById(R.id.mess);
-        complaints = findViewById(R.id.complaints);
-        resources = findViewById(R.id.resources);
-        council = findViewById(R.id.council);
+        heartRateImageBt = findViewById(R.id.imagebt_hr);
+        bloodPressureImageBt = findViewById(R.id.imagebt_bp);
+        historyImageBt = findViewById(R.id.imagebt_his);
+        emergencyConImageBt = findViewById(R.id.image_ec);
     }
+
 
     @Override
     public void onClick(View view) {
 
         switch (view.getId()){
-            case R.id.mess:
+            case R.id.imagebt_hr:
                 startActivity(new Intent(HomeActivity.this,MessActivity.class));
                 break;
-            case R.id.complaints:
+            case R.id.imagebt_bp:
                 startActivity(new Intent(HomeActivity.this,ComplaintsActivity.class));
                 break;
 
-            case R.id.resources:
-                startActivity(new Intent(HomeActivity.this, CourseActivity.class));
+            case R.id.imagebt_his:
+                startActivity(new Intent(HomeActivity.this,ResourceActivity.class));
                 break;
 
-            case R.id.council:
+            case R.id.image_ec:
                 startActivity(new Intent(HomeActivity.this,CouncilActivity.class));
                 break;
 
             default:
-                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+                    startActivity(new Intent(HomeActivity.this,MessActivity.class));
 
         }
 

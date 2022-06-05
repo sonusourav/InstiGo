@@ -1,9 +1,8 @@
 package com.iitdh.sonusourav.instigo.User;
 
-import java.io.Serializable;
 
-@SuppressWarnings("serial")
-public class UserClass implements Serializable {
+
+public class UserClass {
     private String name;
     private String email;
     private String pass;
@@ -12,34 +11,17 @@ public class UserClass implements Serializable {
     private String branch;
     private String year;
     private String dob;
-  private String fcmToken;
     private String hostel;
     private String profilePic;
     private String coverPic;
-  private int level;
 
     public UserClass(){}
 
-  public UserClass(String userEmail, String uname, String userPic) {
-
-    this.email = userEmail;
-    this.name = uname;
-    this.profilePic = userPic;
-  }
-
-  public UserClass(String userEmail, String uname, String userPic, int level) {
-
-    this.email = userEmail;
-    this.name = uname;
-    this.profilePic = userPic;
-    this.level = level;
-
-    }
-    public UserClass(String userEmail) {
+    public UserClass(String userEmail,String uname, String userPass) {
 
         email = userEmail;
-        pass = "fa31b7bcb9e0d9ad4ab7e94e0230f2af7";
-        name = "";
+        pass = userPass;
+        name = uname;
         phone = "";
         gender = "";
         branch="";
@@ -48,11 +30,25 @@ public class UserClass implements Serializable {
         hostel="";
         profilePic="";
         coverPic="";
-      level = 0;
+
+    }
+    public UserClass(String userEmail, String userName) {
+
+        email = userEmail;
+        pass = "fa31b7bcb9e0d9ad4ab7e94e0230f2af7";
+        name = userName;
+        phone = "";
+        gender = "";
+        branch="";
+        year="";
+        dob="";
+        hostel="";
+        profilePic="";
+        coverPic="";
+
     }
 
-  public UserClass(String uname, String userBranch, String userYear, String userPhone,
-      String userDob, String fcmToken, String userGender, String userHostel, int level) {
+    public UserClass( String uname,String userBranch,String userYear, String userPhone,String userDob,String userGender,String userHostel) {
         name = uname;
         phone = userPhone;
         gender = userGender;
@@ -60,13 +56,10 @@ public class UserClass implements Serializable {
         year=userYear;
         dob=userDob;
         hostel=userHostel;
-    this.level = level;
-    this.fcmToken = fcmToken;
+
     }
 
-  public UserClass(String userEmail, String uname, String userBranch, String userYear,
-      String userPhone, String userDob, String fcmToken, String userGender, String userHostel,
-      String userPic, String userCoverPic, int level) {
+    public UserClass( String userEmail,String uname,String userBranch,String userYear, String userPhone,String userDob,  String userGender,String userHostel,String userPic,String userCoverPic) {
         email = userEmail;
         name = uname;
         phone = userPhone;
@@ -77,8 +70,7 @@ public class UserClass implements Serializable {
         hostel=userHostel;
         profilePic=userPic;
         coverPic=userCoverPic;
-    this.level = level;
-    this.fcmToken = fcmToken;
+
     }
 
     public String getEmail() {
@@ -168,20 +160,4 @@ public class UserClass implements Serializable {
     public void setCoverPic(String coverPic) {
         this.coverPic = coverPic;
     }
-
-  public int getLevel() {
-    return level;
-  }
-
-  public void setLevel(int level) {
-    this.level = level;
-  }
-
-  public String getFcmToken() {
-    return fcmToken;
-  }
-
-  public void setFcmToken(String fcmToken) {
-    this.fcmToken = fcmToken;
-  }
 }

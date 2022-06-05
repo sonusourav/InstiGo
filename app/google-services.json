@@ -15,11 +15,27 @@
       },
       "oauth_client": [
         {
+          "client_id": "336939768365-8g49af9cmu13c86eaf901dj507iadr30.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iitdh.sonusourav.instigo",
+            "certificate_hash": "542d0916c559208ea952342a643d33029a63c60d"
+          }
+        },
+        {
           "client_id": "336939768365-citp6g9svmavoi62mei3nngubfdlqq9f.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.iitdh.sonusourav.instigo",
             "certificate_hash": "b1f1e18e51b1790393538a9466572dec40ca0536"
+          }
+        },
+        {
+          "client_id": "336939768365-ftvh098d8a0hf8v6kjj5l27mm5f7m78c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iitdh.sonusourav.instigo",
+            "certificate_hash": "5a6cca74e40b3d459f24bc769cabb0d0a28385ea"
           }
         },
         {
